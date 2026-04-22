@@ -7,9 +7,7 @@ using static Star_Simulation.Calculation;
 using static Star_Simulation.Libary;
 using static Star_Simulation.Program;
 using static Star_Simulation.Random;
-using static Star_Simulation.SystemGeneration;
 using static Star_Simulation.Systems;
-using static Star_Simulation.CExceptions;
 using static Star_Simulation.Resource;
 
 namespace Star_Simulation
@@ -97,7 +95,7 @@ namespace Star_Simulation
             dwarfPlanet.ResourceList = new MyResourceList() { Resources = [] };
             dwarfPlanet.Moons = [];
 
-            Console.WriteLine($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
+            if (Logging & DwarfPlanetLogging) Console.WriteLine($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
             return ReturnDwarfPlanetInformation(dwarfPlanet);
             throw new NotImplementedException();
         }
