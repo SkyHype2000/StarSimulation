@@ -1,0 +1,302 @@
+Ordnungszahl,Name,Zustand,Typ,Orte
+000,None,None,None,None
+001,Wasserstoff,Gas,Ressource,Atmosphären Sterne
+001,Flüssiger Wasserstoff,Flüssig,Ressource,None
+001,Gefrorener Wasserstoff,Fest,Ressource,None
+002,Helium,Gas,Ressource,Atmosphären Sterne
+002,Flüssiges Helium,Flüssig,Ressource,None
+002,Gefrorener Helium,Fest,Ressource,None
+003,Lithium,Fest,Ressource,Trockene Kühle+ Planeten Asteroiden
+004,Beryllium,Fest,Ressource,Planeten Asteroiden
+005,Bor,Fest,Ressource,Planeten Asteroiden
+006,Kohlenstoff(Elementar),Fest,Ressource,Luftlose Planeten Kohlenstoff-Asteroiden
+007,Stickstoff,Gas,Ressource,Atmosphere Sterne
+007,Flüssiger Stickstoff,Flüssig,Ressource,None
+007,Gefrorener Stickstoff,Fest,Ressource,None
+008,Sauerstoff,Gas,Ressource,Atmoshären Sterne
+008,Flüssiger Sauerstoff,Flüssig,Ressource,None
+008,Gefrorener Sauerstoff,Fest,Ressource,None
+009,Fluor,Gas,Ressource,Atmosphäre
+009,Flüssiges Fluor,Flüssig,Ressource,None
+009,Gefrorener Fluor,Fest,Ressource,None
+010,Neon,Gas,Ressource,Atmosphäre
+010,Flüssiges Neon,Flüssig,Ressource,None
+010,Gefrorener Neon,Fest,Ressource,None
+011,Natrium,Fest,Ressource,Trockene Kühle+ Planeten Asteroiden
+012,Magnesium,Fest,Ressource,Planeten Asteroiden
+013,Aluminium,Fest,Ressource,Planeten Asteroiden
+014,Silicium,Fest,Ressource,Überall
+015,Phosphor,Fest,Ressource,STC
+016,Schwefel,Fest,Ressource,STC
+017,Chlor,Gas,Ressource,Atmosphären
+017,Flüssiges Chlor,Flüssig,Ressource,None
+017,Gefrorener Chlor,Fest,Ressource,None
+018,Argon,Gas,Ressource,Atmosphären
+018,Flüssiges Argon,Flüssig,Ressource,None
+018,Gefrorener Argon,Fest,Ressource,None
+019,Kalium,Fest,Ressource,Trockene Kühle+ Planeten Asteroiden
+020,Kalzium,Fest,Ressource,STC
+021,Skandium,Fest,Ressource,STC
+022,Titanium,Fest,Ressource,STC
+023,Vanadium,Fest,Ressource,STC
+024,Chrom,Fest,Ressource,STC
+025,Mangan,Fest,Ressource,STC
+026,Eisen,Fest,Ressource,ÜberallSTC
+027,Kobalt,Fest,Ressource,STC
+028,Nickel,Fest,Ressource,STC
+029,Kupfer,Fest,Ressource,STC
+030,Zink,Fest,Ressource,STC
+031,Gallium,Flüssig,Ressource,STC
+032,Germanium,Fest,Ressource,STC
+033,Arsen,Fest,Ressource,STC
+034,Selen,Fest,Ressource,STC
+035,Brom,Flüssig,Ressource,STC
+036,Krypton,Gas,Ressource,Atmosphäre
+036,Flüssiges Krypton,Flüssig,Ressource,None
+036,Gefrorener Krypton,Fest,Ressourcen,None
+037,Rubidium,Fest,Ressourcen,STC
+038,Strontium,Fest,Ressourcen,STC
+039,Yttrium,Fest,Ressourcen,STC
+040,Zirkonium,Fest,Ressourcen,STC
+041,Niobium,Fest,Ressourcen,STC
+042,Molybdän,Fest,Ressourcen,STC
+043,*Technetium,Fest,Ressourcen,STC
+044,Ruthenium,Fest,Ressourcen,STC
+045,Rhodium,Fest,Ressourcen,STC
+046,Palladium,Fest,Ressourcen,STC
+047,Silber,Fest,Ressourcen,STC
+048,Kadmium,Fest,Ressourcen,STC
+049,Indium,Fest,Ressourcen,STC
+050,Zinn,Fest,Ressourcen,STC
+051,Antimon,Fest,Ressourcen,STC
+052,Tellur,Fest,Ressourcen,STC
+053,Iod,Fest,Ressourcen,STC
+054,Xenon,Gas,Ressourcen,Atmosphäre
+054,Flüssiges Xenon,Flüssig,Ressourcen,None
+054,Gefrohrendes Xenon,Fest,Ressourcen,None
+055,Cäsium,Fest,Ressourcen,STC
+056,Barium,Fest,Ressourcen,STC
+057,Lanthan,Fest,Ressourcen,STC
+058,Cer,Fest,Ressourcen,STC
+059,Praseodym,Fest,Ressourcen,STC
+060,Neodym,Fest,Ressourcen,STC
+061,*Promethium,Fest,Ressourcen,STC
+062,Samarium,Fest,Ressourcen,STC
+063,Europium,Fest,Ressourcen,STC
+064,Gadolinium,Fest,Ressourcen,STC
+065,Terbium,Fest,Ressourcen,STC
+066,Dysprosium,Fest,Ressourcen,STC
+067,Holmium,Fest,Ressourcen,STC
+068,Erbium,Fest,Ressourcen,STC
+069,Thulium,Fest,Ressourcen,STC
+070,Ytterbium,Fest,Ressourcen,STC
+071,Lutetium,Fest,Ressourcen,STC
+072,Hafnium,Fest,Ressourcen,STC
+073,Tantal,Fest,Ressourcen,STC
+074,Wolfram,Fest,Ressourcen,STC
+075,Rhenium,Fest,Ressourcen,STC
+076,Osmium,Fest,Ressourcen,STC
+077,Iridium,Fest,Ressourcen,STC
+078,Platin,Fest,Ressourcen,STC
+079,Gold,Fest,Ressourcen,STC
+080,Quecksilber,Fest,Ressourcen,STC
+081,Thallium,Fest,Ressourcen,STC
+082,Blei,Fest,Ressourcen,STC
+083,*Bismut,Fest,Ressourcen,PlanetenSTC
+084,*Polonium,Fest,Ressourcen,STC
+085,*Astat,Fest,Ressourcen,STC
+086,*Radon,Gas,Ressourcen,None
+086,*Flüssiges Radon,Flüssig,Ressourcen,None
+086,*Gefrorener Radon,Fest,Ressourcen,None
+087,*Francium,Fest,Ressourcen,STC
+088,*Radium,Fest,Ressourcen,STC
+089,*Actinium,Fest,Ressourcen,STC
+090,*Thorium,Fest,Ressourcen,STC
+091,*Protactinium,Fest,Ressourcen,STC
+092,*Uranium,Fest,Ressourcen,STC
+093,*Neptunium,Fest,Ressourcen,STC
+094,*Plutonium,Fest,Ressourcen,None
+095,*Americium,Fest,Ressourcen,None
+096,*Curium,Fest,Ressourcen,None
+097,*Berkelium,Fest,Ressourcen,None
+098,*Californium,Fest,Ressourcen,None
+099,*Einsteinium,Fest,Ressourcen,None
+100,*Fermium,Fest,Ressourcen,None
+101,*Mendelevium,Fest,Ressourcen,None
+102,*Nobelium,Fest,Ressourcen,None
+103,*Lawrencium,Fest,Ressourcen,None
+104,*Rutherfordium,Fest,Ressourcen,None
+105,*Dubnium,None,Ressourcen,None
+106,*Seaborgium,None,Ressourcen,None
+107,*Bohrium,None,Ressourcen,None
+108,*Hassium,None,Ressourcen,None
+109,*Meitnerium,None,Ressourcen,None
+110,*Darmstadtium,None,Ressourcen,None
+111,*Roentgenium,None,Ressourcen,None
+112,*Copernicium,Flüssig,Ressourcen,None
+113,*Nihonium,Fest,Ressourcen,None
+114,*Flerovium,Flüssig,Ressourcen,None
+115,*Moscovium,Fest,Ressourcen,None
+116,*Livermorium,Fest,Ressourcen,None
+117,*Tennessin,Fest,Ressourcen,None
+118,*Oganesson,Fest,Ressourcen,None
+
+Planeten = Planeten & Monde
+*        = Radioaktiv
+None     = Kein Wert
+STC      = Kein Wert und/oder Wird möglicherweise Geändert
+
+(https://www.convertcsv.com/csv-to-markdown.htm)
+
+| Ordnungszahl | Name                   | Zustand | Typ        | Orte                                     |
+| ------------ | ---------------------- | ------- | ---------- | ---------------------------------------- |
+| 000          | None                   | None    | None       | None                                     |
+| 001          | Wasserstoff            | Gas     | Ressource  | Atmosphären Sterne                       |
+| 001          | Flüssiger Wasserstoff  | Flüssig | Ressource  | None                                     |
+| 001          | Gefrorener Wasserstoff | Fest    | Ressource  | None                                     |
+| 002          | Helium                 | Gas     | Ressource  | Atmosphären Sterne                       |
+| 002          | Flüssiges Helium       | Flüssig | Ressource  | None                                     |
+| 002          | Gefrorener Helium      | Fest    | Ressource  | None                                     |
+| 003          | Lithium                | Fest    | Ressource  | Trockene Kühle+ Planeten Asteroiden      |
+| 004          | Beryllium              | Fest    | Ressource  | Planeten Asteroiden                      |
+| 005          | Bor                    | Fest    | Ressource  | Planeten Asteroiden                      |
+| 006          | Kohlenstoff(Elementar) | Fest    | Ressource  | Luftlose Planeten Kohlenstoff-Asteroiden |
+| 007          | Stickstoff             | Gas     | Ressource  | Atmosphere Sterne                        |
+| 007          | Flüssiger Stickstoff   | Flüssig | Ressource  | None                                     |
+| 007          | Gefrorener Stickstoff  | Fest    | Ressource  | None                                     |
+| 008          | Sauerstoff             | Gas     | Ressource  | Atmoshären Sterne                        |
+| 008          | Flüssiger Sauerstoff   | Flüssig | Ressource  | None                                     |
+| 008          | Gefrorener Sauerstoff  | Fest    | Ressource  | None                                     |
+| 009          | Fluor                  | Gas     | Ressource  | Atmosphäre                               |
+| 009          | Flüssiges Fluor        | Flüssig | Ressource  | None                                     |
+| 009          | Gefrorener Fluor       | Fest    | Ressource  | None                                     |
+| 010          | Neon                   | Gas     | Ressource  | Atmosphäre                               |
+| 010          | Flüssiges Neon         | Flüssig | Ressource  | None                                     |
+| 010          | Gefrorener Neon        | Fest    | Ressource  | None                                     |
+| 011          | Natrium                | Fest    | Ressource  | Trockene Kühle+ Planeten Asteroiden      |
+| 012          | Magnesium              | Fest    | Ressource  | Planeten Asteroiden                      |
+| 013          | Aluminium              | Fest    | Ressource  | Planeten Asteroiden                      |
+| 014          | Silicium               | Fest    | Ressource  | Überall                                  |
+| 015          | Phosphor               | Fest    | Ressource  | STC                                      |
+| 016          | Schwefel               | Fest    | Ressource  | STC                                      |
+| 017          | Chlor                  | Gas     | Ressource  | Atmosphären                              |
+| 017          | Flüssiges Chlor        | Flüssig | Ressource  | None                                     |
+| 017          | Gefrorener Chlor       | Fest    | Ressource  | None                                     |
+| 018          | Argon                  | Gas     | Ressource  | Atmosphären                              |
+| 018          | Flüssiges Argon        | Flüssig | Ressource  | None                                     |
+| 018          | Gefrorener Argon       | Fest    | Ressource  | None                                     |
+| 019          | Kalium                 | Fest    | Ressource  | Trockene Kühle+ Planeten Asteroiden      |
+| 020          | Kalzium                | Fest    | Ressource  | STC                                      |
+| 021          | Skandium               | Fest    | Ressource  | STC                                      |
+| 022          | Titanium               | Fest    | Ressource  | STC                                      |
+| 023          | Vanadium               | Fest    | Ressource  | STC                                      |
+| 024          | Chrom                  | Fest    | Ressource  | STC                                      |
+| 025          | Mangan                 | Fest    | Ressource  | STC                                      |
+| 026          | Eisen                  | Fest    | Ressource  | ÜberallSTC                               |
+| 027          | Kobalt                 | Fest    | Ressource  | STC                                      |
+| 028          | Nickel                 | Fest    | Ressource  | STC                                      |
+| 029          | Kupfer                 | Fest    | Ressource  | STC                                      |
+| 030          | Zink                   | Fest    | Ressource  | STC                                      |
+| 031          | Gallium                | Flüssig | Ressource  | STC                                      |
+| 032          | Germanium              | Fest    | Ressource  | STC                                      |
+| 033          | Arsen                  | Fest    | Ressource  | STC                                      |
+| 034          | Selen                  | Fest    | Ressource  | STC                                      |
+| 035          | Brom                   | Flüssig | Ressource  | STC                                      |
+| 036          | Krypton                | Gas     | Ressource  | Atmosphäre                               |
+| 036          | Flüssiges Krypton      | Flüssig | Ressource  | None                                     |
+| 036          | Gefrorener Krypton     | Fest    | Ressourcen | None                                     |
+| 037          | Rubidium               | Fest    | Ressourcen | STC                                      |
+| 038          | Strontium              | Fest    | Ressourcen | STC                                      |
+| 039          | Yttrium                | Fest    | Ressourcen | STC                                      |
+| 040          | Zirkonium              | Fest    | Ressourcen | STC                                      |
+| 041          | Niobium                | Fest    | Ressourcen | STC                                      |
+| 042          | Molybdän               | Fest    | Ressourcen | STC                                      |
+| 043          | *Technetium            | Fest    | Ressourcen | STC                                      |
+| 044          | Ruthenium              | Fest    | Ressourcen | STC                                      |
+| 045          | Rhodium                | Fest    | Ressourcen | STC                                      |
+| 046          | Palladium              | Fest    | Ressourcen | STC                                      |
+| 047          | Silber                 | Fest    | Ressourcen | STC                                      |
+| 048          | Kadmium                | Fest    | Ressourcen | STC                                      |
+| 049          | Indium                 | Fest    | Ressourcen | STC                                      |
+| 050          | Zinn                   | Fest    | Ressourcen | STC                                      |
+| 051          | Antimon                | Fest    | Ressourcen | STC                                      |
+| 052          | Tellur                 | Fest    | Ressourcen | STC                                      |
+| 053          | Iod                    | Fest    | Ressourcen | STC                                      |
+| 054          | Xenon                  | Gas     | Ressourcen | Atmosphäre                               |
+| 054          | Flüssiges Xenon        | Flüssig | Ressourcen | None                                     |
+| 054          | Gefrohrendes Xenon     | Fest    | Ressourcen | None                                     |
+| 055          | Cäsium                 | Fest    | Ressourcen | STC                                      |
+| 056          | Barium                 | Fest    | Ressourcen | STC                                      |
+| 057          | Lanthan                | Fest    | Ressourcen | STC                                      |
+| 058          | Cer                    | Fest    | Ressourcen | STC                                      |
+| 059          | Praseodym              | Fest    | Ressourcen | STC                                      |
+| 060          | Neodym                 | Fest    | Ressourcen | STC                                      |
+| 061          | *Promethium            | Fest    | Ressourcen | STC                                      |
+| 062          | Samarium               | Fest    | Ressourcen | STC                                      |
+| 063          | Europium               | Fest    | Ressourcen | STC                                      |
+| 064          | Gadolinium             | Fest    | Ressourcen | STC                                      |
+| 065          | Terbium                | Fest    | Ressourcen | STC                                      |
+| 066          | Dysprosium             | Fest    | Ressourcen | STC                                      |
+| 067          | Holmium                | Fest    | Ressourcen | STC                                      |
+| 068          | Erbium                 | Fest    | Ressourcen | STC                                      |
+| 069          | Thulium                | Fest    | Ressourcen | STC                                      |
+| 070          | Ytterbium              | Fest    | Ressourcen | STC                                      |
+| 071          | Lutetium               | Fest    | Ressourcen | STC                                      |
+| 072          | Hafnium                | Fest    | Ressourcen | STC                                      |
+| 073          | Tantal                 | Fest    | Ressourcen | STC                                      |
+| 074          | Wolfram                | Fest    | Ressourcen | STC                                      |
+| 075          | Rhenium                | Fest    | Ressourcen | STC                                      |
+| 076          | Osmium                 | Fest    | Ressourcen | STC                                      |
+| 077          | Iridium                | Fest    | Ressourcen | STC                                      |
+| 078          | Platin                 | Fest    | Ressourcen | STC                                      |
+| 079          | Gold                   | Fest    | Ressourcen | STC                                      |
+| 080          | Quecksilber            | Fest    | Ressourcen | STC                                      |
+| 081          | Thallium               | Fest    | Ressourcen | STC                                      |
+| 082          | Blei                   | Fest    | Ressourcen | STC                                      |
+| 083          | *Bismut                | Fest    | Ressourcen | Planeten STC                             |
+| 084          | *Polonium              | Fest    | Ressourcen | STC                                      |
+| 085          | *Astat                 | Fest    | Ressourcen | STC                                      |
+| 086          | *Radon                 | Gas     | Ressourcen | None                                     |
+| 086          | *Flüssiges Radon       | Flüssig | Ressourcen | None                                     |
+| 086          | *Gefrorener Radon      | Fest    | Ressourcen | None                                     |
+| 087          | *Francium              | Fest    | Ressourcen | STC                                      |
+| 088          | *Radium                | Fest    | Ressourcen | STC                                      |
+| 089          | *Actinium              | Fest    | Ressourcen | STC                                      |
+| 090          | *Thorium               | Fest    | Ressourcen | STC                                      |
+| 091          | *Protactinium          | Fest    | Ressourcen | STC                                      |
+| 092          | *Uranium               | Fest    | Ressourcen | STC                                      |
+| 093          | *Neptunium             | Fest    | Ressourcen | STC                                      |
+| 094          | *Plutonium             | Fest    | Ressourcen | None                                     |
+| 095          | *Americium             | Fest    | Ressourcen | None                                     |
+| 096          | *Curium                | Fest    | Ressourcen | None                                     |
+| 097          | *Berkelium             | Fest    | Ressourcen | None                                     |
+| 098          | *Californium           | Fest    | Ressourcen | None                                     |
+| 099          | *Einsteinium           | Fest    | Ressourcen | None                                     |
+| 100          | *Fermium               | Fest    | Ressourcen | None                                     |
+| 101          | *Mendelevium           | Fest    | Ressourcen | None                                     |
+| 102          | *Nobelium              | Fest    | Ressourcen | None                                     |
+| 103          | *Lawrencium            | Fest    | Ressourcen | None                                     |
+| 104          | *Rutherfordium         | Fest    | Ressourcen | None                                     |
+| 105          | *Dubnium               | None    | Ressourcen | None                                     |
+| 106          | *Seaborgium            | None    | Ressourcen | None                                     |
+| 107          | *Bohrium               | None    | Ressourcen | None                                     |
+| 108          | *Hassium               | None    | Ressourcen | None                                     |
+| 109          | *Meitnerium            | None    | Ressourcen | None                                     |
+| 110          | *Darmstadtium          | None    | Ressourcen | None                                     |
+| 111          | *Roentgenium           | None    | Ressourcen | None                                     |
+| 112          | *Copernicium           | Flüssig | Ressourcen | None                                     |
+| 113          | *Nihonium              | Fest    | Ressourcen | None                                     |
+| 114          | *Flerovium             | Flüssig | Ressourcen | None                                     |
+| 115          | *Moscovium             | Fest    | Ressourcen | None                                     |
+| 116          | *Livermorium           | Fest    | Ressourcen | None                                     |
+| 117          | *Tennessin             | Fest    | Ressourcen | None                                     |
+| 118          | *Oganesson             | Fest    | Ressourcen | None                                     |
+
+Zufällig Generierte Legierungen, Regeln:
+01 %: 1 Element
+90 %: 2 Elemente
+09 %: 3 Elemente
+
+- Es Kann nur Feste legierungen geben.
+- Die Schmelztemperatur Muss der Durchschnitt der Schmelztemperaturen aller Elemente zusammen +- 10% sein und immer höher als der Absolut 0-Punkt
+- Die Siedetemperatur Muss der Durchschnitt der Schmelztemperaturen aller Elemente zusammen +- 10% sein und immer höher als die Schmelztemperatur
