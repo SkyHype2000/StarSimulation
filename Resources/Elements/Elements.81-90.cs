@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         // Alements from 81 to 90
 
-        public static readonly IMyResource Thallium = new MyResource()
+        public static readonly MyResource Thallium = new MyResource()
         {
             Name = "Thallium",
+            NameDE = "Thallium",
             ID = "Resources.Elements.Thallium",
             Symbol = "Tl",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Lead = new MyResource()
+        public static readonly MyResource Lead = new MyResource()
         {
             Name = "Lead",
+            NameDE = "Blei",
             ID = "Resources.Elements.Lead",
             Symbol = "Pb",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Bismuth = new MyResource()
+        public static readonly MyResource Bismuth = new MyResource()
         {
             Name = "Bismuth",
+            NameDE = "Bismut",
             ID = "Resources.Elements.Bismuth",
             Symbol = "Bi",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Polonium = new MyResource()
+        public static readonly MyResource Polonium = new MyResource()
         {
             Name = "Polonium",
+            NameDE = "Polonium",
             ID = "Resources.Elements.Polonium",
             Symbol = "Po",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Astatine = new MyResource()
+        public static readonly MyResource Astatine = new MyResource()
         {
             Name = "Astatine",
+            NameDE = "Astat",
             ID = "Resources.Elements.Astatine",
             Symbol = "At",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Radon = new MyResource()
+        public static readonly MyResource Radon = new MyResource()
         {
             Name = "Radon",
+            NameDE = "Radon",
             ID = "Resources.Elements.Radon",
             Symbol = "Rn",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Francium = new MyResource()
+        public static readonly MyResource Francium = new MyResource()
         {
             Name = "Francium",
+            NameDE = "Francium",
             ID = "Resources.Elements.Francium",
             Symbol = "Fr",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Radium = new MyResource()
+        public static readonly MyResource Radium = new MyResource()
         {
             Name = "Radium",
+            NameDE = "Radium",
             ID = "Resources.Elements.Radium",
             Symbol = "Ra",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Actinium = new MyResource()
+        public static readonly MyResource Actinium = new MyResource()
         {
             Name = "Actinium",
+            NameDE = "Actinium",
             ID = "Resources.Elements.Actinium",
             Symbol = "Ac",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Thorium = new MyResource()
+        public static readonly MyResource Thorium = new MyResource()
         {
             Name = "Thorium",
+            NameDE = "Thorium",
             ID = "Resources.Elements.Thorium",
             Symbol = "Th",
             Description = "",

@@ -32,14 +32,15 @@ namespace Star_Simulation
         /// <summary>Where the Resource can Spawn.</summary>
         /// <remarks>
         /// <b>Surface</b>: It Spwans on the Surface of a Object. (Only Valid if Category is Solid or Liquid)<br/>
-        /// <b>Subsurface</b>: It Spawns under the Surface of a Object. (Only Valid if Category is Solid or Liquid)<br/>
+        /// <b>SubsurfaceCrust</b>: It Spawns under the Surface of a Object. (Only Valid if Category is Solid or Liquid)<br/>
+        /// <b>SubsurfaceCore</b>: It Spawns under the Surface of a Object. (Only Valid if Category is Solid)<br/>
         /// <b>Atmospheric</b>: It Spawns in the Atmosphere of a Planet. (Only Valid if the Category is Gas)<br/>
         /// <b>AstroidBeld</b>: It Spawns on a Astroid or in a Astroid Belt. (Only Valid if the Category is Solid)<br/>
         /// <b>Comet</b>: It Spawns on a Comet. (Only Valid if the Category is Solid)<br/>
         /// <b>Space</b>: It Spawns in Space. (Only Valid if the Category is Solid, Gas or Plasma)<br/>
         /// </remarks>
         public enum ResourcePosition
-        { Surface, Subsurface, Atmosphere, AsteroidBelt, Comet, Space }
+        { Surface, SubsurfaceCrust, SubsurfaceCore, Atmosphere, AsteroidBelt, Comet, Space }
         /// <summary>What the Surface has to Look Like for the Resource to Spawn (It will Only Spawn, if Temperature AND Position Requirements are Met)</summary>
         /// <remarks>
         /// <b>AnySurface</b>: There is no Requirement, it can Spawn Anywhere.<br/>
@@ -82,21 +83,38 @@ namespace Star_Simulation
         { None, DEV, VeryRare, Rare, Common, Frequent, VeryFrequent }
 
         /// <summary>The Main Interface for the Resource Spawn Conditions</summary>
+        //public interface MyResource
+        //{
+        //    string Name { get; }
+        //    string ID { get; }
+        //    string Symbol { get; }
+        //    string Description { get; }
+        //    float FreezingPoint { get; }
+        //    float BoilingPoint { get; }
+        //    float Density { get; }
+        //    ResourceCategory Category { get; }
+        //    ResourcePosition[] Position { get; }
+        //}
+
+        /// <summary>
+        /// Interface for Compatibility and Basic-Requirement Reasons.
+        /// </summary>
         public interface IMyResource
         {
-            string Name { get; }
-            string ID { get; }
-            string Symbol { get; }
-            string Description { get; }
-            float FreezingPoint { get; }
-            float BoilingPoint { get; }
-            float Density { get; }
-            ResourceCategory Category { get; }
-            ResourcePosition[] Position { get; }
+            public string Name { get; set; }
+            public string NameDE { get; set; }
+            public string ID { get; set; }
+            public string Symbol { get; set; }
+            public string Description { get; set; }
+            public float FreezingPoint { get; set; }
+            public float BoilingPoint { get; set; }
+            public float Density { get; set; }
         }
+
         public class MyResource : IMyResource
         {
             public required string Name { get; set; }
+            public required string NameDE { get; set; }
             public required string ID { get; set; }
             public required string Symbol { get; set; }
             public required string Description { get; set; }
@@ -107,31 +125,16 @@ namespace Star_Simulation
             public required ResourcePosition[] Position { get; set; }
         }
 
-        public interface IMyResourceValue
+        public class MyResourceValue
         {
-            /// <summary>The ID of the Resource Value</summary>
-            string ID { get; }
-            /// <summary>Wieviel Einheiten Pro 100 Vorhanden sind</summary>
-            int Value { get; }
-            IMyResource Resource { get; }
-        }
-
-        public class MyResourceValue : IMyResourceValue
-        {
-            /// <summary>The ID of the Resource Value</summary>
-            public required string ID { get; set; }
-            /// <summary>Wieviel Einheiten Pro 100 Vorhanden sind</summary>
+            /// <summary>Wieviel Einheiten Pro 1000 Vorhanden sind</summary>
             public required int Value { get; set; }
             public required IMyResource Resource { get; set; }
         }
 
-        public interface IMyResourceList
+        public class MyResourceList
         {
-            IMyResourceValue[] Resources { get; }
-        }
-        public class MyResourceList : IMyResourceList
-        {
-            public required IMyResourceValue[] Resources { get; set; }
+            public required MyResourceValue[] Resources { get; set; }
         }
 
         /// <summary>
@@ -139,14 +142,14 @@ namespace Star_Simulation
         /// Aber die Listen werden vordefiniert und festgelegt in der finalen Version.
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public static IMyResourceList GenerateResourceList()
+        public static MyResourceList GenerateResourceList()
         {
             throw new NotImplementedException();
         }
 
         /// <summary>Generates a Random List of Planetary Resources.</summary>
         /// <exception cref="NotImplementedException"></exception>
-        public static IMyResourceList GeneratePlanetResourceList()
+        public static MyResourceList GeneratePlanetResourceList()
         {
             return new MyResourceList() { Resources = [] };
 
@@ -156,6 +159,6 @@ namespace Star_Simulation
 
     internal class PublicResources
     {
-        public static List<IMyResource> Resources = [];
+        public static List<MyResource> Resources = [];
     }
 }

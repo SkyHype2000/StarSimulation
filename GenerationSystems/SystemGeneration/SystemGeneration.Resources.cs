@@ -15,7 +15,7 @@ namespace Star_Simulation
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static IMyResourceList GenerateResource()
+        public static MyResourceList GenerateResource()
         {
             // Placeholder for resource generation logic
             // Why?

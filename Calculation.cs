@@ -114,9 +114,9 @@ namespace Star_Simulation
             return lum;
         }
 
-        public static double GetStarMass()
+        public static double GetStarMass(SeedRandom seed)
         {
-            double r = rng.NextOne<double>();
+            double r = seed.NextOne<double>();
 
             double result = Math.Pow(r / STAR_GENERATION_CONSTANT, -0.4f) * SunMass;
 
@@ -172,7 +172,7 @@ namespace Star_Simulation
             return (Moon.Orbit.OrbitalRadiusPerigee * Math.Pow((double)(Moon.Mass / Planet.Mass), 0.4f));
         }
 
-        public static double CalculatePlanetRadius(double mass, IMyResourceList resources)
+        public static double CalculatePlanetRadius(double mass, MyResourceList resources)
         {
             float totalDensity = 0;
 
@@ -305,9 +305,9 @@ namespace Star_Simulation
             /// <param name="R">The Height in Meters</param>
             /// <param name="M">The Mass in kg</param>
             /// <returns>Orbital Period in Seconds or AU</returns>
-            public static float CalculateOrbitalPeriod(float R, float M)
+            public static double CalculateOrbitalPeriod(double R, double M)
             {
-                float period = (float)(2 * Math.PI * Math.Sqrt(Math.Pow(R, 3) / (G * M)));
+                double period = (double)(2 * Math.PI * Math.Sqrt(Math.Pow(R, 3) / (G * M)));
 
                 Console.WriteLine($"Calculated Orbital Period: {period} seconds with R={R * SunRadius} m and M={M} kg");
 
@@ -328,17 +328,17 @@ namespace Star_Simulation
             }
 
             /// <summary>
-            /// Calcumates the orbital height (in meters) of an object orbiting a mass M (in kilograms) with an orbital period T (in seconds).
+            /// Calcumates the orbital radius (in meters) of an object orbiting a mass M (in kilograms) with an orbital period T (in seconds).
             /// </summary>
-            /// <param name="type">The type of output for the orbital height</param>
+            /// <param name="type">The type of output for the orbital radius</param>
             /// <param name="T">The Orbital Period in Seconds</param>
             /// <param name="M">The Mass in kg</param>
-            /// <returns>Orbital Height in Meters, AU, LD, LH, LM or LS</returns>
-            public static double CalculateOrbitalHeight(float T, float M)
+            /// <returns>Orbital radius in Meters</returns>
+            public static double CalculateOrbitalRadius(float T, float M)
             {
                 double R = (double)Math.Pow((G * M) * ((T) / Math.Pow(2 * Math.PI, 2)), (1 / 3));
 
-                Console.WriteLine($"Calculated Orbital Height: {R} m with T={T} s and M={M} kg");
+                Console.WriteLine($"Calculated Orbital Radius: {R} m with T={T} s and M={M} kg");
 
                 return R;
             }

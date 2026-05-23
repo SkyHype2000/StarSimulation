@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         // Elements from 61 to 70
 
-        public static readonly IMyResource Promethium = new MyResource()
+        public static readonly MyResource Promethium = new MyResource()
         {
             Name = "Promethium",
+            NameDE = "Promethium",
             ID = "Resources.Elements.Promethium",
             Symbol = "Pm",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Samarium = new MyResource()
+        public static readonly MyResource Samarium = new MyResource()
         {
             Name = "Samarium",
+            NameDE = "Samarium",
             ID = "Resources.Elements.Samarium",
             Symbol = "Sm",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Europium = new MyResource()
+        public static readonly MyResource Europium = new MyResource()
         {
             Name = "Europium",
+            NameDE = "Europium",
             ID = "Resources.Elements.Europium",
             Symbol = "Eu",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Gadolinium = new MyResource()
+        public static readonly MyResource Gadolinium = new MyResource()
         {
             Name = "Gadolinium",
+            NameDE = "Gadolinium",
             ID = "Resources.Elements.Gadolinium",
             Symbol = "Gd",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Terbium = new MyResource()
+        public static readonly MyResource Terbium = new MyResource()
         {
             Name = "Terbium",
+            NameDE = "Terbium",
             ID = "Resources.Elements.Terbium",
             Symbol = "Tb",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Dysprosium = new MyResource()
+        public static readonly MyResource Dysprosium = new MyResource()
         {
             Name = "Dysprosium",
+            NameDE = "Dysprosium",
             ID = "Resources.Elements.Dysprosium",
             Symbol = "Dy",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Holmium = new MyResource()
+        public static readonly MyResource Holmium = new MyResource()
         {
             Name = "Holmium",
+            NameDE = "Holmium",
             ID = "Resources.Elements.Holmium",
             Symbol = "Ho",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Erbium = new MyResource()
+        public static readonly MyResource Erbium = new MyResource()
         {
             Name = "Erbium",
+            NameDE = "Erbium",
             ID = "Resources.Elements.Erbium",
             Symbol = "Er",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Thulium = new MyResource()
+        public static readonly MyResource Thulium = new MyResource()
         {
             Name = "Thulium",
+            NameDE = "Thulium",
             ID = "Resources.Elements.Thulium",
             Symbol = "Tm",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Ytterbium = new MyResource()
+        public static readonly MyResource Ytterbium = new MyResource()
         {
             Name = "Ytterbium",
+            NameDE = "Ytterbium",
             ID = "Resources.Elements.Ytterbium",
             Symbol = "Yb",
             Description = "",

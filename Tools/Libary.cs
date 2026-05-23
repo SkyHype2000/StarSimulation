@@ -136,6 +136,11 @@ namespace Star_Simulation
 
             public MinMax(T min = default!, T max = default!, bool maxZero = false)
             {
+                if (max < min && double.CreateChecked(max) != 0 && maxZero)
+                    throw new ArgumentOutOfRangeException($"If max is smaller than min and maxZero is enabled, max has to be Zero and not {max}.");
+                if (max < min && !maxZero)
+                    throw new ArgumentOutOfRangeException($"If you want to have max smaller than min, you have to activate maxZero (And max has to be 0)");
+
                 Min = min;
                 Max = max;
                 MaxZero = maxZero;
@@ -195,7 +200,7 @@ namespace Star_Simulation
             {
                 this.Seed = new SeedRandom($"InterstellarSector-{position.X}-{position.Y}");
 
-                this.Name = GenerateName2(this.Seed, starNames);
+                this.Name = GenerateNameMarkov (this.Seed, StarNames);
             }
         }
     }

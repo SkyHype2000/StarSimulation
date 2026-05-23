@@ -34,7 +34,7 @@ namespace Star_Simulation
             CelestialHabitability Habitability { get; set; }
             CelestialLifeType[] LifeType { get; set; }
             CelestialSpecialProperties[] SpecialProperties { get; set; }
-            IMyResourceList ResourceList { get; set; }
+            MyResourceList ResourceList { get; set; }
         }
         public class MyMoon : IMyMoon
         {
@@ -50,7 +50,7 @@ namespace Star_Simulation
             public required CelestialHabitability Habitability { get; set; }
             public required CelestialLifeType[] LifeType { get; set; }
             public required CelestialSpecialProperties[] SpecialProperties { get; set; }
-            public required IMyResourceList ResourceList { get; set; }
+            public required MyResourceList ResourceList { get; set; }
         }
 
         public interface IMyMoonGeneration
@@ -73,7 +73,7 @@ namespace Star_Simulation
             CelestialHabitability? Habitability { get; set; }
             CelestialLifeType[]? LifeType { get; set; }
             CelestialSpecialProperties[]? SpecialProperties { get; set; }
-            IMyResourceList? ResourceList { get; set; }
+            MyResourceList? ResourceList { get; set; }
         }
         public class MyMoonGeneration : IMyMoonGeneration, IMyObjectGeneration
         {
@@ -89,7 +89,7 @@ namespace Star_Simulation
             public CelestialHabitability? Habitability { get; set; }
             public CelestialLifeType[]? LifeType { get; set; }
             public CelestialSpecialProperties[]? SpecialProperties { get; set; }
-            public IMyResourceList? ResourceList { get; set; }
+            public MyResourceList? ResourceList { get; set; }
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Star_Simulation
                 Habitability = (CelestialHabitability)myMoonGeneration.Habitability,
                 LifeType = myMoonGeneration.LifeType,
                 SpecialProperties = myMoonGeneration.SpecialProperties,
-                ResourceList = myMoonGeneration.ResourceList,
+                ResourceList = (MyResourceList)myMoonGeneration.ResourceList,
                 Orbit = myMoonGeneration.Orbit
             };
         }

@@ -27,7 +27,7 @@ namespace Star_Simulation
             CelestialHabitability Habitability { get; }
             CelestialLifeType[] LifeType { get; }
             CelestialSpecialProperties[] SpecialProperties { get; }
-            IMyResourceList ResourceList { get; }
+            MyResourceList ResourceList { get; }
             IMyMoon[] Moons { get; }
         }
         public class MyPlanet : IMyPlanet, IMyStellarObject
@@ -43,7 +43,7 @@ namespace Star_Simulation
             public required CelestialHabitability Habitability { get; set; }
             public required CelestialLifeType[] LifeType { get; set; }
             public required CelestialSpecialProperties[] SpecialProperties { get; set; }
-            public required IMyResourceList ResourceList { get; set; }
+            public required MyResourceList ResourceList { get; set; }
             public required IMyMoon[] Moons { get; set; }
             public required IMyOrbit Orbit { get; set; }
         }
@@ -53,7 +53,7 @@ namespace Star_Simulation
             string? Name { get; set; }
             string? ID { get; set; }
             double? Mass { get; set; }
-            IMyResourceList? ResourceList { get; set; }
+            MyResourceList? ResourceList { get; set; }
             double? Radius { get; set; }
             IMyOrbit? Orbit { get; set; }
             MinMax<float>? SurfaceTemperature { get; set; }
@@ -79,7 +79,7 @@ namespace Star_Simulation
             public CelestialHabitability? Habitability { get; set; }
             public CelestialLifeType[]? LifeType { get; set; }
             public CelestialSpecialProperties[]? SpecialProperties { get; set; }
-            public IMyResourceList? ResourceList { get; set; }
+            public MyResourceList? ResourceList { get; set; }
             public IMyMoon[]? Moons { get; set; }
         }
 
@@ -119,7 +119,7 @@ namespace Star_Simulation
                 Habitability = (CelestialHabitability)myPlanetGeneration.Habitability,
                 LifeType = myPlanetGeneration.LifeType,
                 SpecialProperties = myPlanetGeneration.SpecialProperties,
-                ResourceList = myPlanetGeneration.ResourceList,
+                ResourceList = (MyResourceList)myPlanetGeneration.ResourceList,
                 Moons = myPlanetGeneration.Moons,
                 Orbit = myPlanetGeneration.Orbit
             };

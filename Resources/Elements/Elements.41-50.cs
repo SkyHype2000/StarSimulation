@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         // Elements from 41 to 50
 
-        public static readonly IMyResource Niobium = new MyResource()
+        public static readonly MyResource Niobium = new MyResource()
         {
             Name = "Niobium",
+            NameDE = "Niob",
             ID = "Resources.Elements.Niobium",
             Symbol = "Nb",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Molybdenum = new MyResource()
+        public static readonly MyResource Molybdenum = new MyResource()
         {
             Name = "Molybdenum",
+            NameDE = "Molybdän",
             ID = "Resources.Elements.Molybdenum",
             Symbol = "Mo",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Technetium = new MyResource()
+        public static readonly MyResource Technetium = new MyResource()
         {
             Name = "Technetium",
+            NameDE = "Technetium",
             ID = "Resources.Elements.Technetium",
             Symbol = "Tc",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Ruthenium = new MyResource()
+        public static readonly MyResource Ruthenium = new MyResource()
         {
             Name = "Ruthenium",
+            NameDE = "Ruthenium",
             ID = "Resources.Elements.Ruthenium",
             Symbol = "Ru",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Rhodium = new MyResource()
+        public static readonly MyResource Rhodium = new MyResource()
         {
             Name = "Rhodium",
+            NameDE = "Rhodium",
             ID = "Resources.Elements.Rhodium",
             Symbol = "Rh",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Palladium = new MyResource()
+        public static readonly MyResource Palladium = new MyResource()
         {
             Name = "Palladium",
+            NameDE = "Palladium",
             ID = "Resources.Elements.Palladium",
             Symbol = "Pd",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Silver = new MyResource()
+        public static readonly MyResource Silver = new MyResource()
         {
             Name = "Silver",
+            NameDE = "Silber",
             ID = "Resources.Elements.Silver",
             Symbol = "Ag",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Cadmium = new MyResource()
+        public static readonly MyResource Cadmium = new MyResource()
         {
             Name = "Cadmium",
+            NameDE = "Cadmium",
             ID = "Resources.Elements.Cadmium",
             Symbol = "Cd",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Indium = new MyResource()
+        public static readonly MyResource Indium = new MyResource()
         {
             Name = "Indium",
+            NameDE = "Indium",
             ID = "Resources.Elements.Indium",
             Symbol = "In",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Tin = new MyResource()
+        public static readonly MyResource Tin = new MyResource()
         {
             Name = "Tin",
+            NameDE = "Zin",
             ID = "Resources.Elements.Tin",
             Symbol = "Sn",
             Description = "",

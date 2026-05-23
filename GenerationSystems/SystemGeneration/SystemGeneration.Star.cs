@@ -19,13 +19,13 @@ namespace Star_Simulation
         {
             IMyStarGeneration starGeneration = new MyStarGeneration();
 
-            string name = GenerateName2(seed, starNames, GenerateName2_MinMaxStarDefault);
+            string name = GenerateNameMarkov(seed, StarNames, GenerateName2_MinMaxStarDefault);
             starGeneration.Name = name;
-            string id = $"{StarNum.ToString("X4").PadLeft(8, '0')}-{seed.NextIDL(3).ToString()}";
+            string id = $"{(StarNum):X16}-{seed.NextIDL(2)}";
             starGeneration.ID = id;
             if (Logging) Console.WriteLine($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
 
-            double mass = GetStarMass();
+            double mass = GetStarMass(seed);
             starGeneration.Mass = mass;
             double radius = GetStarRadius(mass);
             starGeneration.Radius = radius;
@@ -111,19 +111,20 @@ namespace Star_Simulation
             credits -= cometAmount;
             if (Logging) Console.WriteLine($"cometAmount:         {cometAmount.ToString().PadLeft(4, '0')}");
 
+            // Astroids has to be enabled if you want to make sure, that the System is always using all Credits
             uint astroidAmount = GC_Settings.AsteroidsStellarSystem ? (credits + GC_Star.RangeAsteroidsStellarSystem.Min) : 0;
             credits -= astroidAmount;
             if (Logging) Console.WriteLine($"astroidAmount:       {astroidAmount.ToString().PadLeft(4, '0')}");
 
             double lastOrbitalHeight = (double)StarParent.Radius;
 
-            MinMax<double> OrbitalRange = new MinMax<double>(GC_Planet.RangeDistanceBetweenPlanets.Min);
+            MinMax<double> OrbitalRange = new MinMax<double>(GC_Planet.RangeDistanceBetweenPlanets.Min, 0, true);
 
             MinMax<double>[] AsteroidFieldRadiuseses = new MinMax<double>[asteroidFieldAmount];
 
             MinMax<double>[] PlanetSOIHeights = new MinMax<double>[planetAmount];
 
-            double lastAsteroidOuterRadius = seed.Next(GC_SpaceRock.AsteroidBeltStartingDistance.Max, GC_SpaceRock.AsteroidBeltStartingDistance.Min);
+            double lastAsteroidOuterRadius = seed.Next(GC_SpaceRock.AsteroidBeltStartingDistance);
 
             for (int i = 0; i < asteroidFieldAmount; i++)
             {

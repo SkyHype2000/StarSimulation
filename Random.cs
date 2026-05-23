@@ -15,31 +15,31 @@ namespace Star_Simulation
 
         /**
          * class SeedRandom {
-    private seed: number;
-
-    constructor(seed: string | number) {
-        if (typeof seed === "string") {
-            this.seed = 0;
-            for (let i = 0; i < seed.length; i++) {
-                this.seed = (this.seed * 31 + seed.charCodeAt(i)) >>> 0;
-            }
-        } else {
-            this.seed = seed >>> 0;
-        }
-    }
-
-    next(): number {
-        const a = 1664525;
-        const c = 1013904223;
-        const m = 0xFFFF_FFFF_FFFF;
-        this.seed = (a * this.seed + c) % m;
-        return this.seed / m;
-    }
-
-    nextInt(max: number): number {
-        return Math.floor(this.next() * max);
-    }
-}
+         *    private seed: number;
+         *
+         *    constructor(seed: string | number) {
+         *        if (typeof seed === "string") {
+         *            this.seed = 0;
+         *            for (let i = 0; i < seed.length; i++) {
+         *                this.seed = (this.seed * 31 + seed.charCodeAt(i)) >>> 0;
+         *            }
+         *        } else {
+         *            this.seed = seed >>> 0;
+         *        }
+         *    }
+         *
+         *    next(): number {
+         *        const a = 1664525;
+         *        const c = 1013904223;
+         *        const m = 0xFFFF_FFFF_FFFF;
+         *        this.seed = (a * this.seed + c) % m;
+         *        return this.seed / m;
+         *    }
+         *
+         *    nextInt(max: number): number {
+         *        return Math.floor(this.next() * max);
+         *    }
+         *}
          */
 
         public class SeedRandom
@@ -148,34 +148,28 @@ namespace Star_Simulation
                 return new Vector3<T>(nextX, nextY, nextZ);
             }
 
-            public string NextID(uint length = 4, uint sectorLength = 0xFFFF)
+            public string NextID(uint length = 4, uint sectorLength = uint.MaxValue)
             {
-                string id = string.Empty;
-                if (length > 0)
+                if (length <= 0) throw new ArgumentOutOfRangeException("NextID-Length Value cannot be below 1");
+
+                string[] id = new string[length];
+                for (int i = 0; i < length; i++)
                 {
-                    for (int i = 0; i < length; i++)
-                    {
-                        id += Next<uint>(sectorLength).ToString("X4");
-                        if (i + 1 < length) id += "-";
-                    }
+                    id[i] = Next<uint>(sectorLength).ToString("X8");
                 }
-                else throw new Exception("NextID Value cannot be below 1");
-                return id;
+                return string.Join('-', id);
             }
 
-            public string NextIDL(uint length = 4, ulong sectorLength = 0xFFFFFFFF)
+            public string NextIDL(uint length = 4, ulong sectorLength = ulong.MaxValue)
             {
-                string id = string.Empty;
-                if (length > 0)
+                if (length <= 0) throw new ArgumentOutOfRangeException("NextID-Length Value cannot be below 1");
+
+                string[] id = new string[length];
+                for (int i = 0; i < length; i++)
                 {
-                    for (int i = 0; i < length; i++)
-                    {
-                        id += Next<ulong>(sectorLength).ToString("X4");
-                        if (i + 1 < length) id += "-";
-                    }
+                    id[i] = Next<ulong>(sectorLength).ToString("X16");
                 }
-                else throw new Exception("NextID Value cannot be below 1");
-                return id;
+                return string.Join('-', id);
             }
         }
     }

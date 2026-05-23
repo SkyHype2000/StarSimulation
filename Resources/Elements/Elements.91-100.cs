@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         // Elements from 91 to 100
 
-        public static readonly IMyResource Protactinium = new MyResource()
+        public static readonly MyResource Protactinium = new MyResource()
         {
             Name = "Protactinium",
+            NameDE = "Protactinium",
             ID = "Resources.Elements.Protactinium",
             Symbol = "Pa",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Uranium = new MyResource()
+        public static readonly MyResource Uranium = new MyResource()
         {
             Name = "Uranium",
+            NameDE = "Uranium",
             ID = "Resources.Elements.Uranium",
             Symbol = "U",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Neptunium = new MyResource()
+        public static readonly MyResource Neptunium = new MyResource()
         {
             Name = "Neptunium",
+            NameDE = "Neptunium",
             ID = "Resources.Elements.Neptunium",
             Symbol = "Np",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Plutonium = new MyResource()
+        public static readonly MyResource Plutonium = new MyResource()
         {
             Name = "Plutonium",
+            NameDE = "Plutonium",
             ID = "Resources.Elements.Plutonium",
             Symbol = "Pu",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Americium = new MyResource()
+        public static readonly MyResource Americium = new MyResource()
         {
             Name = "Americium",
+            NameDE = "Americium",
             ID = "Resources.Elements.Americium",
             Symbol = "Am",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Curium = new MyResource()
+        public static readonly MyResource Curium = new MyResource()
         {
             Name = "Curium",
+            NameDE = "Curium",
             ID = "Resources.Elements.Curium",
             Symbol = "Cm",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Berkelium = new MyResource()
+        public static readonly MyResource Berkelium = new MyResource()
         {
             Name = "Berkelium",
+            NameDE = "Berkelium",
             ID = "Resources.Elements.Berkelium",
             Symbol = "Bk",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Californium = new MyResource()
+        public static readonly MyResource Californium = new MyResource()
         {
             Name = "Californium",
+            NameDE = "Californium",
             ID = "Resources.Elements.Californium",
             Symbol = "Cf",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Einsteinium = new MyResource()
+        public static readonly MyResource Einsteinium = new MyResource()
         {
             Name = "Einsteinium",
+            NameDE = "Einsteinium",
             ID = "Resources.Elements.Einsteinium",
             Symbol = "Es",
             Description = "",
@@ -128,15 +137,16 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Fermium = new MyResource()
+        public static readonly MyResource Fermium = new MyResource()
         {
             Name = "Fermium",
+            NameDE = "Fermium",
             ID = "Resources.Elements.Fermium",
             Symbol = "Fm",
             Description = "",
             Density = 9700.0f,
-            BoilingPoint = 1800.0f, // Schätzwert
-            FreezingPoint = 1800.0f, // Schätzwert
+            BoilingPoint = -1.0f, // Unbekannt
+            FreezingPoint = 1800.0f,
             Category = ResourceCategory.Solid,
             Position = []
         };

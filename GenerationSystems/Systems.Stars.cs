@@ -9,6 +9,11 @@ namespace Star_Simulation
 {
     internal partial class Systems
     {
+        /*
+         * Vielleicht eine Erweiterung wäre in der Zukunft mit der Größe und der Masse eines Sternes sein Alter, Brennphase und Verbleibene Zeit zu Bestimmen.
+         * Aber das Wäre zu Kompliziert, sogar für mich...
+         */
+
         public interface IMyStar : IMyStellarObject
         {
             string Name { get; set; }

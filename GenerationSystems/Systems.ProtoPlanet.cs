@@ -22,7 +22,7 @@ namespace Star_Simulation
             CelestialType Type { get; }
             CelestialSurfaceType SurfaceType { get; }
             CelestialSpecialProperties[] SpecialProperties { get; }
-            IMyResourceList ResourceList { get; }
+            MyResourceList ResourceList { get; }
         }
         public class MyProtoPlanet : IMyProtoPlanet
         {
@@ -35,7 +35,7 @@ namespace Star_Simulation
             public required CelestialType Type { get; set; }
             public required CelestialSurfaceType SurfaceType { get; set; }
             public required CelestialSpecialProperties[] SpecialProperties { get; set; }
-            public required IMyResourceList ResourceList { get; set; }
+            public required MyResourceList ResourceList { get; set; }
         }
     }
 }

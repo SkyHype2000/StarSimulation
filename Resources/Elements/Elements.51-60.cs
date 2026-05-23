@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         // Elements from 51 to 60
 
-        public static readonly IMyResource Antimony = new MyResource()
+        public static readonly MyResource Antimony = new MyResource()
         {
             Name = "Antimony",
+            NameDE = "Antimon",
             ID = "Resources.Elements.Antimony",
             Symbol = "Sb",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Tellurium = new MyResource()
+        public static readonly MyResource Tellurium = new MyResource()
         {
             Name = "Tellurium",
+            NameDE = "Tellur",
             ID = "Resources.Elements.Tellurium",
             Symbol = "Te",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Iodine = new MyResource()
+        public static readonly MyResource Iodine = new MyResource()
         {
             Name = "Iodine",
+            NameDE = "Iod",
             ID = "Resources.Elements.Iodine",
             Symbol = "I",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Xenon = new MyResource()
+        public static readonly MyResource Xenon = new MyResource()
         {
             Name = "Xenon",
+            NameDE = "Xenon",
             ID = "Resources.Elements.Xenon",
             Symbol = "Xe",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Cesium = new MyResource()
+        public static readonly MyResource Cesium = new MyResource()
         {
             Name = "Cesium",
+            NameDE = "Cäsium",
             ID = "Resources.Elements.Cesium",
             Symbol = "Cs",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Barium = new MyResource()
+        public static readonly MyResource Barium = new MyResource()
         {
             Name = "Barium",
+            NameDE = "Barium",
             ID = "Resources.Elements.Barium",
             Symbol = "Ba",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Lanthanum = new MyResource()
+        public static readonly MyResource Lanthanum = new MyResource()
         {
             Name = "Lanthanum",
+            NameDE = "Lanthan",
             ID = "Resources.Elements.Lanthanum",
             Symbol = "La",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Cerium = new MyResource()
+        public static readonly MyResource Cerium = new MyResource()
         {
             Name = "Cerium",
+            NameDE = "Cer",
             ID = "Resources.Elements.Cerium",
             Symbol = "Ce",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Praseodymium = new MyResource()
+        public static readonly MyResource Praseodymium = new MyResource()
         {
             Name = "Praseodymium",
+            NameDE = "Praseodym",
             ID = "Resources.Elements.Praseodymium",
             Symbol = "Pr",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Neodymium = new MyResource()
+        public static readonly MyResource Neodymium = new MyResource()
         {
             Name = "Neodymium",
+            NameDE = "Neodym",
             ID = "Resources.Elements.Neodymium",
             Symbol = "Nd",
             Description = "",

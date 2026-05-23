@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         // Elements from 1 to 10
 
-        public static readonly IMyResource Hydrogen = new MyResource()
+        public static readonly MyResource Hydrogen = new MyResource()
         {
             Name = "Hydrogen",
+            NameDE = "Wasserstoff",
             ID = "Resources.Elements.Hydrogen",
             Symbol = "H",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = [ResourcePosition.Atmosphere, ResourcePosition.Space]
         };
 
-        public static readonly IMyResource Helium = new MyResource()
+        public static readonly MyResource Helium = new MyResource()
         {
             Name = "Helium",
+            NameDE = "Helium",
             ID = "Resources.Elements.Helium",
             Symbol = "He",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = [ResourcePosition.Space, ResourcePosition.Atmosphere]
         };
 
-        public static readonly IMyResource Lithium = new MyResource()
+        public static readonly MyResource Lithium = new MyResource()
         {
             Name = "Lithium",
+            NameDE = "Lithium",
             ID = "Resources.Elements.Lithium",
             Symbol = "Li",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Beryllium = new MyResource()
+        public static readonly MyResource Beryllium = new MyResource()
         {
             Name = "Beryllium",
+            NameDE = "Beryllium",
             ID = "Resources.Elements.Beryllium",
             Symbol = "Be",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Boron = new MyResource()
+        public static readonly MyResource Boron = new MyResource()
         {
             Name = "Boron",
+            NameDE = "Boron",
             ID = "Resources.Elements.Boron",
             Symbol = "B",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Carbon = new MyResource()
+        public static readonly MyResource Carbon = new MyResource()
         {
             Name = "Carbon",
+            NameDE = "Kohlenstoff",
             ID = "Resources.Elements.Carbon",
             Symbol = "C",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Nitrogen = new MyResource()
+        public static readonly MyResource Nitrogen = new MyResource()
         {
             Name = "Nitrogen",
+            NameDE = "Stickstoff",
             ID = "Resources.Elements.Nitrogen",
             Symbol = "N",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = [ResourcePosition.Atmosphere]
         };
 
-        public static readonly IMyResource Oxygen = new MyResource()
+        public static readonly MyResource Oxygen = new MyResource()
         {
             Name = "Oxygen",
+            NameDE = "Sauerstoff",
             ID = "Resources.Elements.Oxygen",
             Symbol = "O",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = [ResourcePosition.Atmosphere]
         };
 
-        public static readonly IMyResource Fluorine = new MyResource()
+        public static readonly MyResource Fluorine = new MyResource()
         {
             Name = "Fluorine",
+            NameDE = "Fluor",
             ID = "Resources.Elements.Fluorine",
             Symbol = "F",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Neon = new MyResource()
+        public static readonly MyResource Neon = new MyResource()
         {
             Name = "Neon",
+            NameDE = "Neon",
             ID = "Resources.Elements.Neon",
             Symbol = "Ne",
             Description = "",

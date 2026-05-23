@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         // Elements from 71 to 80
 
-        public static readonly IMyResource Lutetium = new MyResource()
+        public static readonly MyResource Lutetium = new MyResource()
         {
             Name = "Lutetium",
+            NameDE = "Lutetium",
             ID = "Resources.Elements.Lutetium",
             Symbol = "Lu",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Hafnium = new MyResource()
+        public static readonly MyResource Hafnium = new MyResource()
         {
             Name = "Hafnium",
+            NameDE = "Hafnium",
             ID = "Resources.Elements.Hafnium",
             Symbol = "Hf",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Tantalum = new MyResource()
+        public static readonly MyResource Tantalum = new MyResource()
         {
             Name = "Tantalum",
+            NameDE = "Tantal",
             ID = "Resources.Elements.Tantalum",
             Symbol = "Ta",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Tungsten = new MyResource()
+        public static readonly MyResource Tungsten = new MyResource()
         {
             Name = "Tungsten",
+            NameDE = "Wolfram",
             ID = "Resources.Elements.Tungsten",
             Symbol = "W",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Rhenium = new MyResource()
+        public static readonly MyResource Rhenium = new MyResource()
         {
             Name = "Rhenium",
+            NameDE = "Rhenium",
             ID = "Resources.Elements.Rhenium",
             Symbol = "Re",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Osmium = new MyResource()
+        public static readonly MyResource Osmium = new MyResource()
         {
             Name = "Osmium",
+            NameDE = "Osmium",
             ID = "Resources.Elements.Osmium",
             Symbol = "Os",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Iridium = new MyResource()
+        public static readonly MyResource Iridium = new MyResource()
         {
             Name = "Iridium",
+            NameDE = "Iridium",
             ID = "Resources.Elements.Iridium",
             Symbol = "Ir",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Platinum = new MyResource()
+        public static readonly MyResource Platinum = new MyResource()
         {
             Name = "Platinum",
+            NameDE = "Platin",
             ID = "Resources.Elements.Platinum",
             Symbol = "Pt",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Gold = new MyResource()
+        public static readonly MyResource Gold = new MyResource()
         {
             Name = "Gold",
+            NameDE = "Gold",
             ID = "Resources.Elements.Gold",
             Symbol = "Au",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Mercury = new MyResource()
+        public static readonly MyResource Mercury = new MyResource()
         {
             Name = "Mercury",
+            NameDE = "Quecksilber",
             ID = "Resources.Elements.Mercury",
             Symbol = "Hg",
             Description = "",

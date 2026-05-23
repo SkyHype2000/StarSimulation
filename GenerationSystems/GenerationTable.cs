@@ -83,7 +83,7 @@ namespace Star_Simulation
         public static class GenerationConstant_Planet
         {
             /// <summary>The distance between 2 Planets SOI, measured in Meters.</summary>
-            public static readonly MinMax<double> RangeDistanceBetweenPlanets = new MinMax<double>(AU * 0.25f, AU * 5f, true);
+            public static readonly MinMax<double> RangeDistanceBetweenPlanets = new MinMax<double>(AU * 0.25f, AU * 5f, false);
 
             /// <summary>If it can Spawn Behind the Same Object or if the Object has to be separated by another object.</summary>
             public static readonly bool CanPlanetSpawnAfterSameObject = true;
@@ -91,7 +91,9 @@ namespace Star_Simulation
             public static readonly MinMax<int> RangePlanetRowOfSameObject = new MinMax<int>(0, 0, true);
             /// <summary>The Radius a Planet Must have</summary>
             public static readonly MinMax<double> RangePlanetRadius = new MinMax<double>(EarthRadius*0.4, EarthRadius* 2.5, true);
-            
+            /// <summary>The Range of the Albedo a Planet can have</summary>
+            public static readonly MinMax<float> AlbedoRange = new MinMax<float>(0.1f, 0.4f);
+
             /// <summary>The Radius a Dwarf Planet must have</summary>
             public static readonly MinMax<double> RangeDwarfPlanetRadius = new MinMax<double>(2500000, EarthRadius * 0.4, false);
 
@@ -177,7 +179,10 @@ namespace Star_Simulation
             Console.WriteLine($"Setting.InterstellarVisitorsStellarSystem         = {GC_Settings.InterstellarVisitorsStellarSystem}");
             Console.WriteLine($"Setting.MoonPlanetSystem                          = {GC_Settings.MoonPlanetSystem}\n");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            if (GC_Settings.AsteroidsStellarSystem == false) Console.WriteLine(" => Small warning: Because AsteroidsStellarSystem is False, there will sometimes not be enough\n    Objects to reach the Stellar Object Count, because normally at the End Asteroids will be\n    placed until the final Stellar Object Count is Reached\n ");
+            if (GC_Settings.AsteroidsStellarSystem == false) Console.WriteLine(
+                " => Small warning: Because AsteroidsStellarSystem is False, there will sometimes not be enough\n" +
+                "    Objects to reach the Stellar Object Count, because normally at the End Asteroids will be\n" +
+                "    placed until the final Stellar Object Count is Reached\n ");
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.WriteLine($"Star.RangeObjectStellarAmount                     = {GC_Star.RangeObjectsStellarSystem.ToString()}");
@@ -208,7 +213,7 @@ namespace Star_Simulation
             Console.WriteLine($"SpaceRock.DensityAsteroidBeltPerKKM               = {GC_SpaceRock.DensityAsteroidBelt.ToString()}");
             Console.WriteLine($"SpaceRock.AsteroidDensity                         = {GC_SpaceRock.AsteroidDensity}\n");
             Console.WriteLine($"DwarfPlanet.RangeDwarfPlanetMass                  = {GC_DwarfPlanet.RangeDwarfPlanetMass.ToString()}\n");
-            Console.WriteLine($"Moon.RangeDwarfPlanetMass                         = {GC_Moon.RangeSpawnDistanceFromCenter.ToString()}");
+            Console.WriteLine($"Moon.RangeSpawnDistanceFromCenter                 = {GC_Moon.RangeSpawnDistanceFromCenter.ToString()}");
             Console.WriteLine($"Moon.MinMoonDistanceFromSOI                       = {GC_Moon.MinMoonDistanceFromSOI}");
             Console.WriteLine($"Moon.MinDistanceBetweenMoons                      = {GC_Moon.MinDistanceBetweenMoons}");
             Console.WriteLine($"Moon.RangeMoonRadius                              = {GC_Moon.RangeMoonRadius.ToString()}\n");

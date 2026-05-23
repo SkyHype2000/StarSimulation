@@ -11,9 +11,10 @@ namespace Star_Simulation
     {
         //Elements from 21 to 30
 
-        public static readonly IMyResource Scandium = new MyResource()
+        public static readonly MyResource Scandium = new MyResource()
         {
             Name = "Scandium",
+            NameDE = "Scandium",
             ID = "Resources.Elements.Scandium",
             Symbol = "Sc",
             Description = "",
@@ -24,9 +25,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Titanium = new MyResource()
+        public static readonly MyResource Titanium = new MyResource()
         {
             Name = "Titanium",
+            NameDE = "Titan",
             ID = "Resources.Elements.Titanium",
             Symbol = "Ti",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Vanadium = new MyResource()
+        public static readonly MyResource Vanadium = new MyResource()
         {
             Name = "Vanadium",
+            NameDE = "Vanadium",
             ID = "Resources.Elements.Vanadium",
             Symbol = "V",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Chromium = new MyResource()
+        public static readonly MyResource Chromium = new MyResource()
         {
             Name = "Chromium",
+            NameDE = "Chrom",
             ID = "Resources.Elements.Chromium",
             Symbol = "Cr",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Manganese = new MyResource()
+        public static readonly MyResource Manganese = new MyResource()
         {
             Name = "Manganese",
+            NameDE = "Mangan",
             ID = "Resources.Elements.Manganese",
             Symbol = "Mn",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Iron = new MyResource()
+        public static readonly MyResource Iron = new MyResource()
         {
             Name = "Iron",
+            NameDE = "Eisen",
             ID = "Resources.Elements.Iron",
             Symbol = "Fe",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Cobalt = new MyResource()
+        public static readonly MyResource Cobalt = new MyResource()
         {
             Name = "Cobalt",
+            NameDE = "Kobalt",
             ID = "Resources.Elements.Cobalt",
             Symbol = "Co",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Nickel = new MyResource()
+        public static readonly MyResource Nickel = new MyResource()
         {
             Name = "Nickel",
+            NameDE = "Nickel",
             ID = "Resources.Elements.Nickel",
             Symbol = "Ni",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Copper = new MyResource()
+        public static readonly MyResource Copper = new MyResource()
         {
             Name = "Copper",
+            NameDE = "Kupfer",
             ID = "Resources.Elements.Copper",
             Symbol = "Cu",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Zinc = new MyResource()
+        public static readonly MyResource Zinc = new MyResource()
         {
             Name = "Zinc",
+            NameDE = "Zink",
             ID = "Resources.Elements.Zinc",
             Symbol = "Zn",
             Description = "",

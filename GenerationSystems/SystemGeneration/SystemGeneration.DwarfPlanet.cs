@@ -28,7 +28,7 @@ namespace Star_Simulation
             SeedRandom seed = new SeedRandom(StarParent.ID + "-" + objectNum);
             IMyDwarfPlanetGeneration dwarfPlanet = new MyDwarfPlanetGeneration();
 
-            string name = GenerateName2(seed, planetNames, GenerateName2_MinMaxPlanetDefault);
+            string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
             dwarfPlanet.Name = name;
             string id = seed.NextID();
             dwarfPlanet.ID = id;

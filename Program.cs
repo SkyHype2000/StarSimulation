@@ -19,9 +19,9 @@ namespace Star_Simulation
 
         public static ISubspectralClass[] SubspectralClasses = [];
 
-        public static readonly SeedRandom rng = new SeedRandom("wiesoooooooooooooooooooooo");
+        public static readonly SeedRandom Global_Seed = new SeedRandom("512351234");
 
-        /// <summary>Activates the Logging of Some Generation-Values (Seperate Logging-Functions are not Controlled by this)</summary>
+        /// <summary>Activates the Logging of Some Generation-Values (This is the Main Switch, if you turn this of => No Logging.)</summary>
         public static bool Logging = true;
         /// <summary>Activates the Logging of Proto Planet-Generation (There can be Many Proto Planets)</summary>
         public static bool ProtoPlanetLogging = false;
@@ -31,9 +31,15 @@ namespace Star_Simulation
         public static bool PlanetAsteroidBeltLogging = false;
         /// <summary>Activates the Logging of Astroid-Generation (Not Recommendet if you still wan't to see whats happening in the COnsole)</summary>
         public static bool AstroidLogging = false;
+        /// <summary>Activates the Logging of Astroid-Belt-Generation</summary>
+        public static bool AstroidBeltLogging = true;
 
         /*
          * Checkliste:
+         * 
+         * Momentan:
+         * Ressourcen
+         * (Stellare) Ressourcenverteilung für Dichten der Schichten eines Stellaren Objekts
          * 
          * ===========================================================================================================================================
          * 
@@ -44,18 +50,20 @@ namespace Star_Simulation
          *    - Watt-Leuchtstärke                              [Fertig]
          *    - Masse                                          [Fertig]
          *    - Lum und Subspektrale Klasse                    [Fertig]
+         *    - Metalizität                                    [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
+         *    - Alter/Lebenszeit                               [Zukunft] [Abhängigkeit Fehlt: Metalizität]
          * 
          * - Asteroiden Generieren                             [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
          *    - Masse                                          [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
          *    - Radius                                         [Fertig]
          *    - Orbitale Informationen                         [Fertig]
          *    - Typ                                            [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
-         *    - Ressourcen                                     [Zukunft]
+         *    - Ressourcen                                     [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
          * 
          * - Asteroidengürtel Generieren                       [Arbeite Dran]
          *    - Innen und Außenradius                          [Fertig]
          *    - Theoretische Asteroidenanzahl                  [Fertig]
-         *    - Ressourcen                                     [Zukunft]
+         *    - Ressourcen                                     [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
          * 
          * - Planeten Generieren                               [Arbeite Dran]
          *    - Orbitale Informationen                         [Fertig]
@@ -92,10 +100,23 @@ namespace Star_Simulation
          *    - Atmosphäre                                     [Zukunft]
          *    - Habitabel und Lebensarten                      [Zukunft]
          *    - Ressourcen                                     [Zukunft]
+         *    
+         * - Ressourcen (Elemente)                             [Arbeite Dran]
+         *    - Name                                           [Fertig]
+         *    - Dichte                                         [Fertig]
+         *    - Temperaturen                                   [Fertig]
+         *    - Zustand & Typ                                  [Fertig]
+         *    - Ressourcenverteilung                           [Arbeite Dran]
+         *    
+         * - Atmosphäre                                        [Zukunft]
+         *    - Druck                                          [Zukunft]
+         *    - Farbe                                          [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
+         *    - Bestandteile                                   [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
+         *    - Treibhauseffekt                                [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
          * 
          * Nicht So Essenziell
          * 
-         * - Monde Generieren                                  [Zukunft]
+         * - Monde Generieren                                  [Zukunft] [Abhängigkeit Fehlt: Motivation]
          *    - Orbitale Informationen                         [Zukunft]
          *    - Masse                                          [Zukunft]
          *    - Radius                                         [Zukunft]
@@ -120,23 +141,24 @@ namespace Star_Simulation
          *    - Dichte                                         [Zukunft]
          *    - Treibhauseffekt                                [Zukunft]
          *    - Temperatur                                     [Zukunft]
-         *    - Farbe?                                         [Zukunft]
+         *    - Farbe                                          [Zukunft] [Braucht Anzeige/Rendering]
          * 
          * - Stellare Events                                   [Zukunft]
          *    - CME                                            [Zukunft]
          *    - Anomalien                                      [Zukunft]
          *    - Interstellare Besucher                         [Zukunft]
+         *    
+         * - Exportieren                                       [Zukunft]
+         *    - JSON                                           [Zukunft]
+         *    - CSV                                            [Zukunft]
+         *    - Komprimierte Version                           [Zukunft]
+         * 
+         * "Wenn" Ich Denke, dass ich alles Essenzielles Habe und bock drauf habe
          * 
          * - Stellare QoL Dinge                                [Zukunft]
          *    - Distanzen Zwischen Planeten                    [Zukunft]
          *    - Transferinfos                                  [Zukunft]
          *    
-         * - Exportieren                                       [Zukunft]
-         *    - JSON                                           [Zukunft]
-         *    - Webseiten?                                     [Zukunft]
-         *    - Komprimierte Version                           [Zukunft]
-         * 
-         * "Wenn" Ich Denke, dass ich alles Essenzielles Habe oder bock drauf habe
          * - Anzeige / Rendering                               [Zukunft]
          * 
          * ===========================================================================================================================================
@@ -147,18 +169,21 @@ namespace Star_Simulation
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-            Console.WriteLine($"Global Seed: {rng.seed}");
+            Console.WriteLine($"Global Seed: {Global_Seed.seed}");
             try
             {
                 GenerateSubspectralClasses();
                 GenerationTableMain();
 
-                //GenerateOneStar();
-                MassGenerateStars(10000);
+                GenerateOneStar();
+                //MassGenerateStars(1000, 10);
             }
             catch (Exception ex) { Console.WriteLine("An error occurred because of my or your incompetence: " + ex); }
         }
 
+        /// <summary>
+        /// Generates one Star.
+        /// </summary>
         public static void GenerateOneStar()
         {
             //LogAllLuminosityClasses();
@@ -170,7 +195,7 @@ namespace Star_Simulation
                 Console.WriteLine("\x1b[3J");
 
                 GenerationTableLog();
-                GenerateStar(rng);
+                GenerateStar(Global_Seed);
 
                 DateTime end = DateTime.Now;
                 Console.WriteLine($"It Took {(end - start)} Seconds to generate 1 System");
@@ -179,33 +204,46 @@ namespace Star_Simulation
             }
         }
 
-        public static void MassGenerateStars(uint total)
+        /// <summary>
+        /// Wie Viele Sterne Generiert werden Sollen (Performance-Test und nix Praktisches)
+        /// </summary>
+        /// <param name="total"></param>
+        public static void MassGenerateStars(uint total = 1000, uint seedIterations = 1, bool overwriteLogging = true)
         {
             DateTime start = DateTime.Now;
 
-            Logging = false;
-            ProtoPlanetLogging = false;
-            DwarfPlanetLogging = false;
-            PlanetAsteroidBeltLogging = false;
-            AstroidLogging = false;
-
-            for (int i = 0; i < total; i++)
+            if (overwriteLogging)
             {
-                if ((i % 100) == 0)
-                {
-                    Console.Clear();
-                    Console.WriteLine("\x1b[3J");
-                    Console.WriteLine($"Current: {i.ToString().PadLeft(10, '0')}/{total.ToString().PadLeft(10, '0')} ");
-                }
+                Logging = false;
+                ProtoPlanetLogging = false;
+                DwarfPlanetLogging = false;
+                PlanetAsteroidBeltLogging = false;
+                AstroidLogging = false;
+            }
 
-                GenerateStar(rng);
+            for (int i = 0; i < seedIterations; i++)
+            {
+                SeedRandom seed = new SeedRandom(Global_Seed.NextID(4));
+
+                for (int j = 0; j < total; j++)
+                {
+                    if ((j % 25) == 0 && overwriteLogging)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\x1b[3J");
+                        Console.WriteLine($"Seed: {seed.seed}");
+                        Console.WriteLine($"Current: {(j+(i * total)).ToString().PadLeft(10, '0')}/{(total*seedIterations).ToString().PadLeft(10, '0')}");
+                    }
+
+                    GenerateStar(seed);
+                }
             }
 
             Console.Clear();
             Console.WriteLine("\x1b[3J");
             GenerationTableLog();
             DateTime end = DateTime.Now;
-            Console.WriteLine($"It Took {(end - start)} Seconds to generate {total} Systems  ({total / (end - start).TotalSeconds}/s); There are {AllObjectNum} Total Objects ({AllObjectNum / (end - start).TotalSeconds}/s)");
+            Console.WriteLine($"It Took {(end - start)} Seconds to generate {total*seedIterations} Systems ({total / (end - start).TotalSeconds}/s) with {seedIterations} Seed Changes; There are {AllObjectNum} Total Objects ({AllObjectNum / (end - start).TotalSeconds}/s)");
         }
     }
 }

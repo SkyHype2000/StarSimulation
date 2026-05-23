@@ -11,22 +11,24 @@ namespace Star_Simulation
     {
         //Elements from 31 to 40
 
-        public static readonly IMyResource Gallium = new MyResource()
+        public static readonly MyResource Gallium = new MyResource()
         {
             Name = "Gallium",
+            NameDE = "Gallium",
             ID = "Resources.Elements.Gallium",
             Symbol = "Ga",
             Description = "",
             Density = 5910.0f,
             BoilingPoint = 2673.0f,
             FreezingPoint = 302.91f,
-            Category = ResourceCategory.Solid, // Schmilzt bei ca. 30°C
+            Category = ResourceCategory.Solid,
             Position = []
         };
 
-        public static readonly IMyResource Germanium = new MyResource()
+        public static readonly MyResource Germanium = new MyResource()
         {
             Name = "Germanium",
+            NameDE = "Germanium",
             ID = "Resources.Elements.Germanium",
             Symbol = "Ge",
             Description = "",
@@ -37,9 +39,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Arsenic = new MyResource()
+        public static readonly MyResource Arsenic = new MyResource()
         {
             Name = "Arsenic",
+            NameDE = "Arsen",
             ID = "Resources.Elements.Arsenic",
             Symbol = "As",
             Description = "",
@@ -50,9 +53,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Selenium = new MyResource()
+        public static readonly MyResource Selenium = new MyResource()
         {
             Name = "Selenium",
+            NameDE = "Selen",
             ID = "Resources.Elements.Selenium",
             Symbol = "Se",
             Description = "",
@@ -63,9 +67,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Bromine = new MyResource()
+        public static readonly MyResource Bromine = new MyResource()
         {
             Name = "Bromine",
+            NameDE = "Brom",
             ID = "Resources.Elements.Bromine",
             Symbol = "Br",
             Description = "",
@@ -76,9 +81,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Krypton = new MyResource()
+        public static readonly MyResource Krypton = new MyResource()
         {
             Name = "Krypton",
+            NameDE = "Krypton",
             ID = "Resources.Elements.Krypton",
             Symbol = "Kr",
             Description = "",
@@ -89,9 +95,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Rubidium = new MyResource()
+        public static readonly MyResource Rubidium = new MyResource()
         {
             Name = "Rubidium",
+            NameDE = "Rubidium",
             ID = "Resources.Elements.Rubidium",
             Symbol = "Rb",
             Description = "",
@@ -102,9 +109,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Strontium = new MyResource()
+        public static readonly MyResource Strontium = new MyResource()
         {
             Name = "Strontium",
+            NameDE = "Strontium",
             ID = "Resources.Elements.Strontium",
             Symbol = "Sr",
             Description = "",
@@ -115,9 +123,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Yttrium = new MyResource()
+        public static readonly MyResource Yttrium = new MyResource()
         {
             Name = "Yttrium",
+            NameDE = "Yttrium",
             ID = "Resources.Elements.Yttrium",
             Symbol = "Y",
             Description = "",
@@ -128,9 +137,10 @@ namespace Star_Simulation
             Position = []
         };
 
-        public static readonly IMyResource Zirconium = new MyResource()
+        public static readonly MyResource Zirconium = new MyResource()
         {
             Name = "Zirconium",
+            NameDE = "Zirconium",
             ID = "Resources.Elements.Zirconium",
             Symbol = "Zr",
             Description = "",

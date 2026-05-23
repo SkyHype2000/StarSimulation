@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\SkyHype IND\\code\\Star Simulation\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\assets\\planetresources.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:assets\\planetresources.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\generationtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\generationtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,28 +22,37 @@
       "DocumentGroups": [
         {
           "DockedHeight": 345,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAQwJsAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAAKQAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-22T07:40:47.441Z",
-              "EditorCaption": ""
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GenerationTable.cs",
+              "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\GenerationTable.cs",
+              "RelativeDocumentMoniker": "GenerationSystems\\GenerationTable.cs",
+              "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\GenerationTable.cs",
+              "RelativeToolTip": "GenerationSystems\\GenerationTable.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAkwGUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T06:04:38.432Z",
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
             },
             {
               "$type": "Bookmark",
@@ -51,15 +64,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": ".gitignore",
-              "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-04-22T07:39:46.815Z",
+              "DocumentIndex": 0,
+              "Title": "PlanetResources.cs",
+              "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\Assets\\PlanetResources.cs",
+              "RelativeDocumentMoniker": "Assets\\PlanetResources.cs",
+              "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\Assets\\PlanetResources.cs",
+              "RelativeToolTip": "Assets\\PlanetResources.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T11:55:08.735Z",
               "EditorCaption": ""
             }
           ]

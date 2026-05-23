@@ -29,7 +29,7 @@ namespace Star_Simulation
             if (StarParent.Watt == null) throw new MyObjectGenerationValueException("(IMyProtoPlanet).GenerateProtoPlanet.StarParent.Watt");
             if (AsteroidBeltsOrbitalRadius.Length == 0) throw new MyObjectGenerationValueException("(IMyProtoPlanet).GenerateProtoPlanet.AsteroidBeltsOrbitalRadius.Length");
             SeedRandom seed = new SeedRandom(StarParent.ID + ObjectNumber);
-            string name = GenerateName2(seed, planetNames, GenerateName2_MinMaxPlanetDefault);
+            string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
             string id = seed.NextID();
 
             int beltNum = seed.Next(AsteroidBeltsOrbitalRadius.Length);

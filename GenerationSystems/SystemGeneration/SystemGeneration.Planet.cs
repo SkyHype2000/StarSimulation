@@ -33,14 +33,14 @@ namespace Star_Simulation
 
             SeedRandom seed = new SeedRandom((StarParent.ID + "-" + ObjectNumber).ToString());
 
-            string name = GenerateName2(seed, planetNames, GenerateName2_MinMaxPlanetDefault);
+            string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
             planet.Name = name;
-            string id = $"{StarParent.ID}-{ObjectNumber.ToString().PadLeft(2, '0')}";
+            string id = $"{StarParent.ID}-{ObjectNumber:X2}";
             planet.ID = id;
 
             if (Logging) Console.WriteLine($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
 
-            double radius = seed.Next(GC_Planet.RangePlanetRadius.Max, GC_Planet.RangePlanetRadius.Min);
+            double radius = seed.Next(GC_Planet.RangePlanetRadius);
             planet.Radius = radius;
 
             double mass = CalculateBasicObjectMass(radius, EarthDensity);
@@ -111,7 +111,7 @@ namespace Star_Simulation
             };
             planet.Orbit = myOrbit;
 
-            float albedo = seed.Next(0.4f, 0.1f);
+            float albedo = seed.Next(GC_Planet.AlbedoRange);
             MinMax<float> surfaceTemperature = new MinMax<float>()
             {
                 Min = CalculateObjectSurfaceTemperature(albedo, orbitalRadiusAp, (double)StarParent.Watt),

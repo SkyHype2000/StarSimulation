@@ -24,12 +24,13 @@ namespace Star_Simulation
         {
             // Placeholder for astroid generation logic
             // Actually i have no idea how to generate astroids and i'am too lazy to research it, so... I will just write trash.
+            // Okay Maybe i know a little bit, but.... yeah just trust me XD
 
             if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(IMyAsteroid).GenerateAsteroid.StarParent.Mass");
 
             string id = StarParent.ID + "-A" + ObjectNumber.ToString().PadLeft(3, '0');
             SeedRandom seed = new SeedRandom(id);
-            string name = GenerateName(CelestialObjectTypes.Asteroid ,seed);
+            string name = $"AST-{StarParent.Name}-{ObjectNumber}";
 
             double PeriapsisRadius = 0;
             double PeriapsisSpeed = 0;
@@ -97,7 +98,7 @@ namespace Star_Simulation
         {
             string id = "AB-" + Parent.ID + "-" + ObjectNumber.ToString();
             SeedRandom seed = new SeedRandom(id);
-            string name = GenerateName2(seed, planetNames, GenerateName2_MinMaxPlanetDefault);
+            string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
 
             double innerRadius = LastBeltOuterRadius + seed.Next(GC_SpaceRock.RangeDistanceBetweenAsteroidBelt.Max, GC_SpaceRock.RangeDistanceBetweenAsteroidBelt.Min);
             if (IsStartingRadius) innerRadius = LastBeltOuterRadius;
@@ -111,7 +112,7 @@ namespace Star_Simulation
 
             AsteroidBeltType type = AsteroidBeltType.Belt;
             
-            IMyResourceList resourceList = new MyResourceList() { Resources = [] };
+            MyResourceList resourceList = new MyResourceList() { Resources = [] };
 
             IMyAsteroidBelt myAsteroidBelt = new MyAsteroidBelt()
             {
@@ -126,10 +127,10 @@ namespace Star_Simulation
                 ResourceList = resourceList,
             };
 
-            if (Logging) Console.WriteLine($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
-            if (Logging) Console.WriteLine($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
-            if (Logging) Console.WriteLine($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
-            if (Logging) Console.WriteLine($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
+            if (Logging && AstroidBeltLogging) Console.WriteLine($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
+            if (Logging && AstroidBeltLogging) Console.WriteLine($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
+            if (Logging && AstroidBeltLogging) Console.WriteLine($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
+            if (Logging && AstroidBeltLogging) Console.WriteLine($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
 
             return myAsteroidBelt;
 

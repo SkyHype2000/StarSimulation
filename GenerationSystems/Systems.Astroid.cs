@@ -22,10 +22,10 @@ namespace Star_Simulation
             public double Volume { get; }
             public double Asteroids { get; }
             public AsteroidBeltType Type { get; }
-            public IMyResourceList ResourceList { get; }
+            public MyResourceList ResourceList { get; }
         }
         public class MyAsteroidBelt : IMyAsteroidBelt
-        { public required string Name { get; set; } public required string ID { get; set; } public required double InnerRadius { get; set; } public required double OuterRadius { get; set; } public required double AsteroidDensity { get; set; } public required double Volume { get; set; } public required double Asteroids { get; set; } public required AsteroidBeltType Type { get; set; } public required IMyResourceList ResourceList { get; set; } }
+        { public required string Name { get; set; } public required string ID { get; set; } public required double InnerRadius { get; set; } public required double OuterRadius { get; set; } public required double AsteroidDensity { get; set; } public required double Volume { get; set; } public required double Asteroids { get; set; } public required AsteroidBeltType Type { get; set; } public required MyResourceList ResourceList { get; set; } }
 
         public interface IMyAsteroid : IMyStellarObject
         {
@@ -35,9 +35,9 @@ namespace Star_Simulation
             public double Mass { get; }
             public IMyOrbit Orbit { get; }
             public AstroidType Type { get; }
-            public IMyResourceList ResourceList { get; }
+            public MyResourceList ResourceList { get; }
         }
         public class MyAsteroid : IMyAsteroid
-        { public required string Name { get; set; } public required string ID { get; set; } public required double Radius { get; set; } public required double Mass { get; set; } public required IMyOrbit Orbit { get; set;  } public required AstroidType Type { get; set; } public required IMyResourceList ResourceList { get; set; } }
+        { public required string Name { get; set; } public required string ID { get; set; } public required double Radius { get; set; } public required double Mass { get; set; } public required IMyOrbit Orbit { get; set;  } public required AstroidType Type { get; set; } public required MyResourceList ResourceList { get; set; } }
     }
 }
