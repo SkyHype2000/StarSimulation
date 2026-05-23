@@ -1,4 +1,3 @@
-
 using static Star_Simulation.Libary;
 using static Star_Simulation.Random;
 
@@ -43,7 +42,7 @@ namespace Star_Simulation
         /// <code>
         /// ANO (Normal Probability) (0.950): Normale Stellare Anomalie
         /// IOA (Rare Probability)   (0.049): Interstellare Anomalie
-        /// ERB (Almost None)        (0.001): Einstein-Rosen Brücke (It is still a game-thing i'am programming here)
+        /// ERB (Almost None)        (0.001): Einstein-Rosen Brücke
         /// </code>
         /// </summary>
         public static readonly string[] AnomalyPrefixes = new string[]
@@ -64,7 +63,7 @@ namespace Star_Simulation
         }
 
         /// <summary>
-        /// Generates a name string based on the specified type.
+        /// Generates a Bad-Name string based on the specified type.
         /// </summary>
         /// <param name="type">The type of name to generate. If set to "anomaly", an anomaly-style name is generated.</param>
         /// <param name="seed">The Seed The Name is Generated For.</param>
@@ -142,13 +141,13 @@ namespace Star_Simulation
             "Moho", "Eve", "Kerbin", "Duna", "Dres", "Jool", "Eeloo",
 
             "Ilyra","Vexis","Thyra","Korune","Zelith","Arvion",
-            "Nythera","Polaris Minor","Drentha","Solune",
-            "Kythera Prime","Velis","Orthis","Xandor","Belora",
+            "Nythera","Polaris", "Minor","Drentha","Solune",
+            "Kythera","Velis","Orthis","Xandor","Belora",
             "Cyris","Luneth","Tarex","Zyra","Morin","Elyndra",
             "Vorth","Kaelis","Syrune","Avaris","Nexis","Tylor",
             "Orinex","Valis","Zethra","Myron","Helis","Dorex",
             "Vireth","Kalon","Xyraxis","Theris","Lorana","Zereth",
-            "Koralis","Nyra Prime","Eronis","Talix","Vendra",
+            "Koralis","Nyra","Eronis","Talix","Vendra",
             "Oryth","Sylar","Kethis","Ylora","Drayth","Velune",
 
             "Aelyra","Vorune","Kethra","Syphor","Zalara","Orveth",
@@ -168,34 +167,45 @@ namespace Star_Simulation
 
         public static readonly string[] MoonNames = new string[]
         {
-            "Ceres", "Pallas", "Juno", "Vesta", "Astraea", "Hebe", "Iris", "Flora", "Metis", "Hygieia",
-            "Parthenope", "Victoria", "Egeria", "Irene", "Eunomia", "Psyche", "Thetis", "Melpomene", "Fortuna", "Massalia",
-            "Lutetia", "Kalliope", "Thalia", "Themis", "Phocaea", "Proserpina", "Euterpe", "Bellona", "Amphitrite", "Urania",
-            "Euphrosyne", "Pomona", "Polyhymnia", "Circe", "Leukothea", "Atalanta", "Fides", "Leda", "Laetitia", "Harmonia",
-            "Daphne", "Isis", "Ariadne", "Nysa", "Eugenia", "Hestia", "Aglaia", "Doris", "Pales", "Virginia",
-            "Nemesis", "Europa", "Kalypso", "Alexandra", "Pandora", "Melete", "Mnemosyne", "Concordia", "Olympia", "Echo",
-            "Danae", "Erato", "Ausonia", "Angelina", "Cybele", "Maia", "Asia", "Leto", "Hesperia", "Panopaea",
-            "Niobe", "Feronia", "Clytie", "Galatea", "Eurydice", "Freia", "Frigga", "Diana", "Eurynome", "Sappho",
-            "Terpsichore", "Alcmene", "Beatrix", "Clio", "Julia", "Aegle", "Clotho", "Ianthe", "Antiope", "Aegina",
-            "Silvia", "Thisbe", "Aurora", "Gerda", "Clymene", "Artemis", "Dione", "Hera", "Althaea", "Felicitas",
-
-            "Obsidian", "Silic", "Ferrum", "Cuprum", "Stannum", "Aurum", "Argent", "Cobalt", "Nickel", "Pyrit",
-            "Regolith", "Chondrit", "Pallasit", "Siderit", "Beryll", "Quarz", "Basalt", "Olivin", "Pyroxen", "Titan",
-
-            "Vandenberg", "Kepler", "Huygens", "Cassini", "Brahe", "Halley", "Kuiper", "Oort", "Herschel", "Messier",
+            "Ceres", "Pallas", "Juno", "Vesta", "Astraea", "Hebe",
+            "Iris", "Flora", "Metis", "Hygieia", "Parthenope",
+            "Victoria", "Egeria", "Irene", "Eunomia", "Psyche",
+            "Thetis", "Melpomene", "Fortuna", "Massalia", "Lutetia",
+            "Kalliope", "Thalia", "Themis", "Phocaea", "Proserpina",
+            "Euterpe", "Bellona", "Amphitrite", "Urania","Euphrosyne",
+            "Pomona", "Polyhymnia", "Circe", "Leukothea", "Atalanta",
+            "Fides", "Leda", "Laetitia", "Harmonia","Daphne", "Isis",
+            "Ariadne", "Nysa", "Eugenia", "Hestia", "Aglaia", "Doris",
+            "Pales", "Virginia","Nemesis", "Europa", "Kalypso",
+            "Alexandra", "Pandora", "Melete", "Mnemosyne", "Concordia",
+            "Olympia", "Echo","Danae", "Erato", "Ausonia", "Angelina",
+            "Cybele", "Maia", "Asia", "Leto", "Hesperia", "Panopaea",
+            "Niobe", "Feronia", "Clytie", "Galatea", "Eurydice", "Freia",
+            "Frigga", "Diana", "Eurynome", "Sappho","Terpsichore",
+            "Alcmene", "Beatrix", "Clio", "Julia", "Aegle", "Clotho",
+            "Ianthe", "Antiope", "Aegina","Silvia", "Thisbe", "Aurora",
+            "Gerda", "Clymene", "Artemis", "Dione", "Hera", "Althaea",
+            "Felicitas","Obsidian", "Silic", "Ferrum", "Cuprum",
+            "Stannum", "Aurum", "Argent", "Cobalt", "Nickel", "Pyrit",
+            "Regolith", "Chondrit", "Pallasit", "Siderit", "Beryll",
+            "Quarz", "Basalt", "Olivin", "Pyroxen", "Titan",
+            "Vandenberg", "Kepler", "Huygens", "Cassini", "Brahe",
+            "Halley", "Kuiper", "Oort", "Herschel", "Messier",
 
             "Gilly", "Mun", "Minmus", "Ike", "Pol", "Bop", "Tylo", "Vall", "Laythe"
         };
 
-        public static readonly MinMax<int> GenerateName2_MinMaxPlanetDefault = new MinMax<int>(4, 12, false);
-        public static readonly MinMax<int> GenerateName2_MinMaxStarDefault = new MinMax<int>(4, 10, false);
-        public static readonly MinMax<int> GenerateName2_MinMaxMoonDefault = new MinMax<int>(4, 10, false);
+        public static readonly MinMax<int> GenerateName2_MinMaxPlanetDefault = new MinMax<int>(5, 12, false);
+        public static readonly MinMax<int> GenerateName2_MinMaxStarDefault = new MinMax<int>(5, 10, false);
+        public static readonly MinMax<int> GenerateName2_MinMaxMoonDefault = new MinMax<int>(5, 10, false);
 
         public static string GenerateNameMarkov(SeedRandom seed, string[] names, MinMax<int> minMax = null!)
         {
-            if (minMax == null) minMax = new MinMax<int>(2, 10, false);
-            int order = 2;
+            if (minMax == null) minMax = new MinMax<int>(5, 10, false);
+            int order = 3;
             var markov = new Dictionary<string, List<char>>();
+
+            var existingNames = new HashSet<string>(names.Select(n => n.ToLower()));
 
             foreach (string name in names)
             {
@@ -212,32 +222,49 @@ namespace Star_Simulation
                 }
             }
 
-            string[] keys = new string[markov.Keys.Count];
-            markov.Keys.CopyTo(keys, 0);
-            string currentKey = keys[seed.Next(keys.Length, 0)];
-            var result = new List<char>();
+            string startKey = new string('_', order);
 
-            while (true)
+            if (!markov.ContainsKey(startKey))
             {
-                if (!markov.ContainsKey(currentKey))
-                    break;
-
-                var possible = markov[currentKey];
-                int index = seed.Next(possible.Count, 0);
-                char nextChar = possible[index];
-
-                if (nextChar == '_')
-                    break;
-
-                result.Add(nextChar);
-                currentKey = currentKey.Substring(1) + nextChar;
+                string[] keys = markov.Keys.ToArray();
+                startKey = keys[seed.Next(keys.Length, 0)];
             }
 
-            if (result.Count == 0 || !(result.Count >= minMax.Min && result.Count < minMax.Max)) return GenerateNameMarkov(seed, names);
-            string finalName = new string(result.ToArray());
-            finalName = char.ToUpper(finalName[0]) + finalName.Substring(1);
+            int attempts = 0;
+            while (attempts < 100)
+            {
+                attempts++;
+                string currentKey = startKey;
+                var result = new List<char>();
 
-            return finalName;
+                while (true)
+                {
+                    if (!markov.ContainsKey(currentKey))
+                        break;
+
+                    var possible = markov[currentKey];
+                    int index = seed.Next(possible.Count, 0);
+                    char nextChar = possible[index];
+
+                    if (nextChar == '_')
+                        break;
+
+                    result.Add(nextChar);
+                    currentKey = currentKey.Substring(1) + nextChar;
+                }
+
+                string finalName = new string(result.ToArray());
+
+                if (finalName.Length >= minMax.Min &&
+                    finalName.Length < minMax.Max &&
+                    !existingNames.Contains(finalName))
+                {
+                    return char.ToUpper(finalName[0]) + finalName.Substring(1);
+                }
+            }
+
+            return "NULL";
         }
+
     }
 }

@@ -152,20 +152,20 @@ namespace Star_Simulation
 
             for (int i = 0; i < protoPlanetAmount; i++)
             {
-                if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLog($"Generating {protoPlanetAmount} Proto Planets.");
-                else LogWrite($"Generating {protoPlanetAmount} Proto Planets.");
                 IMyProtoPlanet protoPlanet = GenerateProtoPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
                 stellarObjects.StellarObjects.Add(protoPlanet);
+                if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLog($"Generating the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
+                else LogWrite($"Generating the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
                 ObjectNum++;
             }
 
             for (int i = 0; i < dwarfPlanetAmount; i++)
             {
-                if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLog($"Generating {dwarfPlanetAmount} Dwarf Planets.");
-                else LogWrite($"Generating {dwarfPlanetAmount} Dwarf Planets.");
                 IMyDwarfPlanet dwarfPlanet = GenerateDwarfPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
                 stellarObjects.StellarObjects.Add(dwarfPlanet);
                 ObjectNum++;
+                if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLog($"Generating the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
+                else LogWrite($"Generating the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
             }
 
             for (int i = 0; i < planetAmount; i++)

@@ -212,7 +212,7 @@ namespace Star_Simulation
                 string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
                 string actstring = (message != null ? $"[{DT}] {message}\n" : "\n");
                 Console.Write(actstring);
-                LogWrite(actstring);
+                LogWrite(message);
             }
         }
         private static readonly object LogLockFile = new object();
@@ -220,7 +220,9 @@ namespace Star_Simulation
         {
             lock (LogLockFile)
             {
-                File.AppendAllText(LogfileName, message);
+                string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
+                string actstring = (message != null ? $"[{DT}] {message}\n" : "\n");
+                File.AppendAllText(LogfileName, actstring);
             }
         }
     }

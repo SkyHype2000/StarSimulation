@@ -18,7 +18,7 @@ namespace Star_Simulation
 
         public static ISubspectralClass[] SubspectralClasses = [];
 
-        public static readonly string LogfileName = DateTime.Now.ToString("dd_MM_YYYY.log");
+        public static readonly string LogfileName = DateTime.Now.ToString("dd_MM_yyyy") + ".log";
 
         public static readonly SeedRandom Global_Seed = new SeedRandom("512351234");
 
