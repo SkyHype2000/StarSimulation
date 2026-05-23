@@ -127,33 +127,14 @@ namespace Star_Simulation
 
         public class MyResourceValue
         {
-            /// <summary>Wieviel Einheiten Pro 1000 Vorhanden sind</summary>
+            /// <summary>How many are Present in PPT(Parts Per Thousand)</summary>
             public required int Value { get; set; }
             public required IMyResource Resource { get; set; }
         }
 
         public class MyResourceList
         {
-            public required MyResourceValue[] Resources { get; set; }
-        }
-
-        /// <summary>
-        /// Für Optionale Zufällige Generierung von Ressourcenlisten<br/>
-        /// Aber die Listen werden vordefiniert und festgelegt in der finalen Version.
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public static MyResourceList GenerateResourceList()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>Generates a Random List of Planetary Resources.</summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public static MyResourceList GeneratePlanetResourceList()
-        {
-            return new MyResourceList() { Resources = [] };
-
-            throw new NotImplementedException();
+            public required List<MyResourceValue> Resources { get; set; }
         }
     }
 

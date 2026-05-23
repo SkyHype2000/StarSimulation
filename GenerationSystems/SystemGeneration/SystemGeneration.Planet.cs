@@ -38,7 +38,8 @@ namespace Star_Simulation
             string id = $"{StarParent.ID}-{ObjectNumber:X2}";
             planet.ID = id;
 
-            if (Logging) Console.WriteLine($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
+            if (Logging) ConsoleLog($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
+            else LogWrite($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
 
             double radius = seed.Next(GC_Planet.RangePlanetRadius);
             planet.Radius = radius;
@@ -78,9 +79,18 @@ namespace Star_Simulation
                 double SOIAP = CalculateSOI(mass, (double)StarParent.Mass!, orbitalRadiusAp);
                 MinMax<double> SOIAP_RANGE = new MinMax<double>(orbitalRadiusAp - SOIAP, orbitalRadiusAp + SOIAP);
 
-                if (PlanetAsteroidBeltLogging) Console.WriteLine($"Asteroid Belt Testing Iteration {validOrbitSearchIterations.ToString().PadLeft(5, '0')}:");
-                if (PlanetAsteroidBeltLogging) Console.WriteLine($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
-                if (PlanetAsteroidBeltLogging) Console.WriteLine($"SOIAP_RANGE: {SOIAP_RANGE.Floor()} ({SOIAP_RANGE.Floor() / MinMaxAU} AU)");
+                if (PlanetAsteroidBeltLogging)
+                {
+                    ConsoleLog($"Asteroid Belt Testing Iteration {validOrbitSearchIterations.ToString().PadLeft(5, '0')}:");
+                    ConsoleLog($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
+                    ConsoleLog($"SOIAP_RANGE: {SOIAP_RANGE.Floor()} ({SOIAP_RANGE.Floor() / MinMaxAU} AU)");
+                }
+                else
+                {
+                    LogWrite($"Asteroid Belt Testing Iteration {validOrbitSearchIterations.ToString().PadLeft(5, '0')}:");
+                    LogWrite($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
+                    LogWrite($"SOIAP_RANGE: {SOIAP_RANGE.Floor()} ({SOIAP_RANGE.Floor() / MinMaxAU} AU)");
+                }
 
                 MinMax<double> av = new MinMax<double>(orbitalRadiusPe - SOIPE, orbitalRadiusAp + SOIAP);
 
@@ -88,7 +98,8 @@ namespace Star_Simulation
                 for (int i = 0; i < AsteroidBeltsOrbitalHeights.Length; i++)
                 {
                     MinMax<double> AstBeltRadius = AsteroidBeltsOrbitalHeights[i];
-                    if (PlanetAsteroidBeltLogging) Console.WriteLine($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
+                    if (PlanetAsteroidBeltLogging) ConsoleLog($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
+                    else LogWrite($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
                     if (SOIPE_RANGE.Min >= AstBeltRadius.Min && SOIPE_RANGE.Max <= AstBeltRadius.Max) { validOrbit = false; break; }
                     else if (SOIAP_RANGE.Min >= AstBeltRadius.Min && SOIAP_RANGE.Max <= AstBeltRadius.Max) { validOrbit = false; break; }
                     else { validOrbit = true; }
@@ -121,18 +132,36 @@ namespace Star_Simulation
 
             planet.SurfaceTemperature = surfaceTemperature;
 
-            if (Logging) Console.WriteLine($"Sun Watt:               {StarParent.Watt} W");
-            if (Logging) Console.WriteLine($"Orbital Radius PE:      {Math.Round(orbitalRadiusPe)} m ({orbitalRadiusPe / AU} AU)");
-            if (Logging) Console.WriteLine($"Orbital Radius AP:      {Math.Round(orbitalRadiusAp)} m ({orbitalRadiusAp / AU} AU)");
-            if (Logging) Console.WriteLine($"Orbital Radius:         {Math.Round((orbitalRadiusPe + orbitalRadiusAp) / 2)} m ({((orbitalRadiusPe + orbitalRadiusAp) / 2) / AU} AU)");
-            if (Logging) Console.WriteLine($"Orbital Speed PE:       {Math.Round(orbitalSpeedPe)} m/s");
-            if (Logging) Console.WriteLine($"Orbital Speed AP:       {Math.Round(orbitalSpeedAp)} m/s");
-            if (Logging) Console.WriteLine($"Orbital Speed:          {Math.Round((orbitalSpeedPe + orbitalSpeedAp) / 2)} m/s");
-            if (Logging) Console.WriteLine($"Surface Albedo:         {albedo}");
-            if (Logging) Console.WriteLine($"Surface Temperature PE: {surfaceTemperature.Max} °K ({CelciusOffset + surfaceTemperature.Max} °C)");
-            if (Logging) Console.WriteLine($"Surface Temperature AP: {surfaceTemperature.Min} °K ({CelciusOffset + surfaceTemperature.Min} °C)");
-            if (Logging) Console.WriteLine($"Surface Temperature:    {surfaceTemperatureAverage} °K ({CelciusOffset + surfaceTemperatureAverage} °C)");
-            if (Logging) Console.WriteLine($"Orbital Period:         {orbitalPeriod} s ({orbitalPeriod / Year} Years)");
+            if (Logging)
+            {
+                ConsoleLog($"Sun Watt:               {StarParent.Watt} W");
+                ConsoleLog($"Orbital Radius PE:      {Math.Round(orbitalRadiusPe)} m ({orbitalRadiusPe / AU} AU)");
+                ConsoleLog($"Orbital Radius AP:      {Math.Round(orbitalRadiusAp)} m ({orbitalRadiusAp / AU} AU)");
+                ConsoleLog($"Orbital Radius:         {Math.Round((orbitalRadiusPe + orbitalRadiusAp) / 2)} m ({((orbitalRadiusPe + orbitalRadiusAp) / 2) / AU} AU)");
+                ConsoleLog($"Orbital Speed PE:       {Math.Round(orbitalSpeedPe)} m/s");
+                ConsoleLog($"Orbital Speed AP:       {Math.Round(orbitalSpeedAp)} m/s");
+                ConsoleLog($"Orbital Speed:          {Math.Round((orbitalSpeedPe + orbitalSpeedAp) / 2)} m/s");
+                ConsoleLog($"Surface Albedo:         {albedo}");
+                ConsoleLog($"Surface Temperature PE: {surfaceTemperature.Max} °K ({CelciusOffset + surfaceTemperature.Max} °C)");
+                ConsoleLog($"Surface Temperature AP: {surfaceTemperature.Min} °K ({CelciusOffset + surfaceTemperature.Min} °C)");
+                ConsoleLog($"Surface Temperature:    {surfaceTemperatureAverage} °K ({CelciusOffset + surfaceTemperatureAverage} °C)");
+                ConsoleLog($"Orbital Period:         {orbitalPeriod} s ({orbitalPeriod / Year} Years)");
+            }
+            else
+            {
+                LogWrite($"Sun Watt:               {StarParent.Watt} W");
+                LogWrite($"Orbital Radius PE:      {Math.Round(orbitalRadiusPe)} m ({orbitalRadiusPe / AU} AU)");
+                LogWrite($"Orbital Radius AP:      {Math.Round(orbitalRadiusAp)} m ({orbitalRadiusAp / AU} AU)");
+                LogWrite($"Orbital Radius:         {Math.Round((orbitalRadiusPe + orbitalRadiusAp) / 2)} m ({((orbitalRadiusPe + orbitalRadiusAp) / 2) / AU} AU)");
+                LogWrite($"Orbital Speed PE:       {Math.Round(orbitalSpeedPe)} m/s");
+                LogWrite($"Orbital Speed AP:       {Math.Round(orbitalSpeedAp)} m/s");
+                LogWrite($"Orbital Speed:          {Math.Round((orbitalSpeedPe + orbitalSpeedAp) / 2)} m/s");
+                LogWrite($"Surface Albedo:         {albedo}");
+                LogWrite($"Surface Temperature PE: {surfaceTemperature.Max} °K ({CelciusOffset + surfaceTemperature.Max} °C)");
+                LogWrite($"Surface Temperature AP: {surfaceTemperature.Min} °K ({CelciusOffset + surfaceTemperature.Min} °C)");
+                LogWrite($"Surface Temperature:    {surfaceTemperatureAverage} °K ({CelciusOffset + surfaceTemperatureAverage} °C)");
+                LogWrite($"Orbital Period:         {orbitalPeriod} s ({orbitalPeriod / Year} Years)");
+            }
 
             planet.Type = CelestialType.Terrestrial;
             planet.AtmosphereType = CelestialAtmosphereType.None;

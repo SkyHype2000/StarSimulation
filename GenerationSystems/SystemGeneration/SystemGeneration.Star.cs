@@ -24,6 +24,7 @@ namespace Star_Simulation
             string id = $"{(StarNum):X16}-{seed.NextIDL(2)}";
             starGeneration.ID = id;
             if (Logging) Console.WriteLine($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
+            LogWrite($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
 
             double mass = GetStarMass(seed);
             starGeneration.Mass = mass;
@@ -45,18 +46,32 @@ namespace Star_Simulation
             ILuminosityClass luminosityClass = GetLuminosityClassByRadius(radius);
             starGeneration.LuminosityClass = luminosityClass;
 
-            if (Logging) Console.WriteLine($"Mass:           {mass} kg");
-            if (Logging) Console.WriteLine($"Radius:         {radius} m");
-            if (Logging) Console.WriteLine($"Norm:           {norm}");
-            if (Logging) Console.WriteLine($"Temperature:    {temperature} °K");
-            if (Logging) Console.WriteLine($"Watt:           {watt} W");
-            if (Logging) Console.WriteLine($"Spectral-Class: {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass}");
-            if (Logging) Console.WriteLine($"Lum-Class:      {luminosityClass.Class}");
+            if (Logging)
+            {
+                ConsoleLog($"Mass:           {mass} kg");
+                ConsoleLog($"Radius:         {radius} m");
+                ConsoleLog($"Norm:           {norm}");
+                ConsoleLog($"Temperature:    {temperature} °K");
+                ConsoleLog($"Watt:           {watt} W");
+                ConsoleLog($"Spectral-Class: {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass}");
+                ConsoleLog($"Lum-Class:      {luminosityClass.Class}");
+            }
+            else
+            {
+                LogWrite($"Mass:           {mass} kg");
+                LogWrite($"Radius:         {radius} m");
+                LogWrite($"Norm:           {norm}");
+                LogWrite($"Temperature:    {temperature} °K");
+                LogWrite($"Watt:           {watt} W");
+                LogWrite($"Spectral-Class: {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass}");
+                LogWrite($"Lum-Class:      {luminosityClass.Class}");
+            }
 
             IMyStellarSystem stellarSystem = GenerateStellarSystem(seed, starGeneration);
             starGeneration.StellarSystem = stellarSystem;
 
-            if (Logging) Console.WriteLine($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
+            if (Logging) ConsoleLog($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
+            else LogWrite($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
 
             StarNum++;
             AllObjectNum += (ulong)stellarSystem.StellarObjects.Count;
@@ -137,7 +152,8 @@ namespace Star_Simulation
 
             for (int i = 0; i < protoPlanetAmount; i++)
             {
-                if (i == 0 && Logging && ProtoPlanetLogging) Console.WriteLine($"Generating {protoPlanetAmount} Proto Planets.");
+                if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLog($"Generating {protoPlanetAmount} Proto Planets.");
+                else LogWrite($"Generating {protoPlanetAmount} Proto Planets.");
                 IMyProtoPlanet protoPlanet = GenerateProtoPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
                 stellarObjects.StellarObjects.Add(protoPlanet);
                 ObjectNum++;
@@ -145,7 +161,8 @@ namespace Star_Simulation
 
             for (int i = 0; i < dwarfPlanetAmount; i++)
             {
-                if (i == 0 && Logging && DwarfPlanetLogging) Console.WriteLine($"Generating {dwarfPlanetAmount} Dwarf Planets.");
+                if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLog($"Generating {dwarfPlanetAmount} Dwarf Planets.");
+                else LogWrite($"Generating {dwarfPlanetAmount} Dwarf Planets.");
                 IMyDwarfPlanet dwarfPlanet = GenerateDwarfPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
                 stellarObjects.StellarObjects.Add(dwarfPlanet);
                 ObjectNum++;
@@ -160,7 +177,7 @@ namespace Star_Simulation
                 if (lastPlanet.Orbit.OrbitalRadiusPerigee < OrbitalRange.Min || i == 0) OrbitalRange.Min = lastPlanet.Orbit.OrbitalRadiusPerigee - CalculateSOI(lastPlanet.Mass, (double)StarParent.Mass!, lastPlanet.Orbit.OrbitalRadiusPerigee);
                 if (lastPlanet.Orbit.OrbitalRadiusApogee > OrbitalRange.Max) OrbitalRange.Max = lastPlanet.Orbit.OrbitalRadiusApogee + CalculateSOI(lastPlanet.Mass, (double)StarParent.Mass!, lastPlanet.Orbit.OrbitalRadiusApogee);
 
-                MinMax<double> SOIHeight = new MinMax<double>(lastPlanet.Orbit.OrbitalRadiusPerigee-CalculateSOI(lastPlanet.Mass, (double)StarParent.Mass!, lastPlanet.Orbit.OrbitalRadiusPerigee),
+                MinMax<double> SOIHeight = new MinMax<double>(lastPlanet.Orbit.OrbitalRadiusPerigee - CalculateSOI(lastPlanet.Mass, (double)StarParent.Mass!, lastPlanet.Orbit.OrbitalRadiusPerigee),
                     lastPlanet.Orbit.OrbitalRadiusApogee + CalculateSOI(lastPlanet.Mass, (double)StarParent.Mass!, lastPlanet.Orbit.OrbitalRadiusApogee));
                 PlanetSOIHeights[i] = SOIHeight;
 

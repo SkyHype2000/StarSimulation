@@ -28,19 +28,47 @@ namespace Star_Simulation
             public required float CrustSizeKM { get; set; }
         }
         /// <summary>
+        /// Generates the Resources of a Planet.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static PlanetResources GeneratePlanetResources(SeedRandom seed)
+        {
+            MyResourceList core = GeneratePlanetCoreResources(seed);
+
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// Generates the Resources in the Core of a Planet.
+        /// </summary>
+        /// <returns></returns>
+        public static MyResourceList GeneratePlanetCoreResources(SeedRandom seed)
+        {
+            MyResourceList core = new MyResourceList() { Resources = [] };
+
+            int valueFeNi = seed.Next<int>(8000, 7000);
+            int valueFe = seed.Next<int>(8000);
+            int valueNi = valueFeNi - valueFe;
+            int valueFeS = 10000 - valueFeNi;
+            MyResourceValue core_iron = new() { Value = valueFe, Resource = ResourceElements.Iron };
+            MyResourceValue core_nickel = new() { Value = valueNi, Resource = ResourceElements.Nickel };
+            MyResourceValue core_Ironsulfide = new() { Value = valueFeS, Resource = ResourceElements.Ironsulfide };
+
+            //throw new NotImplementedException();
+
+            core.Resources.Add(core_iron);
+            core.Resources.Add(core_nickel);
+            core.Resources.Add(core_Ironsulfide);
+
+            return core;
+        }
+        /// <summary>
         /// Generates the Resources in the Core of a Planet.
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static PlanetResources GeneratePlanetCoreResources(SeedRandom seed)
+        public static MyResourceList GeneratePlanetCrustResources(SeedRandom seed)
         {
-            int valueFeNi = seed.Next<int>(8000, 7000);
-            int valueFe = seed.Next<int>(8000);
-            int valueNi = valueFeNi - valueFe;
-            int valueFeS = 10000-valueFeNi;
-            MyResourceValue core_iron = new() { Value = valueFe, Resource=ResourceElements.Iron };
-            MyResourceValue core_nickel = new() { Value = valueNi, Resource=ResourceElements.Nickel };
-            MyResourceValue core_Ironsulfide = new() { Value = valueFeS, Resource=ResourceElements.Ironsulfide };
             throw new NotImplementedException();
         }
     }

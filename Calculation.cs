@@ -176,9 +176,9 @@ namespace Star_Simulation
         {
             float totalDensity = 0;
 
-            if (resources.Resources.Length <= 0) throw new MyResourceListLengthException($"(double).CalculatePlanetRadius.resources.Resources.Length has a Length of {resources.Resources.Length} (Zero or Below)");
+            if (resources.Resources.Count <= 0) throw new MyResourceListLengthException($"(double).CalculatePlanetRadius.resources.Resources.Length has a Length of {resources.Resources.Count} (Zero or Below)");
 
-            for (int i = 0; i < resources.Resources.Length; i++)
+            for (int i = 0; i < resources.Resources.Count; i++)
             {
                 IMyResource res = resources.Resources[i].Resource;
                 if (res.Density <= 0) throw new MyResourceInvalidValueException($"(double).CalculatePlanetRadius.resources[{i}] = '{res.Name}' Density has a invalid Value of '{res.Density}' (Zero or Below)");

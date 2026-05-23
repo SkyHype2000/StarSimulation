@@ -4,8 +4,7 @@ using static Star_Simulation.SystemGeneration;
 using static Star_Simulation.Spectral;
 using static Star_Simulation.Random;
 using static Star_Simulation.GenerationTable;
-using static Star_Simulation.Luminosity;
-using static Star_Simulation.Resource;
+using static Star_Simulation.Libary;
 
 namespace Star_Simulation
 {
@@ -18,6 +17,8 @@ namespace Star_Simulation
         public static readonly double STAR_GENERATION_CONSTANT = 1.0216388735543742521887522130876091683703957473078500310054178421533504358657415429775215553538366594d;
 
         public static ISubspectralClass[] SubspectralClasses = [];
+
+        public static readonly string LogfileName = DateTime.Now.ToString("dd_MM_YYYY.log");
 
         public static readonly SeedRandom Global_Seed = new SeedRandom("512351234");
 
@@ -169,7 +170,10 @@ namespace Star_Simulation
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-            Console.WriteLine($"Global Seed: {Global_Seed.seed}");
+            //Console.WriteLine($"Global Seed: {Global_Seed.seed}");
+
+            ConsoleLog($"Global Seed: {Global_Seed.seed}");
+
             try
             {
                 GenerateSubspectralClasses();
@@ -178,7 +182,7 @@ namespace Star_Simulation
                 GenerateOneStar();
                 //MassGenerateStars(1000, 10);
             }
-            catch (Exception ex) { Console.WriteLine("An error occurred because of my or your incompetence: " + ex); }
+            catch (Exception ex) { ConsoleLog("An error occurred because of my or your incompetence: " + ex); }
         }
 
         /// <summary>
@@ -188,18 +192,21 @@ namespace Star_Simulation
         {
             //LogAllLuminosityClasses();
 
+            ConsoleLog("Creating One Star");
+
+            GenerationTableLog();
+
             while (true)
             {
                 DateTime start = DateTime.Now;
                 Console.Clear();
                 Console.WriteLine("\x1b[3J");
 
-                GenerationTableLog();
                 GenerateStar(Global_Seed);
 
                 DateTime end = DateTime.Now;
-                Console.WriteLine($"It Took {(end - start)} Seconds to generate 1 System");
-                Console.WriteLine("\nDrücke Irgendeine Taste für das Nächste System");
+                ConsoleLog($"It Took {(end - start)} Seconds to generate 1 System");
+                ConsoleLog("\nDrücke Irgendeine Taste für das Nächste System");
                 Console.ReadKey();
             }
         }
@@ -211,6 +218,8 @@ namespace Star_Simulation
         public static void MassGenerateStars(uint total = 1000, uint seedIterations = 1, bool overwriteLogging = true)
         {
             DateTime start = DateTime.Now;
+
+            ConsoleLog("Mass Generating Stars");
 
             if (overwriteLogging)
             {
@@ -232,7 +241,7 @@ namespace Star_Simulation
                         Console.Clear();
                         Console.WriteLine("\x1b[3J");
                         Console.WriteLine($"Seed: {seed.seed}");
-                        Console.WriteLine($"Current: {(j+(i * total)).ToString().PadLeft(10, '0')}/{(total*seedIterations).ToString().PadLeft(10, '0')}");
+                        ConsoleLog($"Current: {(j+(i * total)).ToString().PadLeft(10, '0')}/{(total*seedIterations).ToString().PadLeft(10, '0')}");
                     }
 
                     GenerateStar(seed);
@@ -243,7 +252,7 @@ namespace Star_Simulation
             Console.WriteLine("\x1b[3J");
             GenerationTableLog();
             DateTime end = DateTime.Now;
-            Console.WriteLine($"It Took {(end - start)} Seconds to generate {total*seedIterations} Systems ({total / (end - start).TotalSeconds}/s) with {seedIterations} Seed Changes; There are {AllObjectNum} Total Objects ({AllObjectNum / (end - start).TotalSeconds}/s)");
+            ConsoleLog($"It Took {(end - start)} Seconds to generate {total*seedIterations} Systems ({total / (end - start).TotalSeconds}/s) with {seedIterations} Seed Changes; There are {AllObjectNum} Total Objects ({AllObjectNum / (end - start).TotalSeconds}/s)");
         }
     }
 }

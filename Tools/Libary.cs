@@ -203,5 +203,25 @@ namespace Star_Simulation
                 this.Name = GenerateNameMarkov (this.Seed, StarNames);
             }
         }
+
+        private static readonly object LogLock = new object();
+        public static void ConsoleLog(string? message)
+        {
+            lock (LogLock)
+            {
+                string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
+                string actstring = (message != null ? $"[{DT}] {message}\n" : "\n");
+                Console.Write(actstring);
+                LogWrite(actstring);
+            }
+        }
+        private static readonly object LogLockFile = new object();
+        public static void LogWrite(string? message)
+        {
+            lock (LogLockFile)
+            {
+                File.AppendAllText(LogfileName, message);
+            }
+        }
     }
 }
