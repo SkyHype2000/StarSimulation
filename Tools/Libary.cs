@@ -128,6 +128,10 @@ namespace Star_Simulation
         public static T Distance3D<T>(Libary.Vector3<T> a, Libary.Vector3<T> b) where T : INumber<T>
         { return T.CreateChecked(Math.Sqrt(Math.Pow(double.CreateChecked(b.X - a.X), 2) + Math.Pow(double.CreateChecked(b.Y - a.Y), 2) + Math.Pow(double.CreateChecked(b.Z - a.Z), 2))); }
 
+        /// <summary>
+        /// Range Class that is very Helpful for storing (Like the Name sais) Min-Max Values
+        /// </summary>
+        /// <typeparam name="T">T</typeparam>
         public class MinMax<T> where T : INumber<T>
         {
             public T Min;
@@ -200,30 +204,51 @@ namespace Star_Simulation
             {
                 this.Seed = new SeedRandom($"InterstellarSector-{position.X}-{position.Y}");
 
-                this.Name = GenerateNameMarkov (this.Seed, StarNames);
+                this.Name = GenerateNameMarkov(this.Seed, StarNames);
             }
         }
 
-        private static readonly object LogLock = new object();
-        public static void ConsoleLog(string? message)
+        private static readonly object ConsoleLogWriteLock = new object();
+        public static void ConsoleLogWrite(string message = "")
         {
-            lock (LogLock)
+            lock (ConsoleLogWriteLock)
             {
-                string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
-                string actstring = (message != null ? $"[{DT}] {message}\n" : "\n");
-                Console.Write(actstring);
+                ConsoleLog(message);
                 LogWrite(message);
             }
         }
-        private static readonly object LogLockFile = new object();
-        public static void LogWrite(string? message)
+        public static void ConsoleLogWrite(string[] message) { ConsoleLogWrite(string.Join('\n', message)); }
+
+        private static readonly object ConsoleLogLock = new object();
+        public static void ConsoleLog(string message = "")
         {
-            lock (LogLockFile)
+            lock (ConsoleLogLock)
             {
-                string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
-                string actstring = (message != null ? $"[{DT}] {message}\n" : "\n");
-                File.AppendAllText(LogfileName, actstring);
+                string[] message2 = message.Split("\n");
+                foreach (string m in message2)
+                {
+                    string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
+                    string actstring = (m != null ? $"[{DT}] {m}\n" : "\n");
+                    Console.Write(actstring);
+                }
             }
         }
+        public static void ConsoleLog(string[] message) { ConsoleLog(string.Join('\n', message)); }
+
+        private static readonly object LogWriteLock = new object();
+        public static void LogWrite(string message = "")
+        {
+            lock (LogWriteLock)
+            {
+                string[] message2 = message.Split("\n");
+                foreach (string m in message2)
+                {
+                    string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
+                    string actstring = (m != null ? $"[{DT}] {m}\n" : "\n");
+                    File.AppendAllText(LogfileName, actstring);
+                }
+            }
+        }
+        public static void LogWrite(string[] message) { LogWrite(string.Join('\n', message)); }
     }
 }

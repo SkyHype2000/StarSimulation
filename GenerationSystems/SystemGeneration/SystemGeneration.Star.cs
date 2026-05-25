@@ -21,9 +21,9 @@ namespace Star_Simulation
 
             string name = GenerateNameMarkov(seed, StarNames, GenerateName2_MinMaxStarDefault);
             starGeneration.Name = name;
-            string id = $"{(StarNum):X16}-{seed.NextIDL(2)}";
+            string id = $"{(StarNum):X16}-{seed.NextID(2, 4)}";
             starGeneration.ID = id;
-            if (Logging) Console.WriteLine($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
+            if (Logging) ConsoleLog($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
             LogWrite($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
 
             double mass = GetStarMass(seed);
@@ -48,13 +48,13 @@ namespace Star_Simulation
 
             if (Logging)
             {
-                ConsoleLog($"Mass:           {mass} kg");
-                ConsoleLog($"Radius:         {radius} m");
-                ConsoleLog($"Norm:           {norm}");
-                ConsoleLog($"Temperature:    {temperature} °K");
-                ConsoleLog($"Watt:           {watt} W");
-                ConsoleLog($"Spectral-Class: {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass}");
-                ConsoleLog($"Lum-Class:      {luminosityClass.Class}");
+                ConsoleLogWrite($"Mass:           {mass} kg");
+                ConsoleLogWrite($"Radius:         {radius} m");
+                ConsoleLogWrite($"Norm:           {norm}");
+                ConsoleLogWrite($"Temperature:    {temperature} °K");
+                ConsoleLogWrite($"Watt:           {watt} W");
+                ConsoleLogWrite($"Spectral-Class: {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass}");
+                ConsoleLogWrite($"Lum-Class:      {luminosityClass.Class}");
             }
             else
             {
@@ -70,7 +70,7 @@ namespace Star_Simulation
             IMyStellarSystem stellarSystem = GenerateStellarSystem(seed, starGeneration);
             starGeneration.StellarSystem = stellarSystem;
 
-            if (Logging) ConsoleLog($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
+            if (Logging) ConsoleLogWrite($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
             else LogWrite($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
 
             StarNum++;
@@ -101,35 +101,35 @@ namespace Star_Simulation
             uint totalObjectAmount = GC_Settings.ObjectsStellarSystem ? seed.Next(GC_Star.RangeObjectsStellarSystem.Max, GC_Star.RangeObjectsStellarSystem.Min) : 0;
             credits = totalObjectAmount;
             credits -= (GC_Settings.AsteroidsStellarSystem && GC_Star.RangeAsteroidsStellarSystem.Min > 0) ? GC_Star.RangeAsteroidsStellarSystem.Min : 0;
-            if (Logging) Console.WriteLine($"totalObjectAmount:   {totalObjectAmount.ToString().PadLeft(4, '0')}");
-            if (Logging) Console.WriteLine($"Credits:             {credits.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"totalObjectAmount:   {totalObjectAmount.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"Credits:             {credits.ToString().PadLeft(4, '0')}");
 
             uint asteroidFieldAmount = GC_Settings.AsteroidFieldsStellarSystem ? seed.Next(actualMax(GC_Star.RangeAsteroidFieldsStellarSystem.Max, credits), GC_Star.RangeAsteroidFieldsStellarSystem.Min, true) : 0;
             credits -= asteroidFieldAmount;
-            if (Logging) Console.WriteLine($"asteroidFieldAmount: {asteroidFieldAmount.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"asteroidFieldAmount: {asteroidFieldAmount.ToString().PadLeft(4, '0')}");
 
             uint planetAmount = GC_Settings.PlanetsStellarSystem ? seed.Next(actualMax(GC_Star.RangePlanetsStellarSystem.Max, credits), GC_Star.RangePlanetsStellarSystem.Min, true) : 0;
             credits -= planetAmount;
-            if (Logging) Console.WriteLine($"planetAmount:        {planetAmount.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"planetAmount:        {planetAmount.ToString().PadLeft(4, '0')}");
 
             uint protoPlanetAmount = GC_Settings.ProtoPlanetsStellarSystem ? seed.Next(actualMax(GC_Star.RangeProtoplanetsStellarSystem.Max, credits), GC_Star.RangeProtoplanetsStellarSystem.Min, true) : 0;
             if (asteroidFieldAmount == 0) protoPlanetAmount = 0;
             credits -= protoPlanetAmount;
-            if (Logging) Console.WriteLine($"protoPlanetAmount:   {protoPlanetAmount.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"protoPlanetAmount:   {protoPlanetAmount.ToString().PadLeft(4, '0')}");
 
             uint dwarfPlanetAmount = GC_Settings.DwarfPlanetsStellarSystem ? seed.Next(actualMax(GC_Star.RangeDwarfPlanetsStellarSystem.Max, credits), GC_Star.RangeDwarfPlanetsStellarSystem.Min, true) : 0;
             if (asteroidFieldAmount == 0) dwarfPlanetAmount = 0;
             credits -= dwarfPlanetAmount;
-            if (Logging) Console.WriteLine($"dwarfPlanetAmount:   {dwarfPlanetAmount.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"dwarfPlanetAmount:   {dwarfPlanetAmount.ToString().PadLeft(4, '0')}");
 
             uint cometAmount = GC_Settings.CometsStellarSystem ? seed.Next(actualMax(GC_Star.RangeCometsStellarSystem.Max, credits), GC_Star.RangeCometsStellarSystem.Min, true) : 0;
             credits -= cometAmount;
-            if (Logging) Console.WriteLine($"cometAmount:         {cometAmount.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"cometAmount:         {cometAmount.ToString().PadLeft(4, '0')}");
 
             // Astroids has to be enabled if you want to make sure, that the System is always using all Credits
             uint astroidAmount = GC_Settings.AsteroidsStellarSystem ? (credits + GC_Star.RangeAsteroidsStellarSystem.Min) : 0;
             credits -= astroidAmount;
-            if (Logging) Console.WriteLine($"astroidAmount:       {astroidAmount.ToString().PadLeft(4, '0')}");
+            if (Logging) ConsoleLog($"astroidAmount:       {astroidAmount.ToString().PadLeft(4, '0')}");
 
             double lastOrbitalHeight = (double)StarParent.Radius;
 
@@ -154,7 +154,7 @@ namespace Star_Simulation
             {
                 IMyProtoPlanet protoPlanet = GenerateProtoPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
                 stellarObjects.StellarObjects.Add(protoPlanet);
-                if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLog($"Generating the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
+                if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLogWrite($"Generating the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
                 else LogWrite($"Generating the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
                 ObjectNum++;
             }
@@ -164,7 +164,7 @@ namespace Star_Simulation
                 IMyDwarfPlanet dwarfPlanet = GenerateDwarfPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
                 stellarObjects.StellarObjects.Add(dwarfPlanet);
                 ObjectNum++;
-                if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLog($"Generating the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
+                if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLogWrite($"Generating the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
                 else LogWrite($"Generating the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
             }
 

@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Hydrogen",
             NameDE = "Wasserstoff",
-            ID = "Resources.Elements.Hydrogen",
+            ID = "RawResources.Elements.Hydrogen",
             Symbol = "H",
             Description = "",
             Density = 0.0899f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Helium",
             NameDE = "Helium",
-            ID = "Resources.Elements.Helium",
+            ID = "RawResources.Elements.Helium",
             Symbol = "He",
             Description = "",
             Density = 0.1785f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Lithium",
             NameDE = "Lithium",
-            ID = "Resources.Elements.Lithium",
+            ID = "RawResources.Elements.Lithium",
             Symbol = "Li",
             Description = "",
             Density = 534.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Beryllium",
             NameDE = "Beryllium",
-            ID = "Resources.Elements.Beryllium",
+            ID = "RawResources.Elements.Beryllium",
             Symbol = "Be",
             Description = "",
             Density = 1848.0f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Boron",
             NameDE = "Boron",
-            ID = "Resources.Elements.Boron",
+            ID = "RawResources.Elements.Boron",
             Symbol = "B",
             Description = "",
             Density = 2460.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Carbon",
             NameDE = "Kohlenstoff",
-            ID = "Resources.Elements.Carbon",
+            ID = "RawResources.Elements.Carbon",
             Symbol = "C",
             Description = "",
             Density = 2266,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Nitrogen",
             NameDE = "Stickstoff",
-            ID = "Resources.Elements.Nitrogen",
+            ID = "RawResources.Elements.Nitrogen",
             Symbol = "N",
             Description = "",
             Density = 1.2f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Oxygen",
             NameDE = "Sauerstoff",
-            ID = "Resources.Elements.Oxygen",
+            ID = "RawResources.Elements.Oxygen",
             Symbol = "O",
             Description = "",
             Density = 1.429f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Fluorine",
             NameDE = "Fluor",
-            ID = "Resources.Elements.Fluorine",
+            ID = "RawResources.Elements.Fluorine",
             Symbol = "F",
             Description = "",
             Density = 1.696f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Neon",
             NameDE = "Neon",
-            ID = "Resources.Elements.Neon",
+            ID = "RawResources.Elements.Neon",
             Symbol = "Ne",
             Description = "",
             Density = 0.83f,

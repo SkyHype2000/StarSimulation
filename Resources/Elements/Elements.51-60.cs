@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Antimony",
             NameDE = "Antimon",
-            ID = "Resources.Elements.Antimony",
+            ID = "RawResources.Elements.Antimony",
             Symbol = "Sb",
             Description = "",
             Density = 6684.0f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Tellurium",
             NameDE = "Tellur",
-            ID = "Resources.Elements.Tellurium",
+            ID = "RawResources.Elements.Tellurium",
             Symbol = "Te",
             Description = "",
             Density = 6240.0f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Iodine",
             NameDE = "Iod",
-            ID = "Resources.Elements.Iodine",
+            ID = "RawResources.Elements.Iodine",
             Symbol = "I",
             Description = "",
             Density = 4933.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Xenon",
             NameDE = "Xenon",
-            ID = "Resources.Elements.Xenon",
+            ID = "RawResources.Elements.Xenon",
             Symbol = "Xe",
             Description = "",
             Density = 5.894f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Cesium",
             NameDE = "Cäsium",
-            ID = "Resources.Elements.Cesium",
+            ID = "RawResources.Elements.Cesium",
             Symbol = "Cs",
             Description = "",
             Density = 1873.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Barium",
             NameDE = "Barium",
-            ID = "Resources.Elements.Barium",
+            ID = "RawResources.Elements.Barium",
             Symbol = "Ba",
             Description = "",
             Density = 3594.0f,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Lanthanum",
             NameDE = "Lanthan",
-            ID = "Resources.Elements.Lanthanum",
+            ID = "RawResources.Elements.Lanthanum",
             Symbol = "La",
             Description = "",
             Density = 6145.0f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Cerium",
             NameDE = "Cer",
-            ID = "Resources.Elements.Cerium",
+            ID = "RawResources.Elements.Cerium",
             Symbol = "Ce",
             Description = "",
             Density = 6770.0f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Praseodymium",
             NameDE = "Praseodym",
-            ID = "Resources.Elements.Praseodymium",
+            ID = "RawResources.Elements.Praseodymium",
             Symbol = "Pr",
             Description = "",
             Density = 6773.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Neodymium",
             NameDE = "Neodym",
-            ID = "Resources.Elements.Neodymium",
+            ID = "RawResources.Elements.Neodymium",
             Symbol = "Nd",
             Description = "",
             Density = 7007.0f,

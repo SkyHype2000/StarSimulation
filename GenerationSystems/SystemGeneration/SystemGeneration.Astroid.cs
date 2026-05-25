@@ -84,10 +84,11 @@ namespace Star_Simulation
                 Mass = mass,
                 Orbit = myOrbit,
                 Type = AstroidType.None,
-                ResourceList = new MyResourceList() { Resources = [] },
+                ResourceList = new MyResourceList() { RawResources = [] },
             };
 
-            if (Logging && AstroidLogging) Console.WriteLine($"Generated Asteroid: {name}");
+            if (Logging && AstroidLogging) ConsoleLogWrite($"Generated Asteroid: {name}");
+            else LogWrite($"Generated Asteroid: {name}");
 
             return astroid;
 
@@ -111,8 +112,8 @@ namespace Star_Simulation
             double astroids = Math.Round(volume * asteroidDensity);
 
             AsteroidBeltType type = AsteroidBeltType.Belt;
-            
-            MyResourceList resourceList = new MyResourceList() { Resources = [] };
+
+            MyResourceList resourceList = new MyResourceList() { RawResources = [] };
 
             IMyAsteroidBelt myAsteroidBelt = new MyAsteroidBelt()
             {
@@ -127,10 +128,20 @@ namespace Star_Simulation
                 ResourceList = resourceList,
             };
 
-            if (Logging && AstroidBeltLogging) Console.WriteLine($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
-            if (Logging && AstroidBeltLogging) Console.WriteLine($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
-            if (Logging && AstroidBeltLogging) Console.WriteLine($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
-            if (Logging && AstroidBeltLogging) Console.WriteLine($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
+            if (Logging && AstroidBeltLogging)
+            {
+                ConsoleLogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
+                ConsoleLogWrite($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
+                ConsoleLogWrite($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
+                ConsoleLogWrite($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
+            }
+            else
+            {
+                LogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
+                LogWrite($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
+                LogWrite($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
+                LogWrite($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
+            }
 
             return myAsteroidBelt;
 

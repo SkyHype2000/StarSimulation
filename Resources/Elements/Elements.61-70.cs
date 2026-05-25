@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Promethium",
             NameDE = "Promethium",
-            ID = "Resources.Elements.Promethium",
+            ID = "RawResources.Elements.Promethium",
             Symbol = "Pm",
             Description = "",
             Density = 7260.0f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Samarium",
             NameDE = "Samarium",
-            ID = "Resources.Elements.Samarium",
+            ID = "RawResources.Elements.Samarium",
             Symbol = "Sm",
             Description = "",
             Density = 7520.0f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Europium",
             NameDE = "Europium",
-            ID = "Resources.Elements.Europium",
+            ID = "RawResources.Elements.Europium",
             Symbol = "Eu",
             Description = "",
             Density = 5243.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Gadolinium",
             NameDE = "Gadolinium",
-            ID = "Resources.Elements.Gadolinium",
+            ID = "RawResources.Elements.Gadolinium",
             Symbol = "Gd",
             Description = "",
             Density = 7900.0f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Terbium",
             NameDE = "Terbium",
-            ID = "Resources.Elements.Terbium",
+            ID = "RawResources.Elements.Terbium",
             Symbol = "Tb",
             Description = "",
             Density = 8230.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Dysprosium",
             NameDE = "Dysprosium",
-            ID = "Resources.Elements.Dysprosium",
+            ID = "RawResources.Elements.Dysprosium",
             Symbol = "Dy",
             Description = "",
             Density = 8550.0f,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Holmium",
             NameDE = "Holmium",
-            ID = "Resources.Elements.Holmium",
+            ID = "RawResources.Elements.Holmium",
             Symbol = "Ho",
             Description = "",
             Density = 8795.0f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Erbium",
             NameDE = "Erbium",
-            ID = "Resources.Elements.Erbium",
+            ID = "RawResources.Elements.Erbium",
             Symbol = "Er",
             Description = "",
             Density = 9066.0f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Thulium",
             NameDE = "Thulium",
-            ID = "Resources.Elements.Thulium",
+            ID = "RawResources.Elements.Thulium",
             Symbol = "Tm",
             Description = "",
             Density = 9321.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Ytterbium",
             NameDE = "Ytterbium",
-            ID = "Resources.Elements.Ytterbium",
+            ID = "RawResources.Elements.Ytterbium",
             Symbol = "Yb",
             Description = "",
             Density = 6965.0f,

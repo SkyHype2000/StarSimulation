@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Gallium",
             NameDE = "Gallium",
-            ID = "Resources.Elements.Gallium",
+            ID = "RawResources.Elements.Gallium",
             Symbol = "Ga",
             Description = "",
             Density = 5910.0f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Germanium",
             NameDE = "Germanium",
-            ID = "Resources.Elements.Germanium",
+            ID = "RawResources.Elements.Germanium",
             Symbol = "Ge",
             Description = "",
             Density = 5323.0f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Arsenic",
             NameDE = "Arsen",
-            ID = "Resources.Elements.Arsenic",
+            ID = "RawResources.Elements.Arsenic",
             Symbol = "As",
             Description = "",
             Density = 5727.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Selenium",
             NameDE = "Selen",
-            ID = "Resources.Elements.Selenium",
+            ID = "RawResources.Elements.Selenium",
             Symbol = "Se",
             Description = "",
             Density = 4810.0f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Bromine",
             NameDE = "Brom",
-            ID = "Resources.Elements.Bromine",
+            ID = "RawResources.Elements.Bromine",
             Symbol = "Br",
             Description = "",
             Density = 3122.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Krypton",
             NameDE = "Krypton",
-            ID = "Resources.Elements.Krypton",
+            ID = "RawResources.Elements.Krypton",
             Symbol = "Kr",
             Description = "",
             Density = 3.75f, // Gasdichte bei STP
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Rubidium",
             NameDE = "Rubidium",
-            ID = "Resources.Elements.Rubidium",
+            ID = "RawResources.Elements.Rubidium",
             Symbol = "Rb",
             Description = "",
             Density = 1532.0f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Strontium",
             NameDE = "Strontium",
-            ID = "Resources.Elements.Strontium",
+            ID = "RawResources.Elements.Strontium",
             Symbol = "Sr",
             Description = "",
             Density = 2640.0f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Yttrium",
             NameDE = "Yttrium",
-            ID = "Resources.Elements.Yttrium",
+            ID = "RawResources.Elements.Yttrium",
             Symbol = "Y",
             Description = "",
             Density = 4472.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Zirconium",
             NameDE = "Zirconium",
-            ID = "Resources.Elements.Zirconium",
+            ID = "RawResources.Elements.Zirconium",
             Symbol = "Zr",
             Description = "",
             Density = 6520.0f,

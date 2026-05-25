@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Niobium",
             NameDE = "Niob",
-            ID = "Resources.Elements.Niobium",
+            ID = "RawResources.Elements.Niobium",
             Symbol = "Nb",
             Description = "",
             Density = 8570.0f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Molybdenum",
             NameDE = "Molybdän",
-            ID = "Resources.Elements.Molybdenum",
+            ID = "RawResources.Elements.Molybdenum",
             Symbol = "Mo",
             Description = "",
             Density = 10280.0f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Technetium",
             NameDE = "Technetium",
-            ID = "Resources.Elements.Technetium",
+            ID = "RawResources.Elements.Technetium",
             Symbol = "Tc",
             Description = "",
             Density = 11000.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Ruthenium",
             NameDE = "Ruthenium",
-            ID = "Resources.Elements.Ruthenium",
+            ID = "RawResources.Elements.Ruthenium",
             Symbol = "Ru",
             Description = "",
             Density = 12450.0f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Rhodium",
             NameDE = "Rhodium",
-            ID = "Resources.Elements.Rhodium",
+            ID = "RawResources.Elements.Rhodium",
             Symbol = "Rh",
             Description = "",
             Density = 12410.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Palladium",
             NameDE = "Palladium",
-            ID = "Resources.Elements.Palladium",
+            ID = "RawResources.Elements.Palladium",
             Symbol = "Pd",
             Description = "",
             Density = 12023.0f,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Silver",
             NameDE = "Silber",
-            ID = "Resources.Elements.Silver",
+            ID = "RawResources.Elements.Silver",
             Symbol = "Ag",
             Description = "",
             Density = 10490.0f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Cadmium",
             NameDE = "Cadmium",
-            ID = "Resources.Elements.Cadmium",
+            ID = "RawResources.Elements.Cadmium",
             Symbol = "Cd",
             Description = "",
             Density = 8650.0f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Indium",
             NameDE = "Indium",
-            ID = "Resources.Elements.Indium",
+            ID = "RawResources.Elements.Indium",
             Symbol = "In",
             Description = "",
             Density = 7310.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Tin",
             NameDE = "Zin",
-            ID = "Resources.Elements.Tin",
+            ID = "RawResources.Elements.Tin",
             Symbol = "Sn",
             Description = "",
             Density = 7310.0f,

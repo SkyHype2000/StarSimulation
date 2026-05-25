@@ -51,7 +51,7 @@ namespace Star_Simulation
             {
                 this.seed = seed;
 
-                //Console.WriteLine($"The Seed: {this.seed}");
+                //ConsoleLog($"The Seed: {this.seed}");
             }
 
             public void NextState()
@@ -71,47 +71,68 @@ namespace Star_Simulation
             }
 
             /// <summary>
-            /// Returns a pseudo random (and optional negative) double that is greater than or equal to the specified minimum value and less than the specified maximum value.
+            /// Extra Next() Function for double Values.
             /// </summary>
-            /// <param name="max">The Maximum Value (Can be Negative)</param>
-            /// <param name="min">The Minimum Value (Can be Negative)</param>
-            /// <param name="minLarger">If Min is Larger than Max, it will Return Max</param>
-            /// <returns>A random <T> between min and max.</returns>
-            public T Next<T>(T Max, T Min = default!, bool minLarger = default!) where T : INumber<T>
+            /// <param name="Max"></param>
+            /// <param name="Min"></param>
+            /// <param name="minLarger"></param>
+            /// <returns></returns>
+            private double NextDouble(double Max, double Min = default!, bool minLarger = default!)
             {
                 NextState();
 
                 double min = double.CreateChecked(Min);
                 double max = double.CreateChecked(Max);
 
-                if (minLarger && min >= max) return T.CreateChecked(max);
+                if (minLarger && min >= max) return max;
                 if (min > max) min = max;
 
-                double normalized = (double)state / ((double)int.MaxValue + 1.0);
+                double normalized = (double)state / ((double)int.MaxValue + 1);
 
-                return T.CreateChecked(min + normalized * (max - min));
+                return min + normalized * (max - min);
             }
 
             /// <summary>
-            /// Returns a pseudo random (and optional negative) double that is greater than or equal to the specified minimum value and less than the specified maximum value.
+            /// Returns a pseudo random (and optional negative) Value that is greater than or equal to the specified minimum value and less than the specified maximum value.
             /// </summary>
+            /// <remarks>
+            /// Used AI to fix u-/long-range issues with decimal.<br/>
+            /// </remarks>
+            /// <param name="max">The Maximum Value (Can be Negative)</param>
+            /// <param name="min">The Minimum Value (Can be Negative)</param>
+            /// <param name="minLarger">If Min is Larger than Max, it will Return Max</param>
+            /// <returns>A random T between min and max.</returns>
+            public T Next<T>(T Max, T Min = default!, bool minLarger = default!) where T : INumber<T>
+            {
+                if (typeof(T) == typeof(double) || typeof(T) == typeof(float)) return T.CreateChecked(NextDouble(double.CreateChecked(Max), double.CreateChecked(Min), minLarger));
+                NextState();
+
+                decimal min = decimal.CreateChecked(Min);
+                decimal max = decimal.CreateChecked(Max);
+
+                if (minLarger && min >= max) return T.CreateChecked(max);
+                if (min > max) min = max;
+
+                decimal range = max - min;
+
+                decimal normalized = (decimal)state / ((decimal)int.MaxValue + 1);
+
+                decimal result = min + (normalized * range);
+
+                return T.CreateChecked(result);
+            }
+
+            /// <summary>
+            /// Returns a pseudo random (and optional negative) Value that is greater than or equal to the specified minimum value and less than the specified maximum value.
+            /// </summary>
+            /// <remarks>
+            /// Used AI to fix u-/long-range issues
+            /// </remarks>
             /// <param name="minMax">The Range Value (Can be Negative)</param>
             /// <param name="minLarger">If Min is Larger than Max, it will Return Max</param>
             /// <returns>A random <T> between min and max.</returns>
             public T Next<T>(MinMax<T> minMax, bool minLarger = default!) where T : INumber<T>
-            {
-                NextState();
-
-                double min = double.CreateChecked(minMax.Min);
-                double max = double.CreateChecked(minMax.Max);
-
-                if (minLarger && min >= max) return T.CreateChecked(max);
-                if (min > max) min = max;
-
-                double normalized = (double)state / ((double)int.MaxValue + 1.0);
-
-                return T.CreateChecked(min + normalized * (max - min));
-            }
+            { return T.CreateChecked(Next<T>(minMax.Max, minMax.Min, minLarger)); }
 
             /// <summary>
             /// Returns a random floating-point number greater than or equal to 0.0 and less or equal than 1.0.
@@ -148,28 +169,29 @@ namespace Star_Simulation
                 return new Vector3<T>(nextX, nextY, nextZ);
             }
 
-            public string NextID(uint length = 4, uint sectorLength = uint.MaxValue)
+            /// <summary>
+            /// Generates a ID
+            /// </summary>
+            /// <param name="length"></param>
+            /// <param name="sectorSize">The Amount of Sectors between seperators, One Sector is 4 Hex</param>
+            /// <param name="sectorSeperator"></param>
+            /// <returns></returns>
+            /// <exception cref="ArgumentOutOfRangeException"></exception>
+            public string NextID(uint length = 4, uint sectorSize = 1, char sectorSeperator = '-')
             {
-                if (length <= 0) throw new ArgumentOutOfRangeException("NextID-Length Value cannot be below 1");
+                if (sectorSize <= 0) throw new ArgumentOutOfRangeException("SectorSize Value cannot be below 1");
+                if (length <= 0) throw new ArgumentOutOfRangeException("Sector-Length Value cannot be below 1");
 
                 string[] id = new string[length];
                 for (int i = 0; i < length; i++)
                 {
-                    id[i] = Next<uint>(sectorLength).ToString("X8");
+                    id[i] = "";
+                    for (int j = 0; j < sectorSize; j++)
+                    {
+                        id[i] += Next<uint>(0xFFFFU).ToString("X4");
+                    }
                 }
-                return string.Join('-', id);
-            }
-
-            public string NextIDL(uint length = 4, ulong sectorLength = ulong.MaxValue)
-            {
-                if (length <= 0) throw new ArgumentOutOfRangeException("NextID-Length Value cannot be below 1");
-
-                string[] id = new string[length];
-                for (int i = 0; i < length; i++)
-                {
-                    id[i] = Next<ulong>(sectorLength).ToString("X16");
-                }
-                return string.Join('-', id);
+                return string.Join(sectorSeperator, id);
             }
         }
     }

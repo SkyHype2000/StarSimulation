@@ -28,30 +28,30 @@ Eis (Distanz zum Stern)
 
 ATMOSPHÄREN:
 
-|          | 0 (100%) |  1 (>95%) | 2 (>90%)  | 3 (>85%)  | 4 (>80%) | 5 (>75%)  | 6 (>70%)  | 7 (>65%)  | 8 (>60%)  | 9 (>55%)  | 10 (>50%) | 11 (>45%) | 12 (>40%)  | 13 (>35%)  | 14 (>30%)  | 15 (>25%)  | 16 (>20%)  | 17 (>15%)  | 18 (>10%)  | 19 (>05%)  | 20 (<01%)  | 21 ( 00%)  |
-+----------+----------+-----------+-----------+-----------+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
-| A ( 00%) | A0 a/b   |  A1 a/b   | A2 a/b    | A3 a/b    | A4 a/b   | A5 a/b    | A6 a/b    | A7 a/b    | A8 a/b    | A9 a/b    | A10 a/b   | A11 a/b   | A12 a/b    | A13 a/b    | A14 a/b    | A15 a/b    | A16 a/b    | A17 a/b    | A18 a/b    | A19 a/b    | A20 a/b    | A21 a/b    |
-| B (>00%) | B0 a/b   |  B1 a/b   | B2 a/b    | B3 a/b    | B4 a/b   | B5 a/b    | B6 a/b    | B7 a/b    | B8 a/b    | B9 a/b    | B10 a/b   | B11 a/b   | B12 a/b    | B13 a/b    | B14 a/b    | B15 a/b    | B16 a/b    | B17 a/b    | B18 a/b    | B19 a/b    | B20 a/b    | B21 a/b    |
-| C (>05%) | C0 a/b   |  C1 a/b   | C2 a/b    | C3 a/b    | C4 a/b   | C5 a/b    | C6 a/b    | C7 a/b    | C8 a/b    | C9 a/b    | C10 a/b   | C11 a/b   | C12 a/b    | C13 a/b    | C14 a/b    | C15 a/b    | C16 a/b    | C17 a/b    | C18 a/b    | C19 a/b    | C20 a/b    | C21 a/b    |
-| D (>10%) | D0 a/b   |  D1 a/b   | D2 a/b    | D3 a/b    | D4 a/b   | D5 a/b    | D6 a/b    | D7 a/b    | D8 a/b    | D9 a/b    | D10 a/b   | D11 a/b   | D12 a/b    | D13 a/b    | D14 a/b    | D15 a/b    | D16 a/b    | D17 a/b    | D18 a/b    | D19 a/b    | D20 a/b    | D21 a/b    |
-| E (>15%) | E0 a/b   |  E1 a/b   | E2 a/b    | E3 a/b    | E4 a/b   | E5 a/b    | E6 a/b    | E7 a/b    | E8 a/b    | E9 a/b    | E10 a/b   | E11 a/b   | E12 a/b    | E13 a/b    | E14 a/b    | E15 a/b    | E16 a/b    | E17 a/b    | E18 a/b    | E19 a/b    | E20 a/b    | E21 a/b    |
-| F (>20%) | F0 a/b   |  F1 a/b   | F2 a/b    | F3 a/b    | F4 a/b   | F5 a/b    | F6 a/b    | F7 a/b    | F8 a/b    | F9 a/b    | F10 a/b   | F11 a/b   | F12 a/b    | F13 a/b    | F14 a/b    | F15 a/b    | F16 a/b    | F17 a/b    | F18 a/b    | F19 a/b    | F20 a/b    | F21 a/b    |
-| G (>25%) | G0 a/b   |  G1 a/b   | G2 a/b    | G3 a/b    | G4 a/b   | G5 a/b    | G6 a/b    | G7 a/b    | G8 a/b    | G9 a/b    | G10 a/b   | G11 a/b   | G12 a/b    | G13 a/b    | G14 a/b    | G15 a/b    | G16 a/b    | G17 a/b    | G18 a/b    | G19 a/b    | G20 a/b    | G21 a/b    |
-| H (>30%) | H0 a/b   |  H1 a/b   | H2 a/b    | H3 a/b    | H4 a/b   | H5 a/b    | H6 a/b    | H7 a/b    | H8 a/b    | H9 a/b    | H10 a/b   | H11 a/b   | H12 a/b    | H13 a/b    | H14 a/b    | H15 a/b    | H16 a/b    | H17 a/b    | H18 a/b    | H19 a/b    | H20 a/b    | H21 a/b    |
-| I (>35%) | I0 a/b   |  I1 a/b   | I2 a/b    | I3 a/b    | I4 a/b   | I5 a/b    | I6 a/b    | I7 a/b    | I8 a/b    | I9 a/b    | I10 a/b   | I11 a/b   | I12 a/b    | I13 a/b    | I14 a/b    | I15 a/b    | I16 a/b    | I17 a/b    | I18 a/b    | I19 a/b    | I20 a/b    | I21 a/b    |
-| J (>40%) | J0 a/b   |  J1 a/b   | J2 a/b    | J3 a/b    | J4 a/b   | J5 a/b    | J6 a/b    | J7 a/b    | J8 a/b    | J9 a/b    | J10 a/b   | J11 a/b   | J12 a/b    | J13 a/b    | J14 a/b    | J15 a/b    | J16 a/b    | J17 a/b    | J18 a/b    | J19 a/b    | J20 a/b    | J21 a/b    |
-| K (>45%) | K0 a/b   |  K1 a/b   | K2 a/b    | K3 a/b    | K4 a/b   | K5 a/b    | K6 a/b    | K7 a/b    | K8 a/b    | K9 a/b    | K10 a/b   | K11 a/b   | K12 a/b    | K13 a/b    | K14 a/b    | K15 a/b    | K16 a/b    | K17 a/b    | K18 a/b    | K19 a/b    | K20 a/b    | K21 a/b    |
-| L (>50%) | L0 a/b   |  L1 a/b   | L2 a/b    | L3 a/b    | L4 a/b   | L5 a/b    | L6 a/b    | L7 a/b    | L8 a/b    | L9 a/b    | L10 a/b   | L11 a/b   | L12 a/b    | L13 a/b    | L14 a/b    | L15 a/b    | L16 a/b    | L17 a/b    | L18 a/b    | L19 a/b    | L20 a/b    | L21 a/b    |
-| M (>55%) | M0 a/b   |  M1 a/b   | M2 a/b    | M3 a/b    | M4 a/b   | M5 a/b    | M6 a/b    | M7 a/b    | M8 a/b    | M9 a/b    | M10 a/b   | M11 a/b   | M12 a/b    | M13 a/b    | M14 a/b    | M15 a/b    | M16 a/b    | M17 a/b    | M18 a/b    | M19 a/b    | M20 a/b    | M21 a/b    |
-| N (>60%) | N0 a/b   |  N1 a/b   | N2 a/b    | N3 a/b    | N4 a/b   | N5 a/b    | N6 a/b    | N7 a/b    | N8 a/b    | N9 a/b    | N10 a/b   | N11 a/b   | N12 a/b    | N13 a/b    | N14 a/b    | N15 a/b    | N16 a/b    | N17 a/b    | N18 a/b    | N19 a/b    | N20 a/b    | N21 a/b    |
-| O (>65%) | O0 a/b   |  O1 a/b   | O2 a/b    | O3 a/b    | O4 a/b   | O5 a/b    | O6 a/b    | O7 a/b    | O8 a/b    | O9 a/b    | O10 a/b   | O11 a/b   | O12 a/b    | O13 a/b    | O14 a/b    | O15 a/b    | O16 a/b    | O17 a/b    | O18 a/b    | O19 a/b    | O20 a/b    | O21 a/b    |
-| P (>70%) | P0 a/b   |  P1 a/b   | P2 a/b    | P3 a/b    | P4 a/b   | P5 a/b    | P6 a/b    | P7 a/b    | P8 a/b    | P9 a/b    | P10 a/b   | P11 a/b   | P12 a/b    | P13 a/b    | P14 a/b    | P15 a/b    | P16 a/b    | P17 a/b    | P18 a/b    | P19 a/b    | P20 a/b    | P21 a/b    |
-| Q (>75%) | Q0 a/b   |  Q1 a/b   | Q2 a/b    | Q3 a/b    | Q4 a/b   | Q5 a/b    | Q6 a/b    | Q7 a/b    | Q8 a/b    | Q9 a/b    | Q10 a/b   | Q11 a/b   | Q12 a/b    | Q13 a/b    | Q14 a/b    | Q15 a/b    | Q16 a/b    | Q17 a/b    | Q18 a/b    | Q19 a/b    | Q20 a/b    | Q21 a/b    |
-| R (>80%) | R0 a/b   |  R1 a/b   | R2 a/b    | R3 a/b    | R4 a/b   | R5 a/b    | R6 a/b    | R7 a/b    | R8 a/b    | R9 a/b    | R10 a/b   | R11 a/b   | R12 a/b    | R13 a/b    | R14 a/b    | R15 a/b    | R16 a/b    | R17 a/b    | R18 a/b    | R19 a/b    | R20 a/b    | R21 a/b    |
-| S (>85%) | S0 a/b   |  S1 a/b   | S2 a/b    | S3 a/b    | S4 a/b   | S5 a/b    | S6 a/b    | S7 a/b    | S8 a/b    | S9 a/b    | S10 a/b   | S11 a/b   | S12 a/b    | S13 a/b    | S14 a/b    | S15 a/b    | S16 a/b    | S17 a/b    | S18 a/b    | S19 a/b    | S20 a/b    | S21 a/b    |
-| T (>90%) | T0 a/b   |  T1 a/b   | T2 a/b    | T3 a/b    | T4 a/b   | T5 a/b    | T6 a/b    | T7 a/b    | T8 a/b    | T9 a/b    | T10 a/b   | T11 a/b   | T12 a/b    | T13 a/b    | T14 a/b    | T15 a/b    | T16 a/b    | T17 a/b    | T18 a/b    | T19 a/b    | T20 a/b    | T21 a/b    |
-| U (>95%) | U0 a/b   |  U1 a/b   | U2 a/b    | U3 a/b    | U4 a/b   | U5 a/b    | U6 a/b    | U7 a/b    | U8 a/b    | U9 a/b    | U10 a/b   | U11 a/b   | U12 a/b    | U13 a/b    | U14 a/b    | U15 a/b    | U16 a/b    | U17 a/b    | U18 a/b    | U19 a/b    | U20 a/b    | U21 a/b    |
-| V (100%) | V0 a/b   |  V1 a/b   | V2 a/b    | V3 a/b    | V4 a/b   | V5 a/b    | V6 a/b    | V7 a/b    | V8 a/b    | V9 a/b    | V10 a/b   | V11 a/b   | V12 a/b    | V13 a/b    | V14 a/b    | V15 a/b    | V16 a/b    | V17 a/b    | V18 a/b    | V19 a/b    | V20 a/b    | V21 a/b    |
+|          | 0 (100%) | 1 (>95%) | 2 (>90%) | 3 (>85%) | 4 (>80%) | 5 (>75%) | 6 (>70%) | 7 (>65%) | 8 (>60%) | 9 (>55%) | 10 (>50%) | 11 (>45%) | 12 (>40%) | 13 (>35%) | 14 (>30%) | 15 (>25%) | 16 (>20%) | 17 (>15%) | 18 (>10%) | 19 (>05%) | 20 (<01%) | 21 ( 00%) |
++----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+| A ( 00%) | A0 a/b   | A1 a/b   | A2 a/b   | A3 a/b   | A4 a/b   | A5 a/b   | A6 a/b   | A7 a/b   | A8 a/b   | A9 a/b   | A10 a/b   | A11 a/b   | A12 a/b   | A13 a/b   | A14 a/b   | A15 a/b   | A16 a/b   | A17 a/b   | A18 a/b   | A19 a/b   | A20 a/b   | A21 a/b   |
+| B (>00%) | B0 a/b   | B1 a/b   | B2 a/b   | B3 a/b   | B4 a/b   | B5 a/b   | B6 a/b   | B7 a/b   | B8 a/b   | B9 a/b   | B10 a/b   | B11 a/b   | B12 a/b   | B13 a/b   | B14 a/b   | B15 a/b   | B16 a/b   | B17 a/b   | B18 a/b   | B19 a/b   | B20 a/b   | B21 a/b   |
+| C (>05%) | C0 a/b   | C1 a/b   | C2 a/b   | C3 a/b   | C4 a/b   | C5 a/b   | C6 a/b   | C7 a/b   | C8 a/b   | C9 a/b   | C10 a/b   | C11 a/b   | C12 a/b   | C13 a/b   | C14 a/b   | C15 a/b   | C16 a/b   | C17 a/b   | C18 a/b   | C19 a/b   | C20 a/b   | C21 a/b   |
+| D (>10%) | D0 a/b   | D1 a/b   | D2 a/b   | D3 a/b   | D4 a/b   | D5 a/b   | D6 a/b   | D7 a/b   | D8 a/b   | D9 a/b   | D10 a/b   | D11 a/b   | D12 a/b   | D13 a/b   | D14 a/b   | D15 a/b   | D16 a/b   | D17 a/b   | D18 a/b   | D19 a/b   | D20 a/b   | D21 a/b   |
+| E (>15%) | E0 a/b   | E1 a/b   | E2 a/b   | E3 a/b   | E4 a/b   | E5 a/b   | E6 a/b   | E7 a/b   | E8 a/b   | E9 a/b   | E10 a/b   | E11 a/b   | E12 a/b   | E13 a/b   | E14 a/b   | E15 a/b   | E16 a/b   | E17 a/b   | E18 a/b   | E19 a/b   | E20 a/b   | E21 a/b   |
+| F (>20%) | F0 a/b   | F1 a/b   | F2 a/b   | F3 a/b   | F4 a/b   | F5 a/b   | F6 a/b   | F7 a/b   | F8 a/b   | F9 a/b   | F10 a/b   | F11 a/b   | F12 a/b   | F13 a/b   | F14 a/b   | F15 a/b   | F16 a/b   | F17 a/b   | F18 a/b   | F19 a/b   | F20 a/b   | F21 a/b   |
+| G (>25%) | G0 a/b   | G1 a/b   | G2 a/b   | G3 a/b   | G4 a/b   | G5 a/b   | G6 a/b   | G7 a/b   | G8 a/b   | G9 a/b   | G10 a/b   | G11 a/b   | G12 a/b   | G13 a/b   | G14 a/b   | G15 a/b   | G16 a/b   | G17 a/b   | G18 a/b   | G19 a/b   | G20 a/b   | G21 a/b   |
+| H (>30%) | H0 a/b   | H1 a/b   | H2 a/b   | H3 a/b   | H4 a/b   | H5 a/b   | H6 a/b   | H7 a/b   | H8 a/b   | H9 a/b   | H10 a/b   | H11 a/b   | H12 a/b   | H13 a/b   | H14 a/b   | H15 a/b   | H16 a/b   | H17 a/b   | H18 a/b   | H19 a/b   | H20 a/b   | H21 a/b   |
+| I (>35%) | I0 a/b   | I1 a/b   | I2 a/b   | I3 a/b   | I4 a/b   | I5 a/b   | I6 a/b   | I7 a/b   | I8 a/b   | I9 a/b   | I10 a/b   | I11 a/b   | I12 a/b   | I13 a/b   | I14 a/b   | I15 a/b   | I16 a/b   | I17 a/b   | I18 a/b   | I19 a/b   | I20 a/b   | I21 a/b   |
+| J (>40%) | J0 a/b   | J1 a/b   | J2 a/b   | J3 a/b   | J4 a/b   | J5 a/b   | J6 a/b   | J7 a/b   | J8 a/b   | J9 a/b   | J10 a/b   | J11 a/b   | J12 a/b   | J13 a/b   | J14 a/b   | J15 a/b   | J16 a/b   | J17 a/b   | J18 a/b   | J19 a/b   | J20 a/b   | J21 a/b   |
+| K (>45%) | K0 a/b   | K1 a/b   | K2 a/b   | K3 a/b   | K4 a/b   | K5 a/b   | K6 a/b   | K7 a/b   | K8 a/b   | K9 a/b   | K10 a/b   | K11 a/b   | K12 a/b   | K13 a/b   | K14 a/b   | K15 a/b   | K16 a/b   | K17 a/b   | K18 a/b   | K19 a/b   | K20 a/b   | K21 a/b   |
+| L (>50%) | L0 a/b   | L1 a/b   | L2 a/b   | L3 a/b   | L4 a/b   | L5 a/b   | L6 a/b   | L7 a/b   | L8 a/b   | L9 a/b   | L10 a/b   | L11 a/b   | L12 a/b   | L13 a/b   | L14 a/b   | L15 a/b   | L16 a/b   | L17 a/b   | L18 a/b   | L19 a/b   | L20 a/b   | L21 a/b   |
+| M (>55%) | M0 a/b   | M1 a/b   | M2 a/b   | M3 a/b   | M4 a/b   | M5 a/b   | M6 a/b   | M7 a/b   | M8 a/b   | M9 a/b   | M10 a/b   | M11 a/b   | M12 a/b   | M13 a/b   | M14 a/b   | M15 a/b   | M16 a/b   | M17 a/b   | M18 a/b   | M19 a/b   | M20 a/b   | M21 a/b   |
+| N (>60%) | N0 a/b   | N1 a/b   | N2 a/b   | N3 a/b   | N4 a/b   | N5 a/b   | N6 a/b   | N7 a/b   | N8 a/b   | N9 a/b   | N10 a/b   | N11 a/b   | N12 a/b   | N13 a/b   | N14 a/b   | N15 a/b   | N16 a/b   | N17 a/b   | N18 a/b   | N19 a/b   | N20 a/b   | N21 a/b   |
+| O (>65%) | O0 a/b   | O1 a/b   | O2 a/b   | O3 a/b   | O4 a/b   | O5 a/b   | O6 a/b   | O7 a/b   | O8 a/b   | O9 a/b   | O10 a/b   | O11 a/b   | O12 a/b   | O13 a/b   | O14 a/b   | O15 a/b   | O16 a/b   | O17 a/b   | O18 a/b   | O19 a/b   | O20 a/b   | O21 a/b   |
+| P (>70%) | P0 a/b   | P1 a/b   | P2 a/b   | P3 a/b   | P4 a/b   | P5 a/b   | P6 a/b   | P7 a/b   | P8 a/b   | P9 a/b   | P10 a/b   | P11 a/b   | P12 a/b   | P13 a/b   | P14 a/b   | P15 a/b   | P16 a/b   | P17 a/b   | P18 a/b   | P19 a/b   | P20 a/b   | P21 a/b   |
+| Q (>75%) | Q0 a/b   | Q1 a/b   | Q2 a/b   | Q3 a/b   | Q4 a/b   | Q5 a/b   | Q6 a/b   | Q7 a/b   | Q8 a/b   | Q9 a/b   | Q10 a/b   | Q11 a/b   | Q12 a/b   | Q13 a/b   | Q14 a/b   | Q15 a/b   | Q16 a/b   | Q17 a/b   | Q18 a/b   | Q19 a/b   | Q20 a/b   | Q21 a/b   |
+| R (>80%) | R0 a/b   | R1 a/b   | R2 a/b   | R3 a/b   | R4 a/b   | R5 a/b   | R6 a/b   | R7 a/b   | R8 a/b   | R9 a/b   | R10 a/b   | R11 a/b   | R12 a/b   | R13 a/b   | R14 a/b   | R15 a/b   | R16 a/b   | R17 a/b   | R18 a/b   | R19 a/b   | R20 a/b   | R21 a/b   |
+| S (>85%) | S0 a/b   | S1 a/b   | S2 a/b   | S3 a/b   | S4 a/b   | S5 a/b   | S6 a/b   | S7 a/b   | S8 a/b   | S9 a/b   | S10 a/b   | S11 a/b   | S12 a/b   | S13 a/b   | S14 a/b   | S15 a/b   | S16 a/b   | S17 a/b   | S18 a/b   | S19 a/b   | S20 a/b   | S21 a/b   |
+| T (>90%) | T0 a/b   | T1 a/b   | T2 a/b   | T3 a/b   | T4 a/b   | T5 a/b   | T6 a/b   | T7 a/b   | T8 a/b   | T9 a/b   | T10 a/b   | T11 a/b   | T12 a/b   | T13 a/b   | T14 a/b   | T15 a/b   | T16 a/b   | T17 a/b   | T18 a/b   | T19 a/b   | T20 a/b   | T21 a/b   |
+| U (>95%) | U0 a/b   | U1 a/b   | U2 a/b   | U3 a/b   | U4 a/b   | U5 a/b   | U6 a/b   | U7 a/b   | U8 a/b   | U9 a/b   | U10 a/b   | U11 a/b   | U12 a/b   | U13 a/b   | U14 a/b   | U15 a/b   | U16 a/b   | U17 a/b   | U18 a/b   | U19 a/b   | U20 a/b   | U21 a/b   |
+| V (100%) | V0 a/b   | V1 a/b   | V2 a/b   | V3 a/b   | V4 a/b   | V5 a/b   | V6 a/b   | V7 a/b   | V8 a/b   | V9 a/b   | V10 a/b   | V11 a/b   | V12 a/b   | V13 a/b   | V14 a/b   | V15 a/b   | V16 a/b   | V17 a/b   | V18 a/b   | V19 a/b   | V20 a/b   | V21 a/b   |
 
 Wert: xyz
 x     =>      Sauerstoffgehalt
@@ -60,31 +60,6 @@ z = a => Kein UV Strahlungsschutz
 z = b =>      UV Strahlungsschutz
 
 Für Menschen ist alles von E20 bis F21 Bei 1.1 bis 0.9 ATM und Richtiger Temperatur Habitabel
-
-Gift-Punkte pro 1.000.000.000 m3 (1 km3)
-
-| Element             | Formel | GP      | Wahrscheinlichkeit |
-+---------------------+--------+---------+--------------------+
-| Fluor               | F2     | 0.25000 | -                  |
-| Chlor               | Cl2    | 0.02500 | -                  |
-| Brom-Dampf          | Br2    | 0.04000 | -                  |
-| Iod-Dampf           | I2     | 0.01500 | -                  |
-+---------------------+--------+---------+--------------------+
-| Schwefelwasserstoff | H2S    | 0.06000 | -                  |
-| Schwefeldioxid      | SO2    | 0.01200 | -                  |
-| Selenwasserstoff    | H2Se   | 0.15000 | -                  |
-| Tellurhexafluorid   | TeF6   | 0.20000 | -                  |
-+---------------------+--------+---------+--------------------+
-| Blausäure           | HCN    | 0.10000 | -                  |
-| Ammoniak            | NH3    | 0.00150 | -                  |
-| Phosphin            | PH3    | 0.08000 | -                  |
-| Stickstoffdioxid    | NO2    | 0.00500 | -                  |
-+---------------------+--------+---------+--------------------+
-| Kohlenstoffmonoxid  | CO     | 0.00800 | -                  |
-| Kohlenstoffdioxid   | CO2    | 0.00010 | -                  |
-| Methan              | CH4    | 0.00005 | -                  |
-| Phosgen             | COCl2  | 0.22000 | -                  |
-| Benzol-Dampf        | C6H6   | 0.00400 | -                  |
 
 MERKMALE:
 Sterne:
@@ -117,27 +92,29 @@ Zusammensetzung:
 | Fe-Ni Legierungen | 80-90%  |
 | FeS               | 10-20%  |
 
-| Element Mantel  | Prozent |
-+-----------------+---------+
-| SiO2            | ~45-46% |
-| MgO             | ~38%    |
-| FeO             | ~8%     |
-| Al2O3           | ~4%     |
-| CaO             | ~3%     |
-| Na2O/Cr2O3/TiO2 | <1%     |
+| Element Mantel | Prozent | Festwert |
++----------------+---------+----------+
+| SiO2           | ~45-46% | 46       |
+| MgO            | ~38%    | 38       |
+| FeO            | ~8%     | 8        |
+| Al2O3          | ~4%     | 4        |
+| CaO            | ~3%     | 3        |
+| Na2O           | <1%     | o / 3    |
+| Cr2O3          | <1%     | o / 3    |
+| TiO2           | <1%     | o / 3    |
 
-| Element Kruste | Prozent Kontinental | Prozent Ozeanisch |
-+----------------+---------------------+-------------------+
-| SiO2           | ~60-70%             | ~45-50%           |
-| Al2O3          | ~15%                | ~13-16%           |
-| FeO/Fe2O3      | ~3-5%               | ~8-12%            |
-| MgO            | ~3%                 | ~7-10%            |
-| CaO            | ~4%                 | ~12-12%           |
-| Na2O           | ~3-4%               | ~2-3%             |
-| K2O            | ~2-3%               | < 1%              |
-| Basalt         |                     |                   |
-| Granit         |                     |                   |
-| Andesit        |                     |                   |
+| Element Kruste | Prozent Kontinental | Festwert Kontinental | Prozent Ozeanisch | Festwert Ozeanisch |
++----------------+---------------------+----------------------+-------------------+--------------------+
+| SiO2           | ~60-70%             | 65                   | ~45-50%           |                    |
+| Al2O3          | ~15%                | 15                   | ~13-16%           |                    |
+| CaO            | ~4%                 | 4                    | ~12-12%           |                    |
+| FeO/Fe2O3      | ~3-5%               | 3-3(6)               | ~8-12%            |                    |
+| MgO            | ~3%                 | o / 3                | ~7-10%            |                    |
+| Na2O           | ~3-4%               | o / 3                | ~2-3%             |                    |
+| K2O            | ~2-3%               | o / 3                | < 1%              |                    |
+| Basalt         |                     | -                    |                   |                    |
+| Granit         |                     | -                    |                   |                    |
+| Andesit        |                     | -                    |                   |                    |
 
 (j. => Jeweils)
 | Standard-Kruste    | Prozent       |
@@ -156,10 +133,10 @@ Zusammensetzung:
 | Kruste Ozeanisch   | 3000          |
 | Kruste Kontinental | 2700          |
 
-| Kruste Durchschnitt | Spannweite (Min-Max) |
-+---------------------+----------------------+
-| 7000                | 5000 m - 10000 m     |
-| 30000               | 20000 m - 70000 m    |
+| Typ         | Kruste Durchschnitt | Spannweite (Min-Max) |
++-------------+---------------------+----------------------+
+| Ozeanisch   | 7000                | 5000 m - 10000 m     |
+| Kontinental | 30000               | 20000 m - 70000 m    |
 
 Größen:
 | Schicht | Bereich       | Dicke % |

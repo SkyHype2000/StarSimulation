@@ -5,3 +5,6 @@ I Made a Rewrite from JS/TS to C# because i ran into Performance Issues and did 
 
 Some Parts are German, but on non-functional thinks(like comments of the Roadmap, but "i think" all function Descriptions are English).\
 Because English is not my Native Language, there are some spelling/grammatical erros. But i Try my Best.
+
+**AI:** Some Parts were Programmed with AI, i will Putting Comments on the Functions that are Programmed with AI (or where i got Help). But i will always look at them to understand and correct mistakes.\
+If there are no comments, you can be 100% sure, that no AI was involved.

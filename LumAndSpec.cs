@@ -8,6 +8,7 @@ using static Star_Simulation.Program;
 using static Star_Simulation.Spectral;
 using static Star_Simulation.Luminosity;
 using static Star_Simulation.Calculation;
+using static Star_Simulation.Libary;
 
 namespace Star_Simulation
 {
@@ -102,14 +103,14 @@ namespace Star_Simulation
 
         public static void LogAllLuminosityClasses()
         {
-            Console.WriteLine("<== LUMINOSITY CLASSES ================================================>");
-            Console.WriteLine($"Reading {LuminosityClasses.Length} Luminosity Classes");
+            ConsoleLog("<== LUMINOSITY CLASSES ================================================>");
+            ConsoleLog($"Reading {LuminosityClasses.Length} Luminosity Classes");
 
             foreach (var lumClass in LuminosityClasses)
             {
-                Console.WriteLine($"Luminosity Class {lumClass.Class} ({lumClass.Description}); Rad ({lumClass.RadiusRangeMin}, {lumClass.RadiusRangeMax})");
+                ConsoleLog($"Luminosity Class {lumClass.Class} ({lumClass.Description}); Rad ({lumClass.RadiusRangeMin}, {lumClass.RadiusRangeMax})");
             }
-            Console.WriteLine("<======================================================================>");
+            ConsoleLog("<======================================================================>");
         }
 
         public static ILuminosityClass GetLuminosityClassByRadius(double radius)
@@ -323,7 +324,7 @@ namespace Star_Simulation
                     double massMin = (spectralClass.MassRangeMax - spectralClass.MassRangeMin) * (j / 10f) + spectralClass.MassRangeMin;
                     double massMax = (spectralClass.MassRangeMax - spectralClass.MassRangeMin) * ((j + 1) / 10f) + spectralClass.MassRangeMin;
 
-                    //Console.WriteLine($"Debug (GenerateSubspectralClasses): Creating subclass {spectralClass.Class}{9 - j} with mass {massMin}-{massMax} and temp {tempMin}-{tempMax}");
+                    //ConsoleLog($"Debug (GenerateSubspectralClasses): Creating subclass {spectralClass.Class}{9 - j} with mass {massMin}-{massMax} and temp {tempMin}-{tempMax}");
 
                     ISubspectralClass subclass = new SubspectralClassImpl
                     {
@@ -342,13 +343,13 @@ namespace Star_Simulation
 
         //public static void LogAllSubspectralClasses()
         //{
-        //    Console.WriteLine("<== SUBSPECTRAL CLASSES ===============================================>");
-        //    Console.WriteLine("Generated " + SubspectralClasses.Length + " Subspectral classes");
+        //    ConsoleLog("<== SUBSPECTRAL CLASSES ===============================================>");
+        //    ConsoleLog("Generated " + SubspectralClasses.Length + " Subspectral classes");
         //    foreach (var subspectral in SubspectralClasses)
         //    {
-        //        Console.WriteLine($"{subspectral.ParentSpectralClass.Class}{subspectral.SubClass}; Temp ({subspectral.TemperatureRangeMin}, {subspectral.TemperatureRangeMax}); Mass ({subspectral.MassRangeMin}, {subspectral.MassRangeMax});");
+        //        ConsoleLog($"{subspectral.ParentSpectralClass.Class}{subspectral.SubClass}; Temp ({subspectral.TemperatureRangeMin}, {subspectral.TemperatureRangeMax}); Mass ({subspectral.MassRangeMin}, {subspectral.MassRangeMax});");
         //    }
-        //    Console.WriteLine("<======================================================================>");
+        //    ConsoleLog("<======================================================================>");
         //}
     }
 }

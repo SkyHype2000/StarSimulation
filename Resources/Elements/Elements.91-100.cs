@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Protactinium",
             NameDE = "Protactinium",
-            ID = "Resources.Elements.Protactinium",
+            ID = "RawResources.Elements.Protactinium",
             Symbol = "Pa",
             Description = "",
             Density = 15370.0f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Uranium",
             NameDE = "Uranium",
-            ID = "Resources.Elements.Uranium",
+            ID = "RawResources.Elements.Uranium",
             Symbol = "U",
             Description = "",
             Density = 19050.0f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Neptunium",
             NameDE = "Neptunium",
-            ID = "Resources.Elements.Neptunium",
+            ID = "RawResources.Elements.Neptunium",
             Symbol = "Np",
             Description = "",
             Density = 20450.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Plutonium",
             NameDE = "Plutonium",
-            ID = "Resources.Elements.Plutonium",
+            ID = "RawResources.Elements.Plutonium",
             Symbol = "Pu",
             Description = "",
             Density = 19840.0f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Americium",
             NameDE = "Americium",
-            ID = "Resources.Elements.Americium",
+            ID = "RawResources.Elements.Americium",
             Symbol = "Am",
             Description = "",
             Density = 13670.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Curium",
             NameDE = "Curium",
-            ID = "Resources.Elements.Curium",
+            ID = "RawResources.Elements.Curium",
             Symbol = "Cm",
             Description = "",
             Density = 13510.0f,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Berkelium",
             NameDE = "Berkelium",
-            ID = "Resources.Elements.Berkelium",
+            ID = "RawResources.Elements.Berkelium",
             Symbol = "Bk",
             Description = "",
             Density = 14780.0f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Californium",
             NameDE = "Californium",
-            ID = "Resources.Elements.Californium",
+            ID = "RawResources.Elements.Californium",
             Symbol = "Cf",
             Description = "",
             Density = 15100.0f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Einsteinium",
             NameDE = "Einsteinium",
-            ID = "Resources.Elements.Einsteinium",
+            ID = "RawResources.Elements.Einsteinium",
             Symbol = "Es",
             Description = "",
             Density = 8840.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Fermium",
             NameDE = "Fermium",
-            ID = "Resources.Elements.Fermium",
+            ID = "RawResources.Elements.Fermium",
             Symbol = "Fm",
             Description = "",
             Density = 9700.0f,

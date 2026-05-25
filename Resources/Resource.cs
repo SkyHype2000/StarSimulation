@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Star_Simulation.Random;
 using static Star_Simulation.Resource;
-using static Star_Simulation.PublicResources;
+using static Star_Simulation.Libary;
 using static Star_Simulation.Program;
 
 namespace Star_Simulation
@@ -18,29 +18,30 @@ namespace Star_Simulation
         { Solid, Liquid, Gas, Critical, Plasma }
         /// <summary>The Resource Type.</summary>
         /// <remarks>
-        /// <b>None</b>: The Resource has no Type. (Can be Used for Resources in the Implementing-Phases)<br/>
+        /// <b>None</b>: The Resource has no Type. (Can be Used for RawResources in the Implementing-Phases)<br/>
         /// <b>Unknown</b>: Unknown Resource Type. Maybe there is something to Discover? :D<br/>
         /// <b>Metal</b>: A Metal Resource. (Like Iron, Copper, Titanium or Gadolinium)<br/>
         /// <b>Silicate</b>: A Silicate. (like Stone/SiO2)<br/>
         /// <b>Gas</b>: A Gas. (Like Hydrogen)<br/>
         /// <b>Organic</b>: A Organic Resource that contains Carbon or Water. (Like... Dihydrogenmonoxide)<br/>
         /// <b>Exotic</b>: A Exotic Element.<br/>
-        /// <b>Special</b>: A Special Procedual Element that was Created by the Program.<br/>
+        /// <b>SpecialOrExotic</b>: A Special or Exotic Procedual Element that was Created by the Program.<br/>
         /// </remarks>
         public enum ResourceType
-        { None, Unknown, Metal, Silicate, Gas, Organic, Exotic, Special }
+        { None, Unknown, Metal, Silicate, Gas, Organic, Exotic, SpecialOrExotic }
         /// <summary>Where the Resource can Spawn.</summary>
         /// <remarks>
         /// <b>Surface</b>: It Spwans on the Surface of a Object. (Only Valid if Category is Solid or Liquid)<br/>
-        /// <b>SubsurfaceCrust</b>: It Spawns under the Surface of a Object. (Only Valid if Category is Solid or Liquid)<br/>
+        /// <b>SubsurfaceCrust</b>: It Spawns under the Surface of a Object. (Only Valid if Category is Solid)<br/>
+        /// <b>SubsurfaceMantle</b>: It Spawns under the Surface of a Object. (Only Valid if Category is Solid)<br/>
         /// <b>SubsurfaceCore</b>: It Spawns under the Surface of a Object. (Only Valid if Category is Solid)<br/>
         /// <b>Atmospheric</b>: It Spawns in the Atmosphere of a Planet. (Only Valid if the Category is Gas)<br/>
         /// <b>AstroidBeld</b>: It Spawns on a Astroid or in a Astroid Belt. (Only Valid if the Category is Solid)<br/>
         /// <b>Comet</b>: It Spawns on a Comet. (Only Valid if the Category is Solid)<br/>
-        /// <b>Space</b>: It Spawns in Space. (Only Valid if the Category is Solid, Gas or Plasma)<br/>
+        /// <b>Space</b>: It Spawns in Space. (Only Valid if the Category is Solid or Gas)<br/>
         /// </remarks>
         public enum ResourcePosition
-        { Surface, SubsurfaceCrust, SubsurfaceCore, Atmosphere, AsteroidBelt, Comet, Space }
+        { Surface, SubsurfaceCrust, SubsurfaceMantle, SubsurfaceCore, Atmosphere, AsteroidBelt, Comet, Space }
         /// <summary>What the Surface has to Look Like for the Resource to Spawn (It will Only Spawn, if Temperature AND Position Requirements are Met)</summary>
         /// <remarks>
         /// <b>AnySurface</b>: There is no Requirement, it can Spawn Anywhere.<br/>
@@ -72,7 +73,7 @@ namespace Star_Simulation
         /// <summary>How Common a Resource is.</summary>
         /// <remarks>
         /// <b>None</b>: It dosn't spawn.<br/>
-        /// <b>DEV</b>: It has to be Preplaced by a Dev.<br/>
+        /// <b>DEV</b>: It dosn't spawn naturally.<br/>
         /// <b>VeryRare</b>: It is Very Rare and has a Spawn Probability of 1%<br/>
         /// <b>Rare</b>: It es Rare and has a Spawn Probability of 10%<br/>
         /// <b>Common</b>: It is Common and has a Spawn Probability of 25%<br/>
@@ -81,20 +82,6 @@ namespace Star_Simulation
         /// </remarks>
         public enum ResourceProbability
         { None, DEV, VeryRare, Rare, Common, Frequent, VeryFrequent }
-
-        /// <summary>The Main Interface for the Resource Spawn Conditions</summary>
-        //public interface MyResource
-        //{
-        //    string Name { get; }
-        //    string ID { get; }
-        //    string Symbol { get; }
-        //    string Description { get; }
-        //    float FreezingPoint { get; }
-        //    float BoilingPoint { get; }
-        //    float Density { get; }
-        //    ResourceCategory Category { get; }
-        //    ResourcePosition[] Position { get; }
-        //}
 
         /// <summary>
         /// Interface for Compatibility and Basic-Requirement Reasons.
@@ -117,24 +104,91 @@ namespace Star_Simulation
             public required string NameDE { get; set; }
             public required string ID { get; set; }
             public required string Symbol { get; set; }
-            public required string Description { get; set; }
+            public string Description { get; set; } = "";
             public required float FreezingPoint { get; set; }
             public required float BoilingPoint { get; set; }
             public required float Density { get; set; }
             public required ResourceCategory Category { get; set; }
-            public required ResourcePosition[] Position { get; set; }
+            public ResourcePosition[] Position { get; set; } = [];
+        }
+
+        public class MyMolecule : IMyResource
+        {
+            public required string Name { get; set; }
+            public required string NameDE { get; set; }
+            public required string ID { get; set; }
+            public required string Symbol { get; set; }
+            public string Description { get; set; } = "";
+            public required float Density { get; set; }
+            public required float BoilingPoint { get; set; }
+            public required float FreezingPoint { get; set; }
+            public bool SolidFormExists { get; set; } = true;
+            public bool LiquidFormExists { get; set; } = true;
+            public bool GasFormExists { get; set; } = true;
+            public required ResourceCategory Category { get; set; }
+            public ResourcePosition[] Position { get; set; } = [];
         }
 
         public class MyResourceValue
         {
-            /// <summary>How many are Present in PPT(Parts Per Thousand)</summary>
+            /// <summary>How many are Present in PPM(Parts Per Million)<br/>
+            /// At the End it will not be Important if the Value is PPM, because of BuildRealResources() in MyResourceList.</summary>
             public required int Value { get; set; }
             public required IMyResource Resource { get; set; }
         }
+        public class MyResourceListValue
+        {
+            /// <summary>How many are Present in PPM(Parts Per Million)<br/>
+            /// At the End it will not be Important if the Value is PPM, because of BuildRealResources() in MyResourceList.</summary>
+            public required int Value { get; init; }
+            public required float Percent {  get; init; }
+            public required IMyResource Resource { get; init; }
+        }
 
+        /// <summary>
+        /// MyResourceList Class Used for Actual Generation.<br/>
+        /// For Generation ALWAYS Use the MyResourceListValue RealResources because i said so.
+        /// </summary>
         public class MyResourceList
         {
-            public required List<MyResourceValue> Resources { get; set; }
+            public required List<MyResourceValue> RawResources { get; set; }
+            public List<MyResourceListValue> RealResources { get; private set; } = [];
+            public float AverageDensity { get; private set; } = 0.0f;
+
+            /// <summary>
+            /// Builds the Values so it will reach 1PPM-accuracy and saves it as MyResourceListValue into RealResources
+            /// </summary>
+            public void BuildRealResources()
+            {
+                try
+                {
+                    if (RawResources.Count == 0) return;
+                    int allResourcesCount = RawResources.Sum(e => e.Value);
+                    if (allResourcesCount == 0) return;
+
+                    RawResources.ForEach((e) =>
+                    {
+                        float p = (float)e.Value / (float)allResourcesCount;
+
+                        RealResources.Add(new()
+                        {
+                            Resource = e.Resource,
+                            Value = (int)MathF.Round(p * 1_000_000.0f),
+                            Percent = p
+                        });
+                    });
+
+                    AverageDensity = RealResources.Sum(e => e.Resource.Density * e.Percent);
+
+                    if (ResourceGeneration_BuildResourceLogging && ResourceGeneration_Logging && Logging) ConsoleLog($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");
+                    if (ResourceGeneration_BuildResourceLoggingFile && ResourceGeneration_LoggingFile) ConsoleLog($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");
+                }
+                catch (Exception e)
+                {
+                    ConsoleLogWrite([e.Message, e.HelpLink!]);
+                    throw;
+                }
+            }
         }
     }
 

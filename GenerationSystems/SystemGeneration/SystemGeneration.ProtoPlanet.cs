@@ -52,7 +52,7 @@ namespace Star_Simulation
             }
             MinMax<double> orbitalRange = new MinMax<double> { Min=PeriapsisRadius, Max=ApoapsisRadius };
 
-            if (ProtoPlanetLogging) Console.WriteLine($"Protoplanet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");
+            if (ProtoPlanetLogging) ConsoleLog($"Protoplanet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");
 
             double radius = seed.Next(GC_SpaceRock.RangeProtoPlanetRadius);
             double mass = ((4d / 3d) * Math.PI * Math.Pow(radius, 3)) * EarthDensity;
@@ -88,7 +88,7 @@ namespace Star_Simulation
                 Type = CelestialType.Dwarf,
                 SurfaceType = CelestialSurfaceType.Rocky,
                 SpecialProperties = [],
-                ResourceList = new MyResourceList() { Resources = [] }
+                ResourceList = new MyResourceList() { RawResources = [] }
             };
 
             return myProtoPlanet;

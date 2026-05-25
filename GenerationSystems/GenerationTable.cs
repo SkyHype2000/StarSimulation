@@ -92,10 +92,13 @@ namespace Star_Simulation
             /// <summary>The Radius a Planet Must have</summary>
             public static readonly MinMax<double> RangePlanetRadius = new MinMax<double>(EarthRadius*0.4, EarthRadius* 2.5, true);
             /// <summary>The Range of the Albedo a Planet can have</summary>
-            public static readonly MinMax<float> AlbedoRange = new MinMax<float>(0.1f, 0.4f);
+            public static readonly MinMax<float> RangeAlbedo = new MinMax<float>(0.1f, 0.4f);
 
             /// <summary>The Radius a Dwarf Planet must have</summary>
             public static readonly MinMax<double> RangeDwarfPlanetRadius = new MinMax<double>(2500000, EarthRadius * 0.4, false);
+
+            /// <summary> The Average Size of the Core of the Planet </summary>
+            public static readonly float ThicknessPlanetCore = 0.50f;
 
             /// <summary>If Atmospheric Calculation are Done (like Greenhouseeffect, Color, etc.)</summary>
             public static readonly bool AtmosphereCalculation = false;
@@ -164,59 +167,59 @@ namespace Star_Simulation
         
         public static void GenerationTableLog()
         {
-            ConsoleLog("If You See This Message Here, then i means that all Generation COnstants are Valid. (At least the ones that will be tested.)\n");
+            ConsoleLogWrite("If You See This Message Here, then i means that all Generation COnstants are Valid. (At least the ones that will be tested.)\n");
 
-            ConsoleLog($"Generation COnstants Settings.");
-            ConsoleLog($"Setting.ObjectsStellarSystem                      = {GC_Settings.ObjectsStellarSystem}");
-            ConsoleLog($"Setting.PlanetsStellarSystem                      = {GC_Settings.PlanetsStellarSystem}");
-            ConsoleLog($"Setting.ProtoPlanetsStellarSystem                 = {GC_Settings.ProtoPlanetsStellarSystem}");
-            ConsoleLog($"Setting.AsteroidsStellarSystem                    = {GC_Settings.AsteroidsStellarSystem}{((GC_Settings.AsteroidsStellarSystem) ? "" : " (!)")}");
-            ConsoleLog($"Setting.CometsStellarSystem                       = {GC_Settings.CometsStellarSystem}");
-            ConsoleLog($"Setting.AsteroidFieldsStellarSystem               = {GC_Settings.AsteroidFieldsStellarSystem}");
-            ConsoleLog($"Setting.EventsStellarSystem                       = {GC_Settings.EventsStellarSystem}");
-            ConsoleLog($"Setting.AnomalysStellarSystem                     = {GC_Settings.AnomalysStellarSystem}");
-            ConsoleLog($"Setting.CMEStellarSystem                          = {GC_Settings.CMEStellarSystem}");
-            ConsoleLog($"Setting.InterstellarVisitorsStellarSystem         = {GC_Settings.InterstellarVisitorsStellarSystem}");
-            ConsoleLog($"Setting.MoonPlanetSystem                          = {GC_Settings.MoonPlanetSystem}\n");
+            ConsoleLogWrite($"Generation COnstants Settings.");
+            ConsoleLogWrite($"Setting.ObjectsStellarSystem                      = {GC_Settings.ObjectsStellarSystem}");
+            ConsoleLogWrite($"Setting.PlanetsStellarSystem                      = {GC_Settings.PlanetsStellarSystem}");
+            ConsoleLogWrite($"Setting.ProtoPlanetsStellarSystem                 = {GC_Settings.ProtoPlanetsStellarSystem}");
+            ConsoleLogWrite($"Setting.AsteroidsStellarSystem                    = {GC_Settings.AsteroidsStellarSystem}{((GC_Settings.AsteroidsStellarSystem) ? "" : " (!)")}");
+            ConsoleLogWrite($"Setting.CometsStellarSystem                       = {GC_Settings.CometsStellarSystem}");
+            ConsoleLogWrite($"Setting.AsteroidFieldsStellarSystem               = {GC_Settings.AsteroidFieldsStellarSystem}");
+            ConsoleLogWrite($"Setting.EventsStellarSystem                       = {GC_Settings.EventsStellarSystem}");
+            ConsoleLogWrite($"Setting.AnomalysStellarSystem                     = {GC_Settings.AnomalysStellarSystem}");
+            ConsoleLogWrite($"Setting.CMEStellarSystem                          = {GC_Settings.CMEStellarSystem}");
+            ConsoleLogWrite($"Setting.InterstellarVisitorsStellarSystem         = {GC_Settings.InterstellarVisitorsStellarSystem}");
+            ConsoleLogWrite($"Setting.MoonPlanetSystem                          = {GC_Settings.MoonPlanetSystem}\n");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            if (GC_Settings.AsteroidsStellarSystem == false) ConsoleLog(
+            if (GC_Settings.AsteroidsStellarSystem == false) ConsoleLogWrite(
                 " => Small warning: Because AsteroidsStellarSystem is False, there will sometimes not be enough\n" +
                 "    Objects to reach the Stellar Object Count, because normally at the End Asteroids will be\n" +
                 "    placed until the final Stellar Object Count is Reached\n ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            ConsoleLog($"Star.RangeObjectStellarAmount                     = {GC_Star.RangeObjectsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangePlanetsStellarSystem                    = {GC_Star.RangePlanetsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeDwarfPlanetsStellarSystem               = {GC_Star.RangeDwarfPlanetsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeProtoplanetsStellarSystem               = {GC_Star.RangeProtoplanetsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeAsteroidsStellarSystem                  = {GC_Star.RangeAsteroidsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeCometsStellarSystem                     = {GC_Star.RangeCometsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeAsteroidFieldsStellarSystem             = {GC_Star.RangeAsteroidFieldsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeEventsStellarSystem                     = {GC_Star.RangeEventsStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeAnomalysStellarSystem                   = {GC_Star.RangeAnomalysStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeCMEStellarSystem                        = {GC_Star.RangeCMEStellarSystem.ToString()}");
-            ConsoleLog($"Star.RangeInterstellarVisitorsStellarSystem       = {GC_Star.RangeInterstellarVisitorsStellarSystem.ToString()}\n");
-            ConsoleLog($"Planet.RangeDistanceBetweenPlanets                = {GC_Planet.RangeDistanceBetweenPlanets.ToString()}");
-            ConsoleLog($"Planet.CanPlanetSpawnAfterSameObject              = {GC_Planet.CanPlanetSpawnAfterSameObject}");
-            ConsoleLog($"Planet.RangePlanetRowOfSameObject                 = {GC_Planet.RangePlanetRowOfSameObject.ToString()}");
-            ConsoleLog($"Planet.RangePlanetRadius                          = {GC_Planet.RangePlanetRadius.ToString()}");
-            ConsoleLog($"Planet.RangeDwarfPlanetRadius                     = {GC_Planet.RangeDwarfPlanetRadius.ToString()}");
-            ConsoleLog($"Planet.AtmosphereCalculation                      = {GC_Planet.AtmosphereCalculation.ToString()}\n");
-            ConsoleLog($"SpaceRock.RangeProtoPlanetRadius                  = {GC_SpaceRock.RangeProtoPlanetRadius.ToString()}");
-            ConsoleLog($"SpaceRock.RangeAsteroidRadius                     = {GC_SpaceRock.RangeAsteroidRadius.ToString()}");
-            ConsoleLog($"SpaceRock.MinDistanceFromStar                     = {GC_SpaceRock.MinDistanceFromStar}");
-            ConsoleLog($"SpaceRock.CanAsteroidBeltSpawnAfterSameObject     = {GC_SpaceRock.CanAsteroidBeltSpawnAfterSameObject}");
-            ConsoleLog($"SpaceRock.RangeAsteroidBeltRowOfSameObject        = {GC_SpaceRock.RangeAsteroidBeltRowOfSameObject.ToString()}");
-            ConsoleLog($"SpaceRock.RangeDistanceBetweenAsteroidBelt        = {GC_SpaceRock.RangeDistanceBetweenAsteroidBelt.ToString()}");
-            ConsoleLog($"SpaceRock.RangeAsteroidBeltLength                 = {GC_SpaceRock.RangeAsteroidBeltLength.ToString()}");
-            ConsoleLog($"SpaceRock.RangeAsteroidBeltHeight                 = {GC_SpaceRock.RangeAsteroidBeltHeight.ToString()}");
-            ConsoleLog($"SpaceRock.DensityAsteroidBeltPerKKM               = {GC_SpaceRock.DensityAsteroidBelt.ToString()}");
-            ConsoleLog($"SpaceRock.AsteroidDensity                         = {GC_SpaceRock.AsteroidDensity}\n");
-            ConsoleLog($"DwarfPlanet.RangeDwarfPlanetMass                  = {GC_DwarfPlanet.RangeDwarfPlanetMass.ToString()}\n");
-            ConsoleLog($"Moon.RangeSpawnDistanceFromCenter                 = {GC_Moon.RangeSpawnDistanceFromCenter.ToString()}");
-            ConsoleLog($"Moon.MinMoonDistanceFromSOI                       = {GC_Moon.MinMoonDistanceFromSOI}");
-            ConsoleLog($"Moon.MinDistanceBetweenMoons                      = {GC_Moon.MinDistanceBetweenMoons}");
-            ConsoleLog($"Moon.RangeMoonRadius                              = {GC_Moon.RangeMoonRadius.ToString()}\n");
+            ConsoleLogWrite($"Star.RangeObjectStellarAmount                     = {GC_Star.RangeObjectsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangePlanetsStellarSystem                    = {GC_Star.RangePlanetsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeDwarfPlanetsStellarSystem               = {GC_Star.RangeDwarfPlanetsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeProtoplanetsStellarSystem               = {GC_Star.RangeProtoplanetsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeAsteroidsStellarSystem                  = {GC_Star.RangeAsteroidsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeCometsStellarSystem                     = {GC_Star.RangeCometsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeAsteroidFieldsStellarSystem             = {GC_Star.RangeAsteroidFieldsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeEventsStellarSystem                     = {GC_Star.RangeEventsStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeAnomalysStellarSystem                   = {GC_Star.RangeAnomalysStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeCMEStellarSystem                        = {GC_Star.RangeCMEStellarSystem.ToString()}");
+            ConsoleLogWrite($"Star.RangeInterstellarVisitorsStellarSystem       = {GC_Star.RangeInterstellarVisitorsStellarSystem.ToString()}\n");
+            ConsoleLogWrite($"Planet.RangeDistanceBetweenPlanets                = {GC_Planet.RangeDistanceBetweenPlanets.ToString()}");
+            ConsoleLogWrite($"Planet.CanPlanetSpawnAfterSameObject              = {GC_Planet.CanPlanetSpawnAfterSameObject}");
+            ConsoleLogWrite($"Planet.RangePlanetRowOfSameObject                 = {GC_Planet.RangePlanetRowOfSameObject.ToString()}");
+            ConsoleLogWrite($"Planet.RangePlanetRadius                          = {GC_Planet.RangePlanetRadius.ToString()}");
+            ConsoleLogWrite($"Planet.RangeDwarfPlanetRadius                     = {GC_Planet.RangeDwarfPlanetRadius.ToString()}");
+            ConsoleLogWrite($"Planet.AtmosphereCalculation                      = {GC_Planet.AtmosphereCalculation.ToString()}\n");
+            ConsoleLogWrite($"SpaceRock.RangeProtoPlanetRadius                  = {GC_SpaceRock.RangeProtoPlanetRadius.ToString()}");
+            ConsoleLogWrite($"SpaceRock.RangeAsteroidRadius                     = {GC_SpaceRock.RangeAsteroidRadius.ToString()}");
+            ConsoleLogWrite($"SpaceRock.MinDistanceFromStar                     = {GC_SpaceRock.MinDistanceFromStar}");
+            ConsoleLogWrite($"SpaceRock.CanAsteroidBeltSpawnAfterSameObject     = {GC_SpaceRock.CanAsteroidBeltSpawnAfterSameObject}");
+            ConsoleLogWrite($"SpaceRock.RangeAsteroidBeltRowOfSameObject        = {GC_SpaceRock.RangeAsteroidBeltRowOfSameObject.ToString()}");
+            ConsoleLogWrite($"SpaceRock.RangeDistanceBetweenAsteroidBelt        = {GC_SpaceRock.RangeDistanceBetweenAsteroidBelt.ToString()}");
+            ConsoleLogWrite($"SpaceRock.RangeAsteroidBeltLength                 = {GC_SpaceRock.RangeAsteroidBeltLength.ToString()}");
+            ConsoleLogWrite($"SpaceRock.RangeAsteroidBeltHeight                 = {GC_SpaceRock.RangeAsteroidBeltHeight.ToString()}");
+            ConsoleLogWrite($"SpaceRock.DensityAsteroidBeltPerKKM               = {GC_SpaceRock.DensityAsteroidBelt.ToString()}");
+            ConsoleLogWrite($"SpaceRock.AsteroidDensity                         = {GC_SpaceRock.AsteroidDensity}\n");
+            ConsoleLogWrite($"DwarfPlanet.RangeDwarfPlanetMass                  = {GC_DwarfPlanet.RangeDwarfPlanetMass.ToString()}\n");
+            ConsoleLogWrite($"Moon.RangeSpawnDistanceFromCenter                 = {GC_Moon.RangeSpawnDistanceFromCenter.ToString()}");
+            ConsoleLogWrite($"Moon.MinMoonDistanceFromSOI                       = {GC_Moon.MinMoonDistanceFromSOI}");
+            ConsoleLogWrite($"Moon.MinDistanceBetweenMoons                      = {GC_Moon.MinDistanceBetweenMoons}");
+            ConsoleLogWrite($"Moon.RangeMoonRadius                              = {GC_Moon.RangeMoonRadius.ToString()}\n");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Sodium",
             NameDE = "Natrium",
-            ID = "Resources.Elements.Sodium",
+            ID = "RawResources.Elements.Sodium",
             Symbol = "Na",
             Description = "",
             Density = 968.8f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Magnesium",
             NameDE = "Magnesium",
-            ID = "Resources.Elements.Magnesium",
+            ID = "RawResources.Elements.Magnesium",
             Symbol = "Mg",
             Description = "",
             Density = 1.737f * 1000f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Aluminium",
             NameDE = "Aluminium",
-            ID = "Resources.Elements.Aluminium",
+            ID = "RawResources.Elements.Aluminium",
             Symbol = "Al",
             Description = "",
             Density = 2.699f * 1000f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Silicon",
             NameDE = "Silizium",
-            ID = "Resources.Elements.Silicon",
+            ID = "RawResources.Elements.Silicon",
             Symbol = "Si",
             Description = "",
             Density = 2.329085f * 1000f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Phosphorus",
             NameDE = "Phosphor",
-            ID = "Resources.Elements.Phosphorus",
+            ID = "RawResources.Elements.Phosphorus",
             Symbol = "P",
             Description = "",
             Density = 2.5f * 1000f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Sulfur",
             NameDE = "Schwefel",
-            ID = "Resources.Elements.Sulfur",
+            ID = "RawResources.Elements.Sulfur",
             Symbol = "S",
             Description = "",
             Density = 2070.0f,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Chlorine",
             NameDE = "Chlor",
-            ID = "Resources.Elements.Chlorine",
+            ID = "RawResources.Elements.Chlorine",
             Symbol = "Cl",
             Description = "",
             Density = 3.2f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Argon",
             NameDE = "Argon",
-            ID = "Resources.Elements.Argon",
+            ID = "RawResources.Elements.Argon",
             Symbol = "Ar",
             Description = "",
             Density = 1.8f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Potassium",
             NameDE = "Kalium",
-            ID = "Resources.Elements.Potassium",
+            ID = "RawResources.Elements.Potassium",
             Symbol = "K",
             Description = "",
             Density = 890.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Calcium",
             NameDE = "Kalzium",
-            ID = "Resources.Elements.Calcium",
+            ID = "RawResources.Elements.Calcium",
             Symbol = "Ca",
             Description = "",
             Density = 1550.0f,

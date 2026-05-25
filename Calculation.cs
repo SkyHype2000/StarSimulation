@@ -120,7 +120,7 @@ namespace Star_Simulation
 
             double result = Math.Pow(r / STAR_GENERATION_CONSTANT, -0.4f) * SunMass;
 
-            //Console.WriteLine(result);
+            //ConsoleLog(result);
 
             return result;
         }
@@ -176,14 +176,14 @@ namespace Star_Simulation
         {
             float totalDensity = 0;
 
-            if (resources.Resources.Count <= 0) throw new MyResourceListLengthException($"(double).CalculatePlanetRadius.resources.Resources.Length has a Length of {resources.Resources.Count} (Zero or Below)");
+            if (resources.RawResources.Count <= 0) throw new MyResourceListLengthException($"(double).CalculatePlanetRadius.resources.RawResources.Length has a Length of {resources.RawResources.Count} (Zero or Below)");
 
-            for (int i = 0; i < resources.Resources.Count; i++)
+            for (int i = 0; i < resources.RawResources.Count; i++)
             {
-                IMyResource res = resources.Resources[i].Resource;
+                IMyResource res = resources.RawResources[i].Resource;
                 if (res.Density <= 0) throw new MyResourceInvalidValueException($"(double).CalculatePlanetRadius.resources[{i}] = '{res.Name}' Density has a invalid Value of '{res.Density}' (Zero or Below)");
 
-                totalDensity += resources.Resources[i].Resource.Density;
+                totalDensity += resources.RawResources[i].Resource.Density;
             }
 
             return totalDensity;
@@ -194,6 +194,23 @@ namespace Star_Simulation
         public static double CalculateBasicObjectMass(double radius, double density)
         {
             return ((4d / 3d) * Math.PI * Math.Pow(radius, 3)) * density;
+        }
+
+        public static double CalculateObjectMass(MyPlanetResources resources, double radius)
+        {
+            double vf = (4.0 / 3.0) * Math.PI;
+            double RadiusCore = radius * GC_Planet.ThicknessPlanetCore;
+            double RadiusMantle = radius - resources.CrustHeight;
+
+            double VolumeCore = vf * Math.Pow(RadiusCore, 3);
+            double VolumeMantle = (vf * Math.Pow(RadiusMantle, 3)) - VolumeCore;
+            double VolumeCrust = (vf * Math.Pow(radius, 3)) - VolumeCore - VolumeMantle;
+
+            double MassCore = VolumeCore * resources.CoreResourceList.AverageDensity;
+            double MassMantle = VolumeMantle * resources.MantleResourceList.AverageDensity;
+            double MassCrust = VolumeCrust * resources.CrustResourceList.AverageDensity;
+
+            return MassCore + MassMantle + MassCrust;
         }
 
         public static double CalculateAsteroidsInAstroidBelt(double density, double innerRadius, double outerRadius, double height)
@@ -309,7 +326,7 @@ namespace Star_Simulation
             {
                 double period = (double)(2 * Math.PI * Math.Sqrt(Math.Pow(R, 3) / (G * M)));
 
-                Console.WriteLine($"Calculated Orbital Period: {period} seconds with R={R * SunRadius} m and M={M} kg");
+                ConsoleLog($"Calculated Orbital Period: {period} seconds with R={R * SunRadius} m and M={M} kg");
 
                 return period;
             }
@@ -338,7 +355,7 @@ namespace Star_Simulation
             {
                 double R = (double)Math.Pow((G * M) * ((T) / Math.Pow(2 * Math.PI, 2)), (1 / 3));
 
-                Console.WriteLine($"Calculated Orbital Radius: {R} m with T={T} s and M={M} kg");
+                ConsoleLog($"Calculated Orbital Radius: {R} m with T={T} s and M={M} kg");
 
                 return R;
             }

@@ -87,11 +87,15 @@ namespace Star_Simulation
                 {
                     name += syllables2[seed.Next(syllables2.Length - 1)];
                 }
-                //Console.WriteLine($"Name {type} length {length}");
+                //ConsoleLog($"Name {type} length {length}");
                 return char.ToUpper(name[0]) + name.Substring(1);
             }
         }
 
+        /// <summary>
+        /// Name List for Stars<br/>
+        /// Most Names where Generated with AI.
+        /// </summary>
         public static readonly string[] StarNames = new string[]
         {
             "Sirius", "Vega", "Rigel", "Betelgeuse", "Procyon", "Altair",
@@ -130,6 +134,10 @@ namespace Star_Simulation
             "Aetheron","Kaldrax","Tyvorn","Vexarion","Orlix",
         };
 
+        /// <summary>
+        /// Name List for Planets<br/>
+        /// Most Names where Generated with AI.
+        /// </summary>
         public static readonly string[] PlanetNames = new string[]
         {
             "Earth", "Mars", "Venus", "Jupiter", "Saturn", "Mercury",
@@ -165,6 +173,10 @@ namespace Star_Simulation
             "Cyrune","Velorae","Koruna",
         };
 
+        /// <summary>
+        /// Name List for Moons<br/>
+        /// Most Names where Generated with AI.
+        /// </summary>
         public static readonly string[] MoonNames = new string[]
         {
             "Ceres", "Pallas", "Juno", "Vesta", "Astraea", "Hebe",
@@ -199,6 +211,14 @@ namespace Star_Simulation
         public static readonly MinMax<int> GenerateName2_MinMaxStarDefault = new MinMax<int>(5, 10, false);
         public static readonly MinMax<int> GenerateName2_MinMaxMoonDefault = new MinMax<int>(5, 10, false);
 
+        /// <summary>
+        /// Generates a Name Using the Markov Algorythm.<br/>
+        /// This Code was Assisted with AI. (I don't know if this sentence makes sense)
+        /// </summary>
+        /// <param name="seed"></param>
+        /// <param name="names"></param>
+        /// <param name="minMax"></param>
+        /// <returns></returns>
         public static string GenerateNameMarkov(SeedRandom seed, string[] names, MinMax<int> minMax = null!)
         {
             if (minMax == null) minMax = new MinMax<int>(5, 10, false);

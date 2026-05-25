@@ -12,7 +12,8 @@ namespace Star_Simulation
     {
         /// <summary>
         /// Star Generation Constant.<br/>
-        /// Calculated using code I wrote what feels like around 9.2765 million years ago.
+        /// Calculated using code I wrote what feels like around 9.2765 million years ago.<br/>
+        /// Some Code was Copy-Paste from my olt Project, so i just Use this (Don't change a running System XD)
         /// </summary>
         public static readonly double STAR_GENERATION_CONSTANT = 1.0216388735543742521887522130876091683703957473078500310054178421533504358657415429775215553538366594d;
 
@@ -24,16 +25,43 @@ namespace Star_Simulation
 
         /// <summary>Activates the Logging of Some Generation-Values (This is the Main Switch, if you turn this of => No Logging.)</summary>
         public static bool Logging = true;
+        /// <summary>Activates the Logging of Planet-Generation</summary>
+        public static bool PlanetLogging = true;
         /// <summary>Activates the Logging of Proto Planet-Generation (There can be Many Proto Planets)</summary>
         public static bool ProtoPlanetLogging = false;
         /// <summary>Activates the Logging of Dwarf Planet-Generation (There can be Many Dwarf Planets, so deactivating this can be useful)</summary>
         public static bool DwarfPlanetLogging = false;
         /// <summary>Activates the Logging of Planet-Generation Test of avoiding SOI Collision of the Planet(or Dwarf Planet) with a Asteroid Belt (There can be Many Tests, so Deactivating may Help to keep the Console Readable)</summary>
-        public static bool PlanetAsteroidBeltLogging = false;
+        public static bool PlanetAsteroidBeltIterationLogging = false;
         /// <summary>Activates the Logging of Astroid-Generation (Not Recommendet if you still wan't to see whats happening in the COnsole)</summary>
         public static bool AstroidLogging = false;
         /// <summary>Activates the Logging of Astroid-Belt-Generation</summary>
         public static bool AstroidBeltLogging = true;
+
+        /// <summary>
+        /// Loggs The Generation of RawResources.<br/>
+        /// Be Careful: This can make the Console Output Very Very Very Big (It will only log if Logging is True)
+        /// </summary>
+        public static bool ResourceGeneration_Logging = false;
+        public static bool ResourceGeneration_StarLogging = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_ProtoPlanetLogging = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_DwarfPlanetLogging = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_PlanetLogging = false;
+        public static bool ResourceGeneration_AsteroidBeltLogging = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_AstroidLogging = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_BuildResourceLogging = true;
+        /// <summary>
+        /// Loggs The Generation of RawResources into the Log-File.<br/>
+        /// Be Careful: This can make the Log File Very Large.
+        /// </summary>
+        public static bool ResourceGeneration_LoggingFile = true;
+        public static bool ResourceGeneration_StarLoggingFile = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_ProtoPlanetLoggingFile = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_DwarfPlanetLoggingFile = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_PlanetLoggingFile = true;
+        public static bool ResourceGeneration_AsteroidBeltLoggingFile = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_AstroidLoggingFile = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_BuildResourceLoggingFile = true;
 
         /*
          * Checkliste:
@@ -170,9 +198,9 @@ namespace Star_Simulation
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-            //Console.WriteLine($"Global Seed: {Global_Seed.seed}");
+            //ConsoleLog($"Global Seed: {Global_Seed.seed}");
 
-            ConsoleLog($"Global Seed: {Global_Seed.seed}");
+            ConsoleLogWrite($"Global Seed: {Global_Seed.seed}");
 
             try
             {
@@ -182,7 +210,10 @@ namespace Star_Simulation
                 GenerateOneStar();
                 //MassGenerateStars(1000, 10);
             }
-            catch (Exception ex) { ConsoleLog("An error occurred because of my or your incompetence: " + ex); }
+            catch (Exception e)
+            {
+                ConsoleLogWrite([e.Message, e.HelpLink!]);
+            }
         }
 
         /// <summary>
@@ -192,7 +223,7 @@ namespace Star_Simulation
         {
             //LogAllLuminosityClasses();
 
-            ConsoleLog("Creating One Star");
+            ConsoleLogWrite("Creating One Star");
 
             GenerationTableLog();
 
@@ -200,13 +231,13 @@ namespace Star_Simulation
             {
                 DateTime start = DateTime.Now;
                 Console.Clear();
-                Console.WriteLine("\x1b[3J");
+                ConsoleLog("\x1b[3J");
 
                 GenerateStar(Global_Seed);
 
                 DateTime end = DateTime.Now;
-                ConsoleLog($"It Took {(end - start)} Seconds to generate 1 System");
-                ConsoleLog("\nDrücke Irgendeine Taste für das Nächste System");
+                ConsoleLogWrite($"It Took {(end - start)} Seconds to generate 1 System");
+                ConsoleLogWrite("\nDrücke Irgendeine Taste für das Nächste System");
                 Console.ReadKey();
             }
         }
@@ -219,14 +250,14 @@ namespace Star_Simulation
         {
             DateTime start = DateTime.Now;
 
-            ConsoleLog("Mass Generating Stars");
+            ConsoleLogWrite("Mass Generating Stars");
 
             if (overwriteLogging)
             {
                 Logging = false;
                 ProtoPlanetLogging = false;
                 DwarfPlanetLogging = false;
-                PlanetAsteroidBeltLogging = false;
+                PlanetAsteroidBeltIterationLogging = false;
                 AstroidLogging = false;
             }
 
@@ -239,9 +270,9 @@ namespace Star_Simulation
                     if ((j % 25) == 0 && overwriteLogging)
                     {
                         Console.Clear();
-                        Console.WriteLine("\x1b[3J");
-                        Console.WriteLine($"Seed: {seed.seed}");
-                        ConsoleLog($"Current: {(j+(i * total)).ToString().PadLeft(10, '0')}/{(total*seedIterations).ToString().PadLeft(10, '0')}");
+                        ConsoleLog("\x1b[3J");
+                        ConsoleLog($"Seed: {seed.seed}");
+                        ConsoleLogWrite($"Current: {(j + (i * total)).ToString().PadLeft(10, '0')}/{(total * seedIterations).ToString().PadLeft(10, '0')}");
                     }
 
                     GenerateStar(seed);
@@ -249,10 +280,10 @@ namespace Star_Simulation
             }
 
             Console.Clear();
-            Console.WriteLine("\x1b[3J");
+            ConsoleLog("\x1b[3J");
             GenerationTableLog();
             DateTime end = DateTime.Now;
-            ConsoleLog($"It Took {(end - start)} Seconds to generate {total*seedIterations} Systems ({total / (end - start).TotalSeconds}/s) with {seedIterations} Seed Changes; There are {AllObjectNum} Total Objects ({AllObjectNum / (end - start).TotalSeconds}/s)");
+            ConsoleLogWrite($"It Took {(end - start)} Seconds to generate {total * seedIterations} Systems ({total / (end - start).TotalSeconds}/s) with {seedIterations} Seed Changes; There are {AllObjectNum} Total Objects ({AllObjectNum / (end - start).TotalSeconds}/s)");
         }
     }
 }

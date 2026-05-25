@@ -28,6 +28,7 @@ namespace Star_Simulation
             CelestialLifeType[] LifeType { get; }
             CelestialSpecialProperties[] SpecialProperties { get; }
             MyResourceList ResourceList { get; }
+            MyPlanetResources Composition { get; }
             IMyMoon[] Moons { get; }
         }
         public class MyPlanet : IMyPlanet, IMyStellarObject
@@ -44,6 +45,7 @@ namespace Star_Simulation
             public required CelestialLifeType[] LifeType { get; set; }
             public required CelestialSpecialProperties[] SpecialProperties { get; set; }
             public required MyResourceList ResourceList { get; set; }
+            public required MyPlanetResources Composition { get; set; }
             public required IMyMoon[] Moons { get; set; }
             public required IMyOrbit Orbit { get; set; }
         }
@@ -54,6 +56,7 @@ namespace Star_Simulation
             string? ID { get; set; }
             double? Mass { get; set; }
             MyResourceList? ResourceList { get; set; }
+            MyPlanetResources? Composition { get; set; }
             double? Radius { get; set; }
             IMyOrbit? Orbit { get; set; }
             MinMax<float>? SurfaceTemperature { get; set; }
@@ -80,6 +83,7 @@ namespace Star_Simulation
             public CelestialLifeType[]? LifeType { get; set; }
             public CelestialSpecialProperties[]? SpecialProperties { get; set; }
             public MyResourceList? ResourceList { get; set; }
+            public MyPlanetResources? Composition { get; set; }
             public IMyMoon[]? Moons { get; set; }
         }
 
@@ -104,6 +108,7 @@ namespace Star_Simulation
             if (myPlanetGeneration.LifeType == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.LifeType");
             if (myPlanetGeneration.SpecialProperties == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.SpecialProperties");
             if (myPlanetGeneration.ResourceList == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.ResourceList");
+            if (myPlanetGeneration.Composition == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Composition");
             if (myPlanetGeneration.Moons == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Moons");
 
             return new MyPlanet()
@@ -120,6 +125,7 @@ namespace Star_Simulation
                 LifeType = myPlanetGeneration.LifeType,
                 SpecialProperties = myPlanetGeneration.SpecialProperties,
                 ResourceList = (MyResourceList)myPlanetGeneration.ResourceList,
+                Composition = (MyPlanetResources)myPlanetGeneration.Composition,
                 Moons = myPlanetGeneration.Moons,
                 Orbit = myPlanetGeneration.Orbit
             };

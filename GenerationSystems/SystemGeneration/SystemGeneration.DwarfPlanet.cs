@@ -33,7 +33,7 @@ namespace Star_Simulation
             string id = seed.NextID();
             dwarfPlanet.ID = id;
 
-            if (Logging && DwarfPlanetLogging) Console.WriteLine($"Generating the Dwarf Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
+            if (Logging && DwarfPlanetLogging) ConsoleLog($"Generating the Dwarf Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
 
             int beltNum = seed.Next(AsteroidBeltsOrbitalRadius.Length);
             MinMax<double> beltRange = AsteroidBeltsOrbitalRadius[beltNum];
@@ -55,7 +55,7 @@ namespace Star_Simulation
             }
             MinMax<double> orbitalRange = new MinMax<double> { Min = PeriapsisRadius, Max = ApoapsisRadius };
 
-            if (Logging & DwarfPlanetLogging) Console.WriteLine($"Dwarf Planet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m DwarfPlanetOrbit:{orbitalRange.Floor()} m");
+            if (Logging & DwarfPlanetLogging) ConsoleLog($"Dwarf Planet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m DwarfPlanetOrbit:{orbitalRange.Floor()} m");
 
             double radius = seed.Next(GC_SpaceRock.RangeProtoPlanetRadius);
             dwarfPlanet.Radius = radius;
@@ -92,10 +92,10 @@ namespace Star_Simulation
             dwarfPlanet.Habitability = CelestialHabitability.Uninhabitable;
             dwarfPlanet.LifeType = [];
             dwarfPlanet.SpecialProperties = [];
-            dwarfPlanet.ResourceList = new MyResourceList() { Resources = [] };
+            dwarfPlanet.ResourceList = new MyResourceList() { RawResources = [] };
             dwarfPlanet.Moons = [];
 
-            if (Logging & DwarfPlanetLogging) Console.WriteLine($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
+            if (Logging & DwarfPlanetLogging) ConsoleLog($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
             return ReturnDwarfPlanetInformation(dwarfPlanet);
             throw new NotImplementedException();
         }

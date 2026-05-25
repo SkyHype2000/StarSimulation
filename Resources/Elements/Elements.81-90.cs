@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Thallium",
             NameDE = "Thallium",
-            ID = "Resources.Elements.Thallium",
+            ID = "RawResources.Elements.Thallium",
             Symbol = "Tl",
             Description = "",
             Density = 11850.0f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Lead",
             NameDE = "Blei",
-            ID = "Resources.Elements.Lead",
+            ID = "RawResources.Elements.Lead",
             Symbol = "Pb",
             Description = "",
             Density = 11340.0f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Bismuth",
             NameDE = "Bismut",
-            ID = "Resources.Elements.Bismuth",
+            ID = "RawResources.Elements.Bismuth",
             Symbol = "Bi",
             Description = "",
             Density = 9780.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Polonium",
             NameDE = "Polonium",
-            ID = "Resources.Elements.Polonium",
+            ID = "RawResources.Elements.Polonium",
             Symbol = "Po",
             Description = "",
             Density = 9196.0f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Astatine",
             NameDE = "Astat",
-            ID = "Resources.Elements.Astatine",
+            ID = "RawResources.Elements.Astatine",
             Symbol = "At",
             Description = "",
             Density = 7000.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Radon",
             NameDE = "Radon",
-            ID = "Resources.Elements.Radon",
+            ID = "RawResources.Elements.Radon",
             Symbol = "Rn",
             Description = "",
             Density = 9.73f,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Francium",
             NameDE = "Francium",
-            ID = "Resources.Elements.Francium",
+            ID = "RawResources.Elements.Francium",
             Symbol = "Fr",
             Description = "",
             Density = 1870.0f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Radium",
             NameDE = "Radium",
-            ID = "Resources.Elements.Radium",
+            ID = "RawResources.Elements.Radium",
             Symbol = "Ra",
             Description = "",
             Density = 5500.0f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Actinium",
             NameDE = "Actinium",
-            ID = "Resources.Elements.Actinium",
+            ID = "RawResources.Elements.Actinium",
             Symbol = "Ac",
             Description = "",
             Density = 10070.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Thorium",
             NameDE = "Thorium",
-            ID = "Resources.Elements.Thorium",
+            ID = "RawResources.Elements.Thorium",
             Symbol = "Th",
             Description = "",
             Density = 11720.0f,

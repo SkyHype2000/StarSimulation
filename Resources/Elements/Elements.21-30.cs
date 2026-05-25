@@ -15,7 +15,7 @@ namespace Star_Simulation
         {
             Name = "Scandium",
             NameDE = "Scandium",
-            ID = "Resources.Elements.Scandium",
+            ID = "RawResources.Elements.Scandium",
             Symbol = "Sc",
             Description = "",
             Density = 2985.0f,
@@ -29,7 +29,7 @@ namespace Star_Simulation
         {
             Name = "Titanium",
             NameDE = "Titan",
-            ID = "Resources.Elements.Titanium",
+            ID = "RawResources.Elements.Titanium",
             Symbol = "Ti",
             Description = "",
             Density = 4506.0f,
@@ -43,7 +43,7 @@ namespace Star_Simulation
         {
             Name = "Vanadium",
             NameDE = "Vanadium",
-            ID = "Resources.Elements.Vanadium",
+            ID = "RawResources.Elements.Vanadium",
             Symbol = "V",
             Description = "",
             Density = 6110.0f,
@@ -57,7 +57,7 @@ namespace Star_Simulation
         {
             Name = "Chromium",
             NameDE = "Chrom",
-            ID = "Resources.Elements.Chromium",
+            ID = "RawResources.Elements.Chromium",
             Symbol = "Cr",
             Description = "",
             Density = 7190.0f,
@@ -71,7 +71,7 @@ namespace Star_Simulation
         {
             Name = "Manganese",
             NameDE = "Mangan",
-            ID = "Resources.Elements.Manganese",
+            ID = "RawResources.Elements.Manganese",
             Symbol = "Mn",
             Description = "",
             Density = 7430.0f,
@@ -85,7 +85,7 @@ namespace Star_Simulation
         {
             Name = "Iron",
             NameDE = "Eisen",
-            ID = "Resources.Elements.Iron",
+            ID = "RawResources.Elements.Iron",
             Symbol = "Fe",
             Description = "",
             Density = 7874.0f,
@@ -99,7 +99,7 @@ namespace Star_Simulation
         {
             Name = "Cobalt",
             NameDE = "Kobalt",
-            ID = "Resources.Elements.Cobalt",
+            ID = "RawResources.Elements.Cobalt",
             Symbol = "Co",
             Description = "",
             Density = 8900.0f,
@@ -113,7 +113,7 @@ namespace Star_Simulation
         {
             Name = "Nickel",
             NameDE = "Nickel",
-            ID = "Resources.Elements.Nickel",
+            ID = "RawResources.Elements.Nickel",
             Symbol = "Ni",
             Description = "",
             Density = 8908.0f,
@@ -127,7 +127,7 @@ namespace Star_Simulation
         {
             Name = "Copper",
             NameDE = "Kupfer",
-            ID = "Resources.Elements.Copper",
+            ID = "RawResources.Elements.Copper",
             Symbol = "Cu",
             Description = "",
             Density = 8960.0f,
@@ -141,7 +141,7 @@ namespace Star_Simulation
         {
             Name = "Zinc",
             NameDE = "Zink",
-            ID = "Resources.Elements.Zinc",
+            ID = "RawResources.Elements.Zinc",
             Symbol = "Zn",
             Description = "",
             Density = 7140.0f,
