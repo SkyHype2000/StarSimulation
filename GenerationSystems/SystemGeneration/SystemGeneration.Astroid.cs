@@ -88,7 +88,7 @@ namespace Star_Simulation
             };
 
             if (Logging && AstroidLogging) ConsoleLogWrite($"Generated Asteroid: {name}");
-            else LogWrite($"Generated Asteroid: {name}");
+            if (LoggingFile && AstroidLoggingFile) LogWrite($"Generated Asteroid: {name}");
 
             return astroid;
 
@@ -135,7 +135,7 @@ namespace Star_Simulation
                 ConsoleLogWrite($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
                 ConsoleLogWrite($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
             }
-            else
+            if (Logging && AstroidBeltLoggingFile)
             {
                 LogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
                 LogWrite($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");

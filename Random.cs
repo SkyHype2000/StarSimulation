@@ -44,8 +44,10 @@ namespace Star_Simulation
 
         public class SeedRandom
         {
-            internal string seed { get; private set; }
-            internal int state = 0;
+            public string seed { get; private set; }
+            public string pos { get; private set; }
+            public int state = 0;
+            public bool lockState = false;
 
             public SeedRandom(string seed = "new SeedRandom();")
             {
@@ -56,10 +58,14 @@ namespace Star_Simulation
 
             public void NextState()
             {
+                if (lockState) return;
+
                 int hash = 0;
                 foreach (char c in seed) hash = (hash * 31 + c) & 0x7FFFFFFF;
 
                 state = (1664525 * (state + hash) + 1013904223) & 0x7FFFFFFF;
+
+                pos = $"{seed}:{state}";
             }
 
             public void Push(uint n = 0xFF)
@@ -162,9 +168,9 @@ namespace Star_Simulation
             /// <returns></returns>
             public Vector3<T> NextVector3<T>(MinMax<T> range) where T : INumber<T>
             {
-                T nextX = Next(range.Max, range.Min);
-                T nextY = Next(range.Max, range.Min);
-                T nextZ = Next(range.Max, range.Min);
+                T nextX = Next<T>(range.Max, range.Min);
+                T nextY = Next<T>(range.Max, range.Min);
+                T nextZ = Next<T>(range.Max, range.Min);
 
                 return new Vector3<T>(nextX, nextY, nextZ);
             }

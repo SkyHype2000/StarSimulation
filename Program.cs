@@ -36,17 +36,26 @@ namespace Star_Simulation
         /// <summary>Activates the Logging of Astroid-Generation (Not Recommendet if you still wan't to see whats happening in the COnsole)</summary>
         public static bool AstroidLogging = false;
         /// <summary>Activates the Logging of Astroid-Belt-Generation</summary>
-        public static bool AstroidBeltLogging = true;
+        public static bool AstroidBeltLogging = false;
+
+
+        public static bool LoggingFile = true;
+        public static bool PlanetLoggingFile = true;
+        public static bool ProtoPlanetLoggingFile = false;
+        public static bool DwarfPlanetLoggingFile = false;
+        public static bool PlanetAsteroidBeltIterationLoggingFile = false;
+        public static bool AstroidLoggingFile = false;
+        public static bool AstroidBeltLoggingFile = true;
 
         /// <summary>
         /// Loggs The Generation of RawResources.<br/>
         /// Be Careful: This can make the Console Output Very Very Very Big (It will only log if Logging is True)
         /// </summary>
-        public static bool ResourceGeneration_Logging = false;
+        public static bool ResourceGeneration_Logging = true;
         public static bool ResourceGeneration_StarLogging = false; // Placeholder, it doesn't Work
         public static bool ResourceGeneration_ProtoPlanetLogging = false; // Placeholder, it doesn't Work
         public static bool ResourceGeneration_DwarfPlanetLogging = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_PlanetLogging = false;
+        public static bool ResourceGeneration_PlanetLogging = true;
         public static bool ResourceGeneration_AsteroidBeltLogging = false; // Placeholder, it doesn't Work
         public static bool ResourceGeneration_AstroidLogging = false; // Placeholder, it doesn't Work
         public static bool ResourceGeneration_BuildResourceLogging = true;

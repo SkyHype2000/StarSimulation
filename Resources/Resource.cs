@@ -151,17 +151,20 @@ namespace Star_Simulation
         /// </summary>
         public class MyResourceList
         {
-            public required List<MyResourceValue> RawResources { get; set; }
+            public required List<MyResourceValue> RawResources { get; init; }
             public List<MyResourceListValue> RealResources { get; private set; } = [];
             public float AverageDensity { get; private set; } = 0.0f;
 
             /// <summary>
             /// Builds the Values so it will reach 1PPM-accuracy and saves it as MyResourceListValue into RealResources
             /// </summary>
-            public void BuildRealResources()
+            public void BuildRealResources(string pos = "")
             {
                 try
                 {
+                    RealResources.Clear();
+                    AverageDensity = 0.0f;
+
                     if (RawResources.Count == 0) return;
                     int allResourcesCount = RawResources.Sum(e => e.Value);
                     if (allResourcesCount == 0) return;
@@ -181,7 +184,7 @@ namespace Star_Simulation
                     AverageDensity = RealResources.Sum(e => e.Resource.Density * e.Percent);
 
                     if (ResourceGeneration_BuildResourceLogging && ResourceGeneration_Logging && Logging) ConsoleLog($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");
-                    if (ResourceGeneration_BuildResourceLoggingFile && ResourceGeneration_LoggingFile) ConsoleLog($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");
+                    if (ResourceGeneration_BuildResourceLoggingFile && ResourceGeneration_LoggingFile) LogWrite($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3{(pos != "" ? $" ({pos})" : "")}");
                 }
                 catch (Exception e)
                 {

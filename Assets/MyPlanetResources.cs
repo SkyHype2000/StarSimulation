@@ -44,16 +44,19 @@ namespace Star_Simulation
             try
             {
                 if (Logging && log && ResourceGeneration_Logging) ConsoleLog($"Starting to Generate Planet Core RawResources");
-                if (logWrite && ResourceGeneration_LoggingFile) ConsoleLog($"Starting to Generate Planet Core RawResources");
+                if (logWrite && ResourceGeneration_LoggingFile) LogWrite($"Starting to Generate Planet Core RawResources");
                 MyResourceList core = GeneratePlanetCoreResources(seed, log);
+                core.BuildRealResources($"core GeneratePlanetResource, seed={seed.pos}");
 
                 if (Logging && log && ResourceGeneration_Logging) ConsoleLog($"Starting to Generate Planet Mantle RawResources");
                 if (logWrite && ResourceGeneration_LoggingFile) LogWrite($"Starting to Generate Planet Mantle RawResources");
                 MyResourceList mantle = GeneratePlanetMantleResources(seed, log);
+                mantle.BuildRealResources($"mantle GeneratePlanetResource, seed={seed.pos}");
 
                 if (Logging && log && ResourceGeneration_Logging) ConsoleLog($"Starting to Generate Planet Crust RawResources");
                 if (logWrite && ResourceGeneration_LoggingFile) LogWrite($"Starting to Generate Planet Crust RawResources");
                 MyResourceList crust = GeneratePlanetCrustResources(seed, log);
+                crust.BuildRealResources($"crust GeneratePlanetResource, seed={seed.pos}");
 
                 float crustSize = seed.Next<float>(70000, 20000);
 
@@ -80,9 +83,9 @@ namespace Star_Simulation
             MyResourceList core = new MyResourceList() { RawResources = [] };
 
             int valueFeNi = seed.Next<int>(800_000, 700_000);
-            int valueFe = seed.Next<int>(800_000);
+            int valueFe = valueFeNi;
             int valueNi = valueFeNi - valueFe;
-            int valueFeS = 1000 - valueFeNi;
+            int valueFeS = 1_000_000 - valueFeNi;
             MyResourceValue core_iron = new() { Value = valueFe, Resource = ResourceElements.Iron };
             if (Logging && log && ResourceGeneration_Logging) ConsoleLog($"Generated Core Resource \"Iron\" with {core_iron.Value}ppm.");
             if (logWrite && ResourceGeneration_LoggingFile) LogWrite($"Generated Core Resource \"Iron\" with {core_iron.Value}ppm.");
@@ -101,7 +104,7 @@ namespace Star_Simulation
             core.RawResources.Add(core_nickel);
             core.RawResources.Add(core_Ironsulfide);
 
-            core.BuildRealResources();
+            //core.BuildRealResources();
 
             return core;
         }
@@ -165,7 +168,7 @@ namespace Star_Simulation
             mantle.RawResources.Add(mantle_Cr2O3);
             mantle.RawResources.Add(mantle_TiO2);
 
-            mantle.BuildRealResources();
+            //mantle.BuildRealResources();
 
             return mantle;
         }
@@ -229,7 +232,7 @@ namespace Star_Simulation
             crust.RawResources.Add(crust_Na2O);
             crust.RawResources.Add(crust_K2O);
 
-            crust.BuildRealResources();
+            //crust.BuildRealResources();
 
             return crust;
         }
