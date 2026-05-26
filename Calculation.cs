@@ -73,7 +73,7 @@ namespace Star_Simulation
         /// <param name="M">The mass value to locate within the available subspectral classes.</param>
         /// <returns>An object representing the subspectral class whose mass range includes the specified value. If no matching
         /// class is found, returns the first subspectral class in the collection.</returns>
-        public static ISubspectralClass GetSubspectral(double M)
+        public static SubspectralClass GetSubspectral(double M)
         {
             foreach (var sub in SubspectralClasses)
             {
@@ -91,7 +91,7 @@ namespace Star_Simulation
         /// <param name="M">Star Mass in Sun Masses</param>
         /// <param name="spectral">Specralinformation</param>
         /// <returns>Normalized Value</returns>
-        public static float CalculateNorm(double M, ISpectralClass spectral)
+        public static float CalculateNorm(double M, SpectralClass spectral)
         {
             float norm = (float)(((M) - spectral.MassRangeMin) / (spectral.MassRangeMax - spectral.MassRangeMin));
             return norm;
@@ -102,7 +102,7 @@ namespace Star_Simulation
         /// <param name="M">Star Mass in KG</param>
         /// <param name="subspectral">Subspecralinformation</param>
         /// <returns>Normalized Value</returns>
-        public static float CalculateNorm(double M, ISubspectralClass subspectral)
+        public static float CalculateNorm(double M, SubspectralClass subspectral)
         {
             float norm = (float)((M - subspectral.MassRangeMin) / (subspectral.MassRangeMax - subspectral.MassRangeMin));
             return norm;
@@ -131,12 +131,12 @@ namespace Star_Simulation
             return result;
         }
 
-        public static float CalculateStarSurfaceTemperatureNorm(float norm, ISpectralClass spectral)
+        public static float CalculateStarSurfaceTemperatureNorm(float norm, SpectralClass spectral)
         {
             return (spectral.TemperatureRangeMax - spectral.TemperatureRangeMin) * norm + spectral.TemperatureRangeMin;
         }
 
-        public static float CalculateStarSurfaceTemperatureNorm(float norm, ISubspectralClass subspectral)
+        public static float CalculateStarSurfaceTemperatureNorm(float norm, SubspectralClass subspectral)
         {
             return (subspectral.TemperatureRangeMax - subspectral.TemperatureRangeMin) * norm + subspectral.TemperatureRangeMin;
         }
@@ -146,29 +146,29 @@ namespace Star_Simulation
             return (orbitalHeight * Math.Pow(massMain / massParent, 0.4f));
         }
 
-        public static double CalculateSOI(IMyPlanet Planet, IMyStar Star)
+        public static double CalculateSOI(MyPlanet Planet, MyStar Star)
         {
             return (Planet.Orbit.OrbitalRadiusPerigee * Math.Pow(Planet.Mass / Star.Mass, 0.4f));
         }
 
-        public static double CalculateSOI(IMyDwarfPlanetGeneration Planet, IMyStarGeneration Star)
+        public static double CalculateSOI(MyDwarfPlanetGeneration DwarfPlanet, MyStarGeneration Star)
         {
-            if (Planet.Orbit == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.Planet.Orbit");
-            if (Planet.Mass == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.Planet.Mass");
+            if (DwarfPlanet.Orbit == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.DwarfPlanet.Orbit");
+            if (DwarfPlanet.Mass == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.DwarfPlanet.Mass");
             if (Star.Mass == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.Star.Mass");
-            return (Planet.Orbit.OrbitalRadiusPerigee * Math.Pow((double)(Planet.Mass / Star.Mass), 0.4f));
+            return (DwarfPlanet.Orbit.OrbitalRadiusPerigee * Math.Pow((double)(DwarfPlanet.Mass / Star.Mass), 0.4f));
         }
 
-        public static double CalculateSOI(IMyMoon Moon, IMyPlanet Planet)
+        public static double CalculateSOI(IMyMoon Moon, MyPlanet Planet)
         {
             return (Moon.Orbit.OrbitalRadiusPerigee * Math.Pow(Moon.Mass / Planet.Mass, 0.4f));
         }
 
-        public static double CalculateSOI(IMyMoonGeneration Moon, IMyDwarfPlanetGeneration Planet)
+        public static double CalculateSOI(IMyMoonGeneration Moon, MyDwarfPlanetGeneration Planet)
         {
             if (Moon.Orbit == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.Moon.Orbit");
             if (Moon.Mass == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.Moon.Mass");
-            if (Planet.Mass == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.Planet.Mass");
+            if (Planet.Mass == null) throw new MyObjectGenerationValueException("(double).CalculateSOI.DwarfPlanet.Mass");
             return (Moon.Orbit.OrbitalRadiusPerigee * Math.Pow((double)(Moon.Mass / Planet.Mass), 0.4f));
         }
 
@@ -382,7 +382,7 @@ namespace Star_Simulation
                 return currentOrbitalRadius;
             }
 
-            public static Vector2<double> GetOrbitPosition(IMyOrbit orbit, double simulationTime)
+            public static Vector2<double> GetOrbitPosition(MyOrbit orbit, double simulationTime)
             {
                 double ra = orbit.OrbitalRadiusApogee;
                 double rp = orbit.OrbitalRadiusPerigee;
@@ -412,7 +412,7 @@ namespace Star_Simulation
                 return new Vector2<double>(xr, yr);
             }
 
-            public static Vector2<double>[] GetOrbitPoints(IMyOrbit orbit, int segments)
+            public static Vector2<double>[] GetOrbitPoints(MyOrbit orbit, int segments)
             {
                 Vector2<double>[] points = new Vector2<double>[segments];
 

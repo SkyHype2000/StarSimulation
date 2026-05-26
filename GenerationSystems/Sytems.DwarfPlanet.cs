@@ -13,28 +13,12 @@ namespace Star_Simulation
 {
     internal partial class Systems
     {
-        public interface IMyDwarfPlanet : IMyStellarObject
-        {
-            string Name { get; }
-            string ID { get; }
-            double Mass { get; }
-            double Radius { get; }
-            IMyOrbit Orbit { get; }
-            MinMax<float> SurfaceTemperature { get; }
-            CelestialType Type { get; }
-            CelestialAtmosphereType AtmosphereType { get; }
-            CelestialSurfaceType SurfaceType { get; }
-            CelestialHabitability Habitability { get; }
-            CelestialLifeType[] LifeType { get; }
-            CelestialSpecialProperties[] SpecialProperties { get; }
-            MyResourceList ResourceList { get; }
-            IMyMoon[] Moons { get; }
-        }
-        public class MyDwarfPlanet : IMyDwarfPlanet, IMyStellarObject
+        public class MyDwarfPlanet : IMyStellarObject
         {
             public required string Name { get; set; }
             public required string ID { get; set; }
             public required double Mass { get; set; }
+            public required MyPlanetResources Composition { get; set; }
             public required double Radius { get; set; }
             public required MinMax<float> SurfaceTemperature { get; set; }
             public required CelestialType Type { get; set; }
@@ -45,33 +29,17 @@ namespace Star_Simulation
             public required CelestialSpecialProperties[] SpecialProperties { get; set; }
             public required MyResourceList ResourceList { get; set; }
             public required IMyMoon[] Moons { get; set; }
-            public required IMyOrbit Orbit { get; set; }
+            public required MyOrbit Orbit { get; set; }
         }
 
-        public interface IMyDwarfPlanetGeneration : IMyObjectGeneration
-        {
-            string? Name { get; set; }
-            string? ID { get; set; }
-            double? Mass { get; set; }
-            MyResourceList? ResourceList { get; set; }
-            double? Radius { get; set; }
-            IMyOrbit? Orbit { get; set; }
-            MinMax<float>? SurfaceTemperature { get; set; }
-            CelestialType? Type { get; set; }
-            CelestialAtmosphereType? AtmosphereType { get; set; }
-            CelestialSurfaceType? SurfaceType { get; set; }
-            CelestialHabitability? Habitability { get; set; }
-            CelestialLifeType[]? LifeType { get; set; }
-            CelestialSpecialProperties[]? SpecialProperties { get; set; }
-            IMyMoon[]? Moons { get; set; }
-        }
-        public class MyDwarfPlanetGeneration : IMyDwarfPlanetGeneration, IMyObjectGeneration
+        public class MyDwarfPlanetGeneration : IMyObjectGeneration
         {
             public string? Name { get; set; }
             public string? ID { get; set; }
             public double? Mass { get; set; }
+            public MyPlanetResources? Composition { get; set; }
             public double? Radius { get; set; }
-            public IMyOrbit? Orbit { get; set; }
+            public MyOrbit? Orbit { get; set; }
             public MinMax<float>? SurfaceTemperature { get; set; }
             public CelestialType? Type { get; set; }
             public CelestialAtmosphereType? AtmosphereType { get; set; }
@@ -84,16 +52,17 @@ namespace Star_Simulation
         }
 
         /// <summary>
-        /// Returns a IMyDwarfPlanet Value Based of the IMyDwarfPlanetGeneration Value
+        /// Returns a IMyDwarfPlanet Value Based of the MyDwarfPlanetGeneration Value
         /// </summary>
         /// <param name="myDwarfPlanetGeneration"></param>
         /// <returns></returns>
         /// <exception cref="MyObjectGenerationValueException"></exception>
-        public static IMyDwarfPlanet ReturnDwarfPlanetInformation(IMyDwarfPlanetGeneration myDwarfPlanetGeneration)
+        public static MyDwarfPlanet ReturnDwarfPlanetInformation(MyDwarfPlanetGeneration myDwarfPlanetGeneration)
         {
             if (myDwarfPlanetGeneration.Name == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.Name");
             if (myDwarfPlanetGeneration.ID == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.ID");
             if (myDwarfPlanetGeneration.Mass == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.Mass");
+            if (myDwarfPlanetGeneration.Composition == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.Composition");
             if (myDwarfPlanetGeneration.Radius == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.Radius");
             if (myDwarfPlanetGeneration.Orbit == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.Orbit");
             if (myDwarfPlanetGeneration.SurfaceTemperature == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.SurfaceTemperature");
@@ -111,6 +80,7 @@ namespace Star_Simulation
                 Name = myDwarfPlanetGeneration.Name,
                 ID = myDwarfPlanetGeneration.ID,
                 Mass = (double)myDwarfPlanetGeneration.Mass,
+                Composition = myDwarfPlanetGeneration.Composition,
                 Radius = (double)myDwarfPlanetGeneration.Radius,
                 SurfaceTemperature = (MinMax<float>)myDwarfPlanetGeneration.SurfaceTemperature,
                 Type = (CelestialType)myDwarfPlanetGeneration.Type,

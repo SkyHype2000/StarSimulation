@@ -13,25 +13,7 @@ namespace Star_Simulation
 {
     internal partial class Systems
     {
-        public interface IMyPlanet : IMyStellarObject
-        {
-            string Name { get; }
-            string ID { get; }
-            double Mass { get; }
-            double Radius { get; }
-            IMyOrbit Orbit { get; }
-            MinMax<float> SurfaceTemperature { get; }
-            CelestialType Type { get; }
-            CelestialAtmosphereType AtmosphereType { get; }
-            CelestialSurfaceType SurfaceType { get; }
-            CelestialHabitability Habitability { get; }
-            CelestialLifeType[] LifeType { get; }
-            CelestialSpecialProperties[] SpecialProperties { get; }
-            MyResourceList ResourceList { get; }
-            MyPlanetResources Composition { get; }
-            IMyMoon[] Moons { get; }
-        }
-        public class MyPlanet : IMyPlanet, IMyStellarObject
+        public class MyPlanet : IMyStellarObject
         {
             public required string Name { get; set; }
             public required string ID { get; set; }
@@ -47,34 +29,16 @@ namespace Star_Simulation
             public required MyResourceList ResourceList { get; set; }
             public required MyPlanetResources Composition { get; set; }
             public required IMyMoon[] Moons { get; set; }
-            public required IMyOrbit Orbit { get; set; }
+            public required MyOrbit Orbit { get; set; }
         }
 
-        public interface IMyPlanetGeneration : IMyObjectGeneration
-        {
-            string? Name { get; set; }
-            string? ID { get; set; }
-            double? Mass { get; set; }
-            MyResourceList? ResourceList { get; set; }
-            MyPlanetResources? Composition { get; set; }
-            double? Radius { get; set; }
-            IMyOrbit? Orbit { get; set; }
-            MinMax<float>? SurfaceTemperature { get; set; }
-            CelestialType? Type { get; set; }
-            CelestialAtmosphereType? AtmosphereType { get; set; }
-            CelestialSurfaceType? SurfaceType { get; set; }
-            CelestialHabitability? Habitability { get; set; }
-            CelestialLifeType[]? LifeType { get; set; }
-            CelestialSpecialProperties[]? SpecialProperties { get; set; }
-            IMyMoon[]? Moons { get; set; }
-        }
-        public class MyPlanetGeneration : IMyPlanetGeneration, IMyObjectGeneration
+        public class MyPlanetGeneration : IMyObjectGeneration
         {
             public string? Name { get; set; }
             public string? ID { get; set; }
             public double? Mass { get; set; }
             public double? Radius { get; set; }
-            public IMyOrbit? Orbit { get; set; }
+            public MyOrbit? Orbit { get; set; }
             public MinMax<float>? SurfaceTemperature { get; set; }
             public CelestialType? Type { get; set; }
             public CelestialAtmosphereType? AtmosphereType { get; set; }
@@ -88,28 +52,28 @@ namespace Star_Simulation
         }
 
         /// <summary>
-        /// Returns a IMyPlanet Value Based of the IMyOlanetGeneration Value
+        /// Returns a MyPlanet Value Based of the IMyOlanetGeneration Value
         /// </summary>
         /// <param name="myPlanetGeneration"></param>
         /// <returns></returns>
         /// <exception cref="MyObjectGenerationValueException"></exception>
-        public static IMyPlanet ReturnPlanetInformation(IMyPlanetGeneration myPlanetGeneration)
+        public static MyPlanet ReturnPlanetInformation(MyPlanetGeneration myPlanetGeneration)
         {
-            if (myPlanetGeneration.Name == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Name");
-            if (myPlanetGeneration.ID == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.ID");
-            if (myPlanetGeneration.Mass == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Mass");
-            if (myPlanetGeneration.Radius == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Radius");
-            if (myPlanetGeneration.Orbit == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Orbit");
-            if (myPlanetGeneration.SurfaceTemperature == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.SurfaceTemperature");
-            if (myPlanetGeneration.Type == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Type");
-            if (myPlanetGeneration.AtmosphereType == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.AtmosphereType");
-            if (myPlanetGeneration.SurfaceType == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.SurfaceType");
-            if (myPlanetGeneration.Habitability == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Habitability");
-            if (myPlanetGeneration.LifeType == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.LifeType");
-            if (myPlanetGeneration.SpecialProperties == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.SpecialProperties");
-            if (myPlanetGeneration.ResourceList == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.ResourceList");
-            if (myPlanetGeneration.Composition == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Composition");
-            if (myPlanetGeneration.Moons == null) throw new MyObjectGenerationValueException("(IMyPlanet).ReturnPlanetInformation.myPlanetGeneration.Moons");
+            if (myPlanetGeneration.Name == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Name");
+            if (myPlanetGeneration.ID == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.ID");
+            if (myPlanetGeneration.Mass == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Mass");
+            if (myPlanetGeneration.Radius == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Radius");
+            if (myPlanetGeneration.Orbit == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Orbit");
+            if (myPlanetGeneration.SurfaceTemperature == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.SurfaceTemperature");
+            if (myPlanetGeneration.Type == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Type");
+            if (myPlanetGeneration.AtmosphereType == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.AtmosphereType");
+            if (myPlanetGeneration.SurfaceType == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.SurfaceType");
+            if (myPlanetGeneration.Habitability == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Habitability");
+            if (myPlanetGeneration.LifeType == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.LifeType");
+            if (myPlanetGeneration.SpecialProperties == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.SpecialProperties");
+            if (myPlanetGeneration.ResourceList == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.ResourceList");
+            if (myPlanetGeneration.Composition == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Composition");
+            if (myPlanetGeneration.Moons == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Moons");
 
             return new MyPlanet()
             {

@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <Content Include="Assets\icon.ico" />
+      <Content Include="Resources\MyPlanetResources.cs" />
     </ItemGroup>
 
     <ItemGroup>

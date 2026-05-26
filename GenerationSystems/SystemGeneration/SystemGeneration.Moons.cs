@@ -12,7 +12,7 @@ namespace Star_Simulation
         /// <summary>A Moon Object</summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static IMyMoon GenerateMoon(IMyDwarfPlanetGeneration Parent, IMyStarGeneration StarParent, float MoonOrbit, int ObjectNumber)
+        public static IMyMoon GenerateMoon(MyDwarfPlanetGeneration Parent, MyStarGeneration StarParent, float MoonOrbit, int ObjectNumber)
         {
             // Placeholder for moon generation logic
             // Have to translate from ts to c#, but i'am lazy

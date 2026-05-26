@@ -7,6 +7,8 @@ namespace Star_Simulation
 {
     internal class Libary
     {
+#pragma warning disable CS0660 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.Equals(Objekt o)
+#pragma warning disable CS0661 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.GetHashCode()
         public class Vector2<T> where T : INumber<T>
         {
             public T X, Y;
@@ -64,7 +66,11 @@ namespace Star_Simulation
             public override string ToString() =>
                 $"Vector2({X}, {Y})";
         }
+#pragma warning restore CS0660 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.Equals(Objekt o)
+#pragma warning restore CS0661 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.GetHashCode()
 
+#pragma warning disable CS0660 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.Equals(Objekt o)
+#pragma warning disable CS0661 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.GetHashCode()
         public class Vector3<T> where T : INumber<T>
         {
             public T X, Y, Z;
@@ -122,6 +128,8 @@ namespace Star_Simulation
             public override string ToString() =>
                 $"Vector3({X}, {Y}, {Z})";
         }
+#pragma warning restore CS0660 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.Equals(Objekt o)
+#pragma warning restore CS0661 // Typ definiert Operator == oder Operator !=, überschreibt jedoch nicht Object.GetHashCode()
 
         public static T Distance2D<T>(Libary.Vector2<T> a, Libary.Vector2<T> b) where T : INumber<T>
         { return T.CreateChecked(Math.Sqrt(Math.Pow(double.CreateChecked(b.X - a.X), 2) + Math.Pow(double.CreateChecked(b.Y - a.Y), 2))); }

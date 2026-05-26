@@ -6,8 +6,26 @@ using static Star_Simulation.Resource;
 
 namespace Star_Simulation
 {
-    internal partial class ResourceElements
+    internal partial class ResourceElement
     {
+        public static readonly MyMolecule Dihydrogenmonoxide = new MyMolecule()
+        {
+            Name = "Water",
+            NameDE = "Wasser",
+            ID = "RawResources.MyMolecule.Dihydrogenmonoxide",
+            Symbol = "H2O",
+            Description = "",
+            Density = 1000.0f,
+            BoilingPoint = 373.15f,
+            FreezingPoint = 273.15f,
+            SolidFormExists = true,
+            LiquidFormExists = true,
+            GasFormExists = true,
+            Category = ResourceCategory.Liquid,
+            Position = [ResourcePosition.Comet,ResourcePosition.Surface]
+        };
+        public static readonly MyMolecule H2O = Dihydrogenmonoxide;
+
         public static readonly MyMolecule Ironsulfide = new MyMolecule()
         {
             Name = "Ironsulfide",
@@ -16,8 +34,8 @@ namespace Star_Simulation
             Symbol = "FeS",
             Description = "",
             Density = 4840.0f,
-            BoilingPoint = 0,
-            FreezingPoint = 0,
+            BoilingPoint = -1.0f,
+            FreezingPoint = -1.0f,
             SolidFormExists = true,
             LiquidFormExists = true,
             GasFormExists = false,
@@ -205,5 +223,41 @@ namespace Star_Simulation
             Position = [ResourcePosition.SubsurfaceMantle]
         };
         public static readonly MyMolecule K2O = Potassiumoxide;
+
+        public static readonly MyMolecule Methane = new()
+        {
+            Name = "Methane",
+            NameDE = "Methan",
+            ID = "RawResources.MyMolecule.Methane",
+            Symbol = "CH4",
+            Description = "",
+            Density = 0.657f,
+            BoilingPoint = 111.15f,
+            FreezingPoint = 91.15f,
+            SolidFormExists = true,
+            LiquidFormExists = true,
+            GasFormExists = true,
+            Category = ResourceCategory.Gas,
+            Position = [ResourcePosition.Atmosphere]
+        };
+        public static readonly MyMolecule CH4 = Methane;
+
+        public static readonly MyMolecule Ammonia = new()
+        {
+            Name = "Ammonia",
+            NameDE = "Ammoniak",
+            ID = "RawResources.MyMolecule.Ammonia",
+            Symbol = "NH3",
+            Description = "",
+            Density = 0.73f,
+            BoilingPoint = 239.81f,
+            FreezingPoint = 195.42f,
+            SolidFormExists = true,
+            LiquidFormExists = true,
+            GasFormExists = true,
+            Category = ResourceCategory.Gas,
+            Position = []
+        };
+        public static readonly MyMolecule NH3 = Ammonia;
     }
 }

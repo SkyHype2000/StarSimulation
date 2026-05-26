@@ -17,14 +17,16 @@ namespace Star_Simulation
         /// </summary>
         public static readonly double STAR_GENERATION_CONSTANT = 1.0216388735543742521887522130876091683703957473078500310054178421533504358657415429775215553538366594d;
 
-        public static ISubspectralClass[] SubspectralClasses = [];
+        public static SubspectralClass[] SubspectralClasses = [];
 
-        public static readonly string LogfileName = DateTime.Now.ToString("dd_MM_yyyy") + ".log";
+        public static string LogfileName = $"{DateTime.Now.ToString("dd_MM_yyyy hh;mm;ss").Replace(";", "")}.log";
 
         public static readonly SeedRandom Global_Seed = new SeedRandom("512351234");
-
+        
         /// <summary>Activates the Logging of Some Generation-Values (This is the Main Switch, if you turn this of => No Logging.)</summary>
         public static bool Logging = true;
+        /// <summary>Activates the Logging of Star-Generation</summary>
+        public static bool StarLogging = true;
         /// <summary>Activates the Logging of Planet-Generation</summary>
         public static bool PlanetLogging = true;
         /// <summary>Activates the Logging of Proto Planet-Generation (There can be Many Proto Planets)</summary>
@@ -38,8 +40,8 @@ namespace Star_Simulation
         /// <summary>Activates the Logging of Astroid-Belt-Generation</summary>
         public static bool AstroidBeltLogging = false;
 
-
         public static bool LoggingFile = true;
+        public static bool StarLoggingFile = true;
         public static bool PlanetLoggingFile = true;
         public static bool ProtoPlanetLoggingFile = false;
         public static bool DwarfPlanetLoggingFile = false;
@@ -48,29 +50,36 @@ namespace Star_Simulation
         public static bool AstroidBeltLoggingFile = true;
 
         /// <summary>
+        /// Ignores All File-Logging Settings and Forces File Logging.
+        /// </summary>
+        public static bool ForceLoggingFile = false;
+
+        /// <summary>
         /// Loggs The Generation of RawResources.<br/>
         /// Be Careful: This can make the Console Output Very Very Very Big (It will only log if Logging is True)
         /// </summary>
-        public static bool ResourceGeneration_Logging = true;
+        public static bool ResourceGeneration_Logging = false;
         public static bool ResourceGeneration_StarLogging = false; // Placeholder, it doesn't Work
         public static bool ResourceGeneration_ProtoPlanetLogging = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_DwarfPlanetLogging = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_PlanetLogging = true;
-        public static bool ResourceGeneration_AsteroidBeltLogging = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_AstroidLogging = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_BuildResourceLogging = true;
+        public static bool ResourceGeneration_DwarfPlanetLogging = false;
+        public static bool ResourceGeneration_PlanetLogging = false;
+        public static bool ResourceGeneration_AsteroidBeltLogging = false;
+        public static bool ResourceGeneration_AsteroidLogging = false;
+        public static bool ResourceGeneration_BuildResourceLogging = false;
+        public static bool ResourceGeneration_ResourceListLogging = false;
         /// <summary>
         /// Loggs The Generation of RawResources into the Log-File.<br/>
         /// Be Careful: This can make the Log File Very Large.
         /// </summary>
         public static bool ResourceGeneration_LoggingFile = true;
         public static bool ResourceGeneration_StarLoggingFile = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_ProtoPlanetLoggingFile = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_DwarfPlanetLoggingFile = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_ProtoPlanetLoggingFile = true; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_DwarfPlanetLoggingFile = false;
         public static bool ResourceGeneration_PlanetLoggingFile = true;
-        public static bool ResourceGeneration_AsteroidBeltLoggingFile = false; // Placeholder, it doesn't Work
-        public static bool ResourceGeneration_AstroidLoggingFile = false; // Placeholder, it doesn't Work
+        public static bool ResourceGeneration_AsteroidBeltLoggingFile = true;
+        public static bool ResourceGeneration_AsteroidLoggingFile = false;
         public static bool ResourceGeneration_BuildResourceLoggingFile = true;
+        public static bool ResourceGeneration_ResourceListLoggingFile = true;
 
         /*
          * Checkliste:
@@ -88,69 +97,69 @@ namespace Star_Simulation
          *    - Watt-Leuchtstärke                              [Fertig]
          *    - Masse                                          [Fertig]
          *    - Lum und Subspektrale Klasse                    [Fertig]
-         *    - Metalizität                                    [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
+         *    - Metalizität                                    [Zukunft]
          *    - Alter/Lebenszeit                               [Zukunft] [Abhängigkeit Fehlt: Metalizität]
          * 
-         * - Asteroiden Generieren                             [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
-         *    - Masse                                          [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
+         * - Asteroiden Generieren                             [Fertig]
          *    - Radius                                         [Fertig]
+         *    - Masse                                          [Fertig]
+         *    - Ressourcen/Zusammensetzung                     [Fertig]
          *    - Orbitale Informationen                         [Fertig]
-         *    - Typ                                            [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
-         *    - Ressourcen                                     [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
+         *    - Typ                                            [Fertig]
          * 
          * - Asteroidengürtel Generieren                       [Arbeite Dran]
          *    - Innen und Außenradius                          [Fertig]
          *    - Theoretische Asteroidenanzahl                  [Fertig]
-         *    - Ressourcen                                     [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
+         *    - Ressourcen/Zusammensetzung                     [Arbeite Dran]
          * 
          * - Planeten Generieren                               [Arbeite Dran]
          *    - Orbitale Informationen                         [Fertig]
-         *    - Masse                                          [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
          *    - Radius                                         [Fertig]
-         *    - Oberflächentemperatur                          [Arbeite Dran] [Abhängigkeit Fehlt: Atmosphäre]
+         *    - Masse                                          [Fertig]
+         *    - Ressourcen/Zusammensetzung                     [Fertig]
+         *    - Oberflächentemperatur                          [Zukunft] [Abhängigkeit Fehlt: Atmosphäre]
          *    - Typ / Oberflächentyp                           [Zukunft]
          *    - Atmosphäre                                     [Zukunft]
          *    - Habitabel und Lebensarten                      [Zukunft]
          *    - Monde                                          [Zukunft]
-         *    - Ressourcen                                     [Zukunft]
          *    - Magnetfelder                                   [Zukunft]
          *    - Strahlung (Oberfläche)                         [Zukunft]
          *    - Strahlung (Strahlungsgürtel)                   [Zukunft]
          * 
-         * - Zwergplaneten Generieren                          [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
+         * - Zwergplaneten Generieren                          [Arbeite Dran]
          *    - Orbitale Informationen                         [Fertig]
-         *    - Masse                                          [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
-         *    - Radius                                         [Zukunft]
+         *    - Radius                                         [Arbeite Drab]
+         *    - Masse                                          [Arbeite Dran]
+         *    - Ressourcen/Zusammensetzung                     [Arbeite Dran]
          *    - Typ / Oberflächentyp                           [Zukunft]
          *    - Atmosphäre                                     [Zukunft]
          *    - Habitabel und Lebensarten                      [Zukunft]
-         *    - Ressourcen                                     [Zukunft]
          *    - Magnetfelder                                   [Zukunft]
          *    - Strahlung (Oberfläche)                         [Zukunft]
          *    - Strahlung (Strahlungsgürtel)                   [Zukunft]
          * 
          * - Protoplaneten Generieren                          [Arbeite Dran]
          *    - Orbitale Informationen                         [Fertig]
-         *    - Masse                                          [Arbeite Dran] [Abhängigkeit Fehlt: Ressourcen]
          *    - Radius                                         [Fertig]
-         *    - Oberflächentemperatur                          [Arbeite Dran] [Abhängigkeit Fehlt: Atmosphäre]
+         *    - Masse                                          [Arbeite Dran]
+         *    - Ressourcen                                     [Arbeite Dran]
+         *    - Oberflächentemperatur                          [Zukunft] [Abhängigkeit Fehlt: Atmosphäre]
          *    - Typ / Oberflächentyp                           [Fertig]
          *    - Atmosphäre                                     [Zukunft]
          *    - Habitabel und Lebensarten                      [Zukunft]
-         *    - Ressourcen                                     [Zukunft]
          *    
          * - Ressourcen (Elemente)                             [Arbeite Dran]
          *    - Name                                           [Fertig]
          *    - Dichte                                         [Fertig]
          *    - Temperaturen                                   [Fertig]
          *    - Zustand & Typ                                  [Fertig]
-         *    - Ressourcenverteilung                           [Arbeite Dran]
+         *    - Ressourcenverteilung                           [Fertig]
          *    
          * - Atmosphäre                                        [Zukunft]
          *    - Druck                                          [Zukunft]
-         *    - Farbe                                          [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
-         *    - Bestandteile                                   [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
-         *    - Treibhauseffekt                                [Zukunft] [Abhängigkeit Fehlt: Ressourcen]
+         *    - Farbe                                          [Zukunft]
+         *    - Bestandteile                                   [Zukunft]
+         *    - Treibhauseffekt                                [Zukunft]
          * 
          * Nicht So Essenziell
          * 
@@ -166,12 +175,11 @@ namespace Star_Simulation
          *    - Strahlung (Oberfläche)                         [Zukunft]
          *    - Strahlung (Strahlungsgürtel)                   [Zukunft]
          * 
-         * - Ressourcen                                        [Zukunft]
-         *    - Dichte                                         [Zukunft]
-         *    - Vorkommen                                      [Zukunft]
-         *    - Wahrscheinlichkeit                             [Zukunft]
-         *    - Eigenschaften                                  [Zukunft]
-         *    - Typ                                            [Zukunft]
+         * - Ressourcen                                        [Fertig]
+         *    - Dichte                                         [Fertig]
+         *    - Vorkommen                                      [Fertig] (Zusammensetzung der Objekte Hart Einprogrammiert. Oberflächenvorkommen wie Ozeane oder Atmosphären kommen Später)
+         *    - Wahrscheinlichkeit                             [Fertig]
+         *    - Typ                                            [Fertig]
          * 
          * - Atmosphäre                                        [Zukunft]
          *    - Bestandteile                                   [Zukunft]
@@ -182,7 +190,7 @@ namespace Star_Simulation
          *    - Farbe                                          [Zukunft] [Braucht Anzeige/Rendering]
          * 
          * - Stellare Events                                   [Zukunft]
-         *    - CME                                            [Zukunft]
+         *    - CME/CME-Wahrscheinlichkeit                     [Zukunft]
          *    - Anomalien                                      [Zukunft]
          *    - Interstellare Besucher                         [Zukunft]
          *    
@@ -209,10 +217,9 @@ namespace Star_Simulation
 
             //ConsoleLog($"Global Seed: {Global_Seed.seed}");
 
-            ConsoleLogWrite($"Global Seed: {Global_Seed.seed}");
-
             try
             {
+                ConsoleLogWrite($"Global Seed: {Global_Seed.seed}");
                 GenerateSubspectralClasses();
                 GenerationTableMain();
 

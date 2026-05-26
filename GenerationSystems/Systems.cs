@@ -15,39 +15,7 @@ namespace Star_Simulation
         { Terrestrial, Rocky, Gas, IceGas, Dwarf, Lava, Ocean, Desert, Carbon }
         public enum CelestialObjectType
         { Planet, Moon, DrawfPlanet, DrawfMoon, ProtoPlanet }
-        /// <summary>
-        /// Asteroiden werden in verschiedene Klassen eingeteilt, basierend auf ihrer chemischen Zusammensetzung und ihren optischen Eigenschaften. Die wichtigsten Klassen sind:<br/>
-        /// C-Klasse(kohlenstoffreich) : Diese Klassen umfassen etwa 75 % aller Asteroiden und sind sehr dunkle Körper mit einem Albedo von weniger als 0,065. Sie ähneln kohligen<br/>
-        /// Chondriten und befinden sich hauptsächlich in den äußeren Regionen des Asteroidengürtels.Ein Beispiel ist Ceres, der größte Körper im Asteroidengürtel.<br/>
-        /// S-Klasse (silikatreich): Diese Klassen machen etwa 15 % aller Asteroiden aus und besitzen eine hellere, rötliche Oberfläche mit einem Albedo von 0,10 bis 0,22.<br/>
-        /// Sie enthalten Silikatmineralien wie Pyroxen und Olivin sowie Eisen und ähneln Siderolithen und gewöhnlichen Chondriten.Sie sind typischerweise in den inneren<br/>
-        /// Regionen des Asteroidengürtels zu finden, wie beispielsweise der Asteroid 3 Juno.<br/>
-        /// M-Klasse (metallisch): Diese Asteroiden enthalten große Anteile metallischen Eisens und haben ein Albedo von 0,10 bis 0,18. Sie befinden sich hauptsächlich in der<br/>
-        /// mittleren Region des Asteroidengürtels und könnten Bruchstücke von differenzierten Planetesimalen sein, die ein metallisches Kern- und Mantel-System hatten.<br/>
-        /// V-Klasse (Vestoid): Diese Klassen sind besonders selten und ähneln basaltischen Lavas.Sie sind typischerweise mit dem Asteroiden Vesta verbunden, der als Quelle von Vesta-Meteoriten gilt.<br/>
-        /// D-Klasse: Diese Klassen sind reich an organischen Verbindungen und Eis und finden sich hauptsächlich bei den Jupiter-Trojanern.Ein Beispiel ist der Asteroid Hektor.<br/>
-        /// X-Klasse: Diese Klassen sind Mischungen aus metallischen und silikatigen Materialien mit variabler Zusammensetzung und Albedo zwischen 0,05 und 0,35.<br/>
-        /// Darüber hinaus gibt es auch spezielle Klassen wie die G-Klasse (kohlenstoffreich mit Phyllosilikaten), die F-Klasse(dunkel kohlenstoffreich mit hydratisierten Mineralien)<br/>
-        /// und die P-Klasse(primitiv organisch mit Silikaten), die jeweils spezifische chemische und optische Eigenschaften aufweisen.<br/><br/>
-        /// 
-        /// Einige Asteroiden, wie beispielsweise 1 Ceres, 4 Vesta oder 16 Psyche, sind nicht nur nach ihrer Zusammensetzung klassifiziert, sondern auch als Zwergplaneten<br/>
-        /// oder besondere Objekte von wissenschaftlichem Interesse anerkannt.<br/><br/>
-        /// 
-        /// (Antwort von Leo Brave Search KI)
-        /// </summary>
-        /// <remarks>
-        /// Aber nochmal in Kurzform:<br/>
-        /// C: Kohlenstoffreich<br/>
-        /// S: Silikatreich<br/>
-        /// M: Metallisch<br/>
-        /// V: Vestoid (basaltisch)<br/>
-        /// D: Organisch und eisreich<br/>
-        /// X: Mischung aus metallisch und silikatisch<br/>
-        /// G: Kohlenstoff mit Phyllosilikaten<br/>
-        /// F: Dunkel kohlenstoffreich mit "hydratisierten Mineralien"(Was auch immer das bedeuten soll.)<br/>
-        /// P: "Primitiv"(Was auch immer das bedeutet) mit Silikaten. (Okay nach mehr googeln, habe ich herausgefunden, dass die als "Primitiv" Gelten, weil sie in ihrer Geschichte Kaum Erhitzt wurden?)<br/>
-        /// </remarks>
-        public enum AstroidType { None, C, S, M, V, D, X, G, F, P }
+        public enum AsteroidType { None, C, S, M, D, V, E, A, X }
         /// <summary>
         /// Der Atmosphärentyp wird anhand seiner Zusammensetzung Bestimmt, nicht Umgekehrt.
         /// </summary>
@@ -67,7 +35,7 @@ namespace Star_Simulation
         /// Die Lebenstypen auf einem Planeten (Es können Mehrere Geben)<br/>
         /// Exotisches Leben ist Flexibler weil es anders Aufgebaut ist.
         /// </summary>
-        public enum CelestialLifeType 
+        public enum CelestialLifeType
         { Cellular, Multicellular, Intelligent, Synthetic, ExoticCellular, ExoticMulticellular, ExoticIntelligent }
 
         /// <summary>
@@ -90,53 +58,13 @@ namespace Star_Simulation
 
         public interface IMyStellarObject { }
         public interface IMyStellarEvent { }
-        public interface IMyStellarSystem
+        public class MyStellarSystem
         {
-            List<IMyStellarObject> StellarObjects { get; }
-            List<IMyStellarEvent> StellarEvents { get; }
+            public required List<IMyStellarObject> StellarObjects { get; set; }
+            public required List<IMyStellarEvent> StellarEvents { get; set; }
         }
-        public class MyStellarSystem : IMyStellarSystem
-        { public required List<IMyStellarObject> StellarObjects { get; set; } public required List<IMyStellarEvent> StellarEvents { get; set; } }
-        
-        public interface IMyOrbit
-        {
-            public string ID { get; set; }
-            /// <summary>
-            /// The Up-Down Acial Rotation Around the Parents Center of Rotation.<br/>
-            /// -90 to 90°  (seed.Next(-90, 90))
-            /// </summary>
-            public int AxialRotationUD { get; set; }
-            /// <summary>
-            /// The Left-Right Acial Rotation Around the Parents Center of Rotation.<br/>
-            /// 0 to 360° (seed.Next(360, 0))
-            /// </summary>
-            public int AxialRotationLR { get; set; }
-            /// <summary>
-            /// The Orbital Height on the Perigee, Measured in Meters
-            /// </summary>
-            public double OrbitalRadiusPerigee { get; set; }
-            /// <summary>
-            /// The Orbital Speed at Perigee, Measored in Meters per Second
-            /// </summary>
-            public double OrbitalSpeedPerigee { get; set; }
-            /// <summary>
-            /// The Orbital Height on the Apogee, Measured in Meters
-            /// </summary>
-            public double OrbitalRadiusApogee { get; set; }
-            /// <summary>
-            /// The Orbital Speed at Apogee, Measored in Meters per Second
-            /// </summary>
-            public double OrbitalSpeedApogee { get; set; }
-            /// <summary>
-            /// The Orbital Period, Measored in Seconds
-            /// </summary>
-            public double OrbitalPeriod { get; set; }
-            /// <summary>
-            /// The Offset of the Planets Starting Orbit (in Seconds)
-            /// </summary>
-            public double OrbitalOffset { get; set; }
-        }
-        public class MyOrbit : IMyOrbit
+
+        public class MyOrbit
         {
             public required string ID { get; set; }
             /// <summary>
@@ -174,20 +102,8 @@ namespace Star_Simulation
             /// </summary>
             public required double OrbitalOffset { get; set; }
         }
-        public interface IMyStellarSystemList
-        {
-            public uint Object_Stars { get; set; }
-            public uint Object_Planets { get; set; }
-            public uint Object_AstroidBelts { get; set; }
-            public uint Object_Comets { get; set; }
-            public uint Object_ProtoPlanets { get; set; }
-            public uint Object_DrawfPlanets { get; set; }
-            public uint Object_Astroids { get; set; }
-            public uint Event_Anomalies { get; set; }
-            public uint Event_CME { get; set; }
-            public uint Event_InterstellarVisitors { get; set; }
-        }
-        public class MyStellarSystemList : IMyStellarSystemList
+
+        public class MyStellarSystemList
         {
             public required uint Object_Stars { get; set; }
             public required uint Object_Planets { get; set; }

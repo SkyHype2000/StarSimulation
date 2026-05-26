@@ -14,20 +14,7 @@ namespace Star_Simulation
          * Aber das Wäre zu Kompliziert, sogar für mich...
          */
 
-        public interface IMyStar : IMyStellarObject
-        {
-            string Name { get; set; }
-            string ID { get; set; }
-            double Mass { get; set; }
-            double Radius { get; set; }
-            float Norm { get; set; }
-            float Temperature { get; set; }
-            double Luminosity { get; set; }
-            ISubspectralClass SubSpectralClass { get; set; }
-            ILuminosityClass LuminosityClass { get; set; }
-            IMyStellarSystem StellarSystem { get; set; }
-        }
-        public class MyStar : IMyStar
+        public class MyStar
         {
             public required string Name { get; set; }
             public required string ID { get; set; }
@@ -36,26 +23,12 @@ namespace Star_Simulation
             public required float Norm { get; set; }
             public required float Temperature { get; set; }
             public required double Luminosity { get; set; }
-            public required ISubspectralClass SubSpectralClass { get; set; }
+            public required SubspectralClass SubSpectralClass { get; set; }
             public required ILuminosityClass LuminosityClass { get; set; }
-            public required IMyStellarSystem StellarSystem { get; set; }
+            public required MyStellarSystem StellarSystem { get; set; }
         }
 
-        public interface IMyStarGeneration : IMyObjectGeneration
-        {
-            string? Name { get; set; }
-            string? ID { get; set; }
-            double? Mass { get; set; }
-            double? Radius { get; set; }
-            float? Norm { get; set; }
-            float? Temperature { get; set; }
-            double? Watt { get; set; }
-            ISubspectralClass? SubSpectralClass { get; set; }
-            ILuminosityClass? LuminosityClass { get; set; }
-            IMyStellarSystem? StellarSystem { get; set; }
-        };
-
-        public class MyStarGeneration : IMyStarGeneration, IMyObjectGeneration
+        public class MyStarGeneration : IMyObjectGeneration
         {
             public string? Name { get; set; }
             public string? ID { get; set; }
@@ -64,29 +37,29 @@ namespace Star_Simulation
             public float? Norm { get; set; }
             public float? Temperature { get; set; }
             public double? Watt { get; set; }
-            public ISubspectralClass? SubSpectralClass { get; set; }
+            public SubspectralClass? SubSpectralClass { get; set; }
             public ILuminosityClass? LuminosityClass { get; set; }
-            public IMyStellarSystem? StellarSystem { get; set; }
+            public MyStellarSystem? StellarSystem { get; set; }
         }
 
         /// <summary>
-        /// Returns a IMyStar Value Based of the IMyStarGeneration Value
+        /// Returns a MyStar Value Based of the MyStarGeneration Value
         /// </summary>
         /// <param name="starGeneration"></param>
         /// <returns></returns>
         /// <exception cref="MyObjectGenerationValueException"></exception>
-        public static IMyStar ReturnStarInformation(IMyStarGeneration starGeneration)
+        public static MyStar ReturnStarInformation(MyStarGeneration starGeneration)
         {
-            if (starGeneration.Name == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.Name");
-            if (starGeneration.ID == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.ID");
-            if (starGeneration.Mass == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.Mass");
-            if (starGeneration.Radius == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.Radius");
-            if (starGeneration.Norm == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.Norm");
-            if (starGeneration.Temperature == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.Temperature");
-            if (starGeneration.Watt == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.Watt");
-            if (starGeneration.SubSpectralClass == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.SubSpectralClass");
-            if (starGeneration.LuminosityClass == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.LuminosityClass");
-            if (starGeneration.StellarSystem == null) throw new MyObjectGenerationValueException("(IMyStar).ReturnStarInformation.starGeneration.StellarSystem");
+            if (starGeneration.Name == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.Name");
+            if (starGeneration.ID == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.ID");
+            if (starGeneration.Mass == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.Mass");
+            if (starGeneration.Radius == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.Radius");
+            if (starGeneration.Norm == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.Norm");
+            if (starGeneration.Temperature == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.Temperature");
+            if (starGeneration.Watt == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.Watt");
+            if (starGeneration.SubSpectralClass == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.SubSpectralClass");
+            if (starGeneration.LuminosityClass == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.LuminosityClass");
+            if (starGeneration.StellarSystem == null) throw new MyObjectGenerationValueException("(MyStar).ReturnStarInformation.starGeneration.StellarSystem");
 
             return new MyStar()
             {

@@ -15,7 +15,7 @@ namespace Star_Simulation
 {
     internal partial class SystemGeneration
     {
-        public static IMyPlanet? lastPlanet = null;
+        public static MyPlanet? lastPlanet = null;
         /// <summary>A Planet Object</summary>
         /// <remarks>
         /// The Rules are soooo simple, that i can't remember thoose.<br/><br/>
@@ -24,12 +24,12 @@ namespace Star_Simulation
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         /// <exception cref="MyObjectGenerationValueException"></exception>
-        public static IMyPlanet GeneratePlanet(IMyStarGeneration StarParent, uint ObjectNumber, double lastOrbitalRadius, MinMax<double>[] AsteroidBeltsOrbitalHeights)
+        public static MyPlanet GeneratePlanet(MyStarGeneration StarParent, uint ObjectNumber, double lastOrbitalRadius, MinMax<double>[] AsteroidBeltsOrbitalHeights)
         {
-            IMyPlanetGeneration planet = new MyPlanetGeneration();
+            MyPlanetGeneration planet = new MyPlanetGeneration();
 
-            if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(IMyPlanet).GeneratePlanet.StarParent.Mass");
-            if (StarParent.Watt == null) throw new MyObjectGenerationValueException("(IMyPlanet).GeneratePlanet.StarParent.Watt");
+            if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(MyPlanet).GeneratePlanet.StarParent.Mass");
+            if (StarParent.Watt == null) throw new MyObjectGenerationValueException("(MyPlanet).GeneratePlanet.StarParent.Watt");
 
             SeedRandom seed = new SeedRandom((StarParent.ID + "-" + ObjectNumber).ToString());
 
@@ -38,20 +38,20 @@ namespace Star_Simulation
             string id = $"{StarParent.ID}-{ObjectNumber:X2}";
             planet.ID = id;
 
-            if (Logging && PlanetLogging) ConsoleLogWrite($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
-            else LogWrite($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
+            if (Logging && PlanetLogging) ConsoleLog($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
+            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile) LogWrite($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
 
             double radius = seed.Next(GC_Planet.RangePlanetRadius);
             planet.Radius = radius;
 
-            MyPlanetResources composition = GeneratePlanetResources(seed, (Logging && ResourceGeneration_Logging && ResourceGeneration_PlanetLogging), (ResourceGeneration_LoggingFile && ResourceGeneration_PlanetLoggingFile));
+            MyPlanetResources composition = GeneratePlanetResources(seed);
             planet.Composition = composition;
 
             //double mass = CalculateBasicObjectMass(radius, EarthDensity);
             double mass = CalculateObjectMass(composition, radius);
             planet.Mass = mass;
-            if (Logging && PlanetLogging) ConsoleLogWrite($"MASS: {mass} kg");
-            else LogWrite($"MASS: {mass} kg");
+            if (Logging && PlanetLogging) ConsoleLog($"MASS: {mass} kg");
+            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile) LogWrite($"MASS: {mass} kg");
 
             double orbitalRadiusPe = 0;
             if (lastPlanet == null)
@@ -87,11 +87,11 @@ namespace Star_Simulation
 
                 if (Logging && PlanetAsteroidBeltIterationLogging)
                 {
-                    ConsoleLogWrite($"Asteroid Belt Testing Iteration {validOrbitSearchIterations.ToString().PadLeft(5, '0')}:");
-                    ConsoleLogWrite($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
-                    ConsoleLogWrite($"SOIAP_RANGE: {SOIAP_RANGE.Floor()} ({SOIAP_RANGE.Floor() / MinMaxAU} AU)");
+                    ConsoleLog($"Asteroid Belt Testing Iteration {validOrbitSearchIterations.ToString().PadLeft(5, '0')}:");
+                    ConsoleLog($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
+                    ConsoleLog($"SOIAP_RANGE: {SOIAP_RANGE.Floor()} ({SOIAP_RANGE.Floor() / MinMaxAU} AU)");
                 }
-                else
+                if (LoggingFile && PlanetAsteroidBeltIterationLoggingFile || ForceLoggingFile)
                 {
                     LogWrite($"Asteroid Belt Testing Iteration {validOrbitSearchIterations.ToString().PadLeft(5, '0')}:");
                     LogWrite($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
@@ -104,8 +104,8 @@ namespace Star_Simulation
                 for (int i = 0; i < AsteroidBeltsOrbitalHeights.Length; i++)
                 {
                     MinMax<double> AstBeltRadius = AsteroidBeltsOrbitalHeights[i];
-                    if (Logging && PlanetAsteroidBeltIterationLogging) ConsoleLogWrite($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
-                    else LogWrite($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
+                    if (Logging && PlanetAsteroidBeltIterationLogging) ConsoleLog($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
+                    if (LoggingFile && PlanetAsteroidBeltIterationLoggingFile || ForceLoggingFile) LogWrite($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
                     if (SOIPE_RANGE.Min >= AstBeltRadius.Min && SOIPE_RANGE.Max <= AstBeltRadius.Max) { validOrbit = false; break; }
                     else if (SOIAP_RANGE.Min >= AstBeltRadius.Min && SOIAP_RANGE.Max <= AstBeltRadius.Max) { validOrbit = false; break; }
                     else { validOrbit = true; }
@@ -113,7 +113,7 @@ namespace Star_Simulation
             }
 
             string orbitID = id + "-O";
-            IMyOrbit myOrbit = new MyOrbit()
+            MyOrbit myOrbit = new MyOrbit()
             {
                 ID = orbitID,
                 AxialRotationUD = seed.Next(-5, 5),
@@ -139,20 +139,20 @@ namespace Star_Simulation
 
             if (Logging && PlanetLogging)
             {
-                ConsoleLogWrite($"Sun Watt:               {StarParent.Watt} W");
-                ConsoleLogWrite($"Orbital Radius PE:      {Math.Round(orbitalRadiusPe)} m ({orbitalRadiusPe / AU} AU)");
-                ConsoleLogWrite($"Orbital Radius AP:      {Math.Round(orbitalRadiusAp)} m ({orbitalRadiusAp / AU} AU)");
-                ConsoleLogWrite($"Orbital Radius:         {Math.Round((orbitalRadiusPe + orbitalRadiusAp) / 2)} m ({((orbitalRadiusPe + orbitalRadiusAp) / 2) / AU} AU)");
-                ConsoleLogWrite($"Orbital Speed PE:       {Math.Round(orbitalSpeedPe)} m/s");
-                ConsoleLogWrite($"Orbital Speed AP:       {Math.Round(orbitalSpeedAp)} m/s");
-                ConsoleLogWrite($"Orbital Speed:          {Math.Round((orbitalSpeedPe + orbitalSpeedAp) / 2)} m/s");
-                ConsoleLogWrite($"Surface Albedo:         {albedo}");
-                ConsoleLogWrite($"Surface Temperature PE: {surfaceTemperature.Max} °K ({CelciusOffset + surfaceTemperature.Max} °C)");
-                ConsoleLogWrite($"Surface Temperature AP: {surfaceTemperature.Min} °K ({CelciusOffset + surfaceTemperature.Min} °C)");
-                ConsoleLogWrite($"Surface Temperature:    {surfaceTemperatureAverage} °K ({CelciusOffset + surfaceTemperatureAverage} °C)");
-                ConsoleLogWrite($"Orbital Period:         {orbitalPeriod} s ({orbitalPeriod / Year} Years)");
+                ConsoleLog($"Sun Watt:               {StarParent.Watt} W");
+                ConsoleLog($"Orbital Radius PE:      {Math.Round(orbitalRadiusPe)} m ({orbitalRadiusPe / AU} AU)");
+                ConsoleLog($"Orbital Radius AP:      {Math.Round(orbitalRadiusAp)} m ({orbitalRadiusAp / AU} AU)");
+                ConsoleLog($"Orbital Radius:         {Math.Round((orbitalRadiusPe + orbitalRadiusAp) / 2)} m ({((orbitalRadiusPe + orbitalRadiusAp) / 2) / AU} AU)");
+                ConsoleLog($"Orbital Speed PE:       {Math.Round(orbitalSpeedPe)} m/s");
+                ConsoleLog($"Orbital Speed AP:       {Math.Round(orbitalSpeedAp)} m/s");
+                ConsoleLog($"Orbital Speed:          {Math.Round((orbitalSpeedPe + orbitalSpeedAp) / 2)} m/s");
+                ConsoleLog($"Surface Albedo:         {albedo}");
+                ConsoleLog($"Surface Temperature PE: {surfaceTemperature.Max} °K ({CelciusOffset + surfaceTemperature.Max} °C)");
+                ConsoleLog($"Surface Temperature AP: {surfaceTemperature.Min} °K ({CelciusOffset + surfaceTemperature.Min} °C)");
+                ConsoleLog($"Surface Temperature:    {surfaceTemperatureAverage} °K ({CelciusOffset + surfaceTemperatureAverage} °C)");
+                ConsoleLog($"Orbital Period:         {orbitalPeriod} s ({orbitalPeriod / Year} Years)");
             }
-            else
+            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile)
             {
                 LogWrite($"Sun Watt:               {StarParent.Watt} W");
                 LogWrite($"Orbital Radius PE:      {Math.Round(orbitalRadiusPe)} m ({orbitalRadiusPe / AU} AU)");
@@ -174,7 +174,7 @@ namespace Star_Simulation
             planet.Habitability = CelestialHabitability.Uninhabitable;
             planet.LifeType = [];
             planet.SpecialProperties = [];
-            planet.ResourceList = new MyResourceList() { RawResources = [] };
+            planet.ResourceList = new MyResourceList([]);
             planet.Moons = [];
 
             return ReturnPlanetInformation(planet);

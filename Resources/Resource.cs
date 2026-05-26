@@ -132,8 +132,8 @@ namespace Star_Simulation
         public class MyResourceValue
         {
             /// <summary>How many are Present in PPM(Parts Per Million)<br/>
-            /// At the End it will not be Important if the Value is PPM, because of BuildRealResources() in MyResourceList.</summary>
-            public required int Value { get; set; }
+            /// But you can also just add everything in pph, ppt, ppm, etc., just be careful, that everything is in the same Ratio.</summary>
+            public required ulong Value { get; set; }
             public required IMyResource Resource { get; set; }
         }
         public class MyResourceListValue
@@ -141,7 +141,7 @@ namespace Star_Simulation
             /// <summary>How many are Present in PPM(Parts Per Million)<br/>
             /// At the End it will not be Important if the Value is PPM, because of BuildRealResources() in MyResourceList.</summary>
             public required int Value { get; init; }
-            public required float Percent {  get; init; }
+            public required float Percent { get; init; }
             public required IMyResource Resource { get; init; }
         }
 
@@ -151,22 +151,27 @@ namespace Star_Simulation
         /// </summary>
         public class MyResourceList
         {
-            public required List<MyResourceValue> RawResources { get; init; }
+            public List<MyResourceValue> RawResources { get; private set; }
             public List<MyResourceListValue> RealResources { get; private set; } = [];
             public float AverageDensity { get; private set; } = 0.0f;
+
 
             /// <summary>
             /// Builds the Values so it will reach 1PPM-accuracy and saves it as MyResourceListValue into RealResources
             /// </summary>
-            public void BuildRealResources(string pos = "")
+            public MyResourceList(List<MyResourceValue> rawResources)
             {
+                RawResources = rawResources;
+
+                if (rawResources.Count == 0 && Logging && ResourceGeneration_Logging) ConsoleLog("MyResourceList was Generated without any Resource. This may cause so issues...");
+                if (rawResources.Count == 0 && (LoggingFile && ResourceGeneration_ResourceListLogging || ForceLoggingFile)) ConsoleLog("MyResourceList was Generated without any Resource. This may cause so issues...");
+                if (rawResources.Count == 0) return;
+
                 try
                 {
-                    RealResources.Clear();
                     AverageDensity = 0.0f;
 
-                    if (RawResources.Count == 0) return;
-                    int allResourcesCount = RawResources.Sum(e => e.Value);
+                    ulong allResourcesCount = rawResources.Sum(e => e.Value);
                     if (allResourcesCount == 0) return;
 
                     RawResources.ForEach((e) =>
@@ -184,7 +189,7 @@ namespace Star_Simulation
                     AverageDensity = RealResources.Sum(e => e.Resource.Density * e.Percent);
 
                     if (ResourceGeneration_BuildResourceLogging && ResourceGeneration_Logging && Logging) ConsoleLog($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");
-                    if (ResourceGeneration_BuildResourceLoggingFile && ResourceGeneration_LoggingFile) LogWrite($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3{(pos != "" ? $" ({pos})" : "")}");
+                    if (ResourceGeneration_BuildResourceLoggingFile && ResourceGeneration_LoggingFile) LogWrite($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");
                 }
                 catch (Exception e)
                 {

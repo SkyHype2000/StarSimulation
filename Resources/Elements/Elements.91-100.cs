@@ -7,7 +7,7 @@ using static Star_Simulation.Resource;
 
 namespace Star_Simulation
 {
-    internal partial class ResourceElements
+    internal partial class ResourceElement
     {
         // Elements from 91 to 100
 

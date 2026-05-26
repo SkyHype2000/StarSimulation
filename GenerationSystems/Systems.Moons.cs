@@ -21,7 +21,7 @@ namespace Star_Simulation
             string ID { get; }
             double Mass { get; }
             double Radius { get; }
-            IMyOrbit Orbit { get; set; }
+            MyOrbit Orbit { get; set; }
             /// <summary>
             /// Hier ist es ein Wenig Konplexer da sich der Mond um den Planeten kreist.<br/>
             /// Dadurch ist die Distanz zum Stern nicht immer Gleich. (Aber das kann man Ignorieren)<br/>
@@ -42,7 +42,7 @@ namespace Star_Simulation
             public required string ID { get; set; }
             public required double Mass { get; set; }
             public required double Radius { get; set; }
-            public required IMyOrbit Orbit { get; set; }
+            public required MyOrbit Orbit { get; set; }
             public required MinMax<float> SurfaceTemperature { get; set; }
             public required CelestialType Type { get; set; }
             public required CelestialAtmosphereType AtmosphereType { get; set; }
@@ -60,7 +60,7 @@ namespace Star_Simulation
             double? Mass { get; set; }
             double? Radius { get; set; }
 
-            IMyOrbit? Orbit { get; set; }
+            MyOrbit? Orbit { get; set; }
             /// <summary>
             /// Hier ist es ein Wenig Konplexer da sich der Mond um den Planeten kreist.<br/>
             /// Dadurch ist die Distanz zum Stern nicht immer Gleich. (Aber das kann man Ignorieren)<br/>
@@ -81,7 +81,7 @@ namespace Star_Simulation
             public string? ID { get; set; }
             public double? Mass { get; set; }
             public double? Radius { get; set; }
-            public IMyOrbit? Orbit { get; set; }
+            public MyOrbit? Orbit { get; set; }
             public MinMax<float>? SurfaceTemperature { get; set; }
             public CelestialType? Type { get; set; }
             public CelestialAtmosphereType? AtmosphereType { get; set; }
@@ -98,7 +98,7 @@ namespace Star_Simulation
         /// <param name="myMoonGeneration"></param>
         /// <returns></returns>
         /// <exception cref="MyObjectGenerationValueException"></exception>
-        public static IMyMoon ReturnMoonInformation(IMyDwarfPlanetGeneration myMoonGeneration)
+        public static IMyMoon ReturnMoonInformation(MyDwarfPlanetGeneration myMoonGeneration)
         {
             if (myMoonGeneration.Name == null) throw new MyObjectGenerationValueException("(IMyMoon).ReturnMoonInformation.myMoonGeneration.Name");
             if (myMoonGeneration.ID == null) throw new MyObjectGenerationValueException("(IMyMoon).ReturnMoonInformation.myMoonGeneration.ID");

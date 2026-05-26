@@ -11,26 +11,13 @@ namespace Star_Simulation
 {
     internal partial class Systems
     {
-        public interface IMyProtoPlanet : IMyStellarObject
-        {
-            string Name { get; }
-            string ID { get; }
-            double Mass { get; }
-            double Radius { get; }
-            IMyOrbit Orbit { get; }
-            MinMax<float> SurfaceTemperature { get; }
-            CelestialType Type { get; }
-            CelestialSurfaceType SurfaceType { get; }
-            CelestialSpecialProperties[] SpecialProperties { get; }
-            MyResourceList ResourceList { get; }
-        }
-        public class MyProtoPlanet : IMyProtoPlanet
+        public class MyProtoPlanet : IMyStellarObject
         {
             public required string Name { get; set; }
             public required string ID { get; set; }
             public required double Mass { get; set; }
             public required double Radius { get; set; }
-            public required IMyOrbit Orbit { get; set; }
+            public required MyOrbit Orbit { get; set; }
             public required MinMax<float> SurfaceTemperature { get; set; }
             public required CelestialType Type { get; set; }
             public required CelestialSurfaceType SurfaceType { get; set; }

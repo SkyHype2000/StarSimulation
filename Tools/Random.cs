@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using static Star_Simulation.Libary;
@@ -199,6 +200,41 @@ namespace Star_Simulation
                 }
                 return string.Join(sectorSeperator, id);
             }
+
+            /// <summary>
+            /// Returns A Item of a List Based of his Probability.
+            /// </summary>
+            /// <param name="randomList"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public T GetItem<T>(T[] randomList) where T : SeedRandomList
+            {
+                float max = randomList.Sum(e => e.Probability);
+                float randomValue = Next<float>(max);
+
+                float currentSum = 0.0f;
+
+                foreach (var item in randomList)
+                {
+                    currentSum += item.Probability;
+
+                    if (randomValue <= currentSum)
+                    {
+                        return item;
+                    }
+                }
+
+                return randomList[randomList.Length - 1];
+            }
+        }
+
+        /// <summary>
+        /// The Probability Interface needed for the SeedRandom.GetItem() Function to Work.<br/>
+        /// The Value-Size in Probability is Irrelevant.
+        /// </summary>
+        public interface SeedRandomList
+        {
+            float Probability { get; }
         }
     }
 }

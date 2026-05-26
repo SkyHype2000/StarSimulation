@@ -23,11 +23,11 @@ namespace Star_Simulation
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"/>
-        public static IMyProtoPlanet GenerateProtoPlanet(IMyStarGeneration StarParent, uint ObjectNumber, MinMax<double>[] AsteroidBeltsOrbitalRadius)
+        public static MyProtoPlanet GenerateProtoPlanet(MyStarGeneration StarParent, uint ObjectNumber, MinMax<double>[] AsteroidBeltsOrbitalRadius)
         {
-            if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(IMyProtoPlanet).GenerateProtoPlanet.StarParent.Mass");
-            if (StarParent.Watt == null) throw new MyObjectGenerationValueException("(IMyProtoPlanet).GenerateProtoPlanet.StarParent.Watt");
-            if (AsteroidBeltsOrbitalRadius.Length == 0) throw new MyObjectGenerationValueException("(IMyProtoPlanet).GenerateProtoPlanet.AsteroidBeltsOrbitalRadius.Length");
+            if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(MyProtoPlanet).GenerateProtoPlanet.StarParent.Mass");
+            if (StarParent.Watt == null) throw new MyObjectGenerationValueException("(MyProtoPlanet).GenerateProtoPlanet.StarParent.Watt");
+            if (AsteroidBeltsOrbitalRadius.Length == 0) throw new MyObjectGenerationValueException("(MyProtoPlanet).GenerateProtoPlanet.AsteroidBeltsOrbitalRadius.Length");
             SeedRandom seed = new SeedRandom(StarParent.ID + ObjectNumber);
             string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
             string id = seed.NextID();
@@ -52,7 +52,8 @@ namespace Star_Simulation
             }
             MinMax<double> orbitalRange = new MinMax<double> { Min=PeriapsisRadius, Max=ApoapsisRadius };
 
-            if (ProtoPlanetLogging) ConsoleLog($"Protoplanet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");
+            if (Logging && ProtoPlanetLogging) ConsoleLog($"Protoplanet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");
+            if (LoggingFile && ProtoPlanetLoggingFile || ForceLoggingFile) ConsoleLog($"Protoplanet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");
 
             double radius = seed.Next(GC_SpaceRock.RangeProtoPlanetRadius);
             double mass = ((4d / 3d) * Math.PI * Math.Pow(radius, 3)) * EarthDensity;
@@ -64,7 +65,7 @@ namespace Star_Simulation
                 Max = CalculateObjectSurfaceTemperature(albedo, PeriapsisRadius, (double)StarParent.Watt)
             };
 
-            IMyOrbit myOrbit = new MyOrbit()
+            MyOrbit myOrbit = new MyOrbit()
             {
                 ID = id + "-O",
                 AxialRotationUD = seed.Next(5, -5),
@@ -77,7 +78,7 @@ namespace Star_Simulation
                 OrbitalOffset = seed.Next(orbitalPeriod, 0)
             };
 
-            IMyProtoPlanet myProtoPlanet = new MyProtoPlanet()
+            MyProtoPlanet myProtoPlanet = new MyProtoPlanet()
             {
                 Name = name,
                 ID = id,
@@ -88,7 +89,7 @@ namespace Star_Simulation
                 Type = CelestialType.Dwarf,
                 SurfaceType = CelestialSurfaceType.Rocky,
                 SpecialProperties = [],
-                ResourceList = new MyResourceList() { RawResources = [] }
+                ResourceList = new MyResourceList([])
             };
 
             return myProtoPlanet;

@@ -20,7 +20,7 @@ namespace Star_Simulation
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static IMyAsteroid GenerateAsteroid(IMyStarGeneration StarParent, int ObjectNumber, MinMax<double> RangeOrbitalHeight, MinMax<double>[] PlanetSOIHeights)
+        public static MyAsteroid GenerateAsteroid(MyStarGeneration StarParent, int ObjectNumber, MinMax<double> RangeOrbitalHeight, MinMax<double>[] PlanetSOIHeights)
         {
             // Placeholder for astroid generation logic
             // Actually i have no idea how to generate astroids and i'am too lazy to research it, so... I will just write trash.
@@ -60,7 +60,7 @@ namespace Star_Simulation
 
             double orbitalPeriod = OrbitalCalculation.OrbitalPeriod_WithApPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
 
-            IMyOrbit myOrbit = new MyOrbit()
+            MyOrbit myOrbit = new MyOrbit()
             {
                 ID = id + "-O",
                 AxialRotationUD = seed.Next(10, -10),
@@ -74,28 +74,31 @@ namespace Star_Simulation
             };
 
             double radius = seed.Next(GC_SpaceRock.RangeAsteroidRadius);
-            double mass = radius * GC_SpaceRock.AsteroidDensity;
 
-            IMyAsteroid astroid = new MyAsteroid()
+            MyAsteroidResources composition = GenerateAsteroidResources(seed);
+
+            double mass = radius * composition.ResourceList.AverageDensity;
+
+            MyAsteroid astroid = new MyAsteroid()
             {
                 Name = name,
                 ID = id,
                 Radius = radius,
                 Mass = mass,
                 Orbit = myOrbit,
-                Type = AstroidType.None,
-                ResourceList = new MyResourceList() { RawResources = [] },
+                Type = composition.Type,
+                Composition = composition.ResourceList,
             };
 
-            if (Logging && AstroidLogging) ConsoleLogWrite($"Generated Asteroid: {name}");
-            if (LoggingFile && AstroidLoggingFile) LogWrite($"Generated Asteroid: {name}");
+            if (Logging && AstroidLogging) ConsoleLog($"Generated Asteroid: {name}");
+            if (LoggingFile && AstroidLoggingFile || ForceLoggingFile) LogWrite($"Generated Asteroid: {name}");
 
             return astroid;
 
             throw new NotImplementedException();
         }
 
-        public static IMyAsteroidBelt GenerateAsteroidBelt(IMyStarGeneration Parent, int ObjectNumber, double LastBeltOuterRadius, bool IsStartingRadius = false)
+        public static MyAsteroidBelt GenerateAsteroidBelt(MyStarGeneration Parent, int ObjectNumber, double LastBeltOuterRadius, bool IsStartingRadius = false)
         {
             string id = "AB-" + Parent.ID + "-" + ObjectNumber.ToString();
             SeedRandom seed = new SeedRandom(id);
@@ -113,9 +116,9 @@ namespace Star_Simulation
 
             AsteroidBeltType type = AsteroidBeltType.Belt;
 
-            MyResourceList resourceList = new MyResourceList() { RawResources = [] };
+            MyResourceList resourceList = new MyResourceList([]);
 
-            IMyAsteroidBelt myAsteroidBelt = new MyAsteroidBelt()
+            MyAsteroidBelt myAsteroidBelt = new MyAsteroidBelt()
             {
                 Name = name,
                 ID = id,
@@ -125,17 +128,17 @@ namespace Star_Simulation
                 Volume = volume,
                 Asteroids = astroids,
                 Type = type,
-                ResourceList = resourceList,
+                Composition = resourceList,
             };
 
             if (Logging && AstroidBeltLogging)
             {
-                ConsoleLogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
-                ConsoleLogWrite($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
-                ConsoleLogWrite($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
-                ConsoleLogWrite($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
+                ConsoleLog($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
+                ConsoleLog($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
+                ConsoleLog($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
+                ConsoleLog($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
             }
-            if (Logging && AstroidBeltLoggingFile)
+            if (Logging && AstroidBeltLoggingFile || ForceLoggingFile)
             {
                 LogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
                 LogWrite($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
@@ -153,6 +156,6 @@ namespace Star_Simulation
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static IMyAsteroid GenerateComet(IMyStarGeneration Parent, int ObjectNumber) { throw new NotImplementedException(); }
+        public static MyAsteroid GenerateComet(MyStarGeneration Parent, int ObjectNumber) { throw new NotImplementedException(); }
     }
 }

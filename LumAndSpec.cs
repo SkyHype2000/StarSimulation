@@ -126,45 +126,17 @@ namespace Star_Simulation
     }
     internal class Spectral
     {
-        public interface ISpectralInformation
+        public class SubspectralClass
         {
-            ISpectralClass Spectral { get; }
-            ISubspectralClass Subspectral { get; }
-        }
-        public interface IStar
-        {
-            ISpectralClass SpectralClass { get; }
-            ISubspectralClass SubspectralClass { get; }
-            ILuminosityClass LuminosityClass { get; }
-            double Mass { get; } // in kg
-            double Radius { get; } // in m
-            double Luminosity { get; } // in W
-            float Temperature { get; } // in Kelvin
-            float Norm { get; } // Normalized value within the subspectral class (0 to 1)
+            public required string SubClass { get; set; } // 0-9
+            public required float TemperatureRangeMin { get; set; } // in Kelvin
+            public required float TemperatureRangeMax { get; set; } // in Kelvin
+            public required double MassRangeMin { get; set; } // in kg
+            public required double MassRangeMax { get; set; } // in kg
+            public required SpectralClass ParentSpectralClass { get; set; }
         }
 
-        public interface ISpectralClass
-        {
-            string Class { get; } // O, B, A, F, G, K, M, L, T, Y
-            float TemperatureRangeMin { get; } // in Kelvin
-            float TemperatureRangeMax { get; } // in Kelvin
-            double MassRangeMin { get; } // in kg
-            double MassRangeMax { get; } // in kg
-            string StarColorName { get; } // Color Name
-            Color StarColor { get; } // RGB Color representation
-        }
-
-        public interface ISubspectralClass
-        {
-            string SubClass { get; } // 0-9
-            float TemperatureRangeMin { get; } // in Kelvin
-            float TemperatureRangeMax { get; } // in Kelvin
-            double MassRangeMin { get; } // in kg
-            double MassRangeMax { get; } // in kg
-            ISpectralClass ParentSpectralClass { get; }
-        }
-
-        public class SpectralClass : ISpectralClass
+        public class SpectralClass
         {
             public required string Class { get; set; } // O, B, A, F, G, K, M, L, T, Y
             public required float TemperatureRangeMin { get; set; } // in Kelvin
@@ -175,7 +147,7 @@ namespace Star_Simulation
             public required Color StarColor { get; set; } // RGB Color representation
         };
 
-        public static ISpectralClass SpectralClassO = new SpectralClass
+        public static SpectralClass SpectralClassO = new SpectralClass
         {
             Class = "O",
             TemperatureRangeMin = 33000,
@@ -186,7 +158,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(155, 176, 255)
         };
 
-        public static ISpectralClass SpectralClassB = new SpectralClass
+        public static SpectralClass SpectralClassB = new SpectralClass
         {
             Class = "B",
             TemperatureRangeMin = 10000,
@@ -197,7 +169,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(170, 191, 255)
         };
 
-        public static ISpectralClass SpectralClassA = new SpectralClass
+        public static SpectralClass SpectralClassA = new SpectralClass
         {
             Class = "A",
             TemperatureRangeMin = 7500,
@@ -208,7 +180,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(202, 215, 255)
         };
 
-        public static ISpectralClass SpectralClassF = new SpectralClass
+        public static SpectralClass SpectralClassF = new SpectralClass
         {
             Class = "F",
             TemperatureRangeMin = 6000,
@@ -219,7 +191,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(248, 247, 255)
         };
 
-        public static ISpectralClass SpectralClassG = new SpectralClass
+        public static SpectralClass SpectralClassG = new SpectralClass
         {
             Class = "G",
             TemperatureRangeMin = 5200,
@@ -230,7 +202,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(255, 244, 234)
         };
 
-        public static ISpectralClass SpectralClassK = new SpectralClass
+        public static SpectralClass SpectralClassK = new SpectralClass
         {
             Class = "K",
             TemperatureRangeMin = 3900,
@@ -241,7 +213,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(255, 210, 161)
         };
 
-        public static ISpectralClass SpectralClassM = new SpectralClass
+        public static SpectralClass SpectralClassM = new SpectralClass
         {
             Class = "M",
             TemperatureRangeMin = 2000,
@@ -252,7 +224,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(255, 204, 111)
         };
 
-        public static ISpectralClass SpectralClassL = new SpectralClass
+        public static SpectralClass SpectralClassL = new SpectralClass
         {
             Class = "L",
             TemperatureRangeMin = 1300,
@@ -263,7 +235,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(255, 180, 100)
         };
 
-        public static ISpectralClass SpectralClassT = new SpectralClass
+        public static SpectralClass SpectralClassT = new SpectralClass
         {
             Class = "T",
             TemperatureRangeMin = 600,
@@ -274,7 +246,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(150, 100, 255)
         };
 
-        public static ISpectralClass SpectralClassY = new SpectralClass
+        public static SpectralClass SpectralClassY = new SpectralClass
         {
             Class = "Y",
             TemperatureRangeMin = 200,
@@ -285,17 +257,7 @@ namespace Star_Simulation
             StarColor = Color.FromArgb(100, 150, 255)
         };
 
-        public class SubspectralClassImpl : ISubspectralClass
-        {
-            public required string SubClass { get; set; }
-            public required float TemperatureRangeMin { get; set; }
-            public required float TemperatureRangeMax { get; set; }
-            public required double MassRangeMin { get; set; }
-            public required double MassRangeMax { get; set; }
-            public required ISpectralClass ParentSpectralClass { get; set; }
-        }
-
-        public static ISpectralClass[] SpectralClasses =
+        public static SpectralClass[] SpectralClasses =
         {
             SpectralClassO,
             SpectralClassB,
@@ -311,7 +273,7 @@ namespace Star_Simulation
 
         public static void GenerateSubspectralClasses()
         {
-            ISubspectralClass[] SubClassesList = new ISubspectralClass[SpectralClasses.Length * 10];
+            SubspectralClass[] SubClassesList = new SubspectralClass[SpectralClasses.Length * 10];
 
             for (int i = 0; i < SpectralClasses.Length; i++)
             {
@@ -326,7 +288,7 @@ namespace Star_Simulation
 
                     //ConsoleLog($"Debug (GenerateSubspectralClasses): Creating subclass {spectralClass.Class}{9 - j} with mass {massMin}-{massMax} and temp {tempMin}-{tempMax}");
 
-                    ISubspectralClass subclass = new SubspectralClassImpl
+                    SubspectralClass subclass = new SubspectralClass
                     {
                         SubClass = (9 - j).ToString(),
                         MassRangeMin = massMin,
