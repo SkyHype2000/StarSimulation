@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\SkyHype IND\\code\\Star Simulation\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\assets\\markovnamelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:assets\\markovnamelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\systemgeneration\\systemgeneration.astroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\systemgeneration\\systemgeneration.astroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\systemgeneration\\generation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\systemgeneration\\generation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,10 +31,6 @@
       "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\generationtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\systemgeneration\\generation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\systemgeneration\\generation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\systemgeneration\\systemgeneration.protoplanet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\systemgeneration\\systemgeneration.protoplanet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -33,14 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\sytems.dwarfplanet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\sytems.dwarfplanet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\systemgeneration\\systemgeneration.astroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\systemgeneration\\systemgeneration.astroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\systemgeneration\\systemgeneration.star.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|solutionrelative:generationsystems\\systemgeneration\\systemgeneration.star.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D6288E75-5A2C-EA09-6A8F-10FD887DE542}|Star Simulation.csproj|d:\\skyhype ind\\code\\star simulation\\generationsystems\\systemgeneration\\systemgeneration.dwarfplanet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,17 +66,17 @@
       "DocumentGroups": [
         {
           "DockedHeight": 2154,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAACNAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-26T16:22:02.643Z",
               "IsPinned": true,
@@ -84,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "GenerationTable.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\GenerationTable.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\GenerationTable.cs",
@@ -98,13 +98,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Generation.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\Generation.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\SystemGeneration\\Generation.cs",
               "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\Generation.cs",
               "RelativeToolTip": "GenerationSystems\\SystemGeneration\\Generation.cs",
-              "ViewState": "AgIAACIBAAAAAAAAAAAqwHIBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAqwF4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-04T09:22:11.992Z",
               "IsPinned": true,
@@ -112,15 +112,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SystemGeneration.Star.cs",
-              "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\SystemGeneration.Star.cs",
-              "RelativeDocumentMoniker": "GenerationSystems\\SystemGeneration\\SystemGeneration.Star.cs",
-              "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\SystemGeneration.Star.cs",
-              "RelativeToolTip": "GenerationSystems\\SystemGeneration\\SystemGeneration.Star.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAgwFIAAAAlAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "MarkovNameList.cs",
+              "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\Assets\\MarkovNameList.cs",
+              "RelativeDocumentMoniker": "Assets\\MarkovNameList.cs",
+              "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\Assets\\MarkovNameList.cs",
+              "RelativeToolTip": "Assets\\MarkovNameList.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJUAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-04T09:20:30.997Z",
+              "WhenOpened": "2026-06-04T11:56:55.323Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -155,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "SystemGeneration.ProtoPlanet.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\SystemGeneration.ProtoPlanet.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\SystemGeneration\\SystemGeneration.ProtoPlanet.cs",
@@ -168,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Sytems.DwarfPlanet.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\Sytems.DwarfPlanet.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\Sytems.DwarfPlanet.cs",
@@ -181,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Systems.ProtoPlanet.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\Systems.ProtoPlanet.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\Systems.ProtoPlanet.cs",
@@ -194,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "SystemGeneration.Planet.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\SystemGeneration.Planet.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\SystemGeneration\\SystemGeneration.Planet.cs",
@@ -207,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Systems.Planets.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\Systems.Planets.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\Systems.Planets.cs",
@@ -246,13 +246,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "SystemGeneration.Astroid.cs",
               "DocumentMoniker": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\SystemGeneration.Astroid.cs",
               "RelativeDocumentMoniker": "GenerationSystems\\SystemGeneration\\SystemGeneration.Astroid.cs",
               "ToolTip": "D:\\SkyHype IND\\code\\Star Simulation\\GenerationSystems\\SystemGeneration\\SystemGeneration.Astroid.cs",
               "RelativeToolTip": "GenerationSystems\\SystemGeneration\\SystemGeneration.Astroid.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAgwIAAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-04T05:43:09.338Z",
               "EditorCaption": ""

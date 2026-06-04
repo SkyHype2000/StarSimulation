@@ -10,7 +10,7 @@ using static Star_Simulation.Libary;
 using static Star_Simulation.Calculation;
 using static Star_Simulation.Program;
 using static Star_Simulation.CExceptions;
-using System.Security.Cryptography.X509Certificates;
+using static Star_Simulation.SystemGeneration;
 
 namespace Star_Simulation
 {
