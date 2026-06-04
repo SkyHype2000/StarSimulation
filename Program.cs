@@ -239,7 +239,7 @@ namespace Star_Simulation
                 GenerateOneStar();
                 //MassGenerateStars(1000, 10);
             }
-            catch (  ception e)
+            catch (Exception e)
             {
                 ConsoleLogWrite([e.Message, e.HelpLink!]);
             }
@@ -327,7 +327,7 @@ namespace Star_Simulation
 
             for (int i = 0; i < seedIterations; i++)
             {
-                SeedRandom seed = new(Global_Seed.N  tID(2));
+                SeedRandom seed = new(Global_Seed.NextID(2));
                 for (int j = 0; j < total; j++)
                 {
                     if ((j % 25) == 0 && overwriteLogging)
