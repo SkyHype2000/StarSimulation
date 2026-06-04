@@ -32,7 +32,7 @@ namespace Star_Simulation
         /// </summary>
         public static string NameGenerationLogfileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-NAMEGEN.log";
 
-        public static readonly SeedRandom Global_Seed = new SeedRandom("512351234");
+        public static readonly SeedRandom Global_Seed = new SeedRandom("w497eg4in8pz34fqm9834");
 
         /// <summary>Activates the Logging of Some Generation-Values (This is the Main Switch, if you turn this of => No Logging.)</summary>
         public static bool Logging = true;
