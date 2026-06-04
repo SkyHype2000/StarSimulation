@@ -30,6 +30,7 @@ namespace Star_Simulation
             public required MyPlanetResources Composition { get; set; }
             public required IMyMoon[] Moons { get; set; }
             public required MyOrbit Orbit { get; set; }
+            public required string Seed { get; set; }
         }
 
         public class MyPlanetGeneration : IMyObjectGeneration
@@ -49,6 +50,7 @@ namespace Star_Simulation
             public MyResourceList? ResourceList { get; set; }
             public MyPlanetResources? Composition { get; set; }
             public IMyMoon[]? Moons { get; set; }
+            public string? Seed { get; set; }
         }
 
         /// <summary>
@@ -74,6 +76,7 @@ namespace Star_Simulation
             if (myPlanetGeneration.ResourceList == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.ResourceList");
             if (myPlanetGeneration.Composition == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Composition");
             if (myPlanetGeneration.Moons == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Moons");
+            if (myPlanetGeneration.Seed == null) throw new MyObjectGenerationValueException("(MyPlanet).ReturnPlanetInformation.myPlanetGeneration.Seed");
 
             return new MyPlanet()
             {
@@ -91,7 +94,8 @@ namespace Star_Simulation
                 ResourceList = (MyResourceList)myPlanetGeneration.ResourceList,
                 Composition = (MyPlanetResources)myPlanetGeneration.Composition,
                 Moons = myPlanetGeneration.Moons,
-                Orbit = myPlanetGeneration.Orbit
+                Orbit = myPlanetGeneration.Orbit,
+                Seed = myPlanetGeneration.Seed!
             };
         }
     }

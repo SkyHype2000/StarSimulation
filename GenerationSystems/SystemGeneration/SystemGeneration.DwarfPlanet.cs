@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using static Star_Simulation.Calculation;
 using static Star_Simulation.Libary;
 using static Star_Simulation.Program;
 using static Star_Simulation.Random;
-using static Star_Simulation.Systems;
 using static Star_Simulation.Resource;
+using static Star_Simulation.Systems;
 
 namespace Star_Simulation
 {
@@ -19,18 +20,19 @@ namespace Star_Simulation
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static MyDwarfPlanet GenerateDwarfPlanet(MyStarGeneration StarParent, uint objectNum, MinMax<double>[] AsteroidBeltsOrbitalRadius)
+        public static MyDwarfPlanet GenerateDwarfPlanet(MyStarGeneration StarParent, uint ObjectNumber, MinMax<double>[] AsteroidBeltsOrbitalRadius)
         {
             if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(MyDwarfPlanetGeneration).GenerateDwarfPlanet.StarParent.Mass");
             if (StarParent.Watt == null) throw new MyObjectGenerationValueException("(MyDwarfPlanetGeneration).GenerateDwarfPlanet.StarParent.Watt");
             if (AsteroidBeltsOrbitalRadius.Length == 0) throw new MyObjectGenerationValueException("(MyProtoPlanet).GenerateProtoPlanet.AsteroidBeltsOrbitalRadius.Length");
 
-            SeedRandom seed = new SeedRandom(StarParent.ID + "-" + objectNum);
             MyDwarfPlanetGeneration dwarfPlanet = new MyDwarfPlanetGeneration();
+
+            SeedRandom seed = new SeedRandom(($"{StarParent.ID}-{ObjectNumber:X2}").ToString());
 
             string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
             dwarfPlanet.Name = name;
-            string id = seed.NextID();
+            string id = $"{StarParent.ID}-{ObjectNumber:X2}";
             dwarfPlanet.ID = id;
 
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Generating the Dwarf Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
@@ -65,8 +67,11 @@ namespace Star_Simulation
             MyPlanetResources composition = GeneratePlanetResources(seed);
             dwarfPlanet.Composition = composition;
 
-            double mass = CalculateObjectMass(composition, radius);
+            //double mass = CalculateBasicSphereMass(radius, EarthDensity);
+            double mass = CalculatePlanetMass(composition, radius);
             dwarfPlanet.Mass = mass;
+            if (Logging && DwarfPlanetLogging) ConsoleLog($"Mass:                   {mass} kg");
+            if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Mass:                   {mass} kg");
 
             double orbitalPeriod = OrbitalCalculation.OrbitalPeriod_WithApPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
             float albedo = seed.Next(0.4f, 0.1f);
@@ -100,6 +105,7 @@ namespace Star_Simulation
             dwarfPlanet.SpecialProperties = [];
             dwarfPlanet.ResourceList = new([]);
             dwarfPlanet.Moons = [];
+            dwarfPlanet.Seed = seed.seed;
 
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
             if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) ConsoleLog($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");

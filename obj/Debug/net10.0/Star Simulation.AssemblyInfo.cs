@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Star Simulation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cddcdbf29953ecf3b2fd02a8162058e86a582fe7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2f0121ab5d3a8f60373125f67a3f47131efcaf7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Star Simulation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Star Simulation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

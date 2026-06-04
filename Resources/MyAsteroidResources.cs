@@ -17,6 +17,9 @@ namespace Star_Simulation
             public required float Probability { get; init; }
         }
 
+        // The Resource-Values come from Gemini.
+        // i didn't Validate them, so they may be wrong.
+
         public static AsteroidTypeInfo[] AsteroidTypes =
         [
             new() {
@@ -131,11 +134,11 @@ namespace Star_Simulation
             public required MyResourceList ResourceList { get; init; }
         }
         /// <summary>
-        /// Generates the RawResources of a Planet.
+        /// Generates the RawResources of a Asteroid.
         /// </summary>
-        /// <returns>Basic RawResources Of the Planet</returns>
+        /// <returns>Basic RawResources Of the Asteroid</returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static MyAsteroidResources GenerateAsteroidResources(SeedRandom seed)
+        public static MyAsteroidResources GenerateAsteroidComposition(SeedRandom seed)
         {
             try
             {
@@ -164,6 +167,42 @@ namespace Star_Simulation
                 ConsoleLogWrite([e.Message, e.HelpLink!]);
                 throw;
             }
+        }
+
+        public class MyAsteroidBeltResources
+        {
+            public required MyResourceList ResourceList { get; init; }
+        }
+
+        public static readonly MyResourceList AsteroidBeltResources = new([
+                new() {Resource=ResourceElement.SiO2, Value=340000},
+                new() {Resource=ResourceElement.Iron, Value=215000},
+                new() {Resource=ResourceElement.MgO, Value=190000},
+                new() {Resource=ResourceElement.Al2O3, Value=65000},
+                new() {Resource=ResourceElement.H2O, Value=55000},
+                new() {Resource=ResourceElement.CaO, Value=55000},
+                new() {Resource=ResourceElement.Carbon, Value=35000},
+                new() {Resource=ResourceElement.Nickel, Value=31500},
+                new() {Resource=ResourceElement.CO2, Value=6000},
+                new() {Resource=ResourceElement.NH3, Value=3500},
+                new() {Resource=ResourceElement.Cobalt, Value=2500},
+                new() {Resource=ResourceElement.Chromium, Value=700},
+                new() {Resource=ResourceElement.Sulfur, Value=500},
+                new() {Resource=ResourceElement.Titanium, Value=200},
+                new() {Resource=ResourceElement.Platinum, Value=60},
+                new() {Resource=ResourceElement.Gold, Value=20},
+                new() {Resource=ResourceElement.Palladium, Value=15},
+                new() {Resource=ResourceElement.Iridium, Value=5}
+            ]);
+
+        /// <summary>
+        /// Returns the RawResources for a Asteroid Belt
+        /// </summary>
+        /// <param name="seed"></param>
+        /// <returns></returns>
+        public static MyAsteroidBeltResources GenerateAsteroidBeltComposition(SeedRandom seed)
+        {
+            return new() { ResourceList = AsteroidBeltResources };
         }
     }
 }

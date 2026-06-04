@@ -244,16 +244,18 @@ namespace Star_Simulation
         public static void ConsoleLog(string[] message) { ConsoleLog(string.Join('\n', message)); }
 
         private static readonly object LogWriteLock = new object();
-        public static void LogWrite(string message = "")
+        public static void LogWrite(string message = "", string file = null!)
         {
             lock (LogWriteLock)
             {
+                if (string.IsNullOrEmpty(file)) file = LogfileName;
+
                 string[] message2 = message.Split("\n");
                 foreach (string m in message2)
                 {
                     string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
                     string actstring = (m != null ? $"[{DT}] {m}\n" : "\n");
-                    File.AppendAllText(LogfileName, actstring);
+                    File.AppendAllText(file, actstring);
                 }
             }
         }

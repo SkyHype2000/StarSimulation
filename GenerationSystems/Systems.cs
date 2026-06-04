@@ -56,7 +56,13 @@ namespace Star_Simulation
         public enum CelestialSpecialProperties
         { PlagueWorld, Radioactive, ResourceRich, AncientRuins, ExtremeWeather, HighGravity, LowGravity, TidalLocked, MagneticStorms, FrequentMeteorShowers }
 
-        public interface IMyStellarObject { }
+        public interface IMyStellarObject
+        {
+            public string Name { get; set; }
+            public string ID { get; set; }
+            public string Seed { get; set; }
+            public double Mass { get; set; }
+        }
         public interface IMyStellarEvent { }
         public class MyStellarSystem
         {

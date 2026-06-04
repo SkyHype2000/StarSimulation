@@ -79,8 +79,8 @@ namespace Star_Simulation
         public static MyResourceList GeneratePlanetCoreResources(SeedRandom seed, bool log = false, bool logWrite = false)
         {
             ulong valueFeNi = seed.Next<ulong>(800_000, 700_000);
-            ulong valueFe = valueFeNi;
-            ulong valueNi = valueFeNi - valueFe;
+            ulong valueFe = valueFeNi / 2;
+            ulong valueNi = valueFeNi / 2;
             ulong valueFeS = 1_000_000 - valueFeNi;
             MyResourceValue core_iron = new() { Value = valueFe, Resource = ResourceElement.Iron };
             if (Logging && log && ResourceGeneration_Logging) ConsoleLog($"Generated Core Resource \"Iron\" with {core_iron.Value}ppm.");

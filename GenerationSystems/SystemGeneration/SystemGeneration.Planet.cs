@@ -31,7 +31,7 @@ namespace Star_Simulation
             if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(MyPlanet).GeneratePlanet.StarParent.Mass");
             if (StarParent.Watt == null) throw new MyObjectGenerationValueException("(MyPlanet).GeneratePlanet.StarParent.Watt");
 
-            SeedRandom seed = new SeedRandom((StarParent.ID + "-" + ObjectNumber).ToString());
+            SeedRandom seed = new SeedRandom(($"{StarParent.ID}-{ObjectNumber:X2}").ToString());
 
             string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
             planet.Name = name;
@@ -47,11 +47,11 @@ namespace Star_Simulation
             MyPlanetResources composition = GeneratePlanetResources(seed);
             planet.Composition = composition;
 
-            //double mass = CalculateBasicObjectMass(radius, EarthDensity);
-            double mass = CalculateObjectMass(composition, radius);
+            //double mass = CalculateBasicSphereMass(radius, EarthDensity);
+            double mass = CalculatePlanetMass(composition, radius);
             planet.Mass = mass;
-            if (Logging && PlanetLogging) ConsoleLog($"MASS: {mass} kg");
-            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile) LogWrite($"MASS: {mass} kg");
+            if (Logging && PlanetLogging) ConsoleLog($"Mass:                   {mass} kg");
+            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile) LogWrite($"Mass:                   {mass} kg");
 
             double orbitalRadiusPe = 0;
             if (lastPlanet == null)
@@ -176,6 +176,7 @@ namespace Star_Simulation
             planet.SpecialProperties = [];
             planet.ResourceList = new MyResourceList([]);
             planet.Moons = [];
+            planet.Seed = seed.seed;
 
             return ReturnPlanetInformation(planet);
 

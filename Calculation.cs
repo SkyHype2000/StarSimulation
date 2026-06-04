@@ -67,6 +67,9 @@ namespace Star_Simulation
         /// <summary>Density of the Moon in KG/m^3</summary>
         public static readonly double MoonDensity = 3341;
 
+        /// <summary>Constant that Helps making Volume Calculations more Compact</summary>
+        public static readonly double VolumeConst = (4.0 / 3.0) * Math.PI;
+
         /// <summary>
         /// Returns the subspectral class that contains the specified mass value.
         /// </summary>
@@ -191,33 +194,64 @@ namespace Star_Simulation
             throw new NotImplementedException();
         }
 
-        public static double CalculateBasicObjectMass(double radius, double density)
+        /// <summary>
+        /// Calculates the Basic Mass of a Sphere with the Average Density
+        /// </summary>
+        /// <param name="radius">Radius in Meters</param>
+        /// <param name="density">Density in kg/m³</param>
+        /// <returns></returns>
+        public static double CalculateBasicSphereMass(double radius, double density)
         {
-            return ((4d / 3d) * Math.PI * Math.Pow(radius, 3)) * density;
+            return CalculateSphereVolume(radius) * density;
         }
 
-        public static double CalculateObjectMass(MyPlanetResources resources, double radius)
+        public static double CalculateSphereVolume(double radius)
         {
-            double vf = (4.0 / 3.0) * Math.PI;
-            double RadiusCore = radius * GC_Planet.ThicknessPlanetCore;
-            double RadiusMantle = radius - resources.CrustHeight;
-
-            double VolumeCore = vf * Math.Pow(RadiusCore, 3);
-            double VolumeMantle = (vf * Math.Pow(RadiusMantle, 3)) - VolumeCore;
-            double VolumeCrust = (vf * Math.Pow(radius, 3)) - VolumeCore - VolumeMantle;
-
-            double MassCore = VolumeCore * resources.CoreResourceList.AverageDensity;
-            double MassMantle = VolumeMantle * resources.MantleResourceList.AverageDensity;
-            double MassCrust = VolumeCrust * resources.CrustResourceList.AverageDensity;
-
-            return MassCore + MassMantle + MassCrust;
+            return VolumeConst * Math.Pow(radius, 3);
         }
 
-        public static double CalculateAsteroidsInAstroidBelt(double density, double innerRadius, double outerRadius, double height)
+        /// <summary>
+        /// Calculates Simplefied the Mass of a Planet with the Compositions of the Planet, if this makes sense
+        /// </summary>
+        /// <param name="resources">Resources</param>
+        /// <param name="radius">Radius in Meters</param>
+        /// <returns></returns>
+        public static double CalculatePlanetMass(MyPlanetResources resources, double radius)
+        {
+            double radiusCore = radius * GC_Planet.PlanetCoreSize;
+            double radiusMantle = radius - resources.CrustHeight;
+
+            double volumeCore = VolumeConst * Math.Pow(radiusCore, 3);
+            double volumeMantle = (VolumeConst * Math.Pow(radiusMantle, 3)) - volumeCore;
+            double volumeCrust = (VolumeConst * Math.Pow(radius, 3)) - (VolumeConst * Math.Pow(radiusMantle, 3));
+
+            double massCore = volumeCore * resources.CoreResourceList.AverageDensity;
+            double massMantle = volumeMantle * resources.MantleResourceList.AverageDensity;
+            double massCrust = volumeCrust * resources.CrustResourceList.AverageDensity;
+
+            return massCore + massMantle + massCrust;
+        }
+
+        /// <summary>
+        /// Calculates the Average Amount of Asteroids in a AsteroidF ield
+        /// </summary>
+        /// <param name="density"></param>
+        /// <param name="innerRadius"></param>
+        /// <param name="outerRadius"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public static double CalculateAsteroidsInAsteroidBelt(double density, double innerRadius, double outerRadius, double height)
         {
             return (Math.PI * height * (Math.Pow(outerRadius, 2) - Math.Pow(innerRadius, 2))) * density;
         }
 
+        /// <summary>
+        /// Calculates the Surface Temperature with the albedo.
+        /// </summary>
+        /// <param name="albedo"></param>
+        /// <param name="orbitalHeight"></param>
+        /// <param name="Watt"></param>
+        /// <returns></returns>
         public static float CalculateObjectSurfaceTemperature(float albedo, double orbitalHeight, double Watt)
         {
             float temperature = MathF.Pow((float)((Watt * (1 - albedo)) / (16 * Math.PI * Math.Pow(orbitalHeight, 2) * SB)), 0.25f);
@@ -382,6 +416,13 @@ namespace Star_Simulation
                 return currentOrbitalRadius;
             }
 
+            /// <summary>
+            /// GEts the Current Orbital Object Position.<br/>
+            /// Assisted by Gemini.
+            /// </summary>
+            /// <param name="orbit"></param>
+            /// <param name="simulationTime"></param>
+            /// <returns></returns>
             public static Vector2<double> GetOrbitPosition(MyOrbit orbit, double simulationTime)
             {
                 double ra = orbit.OrbitalRadiusApogee;
@@ -412,6 +453,13 @@ namespace Star_Simulation
                 return new Vector2<double>(xr, yr);
             }
 
+            /// <summary>
+            /// Get Orbital Points for Rendering/Visulasation<br/>
+            /// Written by Gemini.
+            /// </summary>
+            /// <param name="orbit"></param>
+            /// <param name="segments"></param>
+            /// <returns></returns>
             public static Vector2<double>[] GetOrbitPoints(MyOrbit orbit, int segments)
             {
                 Vector2<double>[] points = new Vector2<double>[segments];

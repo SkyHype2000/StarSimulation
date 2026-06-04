@@ -98,7 +98,7 @@ namespace Star_Simulation
             public static readonly MinMax<double> RangeDwarfPlanetRadius = new MinMax<double>(2500000, EarthRadius * 0.4, false);
 
             /// <summary> The Average Size of the Core of the Planet </summary>
-            public static readonly float ThicknessPlanetCore = 0.50f;
+            public static readonly float PlanetCoreSize = 0.50f;
 
             /// <summary>If Atmospheric Calculation are Done (like Greenhouseeffect, Color, etc.)</summary>
             public static readonly bool AtmosphereCalculation = false;

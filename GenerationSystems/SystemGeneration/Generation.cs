@@ -1,4 +1,6 @@
+using System.Xml.Linq;
 using static Star_Simulation.Libary;
+using static Star_Simulation.Program;
 using static Star_Simulation.Random;
 
 namespace Star_Simulation
@@ -136,41 +138,126 @@ namespace Star_Simulation
 
         /// <summary>
         /// Name List for Planets<br/>
-        /// Most Names where Generated with AI.
         /// </summary>
+        /// <remarks>
+        /// Almost All Names where Generated with AI.<br/>
+        /// But Some Names were Removed because they were Sounding weird.
+        /// </remarks>
         public static readonly string[] PlanetNames = new string[]
         {
-            "Earth", "Mars", "Venus", "Jupiter", "Saturn", "Mercury",
-            "Neptune", "Uranus", "Kepler", "Rhea", "Titan", "Ariel",
-            "Oberon", "Triton", "Charon", "Europa", "Ganymede",
-            "Callisto", "Io", "Ceres", "Makemake", "Haumea",
+            // --- IRGENDWELCHE ---
+            // --- RANDOM ---
+            "Thyra",   "Korune",  "Zelith",  "Arvion",  "Nythera", "Polaris", "Minor",   "Drentha",
+            "Solune",  "Kythera", "Velis",   "Orthis",  "Xandor",  "Belora",  "Cyris",   "Luneth",
+            "Tarex",   "Zyra",    "Morin",   "Elyndra", "Vorth",   "Kaelis",  "Syrune",  "Avaris",
+            "Tylor",   "Orinex",  "Valis",   "Zethra",  "Myron",   "Helis",   "Dorex",   "Vireth",
+            "Xyraxis", "Theris",  "Lorana",  "Zereth",  "Koralis", "Nyra",    "Eronis",  "Talix",
+            "Vendra",  "Oryth",   "Sylar",   "Kethis",  "Ylora",   "Drayth",  "Velune",  "Aelyra",
+            "Vorune",  "Kethra",  "Syphor",  "Zalara",  "Orveth",  "Taryx",   "Velora",  "Nyris",
+            "Calyra",  "Dorelia", "Xanthis", "Belune",  "Korath",  "Elyon",   "Virelia", "Zyrene",
+            "Mythra",  "Oryxis",  "Thyrel",  "Kaedon",  "Vexora",  "Lyrune",  "Solarae", "Nexora",
+            "Ydris",   "Valora",  "Zethis",  "Morune",  "Helora",  "Tyrelis", "Arveth",  "Xylar",
+            "Cyrune",  "Velith",  "Dranor",  "Koreth",  "Avarune", "Nyxis",   "Talyra",  "Oranis",
+            "Zyphra",  "Kelune",  "Myronis", "Voreth",  "Elaris",  "Syrath",  "Lunara",  "Xandis",
+            "Therune", "Aelira",  "Voryna",  "Syrara",  "Liora",   "Vaeruna", "Zyphora", "Nexis",
+            "Myrelis", "Elarune", "Velorae", "Koruna",  "Ilyra",   "Vexis",   "Kalon",
+        
+            // --- MEIN LIEBLINGS FINGER ---
+            // --- MY FAVORITE FINGER ---
+            "Mittelfinger",
+            // --- Mein Kater ---
+            // --- MY CAT ---
+            "Mailo",
+            // --- MEIN LAND ---
+            // --- MY COUNTRY ---
+            "Deutschland",
 
-            "Mailo", "Deutschland",
+            // --- SOL SYSTEM ---
+            "Mercury", "Merkur", "Venus", "Earth", "Erde", "Mars", "Jupiter", "Saturn", "Neptune", "Uranus", "Pluto",
+            // --- KSP ---
             "Moho", "Eve", "Kerbin", "Duna", "Dres", "Jool", "Eeloo",
+            // --- ASTRONEER ---
+            "Atrox", "Calidor", "Sylva", "Vesania", "Glacio",
+        
+            // --- Reale Exoplaneten & Sterne ---
+            // --- Real Exo-Planets and Stars
+            "Proxima",   "Centauri",  "Trappist", "Gliese",   "Osiris",   "Bellerophon", "Methuselah", "Sirius",
+            "Pegasi",    "Cancri",    "Eridani",  "Zosma",    "Arcturus", "Betelgeuse",  "Rigel",      "Deneb",
+            "Antares",   "Aldebaran", "Vega",     "Altair",   "Pollux",   "Castor",      "Fomalhaut",  "Alnath",
+            "Cygnus",    "Andromeda", "Orion",    "Capella",  "Procyon",  "Regulus",     "Spica",      "Algol",
+            "Bellatrix", "Mira",      "Canopus",  "Achernar", "Hadar",    "Acrux",       "Shaula",
+        
+            // --- Mythologische & Antike Namen ---
+            // --- Mythology and Acient Names
+            "Anubis",   "Thoth",    "Horus",      "Isis",      "Odin",         "Thor",       "Loki",       "Freya",
+            "Asgard",   "Midgard",  "Hyperion",   "Iapetus",   "Enceladus",    "Mimas",      "Tethys",     "Dione",
+            "Phobos",   "Deimos",   "Amalthea",   "Himalia",   "Elara",        "Pasiphae",   "Sinope",     "Lysithea",
+            "Ares",     "Hermes",   "Athena",     "Apollo",    "Artemis",      "Hephaestus", "Aphrodite",  "Poseidon",
+            "Hades",    "Dionysus", "Demeter",    "Hestia",    "Zeus",         "Hera",       "Chronos",    "Galatia",
+            "Amun",     "Ra",       "Bastet",     "Sobek",     "Pontus",       "Bithynia",   "Lycia",      "Pamphylia",
+            "Frigg",    "Baldur",   "Heimdall",   "Tyr",       "Cyprus",       "Cilicia",    "Cappadocia", "Achaea",
+            "Valhalla", "Helheim",  "Jotunheim",  "Alfheim",   "Svartalfheim", "Vanaheim",   "Creta",      "Cyrene",
+            "Numidia",  "Thracian", "Iberia",     "Lusitania", "Helvetia",     "Raetia",     "Noricum",    "Pannonia",
+            "Dacia",    "Dalmatia", "Moesia",     "Macedon",   "Epirus",
+            
+            // --- Harte Sci-Fi & Alien-Klingende Namen ---
+            // --- More Sci-Fi and Alien Names
+            "Krypton",  "Vulcan",  "Romulus",  "Remus",  "Kronos",    "Tatooine", "Coruscant", "Naboo",
+            "Dagobah",  "Endor",   "Mustafar", "Kamino", "Geonosis",  "Utapau",   "Yavin",     "Hoth",
+            "Arrakis",  "Caladan", "Giedi",    "Salusa", "Secundus",  "Kaitain",  "Ix",        "Richese",
+            "Nostromo", "Acheron", "Sulu",     "Skaro",  "Gallifrey", "Mondas",   "Cyberform",
+        
+            // --- Exotische Silbenkombinationen ---
+            // --- Exotic syllable combinations ---
+            "Xenon",   "Quasar",  "Nebula",   "Phantasm",   "Zion",      "Babylon", "Gorgon",  "Kraken",
+            "Tiamat",  "Bahamut", "Behemoth", "Leviathan",  "Chimera",   "Hydra",   "Pegasus", "Phoenix",
+            "Gryphon", "Wyvern",  "Basilisk", "Cockatrice", "Manticore", "Sphinx",  "Minotaur",
+            
+            // --- SUBTILES SCI-FI & KLASSISCHE UTOPIDEN ---
+            // --- Subtile SCI-FI and Classic Utopia ---
+            "Sulaco",   "Terminus", "Trantor", "Anacreon", "Helicon", "Kalgan", "Serenity", "Destiny",
+            "Synnax",   "Elysium",  "Avalon",  "Eden",     "Arcadia", "Utopia", "Aurora",   "Eternity",
+            "Solaria",  "Gaia",     "Terra",   "Nova",     "Apex",    "Zenith", "Nadir",    "Horizon",
+            "Vanguard", "Pioneer",  "Voyager", "Odyssey",  "Infinity",
+            
+            // --- ELEGANTE NEOLOGISMEN ---
+            "Sargon",  "Taranis",  "Belisama", "Camulos", "Epona",   "Lugus",     "Maponos", "Ogmios",
+            "Thallia", "Melite",   "Calypso",  "Circe",   "Scylla",  "Charybdis", "Medusa",  "Centaur",
+            "Griffin", "Cerberus", "Orthrus",  "Typhon",  "Echidna", "Ladon",     "Siren",   "Harpy",
+            "Satyr",   "Faun",     "Nymph",    "Dryad",   "Oread",   "Nereid",    "Oceanid",
+        
+            // --- HISTORISCHE ENTDECKER & WISSENSCHAFTLER ---
+            // --- Historic Guys that saw thing and Scientist ---
+            "Copernicus", "Galileo",  "Cassini", "Huygens", "Brahe",  "Herschel", "Messier", "Halley",
+            "Newton",     "Einstein", "Sagan",   "Hawking", "Hubble", "Webb",     "Keck",    "Subaru",
+            "Chandra",    "Spitzer",  "Fermi",   "Compton", "Jansky", "Penzias",  "Wilson",  "Lovell",
+            
+            // --- GEOLOGISCHE & TOPOGRAFISCHE BEGRIFFE ---
+            // --- Geological and Topography Name
+            "Caldera",  "Canyon",    "Craton", "Basalt",  "Granite",  "Obsidian", "Olivine", "Quartz",
+            "Magma",    "Mantle",    "Tundra", "Savanna", "Steppe",   "Plateau",  "Glacier", "Iceberg",
+            "Borealis", "Australis", "Zodiac", "Eclipse", "Solstice", "Equinox",
 
-            "Ilyra","Vexis","Thyra","Korune","Zelith","Arvion",
-            "Nythera","Polaris", "Minor","Drentha","Solune",
-            "Kythera","Velis","Orthis","Xandor","Belora",
-            "Cyris","Luneth","Tarex","Zyra","Morin","Elyndra",
-            "Vorth","Kaelis","Syrune","Avaris","Nexis","Tylor",
-            "Orinex","Valis","Zethra","Myron","Helis","Dorex",
-            "Vireth","Kalon","Xyraxis","Theris","Lorana","Zereth",
-            "Koralis","Nyra","Eronis","Talix","Vendra",
-            "Oryth","Sylar","Kethis","Ylora","Drayth","Velune",
-
-            "Aelyra","Vorune","Kethra","Syphor","Zalara","Orveth",
-            "Taryx","Velora","Nyris","Calyra","Dorelia","Xanthis",
-            "Belune","Korath","Elyon","Virelia","Zyrene","Mythra",
-            "Oryxis","Thyrel","Kaedon","Vexora","Lyrune","Solarae",
-            "Nexora","Ydris","Valora","Zethis","Morune","Helora",
-            "Tyrelis","Arveth","Xylar","Cyrune","Velith","Dranor",
-            "Koreth","Avarune","Nyxis","Talyra","Oranis","Zyphra",
-            "Kelune","Myronis","Voreth","Elaris","Syrath","Lunara",
-            "Xandis","Therune",
-
-            "Aelira","Voryna","Kelune","Syrara","Nythera","Liora",
-            "Vaeruna","Oranis","Zyphora","Myrelis","Talyra","Elarune",
-            "Cyrune","Velorae","Koruna",
+            // --- UNREALISTISCHE DEUTSCHE BEGRIFFE (Deutschland JAAAA!) ---
+            // --- Random Unrealistic German Names with Special Characters so English People Start having Problems to Pronaunce them. + Real but Stupid Words ---
+            "Götterdämmerung",   "Schloßberg",            "Weißensee",        "Großglockner",  "Grünwald",        "Jägerndorf",
+            "Störtebeker",       "Rübezahl",              "Eisengießer",      "Drosselbart",   "Rumpelstilzchen", "Brünhild",
+            "Siegfried",         "Kriemhild",             "Hagen",            "Tristan",       "Fafnir",          "Rheingold",
+            "Walküre",           "Alberich",              "Glücksstern",      "Mondkrater",    "Sternenstaub",    "Feldgänger",
+            "Nachtwächter",      "Drachenblut",           "Königsstein",      "Glühwürmchen",  "Zwergenkönig",    "Riesenrad",
+            "Frühlingserwachen", "Herbstwind",            "Knabenkraut",      "Schmiedefeuer", "Donnerkeil",      "Zauberkraft",
+            "Irrlicht",          "Wolkenbruch",           "Geisterstunde",    "Glücklich",     "Kraterwüste",     "Großstron",
+            "Tränennebel",       "Sonnenschwärze",        "Götterzone",       "Königsstern",   "Dämmersphäre",    "Rheinland",
+            "Zwergenreich",      "Glühkern",              "Flugbahn",         "Eiswüste",      "Staubströmung",   "Nachtjunge",
+            "Zauberschleier",    "Dunkelgrün",            "Weißfeuer",        "Blauglühen",    "Schmiedewelt",    "Nibelungen",
+            "Spähtrupp",         "Fluchtgeschwindigkeit", "Zeitkrümmung",     "Himmelskörper", "Sternenjäger",    "Furchterregend",
+            "Trümmerfeld",       "Geisterlicht",          "Röntgenstrahl",    "Südpol",        "Riesenwelle",     "Dunstschicht",
+            "Schattenhauch",     "Quellschacht",          "Gletscherschlund", "Schmiedeglut",  "Wirbelschweif",   "Goldschatz",
+            "Staubschleier",     "Schreckensfels",        "Nachtschimmer",    "Mondscheibe",   "Zwielichtgänger", "Rostschicht",
+            "Fluchtscholle",     "Zwillingsbruder",       "Kranichflug",      "Schwachstrom",  "Schallwelle",     "Pfeilschuss",
+            "Knochengerüst",     "Brückenpfeiler",        "Krümmerwand",      "Sumpfblüte",    "Frühlingsknoten",
+            "Rinderkennzeichnungsfleischetikettierungsüberwachungsaufgabenübertragungsgesetz",
+            "Grundstücks­verkehrs­genehmigungs­zuständigkeits­übertragungs­verordnung"
         };
 
         /// <summary>
@@ -273,17 +360,17 @@ namespace Star_Simulation
                     currentKey = currentKey.Substring(1) + nextChar;
                 }
 
-                string finalName = new string(result.ToArray());
+                string name = new string(result.ToArray());
 
-                if (finalName.Length >= minMax.Min &&
-                    finalName.Length < minMax.Max &&
-                    !existingNames.Contains(finalName))
+                if (name.Length >= minMax.Min &&
+                    name.Length <= minMax.Max &&
+                    !existingNames.Contains(name))
                 {
-                    return char.ToUpper(finalName[0]) + finalName.Substring(1);
+                    return char.ToUpper(name[0]) + name.Substring(1);
                 }
             }
 
-            return "NULL";
+            return "NO NAME";
         }
 
     }

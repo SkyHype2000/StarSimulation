@@ -259,5 +259,23 @@ namespace Star_Simulation
             Position = []
         };
         public static readonly MyMolecule NH3 = Ammonia;
+
+        public static readonly MyMolecule Carbondioxide = new()
+        {
+            Name = "Carbon dioxide",
+            NameDE = "Kohlenstoffdioxid",
+            ID = "RawResources.MyMolecule.Carbondioxide",
+            Symbol = "CO2",
+            Description = "",
+            Density = 1.97f,
+            BoilingPoint = 194.65f,
+            FreezingPoint = 216.55f,
+            SolidFormExists = true,
+            LiquidFormExists = false,
+            GasFormExists = true,
+            Category = ResourceCategory.Gas,
+            Position = []
+        };
+        public static readonly MyMolecule CO2 = Carbondioxide;
     }
 }

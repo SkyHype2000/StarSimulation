@@ -16,6 +16,7 @@ namespace Star_Simulation
         {
             public required string Name { get; set; }
             public required string ID { get; set; }
+            public required double Mass { get; set; }
             public required double InnerRadius { get; set; }
             public required double OuterRadius { get; set; }
             public required double AsteroidDensity { get; set; }
@@ -23,6 +24,7 @@ namespace Star_Simulation
             public required double Asteroids { get; set; }
             public required AsteroidBeltType Type { get; set; }
             public required MyResourceList Composition { get; set; }
+            public required string Seed { get; set; }
         }
         public class MyAsteroid : IMyStellarObject
         {
@@ -33,6 +35,7 @@ namespace Star_Simulation
             public required MyOrbit Orbit { get; set; }
             public required AsteroidType Type { get; set; }
             public required MyResourceList Composition { get; set; }
+            public required string Seed { get; set; }
         }
     }
 }

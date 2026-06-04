@@ -16,6 +16,7 @@ namespace Star_Simulation
             public required string Name { get; set; }
             public required string ID { get; set; }
             public required double Mass { get; set; }
+            public required MyPlanetResources Composition { get; set; }
             public required double Radius { get; set; }
             public required MyOrbit Orbit { get; set; }
             public required MinMax<float> SurfaceTemperature { get; set; }
@@ -23,6 +24,7 @@ namespace Star_Simulation
             public required CelestialSurfaceType SurfaceType { get; set; }
             public required CelestialSpecialProperties[] SpecialProperties { get; set; }
             public required MyResourceList ResourceList { get; set; }
+            public required string Seed { get; set; }
         }
     }
 }

@@ -30,6 +30,7 @@ namespace Star_Simulation
             public required MyResourceList ResourceList { get; set; }
             public required IMyMoon[] Moons { get; set; }
             public required MyOrbit Orbit { get; set; }
+            public required string Seed { get; set; }
         }
 
         public class MyDwarfPlanetGeneration : IMyObjectGeneration
@@ -49,6 +50,7 @@ namespace Star_Simulation
             public CelestialSpecialProperties[]? SpecialProperties { get; set; }
             public MyResourceList? ResourceList { get; set; }
             public IMyMoon[]? Moons { get; set; }
+            public string? Seed { get; set; }
         }
 
         /// <summary>
@@ -74,6 +76,7 @@ namespace Star_Simulation
             if (myDwarfPlanetGeneration.SpecialProperties == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.SpecialProperties");
             if (myDwarfPlanetGeneration.ResourceList == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.ResourceList");
             if (myDwarfPlanetGeneration.Moons == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.Moons");
+            if (myDwarfPlanetGeneration.Seed == null) throw new MyObjectGenerationValueException("(IMyDwarfPlanet).ReturnDwarfPlanetInformation.myDwarfPlanetGeneration.Seed");
 
             return new MyDwarfPlanet()
             {
@@ -91,7 +94,8 @@ namespace Star_Simulation
                 SpecialProperties = myDwarfPlanetGeneration.SpecialProperties,
                 ResourceList = (MyResourceList)myDwarfPlanetGeneration.ResourceList,
                 Moons = myDwarfPlanetGeneration.Moons,
-                Orbit = myDwarfPlanetGeneration.Orbit
+                Orbit = myDwarfPlanetGeneration.Orbit,
+                Seed = myDwarfPlanetGeneration.Seed
             };
         }
     }

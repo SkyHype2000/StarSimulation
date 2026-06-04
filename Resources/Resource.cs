@@ -13,6 +13,10 @@ namespace Star_Simulation
 {
     internal partial class Resource
     {
+        /**
+         * I forgot wich was, but some enums where Assisted or completly Written by Gemini
+         */
+
         /// <summary>The Resource Category. (What state of Matter it is normally in)</summary>
         public enum ResourceCategory
         { Solid, Liquid, Gas, Critical, Plasma }
@@ -98,6 +102,9 @@ namespace Star_Simulation
             public float Density { get; set; }
         }
 
+        /// <summary>
+        /// Resource Class, used for Basic Resources Like Elements, can also Be used for Alloys or something.
+        /// </summary>
         public class MyResource : IMyResource
         {
             public required string Name { get; set; }
@@ -112,6 +119,9 @@ namespace Star_Simulation
             public ResourcePosition[] Position { get; set; } = [];
         }
 
+        /// <summary>
+        /// Molecule Class, Used for More Complexed Structures Like Molecules XD.
+        /// </summary>
         public class MyMolecule : IMyResource
         {
             public required string Name { get; set; }
@@ -147,8 +157,12 @@ namespace Star_Simulation
 
         /// <summary>
         /// MyResourceList Class Used for Actual Generation.<br/>
-        /// For Generation ALWAYS Use the MyResourceListValue RealResources because i said so.
+        /// For Generation ALWAYS Use the MyResourceListValue RealResources, because i said so.
         /// </summary>
+        /// <remarks>
+        /// How many are Present in PPM(Parts Per Million)<br/>
+        /// But you can also just add everything in pph, ppt, ppm, etc., just be careful, that everything is in the same Ratio.
+        /// </remarks>
         public class MyResourceList
         {
             public List<MyResourceValue> RawResources { get; private set; }
@@ -164,7 +178,7 @@ namespace Star_Simulation
                 RawResources = rawResources;
 
                 if (rawResources.Count == 0 && Logging && ResourceGeneration_Logging) ConsoleLog("MyResourceList was Generated without any Resource. This may cause so issues...");
-                if (rawResources.Count == 0 && (LoggingFile && ResourceGeneration_ResourceListLogging || ForceLoggingFile)) ConsoleLog("MyResourceList was Generated without any Resource. This may cause so issues...");
+                if (rawResources.Count == 0 && (LoggingFile && ResourceGeneration_ResourceListLogging || ForceLoggingFile)) LogWrite("MyResourceList was Generated without any Resource. This may cause so issues...");
                 if (rawResources.Count == 0) return;
 
                 try

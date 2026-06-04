@@ -49,10 +49,13 @@ namespace Star_Simulation
             public string pos { get; private set; }
             public int state = 0;
             public bool lockState = false;
+            public uint num = 0u;
 
             public SeedRandom(string seed = "new SeedRandom();")
             {
                 this.seed = seed;
+                pos = $"";
+                NextState();
 
                 //ConsoleLog($"The Seed: {this.seed}");
             }
@@ -66,7 +69,11 @@ namespace Star_Simulation
 
                 state = (1664525 * (state + hash) + 1013904223) & 0x7FFFFFFF;
 
-                pos = $"{seed}:{state}";
+                num++;
+
+                pos = $"{seed:X16}";
+                pos = $"{pos}:{state}";
+                pos = $"{pos}({num:X8})";
             }
 
             public void Push(uint n = 0xFF)
@@ -78,7 +85,7 @@ namespace Star_Simulation
             }
 
             /// <summary>
-            /// Extra Next() Function for double Values.
+            /// Extra Next() Function for double/float Values.
             /// </summary>
             /// <param name="Max"></param>
             /// <param name="Min"></param>

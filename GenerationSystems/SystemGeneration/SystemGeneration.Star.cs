@@ -15,14 +15,17 @@ namespace Star_Simulation
         public static ulong AllObjectNum = 0;
 
         /// <summary>Generiert ein Stern</summary>
-        public static MyStar GenerateStar(SeedRandom seed)
+        public static MyStar GenerateStar(SeedRandom startseed)
         {
             MyStarGeneration starGeneration = new MyStarGeneration();
 
+            string id = $"{(StarNum):X16}-{startseed.NextID(2, 4)}";
+            starGeneration.ID = id;
+
+            SeedRandom seed = new SeedRandom($"{StarNum:X16}-{startseed.pos}");
+
             string name = GenerateNameMarkov(seed, StarNames, GenerateName2_MinMaxStarDefault);
             starGeneration.Name = name;
-            string id = $"{(StarNum):X16}-{seed.NextID(2, 4)}";
-            starGeneration.ID = id;
             if (Logging) ConsoleLog($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
             LogWrite($"Generating the Star {id} \"{name}\" with the seed {seed.seed}.");
 
@@ -72,6 +75,15 @@ namespace Star_Simulation
 
             if (Logging && StarLogging) ConsoleLog($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
             if (LoggingFile && StarLoggingFile || ForceLoggingFile) LogWrite($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
+
+            if (NameLoggingFile) stellarSystem.StellarObjects.ForEach((e) =>
+                {
+                    LogWrite($"[{e.Seed.PadRight(80)}] {e.Name}", NameGenerationLogfileName);
+                });
+            if (GenerationLoggingFile) stellarSystem.StellarObjects.ForEach((e) =>
+            {
+                LogWrite($"[{e.Seed.PadRight(80)}] {e.Name} m={e.Mass}", ObjectGenerationLogfileName); 
+            });
 
             StarNum++;
             AllObjectNum += (ulong)stellarSystem.StellarObjects.Count;

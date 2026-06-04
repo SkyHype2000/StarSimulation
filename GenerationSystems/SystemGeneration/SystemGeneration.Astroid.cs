@@ -10,6 +10,7 @@ using static Star_Simulation.Libary;
 using static Star_Simulation.Calculation;
 using static Star_Simulation.Program;
 using static Star_Simulation.CExceptions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Star_Simulation
 {
@@ -28,7 +29,7 @@ namespace Star_Simulation
 
             if (StarParent.Mass == null) throw new MyObjectGenerationValueException("(IMyAsteroid).GenerateAsteroid.StarParent.Mass");
 
-            string id = StarParent.ID + "-A" + ObjectNumber.ToString().PadLeft(3, '0');
+            string id = $"{StarParent.ID}-A{ObjectNumber.ToString():X2}";
             SeedRandom seed = new SeedRandom(id);
             string name = $"AST-{StarParent.Name}-{ObjectNumber}";
 
@@ -75,9 +76,9 @@ namespace Star_Simulation
 
             double radius = seed.Next(GC_SpaceRock.RangeAsteroidRadius);
 
-            MyAsteroidResources composition = GenerateAsteroidResources(seed);
+            MyAsteroidResources composition = GenerateAsteroidComposition(seed);
 
-            double mass = radius * composition.ResourceList.AverageDensity;
+            double mass = CalculateBasicSphereMass(radius, composition.ResourceList.AverageDensity);
 
             MyAsteroid astroid = new MyAsteroid()
             {
@@ -88,6 +89,7 @@ namespace Star_Simulation
                 Orbit = myOrbit,
                 Type = composition.Type,
                 Composition = composition.ResourceList,
+                Seed = seed.seed
             };
 
             if (Logging && AstroidLogging) ConsoleLog($"Generated Asteroid: {name}");
@@ -100,7 +102,8 @@ namespace Star_Simulation
 
         public static MyAsteroidBelt GenerateAsteroidBelt(MyStarGeneration Parent, int ObjectNumber, double LastBeltOuterRadius, bool IsStartingRadius = false)
         {
-            string id = "AB-" + Parent.ID + "-" + ObjectNumber.ToString();
+            string id = $"AB-{Parent.ID}-{ObjectNumber:X2}"
+            ;
             SeedRandom seed = new SeedRandom(id);
             string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
 
@@ -116,7 +119,9 @@ namespace Star_Simulation
 
             AsteroidBeltType type = AsteroidBeltType.Belt;
 
-            MyResourceList resourceList = new MyResourceList([]);
+            MyResourceList composition = GenerateAsteroidBeltComposition(seed).ResourceList;
+
+            double mass = volume * asteroidDensity * composition.AverageDensity;
 
             MyAsteroidBelt myAsteroidBelt = new MyAsteroidBelt()
             {
@@ -128,7 +133,9 @@ namespace Star_Simulation
                 Volume = volume,
                 Asteroids = astroids,
                 Type = type,
-                Composition = resourceList,
+                Composition = composition,
+                Seed = seed.seed,
+                Mass = mass
             };
 
             if (Logging && AstroidBeltLogging)
@@ -137,13 +144,15 @@ namespace Star_Simulation
                 ConsoleLog($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
                 ConsoleLog($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
                 ConsoleLog($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
+                ConsoleLog($"mass:                     {mass} KG");
             }
             if (Logging && AstroidBeltLoggingFile || ForceLoggingFile)
             {
                 LogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
+                LogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
                 LogWrite($"innerRadius:              {innerRadius} ({innerRadius / AU} AU)");
                 LogWrite($"outerRadius:              {outerRadius} ({outerRadius / AU} AU)");
-                LogWrite($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
+                LogWrite($"mass:                     {mass} KG");
             }
 
             return myAsteroidBelt;
