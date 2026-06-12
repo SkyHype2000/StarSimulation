@@ -6,6 +6,10 @@ using static Star_Simulation.Spectral;
 using static Star_Simulation.Luminosity;
 using static Star_Simulation.CExceptions;
 using static Star_Simulation.Libary;
+using static Star_Simulation.Export;
+using System.Text.Json.Nodes;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Star_Simulation
 {
@@ -71,6 +75,7 @@ namespace Star_Simulation
             }
 
             MyStellarSystem stellarSystem = GenerateStellarSystem(seed, starGeneration);
+            File.WriteAllText("lastStellarSystem.json", JsonSerializer.Serialize(stellarSystem));
             starGeneration.StellarSystem = stellarSystem;
 
             if (Logging && StarLogging) ConsoleLog($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
@@ -102,10 +107,10 @@ namespace Star_Simulation
 
             uint ObjectNum = 0;
 
-            MyStellarSystem stellarObjects = new MyStellarSystem()
+            MyStellarSystem stellarSystem = new MyStellarSystem()
             {
-                StellarObjects = [],
-                StellarEvents = []
+                StellarObjects = new List<IMyStellarObject>(),
+                StellarEvents = new List<IMyStellarEvent>()
             };
 
             uint credits = 0;
@@ -162,7 +167,7 @@ namespace Star_Simulation
             for (int i = 0; i < asteroidFieldAmount; i++)
             {
                 MyAsteroidBelt astBelt = GenerateAsteroidBelt(StarParent, i, lastAsteroidOuterRadius, i == 0);
-                stellarObjects.StellarObjects.Add(astBelt);
+                stellarSystem.StellarObjects.Add(astBelt);
                 AsteroidFieldRadiuseses[i] = new MinMax<double>(astBelt.InnerRadius, astBelt.OuterRadius);
                 lastAsteroidOuterRadius = astBelt.OuterRadius;
                 ObjectNum++;
@@ -171,25 +176,28 @@ namespace Star_Simulation
             for (int i = 0; i < protoPlanetAmount; i++)
             {
                 MyProtoPlanet protoPlanet = GenerateProtoPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
-                stellarObjects.StellarObjects.Add(protoPlanet);
-                if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLog($"Generating the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
-                if (i == 0 && (LoggingFile && ProtoPlanetLoggingFile || ForceLoggingFile)) LogWrite($"Generating the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
+                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.json", JsonSerializer.Serialize(protoPlanet));
+                stellarSystem.StellarObjects.Add(protoPlanet);
+                if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLog($"Generated the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
+                if (i == 0 && (LoggingFile && ProtoPlanetLoggingFile || ForceLoggingFile)) LogWrite($"Generated the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
                 ObjectNum++;
             }
 
             for (int i = 0; i < dwarfPlanetAmount; i++)
             {
                 MyDwarfPlanet dwarfPlanet = GenerateDwarfPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
-                stellarObjects.StellarObjects.Add(dwarfPlanet);
+                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.json", JsonSerializer.Serialize(dwarfPlanet));
+                stellarSystem.StellarObjects.Add(dwarfPlanet);
                 ObjectNum++;
-                if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLog($"Generating the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
-                if (i == 0 && (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile)) LogWrite($"Generating the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
+                if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLog($"Generated the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
+                if (i == 0 && (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile)) LogWrite($"Generated the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
             }
 
             for (int i = 0; i < planetAmount; i++)
             {
                 lastPlanet = GeneratePlanet(StarParent, ObjectNum, lastOrbitalHeight, AsteroidFieldRadiuseses);
-                stellarObjects.StellarObjects.Add(lastPlanet);
+                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.json", JsonSerializer.Serialize(lastPlanet));
+                stellarSystem.StellarObjects.Add(lastPlanet);
                 lastOrbitalHeight = lastPlanet.Orbit.OrbitalRadiusApogee;
 
                 if (lastPlanet.Orbit.OrbitalRadiusPerigee < OrbitalRange.Min || i == 0) OrbitalRange.Min = lastPlanet.Orbit.OrbitalRadiusPerigee - CalculateSOI(lastPlanet.Mass, (double)StarParent.Mass!, lastPlanet.Orbit.OrbitalRadiusPerigee);
@@ -203,15 +211,14 @@ namespace Star_Simulation
             }
             lastPlanet = null;
 
-            OrbitalRange.Min *= 1.01;
-            OrbitalRange.Max *= 1.01;
+            OrbitalRange *= 1.01;
             for (int i = 0; i < astroidAmount; i++)
             {
-                stellarObjects.StellarObjects.Add(GenerateAsteroid(StarParent, i, OrbitalRange, PlanetSOIHeights));
+                stellarSystem.StellarObjects.Add(GenerateAsteroid(StarParent, i, OrbitalRange, PlanetSOIHeights));
                 ObjectNum++;
             }
 
-            return stellarObjects;
+            return stellarSystem;
 
             throw new NotImplementedException();
         }

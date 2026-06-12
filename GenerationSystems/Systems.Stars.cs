@@ -4,6 +4,7 @@ using static Star_Simulation.Luminosity;
 using static Star_Simulation.Spectral;
 using static Star_Simulation.Systems;
 using static Star_Simulation.SystemGeneration;
+using static Star_Simulation.Export;
 
 namespace Star_Simulation
 {
@@ -14,7 +15,7 @@ namespace Star_Simulation
          * Aber das Wäre zu Kompliziert, sogar für mich...
          */
 
-        public class MyStar
+        public class MyStar : IExport
         {
             public required string Name { get; set; }
             public required string ID { get; set; }

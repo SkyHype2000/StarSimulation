@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Star_Simulation.Resource;
+using static Star_Simulation.Export;
 
 namespace Star_Simulation
 {
@@ -12,7 +13,7 @@ namespace Star_Simulation
         public enum AsteroidBeltType
         { Belt, InnerBelt, MiddleBelt, OuterBelt, TrojanBelt, CentaurBelt, OortCloud }
 
-        public class MyAsteroidBelt : IMyStellarObject
+        public class MyAsteroidBelt : IMyStellarObject, IExport
         {
             public required string Name { get; set; }
             public required string ID { get; set; }
@@ -26,7 +27,7 @@ namespace Star_Simulation
             public required MyResourceList Composition { get; set; }
             public required string Seed { get; set; }
         }
-        public class MyAsteroid : IMyStellarObject
+        public class MyAsteroid : IMyStellarObject, IExport
         {
             public required string Name { get; set; }
             public required string ID { get; set; }

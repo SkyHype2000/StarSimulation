@@ -32,8 +32,12 @@ namespace Star_Simulation
             string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
             string id = seed.NextID();
 
+            if (ForceLoggingFile) LogWrite($"Start Generating the Proto Planet \"{name}\" with seed {seed.pos}");
+
             int beltNum = seed.Next(AsteroidBeltsOrbitalRadius.Length);
             MinMax<double> beltRange = AsteroidBeltsOrbitalRadius[beltNum];
+
+            if (ForceLoggingFile) LogWrite($"Chose {beltNum+1}th Asteroid Belt ({beltRange.Min/AU} - {beltRange.Max/AU} AU) in {StarParent.Name}");
 
             double PeriapsisRadius = 0;
             double PeriapsisSpeed = 0;
@@ -50,7 +54,7 @@ namespace Star_Simulation
                 ApoapsisRadius = OrbitalCalculation.OrbitalRadius_ApWithPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
                 ApoapsisSpeed = OrbitalCalculation.OrbitalVelocity_ApWithPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
             }
-            MinMax<double> orbitalRange = new MinMax<double> { Min = PeriapsisRadius, Max = ApoapsisRadius };
+            MinMax<double> orbitalRange = new MinMax<double>(PeriapsisRadius, ApoapsisRadius);
 
             if (Logging && ProtoPlanetLogging) ConsoleLog($"Protoplanet {name} ({id}) with Seed {seed.seed} from {StarParent.Name}" +
                                                           $"Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");

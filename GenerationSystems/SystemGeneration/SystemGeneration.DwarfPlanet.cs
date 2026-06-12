@@ -56,7 +56,7 @@ namespace Star_Simulation
                 ApoapsisRadius = OrbitalCalculation.OrbitalRadius_ApWithPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
                 ApoapsisSpeed = OrbitalCalculation.OrbitalVelocity_ApWithPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
             }
-            MinMax<double> orbitalRange = new MinMax<double> { Min = PeriapsisRadius, Max = ApoapsisRadius };
+            MinMax<double> orbitalRange = new MinMax<double>(PeriapsisRadius, ApoapsisRadius);
 
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Dwarf Planet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m DwarfPlanetOrbit:{orbitalRange.Floor()} m");
             if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Dwarf Planet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m DwarfPlanetOrbit:{orbitalRange.Floor()} m");
@@ -108,7 +108,7 @@ namespace Star_Simulation
             dwarfPlanet.Seed = seed.seed;
 
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
-            if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) ConsoleLog($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
+            if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
 
             return ReturnDwarfPlanetInformation(dwarfPlanet);
             throw new NotImplementedException();

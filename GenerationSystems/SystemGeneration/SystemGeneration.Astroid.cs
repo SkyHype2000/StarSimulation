@@ -33,14 +33,18 @@ namespace Star_Simulation
             SeedRandom seed = new SeedRandom(id);
             string name = $"AST-{StarParent.Name}-{ObjectNumber}";
 
+            if (ForceLoggingFile) LogWrite($"Start Generating Asteroid {name} with {seed.pos}");
+
             double PeriapsisRadius = 0;
             double PeriapsisSpeed = 0;
             double ApoapsisRadius = 0;
             double ApoapsisSpeed = 0;
 
+            uint iterations = 0u;
             bool validOrbit = false;
             while (!validOrbit)
             {
+                iterations++;
                 PeriapsisRadius = seed.Next(RangeOrbitalHeight);
                 PeriapsisSpeed = OrbitalCalculation.CalculateOrbitalVelocity(PeriapsisRadius, (double)StarParent.Mass) * seed.Next(1.10, 1);
                 ApoapsisRadius = OrbitalCalculation.OrbitalRadius_ApWithPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
@@ -58,6 +62,7 @@ namespace Star_Simulation
                     else { validOrbit = true; }
                 }
             }
+            if (PlacingTrysLoggingFile && LoggingFile) LogWrite($"It took {iterations} Trys to place the Asteroid.");
 
             double orbitalPeriod = OrbitalCalculation.OrbitalPeriod_WithApPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
 

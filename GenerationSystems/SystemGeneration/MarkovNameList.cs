@@ -27,7 +27,6 @@ namespace Star_Simulation
             "Sylvaris",  "Krythar",   "Nexoria",   "Valtheris", "Zorynth",
             "Helvaron",  "Myralon",   "Xerethis",  "Talyxar",   "Vorenth",
             "Lysandrax", "Zenthora",  "Kaelith",   "Orvannis",  "Myraxor",
-            
 
             "Aetheron", "Pyralis",   "Voltyra",   "Caelion",  "Ryxalon",
             "Thalorix", "Vaeryn",    "Zylaris",   "Quenthar", "Draeven",
@@ -148,27 +147,6 @@ namespace Star_Simulation
             "Caldera",  "Canyon",    "Craton", "Basalt",  "Granite",  "Obsidian", "Olivine", "Quartz",
             "Magma",    "Mantle",    "Tundra", "Savanna", "Steppe",   "Plateau",  "Glacier", "Iceberg",
             "Borealis", "Australis", "Zodiac", "Eclipse", "Solstice", "Equinox",
-        
-            //// --- UNREALISTISCHE DEUTSCHE BEGRIFFE (Deutschland JAAAA!) ---
-            //// --- Random Unrealistic German Names with Special Characters so English People Start having Problems to Pronaunce them. + Real but Stupid Words ---
-            //"Götterdämmerung",   "Schloßberg",            "Weißensee",        "Großglockner",  "Grünwald",        "Jägerndorf",
-            //"Störtebeker",       "Rübezahl",              "Eisengießer",      "Drosselbart",   "Rumpelstilzchen", "Brünhild",
-            //"Siegfried",         "Kriemhild",             "Hagen",            "Tristan",       "Fafnir",          "Rheingold",
-            //"Walküre",           "Alberich",              "Glücksstern",      "Mondkrater",    "Sternenstaub",    "Feldgänger",
-            //"Nachtwächter",      "Drachenblut",           "Königsstein",      "Glühwürmchen",  "Zwergenkönig",    "Riesenrad",
-            //"Frühlingserwachen", "Herbstwind",            "Knabenkraut",      "Schmiedefeuer", "Donnerkeil",      "Zauberkraft",
-            //"Irrlicht",          "Wolkenbruch",           "Geisterstunde",    "Glücklich",     "Kraterwüste",     "Großstron",
-            //"Tränennebel",       "Sonnenschwärze",        "Götterzone",       "Königsstern",   "Dämmersphäre",    "Rheinland",
-            //"Zwergenreich",      "Glühkern",              "Flugbahn",         "Eiswüste",      "Staubströmung",   "Nachtjunge",
-            //"Zauberschleier",    "Dunkelgrün",            "Weißfeuer",        "Blauglühen",    "Schmiedewelt",    "Nibelungen",
-            //"Spähtrupp",         "Fluchtgeschwindigkeit", "Zeitkrümmung",     "Himmelskörper", "Sternenjäger",    "Furchterregend",
-            //"Trümmerfeld",       "Geisterlicht",          "Röntgenstrahl",    "Südpol",        "Riesenwelle",     "Dunstschicht",
-            //"Schattenhauch",     "Quellschacht",          "Gletscherschlund", "Schmiedeglut",  "Wirbelschweif",   "Goldschatz",
-            //"Staubschleier",     "Schreckensfels",        "Nachtschimmer",    "Mondscheibe",   "Zwielichtgänger", "Rostschicht",
-            //"Fluchtscholle",     "Zwillingsbruder",       "Kranichflug",      "Schwachstrom",  "Schallwelle",     "Pfeilschuss",
-            //"Knochengerüst",     "Brückenpfeiler",        "Krümmerwand",      "Sumpfblüte",    "Frühlingsknoten",
-            //"Rinderkennzeichnungsfleischetikettierungsüberwachungsaufgabenübertragungsgesetz",
-            //"Grundstücks­verkehrs­genehmigungs­zuständigkeits­übertragungs­verordnung"
         };
 
         /// <summary>

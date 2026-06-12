@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Threading;
 using static Star_Simulation.SystemGeneration;
+using static Star_Simulation.Systems;
 using static Star_Simulation.Spectral;
 using static Star_Simulation.Random;
 using static Star_Simulation.GenerationTable;
@@ -16,23 +17,24 @@ namespace Star_Simulation
         /// Some Code was Copy-Paste from my olt Project, so i just Use this (Don't change a running System XD)
         /// </summary>
         public static readonly double STAR_GENERATION_CONSTANT = 1.0216388735543742521887522130876091683703957473078500310054178421533504358657415429775215553538366594d;
+        public static bool RUNNING = false;
 
         public static SubspectralClass[] SubspectralClasses = [];
 
         /// <summary>
         /// General Logging File
         /// </summary>
-        public static string LogfileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}.log";
+        public static string LogfileName = $"log/{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}.log";
         /// <summary>
         /// Logging File for Generation of Object Type, Name and General Data in a Single Line
         /// </summary>
-        public static string ObjectGenerationLogfileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-GEN.log";
+        public static string ObjectGenerationLogfileName = $"log/objectGeneration/{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-GEN.log";
         /// <summary>
         /// Logging File of the Name Generation
         /// </summary>
-        public static string NameGenerationLogfileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-NAMEGEN.log";
+        public static string NameGenerationLogfileName = $"log/nameGeneration/{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-NAMEGEN.log";
 
-        public static readonly SeedRandom Global_Seed = new SeedRandom("w497eg4in8pz34fqm9834");
+        public static readonly SeedRandom Global_Seed = new SeedRandom("456756456745674");
 
         /// <summary>Activates the Logging of Some Generation-Values (This is the Main Switch, if you turn this of => No Logging.)</summary>
         public static bool Logging = true;
@@ -53,6 +55,7 @@ namespace Star_Simulation
 
         public static bool LoggingFile = true;
         public static bool GenerationLoggingFile = true;
+        public static bool PlacingTrysLoggingFile = true;
         public static bool NameLoggingFile = false;
         public static bool StarLoggingFile = true;
         public static bool PlanetLoggingFile = true;
@@ -230,19 +233,33 @@ namespace Star_Simulation
 
             //ConsoleLog($"Global Seed: {Global_Seed.seed}");
 
+            RUNNING = true;
+
+            Console.CancelKeyPress += (sender, e) =>
+            {
+                e.Cancel = true;
+                ConsoleLogWrite("Shutdown requested (Ctrl+C)...");
+                Environment.Exit(0);
+            };
+
             try
             {
                 ConsoleLogWrite($"Global Seed: {Global_Seed.seed}");
                 GenerateSubspectralClasses();
                 GenerationTableMain();
 
-                GenerateOneStar();
-                //MassGenerateStars(1000, 10);
+                //GenerateOneStar();
+
+                MassGenerateStars(1000, 100);
             }
             catch (Exception e)
             {
                 ConsoleLogWrite([e.Message, e.HelpLink!]);
+
+                RUNNING = false;
             }
+
+            RUNNING = false;
         }
 
         /// <summary>
@@ -260,11 +277,14 @@ namespace Star_Simulation
             {
                 DateTime start = DateTime.Now;
 
-                GenerateStar(Global_Seed);
+                MyStar star = GenerateStar(Global_Seed);
+
+                Export.ExportJSON<MyStar> export = new(star.Name, [star]);
+                export.WriteJSON();
 
                 DateTime end = DateTime.Now;
                 ConsoleLogWrite($"It Took {(end - start)} Seconds to generate 1 System");
-                ConsoleLogWrite("\nPress Any key for the n  t Star System. Or Q, C or ESC to stop the Program");
+                ConsoleLogWrite("\nPress Any key for the next Star System. Or Q, C or ESC to stop the Program");
 
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.Q || key == ConsoleKey.C || key == ConsoleKey.Escape) break;
@@ -293,6 +313,9 @@ namespace Star_Simulation
                 PlanetAsteroidBeltIterationLogging = false;
                 AstroidLogging = false;
                 AstroidBeltLogging = false;
+
+                GenerationLoggingFile = false;
+                PlacingTrysLoggingFile = false;
 
                 LoggingFile = false;
                 StarLoggingFile = false;

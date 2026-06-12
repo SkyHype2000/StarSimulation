@@ -55,7 +55,7 @@ namespace Star_Simulation
         public static class GenerationConstant_Star
         {
             /// <summary>The Amount of Total Objects in a Stellar System</summary>
-            public static readonly MinMax<uint> RangeObjectsStellarSystem = new MinMax<uint>(0, 256, false);
+            public static readonly MinMax<uint> RangeObjectsStellarSystem = new MinMax<uint>(0, 256);
             /// <summary>The Amount of Planets in a Stellar System (Stellar Objects)</summary>
             public static readonly MinMax<uint> RangePlanetsStellarSystem = new MinMax<uint>(0, 8);
             /// <summary>The Amount of Dwarf Planets in a Stellar System (Stellar Objects)</summary>

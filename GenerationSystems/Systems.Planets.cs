@@ -8,12 +8,13 @@ using static Star_Simulation.Resource;
 using static Star_Simulation.Systems;
 using static Star_Simulation.SystemGeneration;
 using static Star_Simulation.Libary;
+using static Star_Simulation.Export;
 
 namespace Star_Simulation
 {
     internal partial class Systems
     {
-        public class MyPlanet : IMyStellarObject
+        public class MyPlanet : IMyStellarObject, IExport
         {
             public required string Name { get; set; }
             public required string ID { get; set; }
