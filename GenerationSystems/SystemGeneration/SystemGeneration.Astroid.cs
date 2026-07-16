@@ -50,7 +50,15 @@ namespace Star_Simulation
                 ApoapsisRadius = OrbitalCalculation.OrbitalRadius_ApWithPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
                 ApoapsisSpeed = OrbitalCalculation.OrbitalVelocity_ApWithPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
 
+                if (double.IsInfinity(ApoapsisRadius) || double.IsNaN(ApoapsisRadius) ||
+                    double.IsInfinity(ApoapsisSpeed) || double.IsNaN(ApoapsisSpeed))
+                {
+                    validOrbit = false;
+                    continue;
+                }
+
                 if (PlanetSOIHeights.Length == 0) { validOrbit = true; break; }
+
                 for (int i = 0; i < PlanetSOIHeights.Length; i++)
                 {
                     MinMax<double> SOI = PlanetSOIHeights[i];

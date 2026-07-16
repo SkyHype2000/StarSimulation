@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Text.Json.Serialization;
 using static Star_Simulation.Program;
 using static Star_Simulation.Random;
 using static Star_Simulation.SystemGeneration;
@@ -174,9 +175,12 @@ namespace Star_Simulation
         /// <typeparam name="T">T</typeparam>
         public class MinMax<T> where T : INumber<T>
         {
-            public T Min;
-            public T Max;
-            public bool MaxZero;
+            [JsonInclude]
+            public T Min { get; set; }
+            [JsonInclude]
+            public T Max { get; set; }
+            [JsonIgnore]
+            public bool MaxZero { get; set; }
 
             public MinMax(T min = default!, T max = default!, bool maxZero = false)
             {
@@ -198,6 +202,9 @@ namespace Star_Simulation
 
             public MinMax<double> Round() =>
                 new(Math.Round(Convert.ToDouble(Min)), Math.Round(Convert.ToDouble(Max)), MaxZero);
+
+            public MinMax<T> Clone() =>
+                new(Min, Max, MaxZero);
 
             public static MinMax<T> operator +(MinMax<T> a, MinMax<T> b) =>
                 new(a.Min + b.Min, a.Max + b.Max);

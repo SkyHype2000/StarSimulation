@@ -22,11 +22,6 @@ namespace Star_Simulation
             double Mass { get; }
             double Radius { get; }
             MyOrbit Orbit { get; set; }
-            /// <summary>
-            /// Hier ist es ein Wenig Konplexer da sich der Mond um den Planeten kreist.<br/>
-            /// Dadurch ist die Distanz zum Stern nicht immer Gleich. (Aber das kann man Ignorieren)<br/>
-            /// Und Manchmal wird der Mond auch vom Planeten beschattet. (Aber das kann man auch Ignorieren)
-            /// </summary>
             MinMax<float> SurfaceTemperature { get; set; }
             CelestialType Type { get; set; }
             CelestialAtmosphereType AtmosphereType { get; set; }

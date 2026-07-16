@@ -1,11 +1,12 @@
-﻿using System.Numerics;
-using static Star_Simulation.Luminosity;
-using static Star_Simulation.Spectral;
-using static Star_Simulation.Resource;
-using static Star_Simulation.Systems;
-using static Star_Simulation.Random;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 using System.Runtime.Intrinsics;
-using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using static Star_Simulation.Luminosity;
+using static Star_Simulation.Random;
+using static Star_Simulation.Resource;
+using static Star_Simulation.Spectral;
+using static Star_Simulation.Systems;
 
 namespace Star_Simulation
 {
@@ -56,6 +57,12 @@ namespace Star_Simulation
         public enum CelestialSpecialProperties
         { PlagueWorld, Radioactive, ResourceRich, AncientRuins, ExtremeWeather, HighGravity, LowGravity, TidalLocked, MagneticStorms, FrequentMeteorShowers }
 
+        // Fügen Sie hier die Klassen aus Ihren anderen Dateien (siehe Bild) hinzu:
+        [JsonDerivedType(typeof(MyAsteroidBelt), typeDiscriminator: "MyAsteroidBelts")]
+        [JsonDerivedType(typeof(MyAsteroid), typeDiscriminator: "MyAsteroid")]
+        [JsonDerivedType(typeof(MyPlanet), typeDiscriminator: "MyPlanet")]
+        [JsonDerivedType(typeof(MyDwarfPlanet), typeDiscriminator: "MyDwarfPlanet")]
+        [JsonDerivedType(typeof(MyProtoPlanet), typeDiscriminator: "MyProtoPlanet")]
         public interface IMyStellarObject
         {
             public string Name { get; set; }

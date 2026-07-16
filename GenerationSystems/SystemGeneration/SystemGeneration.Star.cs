@@ -75,7 +75,6 @@ namespace Star_Simulation
             }
 
             MyStellarSystem stellarSystem = GenerateStellarSystem(seed, starGeneration);
-            File.WriteAllText("lastStellarSystem.json", JsonSerializer.Serialize(stellarSystem));
             starGeneration.StellarSystem = stellarSystem;
 
             if (Logging && StarLogging) ConsoleLog($"Generated the {subspectralClass.ParentSpectralClass.Class}{subspectralClass.SubClass} {subspectralClass.ParentSpectralClass.StarColorName} Star \"{name}\" with: {stellarSystem.StellarObjects.Count} Stellar Objects and {stellarSystem.StellarEvents.Count} Stellar Events;");
@@ -87,7 +86,7 @@ namespace Star_Simulation
                 });
             if (GenerationLoggingFile) stellarSystem.StellarObjects.ForEach((e) =>
             {
-                LogWrite($"[{e.Seed.PadRight(80)}] {e.Name} m={e.Mass}", ObjectGenerationLogfileName); 
+                LogWrite($"[{e.Seed.PadRight(80)}] {e.Name} m={e.Mass}", ObjectGenerationLogfileName);
             });
 
             StarNum++;
@@ -156,7 +155,7 @@ namespace Star_Simulation
 
             double lastOrbitalHeight = (double)StarParent.Radius;
 
-            MinMax<double> OrbitalRange = new MinMax<double>(GC_Planet.RangeDistanceBetweenPlanets.Min, 0, true);
+            MinMax<double> OrbitalRange = GC_Planet.RangeDistanceBetweenPlanets.Clone();
 
             MinMax<double>[] AsteroidFieldRadiuseses = new MinMax<double>[asteroidFieldAmount];
 
@@ -176,7 +175,7 @@ namespace Star_Simulation
             for (int i = 0; i < protoPlanetAmount; i++)
             {
                 MyProtoPlanet protoPlanet = GenerateProtoPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
-                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.json", JsonSerializer.Serialize(protoPlanet));
+                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.stellarSystemJSON", JsonSerializer.Serialize(protoPlanet));
                 stellarSystem.StellarObjects.Add(protoPlanet);
                 if (i == 0 && Logging && ProtoPlanetLogging) ConsoleLog($"Generated the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
                 if (i == 0 && (LoggingFile && ProtoPlanetLoggingFile || ForceLoggingFile)) LogWrite($"Generated the Proto Planet {protoPlanet.ID} \"{protoPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {protoPlanet.ID}.");
@@ -186,7 +185,7 @@ namespace Star_Simulation
             for (int i = 0; i < dwarfPlanetAmount; i++)
             {
                 MyDwarfPlanet dwarfPlanet = GenerateDwarfPlanet(StarParent, ObjectNum, AsteroidFieldRadiuseses);
-                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.json", JsonSerializer.Serialize(dwarfPlanet));
+                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.stellarSystemJSON", JsonSerializer.Serialize(dwarfPlanet));
                 stellarSystem.StellarObjects.Add(dwarfPlanet);
                 ObjectNum++;
                 if (i == 0 && Logging && DwarfPlanetLogging) ConsoleLog($"Generated the Dwarf Planet {dwarfPlanet.ID} \"{dwarfPlanet.Name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {dwarfPlanet.ID}.");
@@ -196,7 +195,7 @@ namespace Star_Simulation
             for (int i = 0; i < planetAmount; i++)
             {
                 lastPlanet = GeneratePlanet(StarParent, ObjectNum, lastOrbitalHeight, AsteroidFieldRadiuseses);
-                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.json", JsonSerializer.Serialize(lastPlanet));
+                if (GenerationLoggingFile) File.WriteAllText("lastDwarfPlanet.stellarSystemJSON", JsonSerializer.Serialize(lastPlanet));
                 stellarSystem.StellarObjects.Add(lastPlanet);
                 lastOrbitalHeight = lastPlanet.Orbit.OrbitalRadiusApogee;
 

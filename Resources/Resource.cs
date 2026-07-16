@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using static Star_Simulation.Random;
-using static Star_Simulation.Resource;
 using static Star_Simulation.Libary;
 using static Star_Simulation.Program;
+using static Star_Simulation.Random;
+using static Star_Simulation.Resource;
 
 namespace Star_Simulation
 {
@@ -152,7 +153,9 @@ namespace Star_Simulation
             /// At the End it will not be Important if the Value is PPM, because of BuildRealResources() in MyResourceList.</summary>
             public required int Value { get; init; }
             public required float Percent { get; init; }
-            public required IMyResource Resource { get; init; }
+            [JsonIgnore]
+            public IMyResource? Resource { get; init; }
+            public required string ResSymbol { get; init; }
         }
 
         /// <summary>
@@ -165,8 +168,11 @@ namespace Star_Simulation
         /// </remarks>
         public class MyResourceList
         {
+            [JsonIgnore]
             public List<MyResourceValue> RawResources { get; private set; }
+            [JsonInclude]
             public List<MyResourceListValue> RealResources { get; private set; } = [];
+            [JsonInclude]
             public float AverageDensity { get; private set; } = 0.0f;
 
 
@@ -196,11 +202,12 @@ namespace Star_Simulation
                         {
                             Resource = e.Resource,
                             Value = (int)MathF.Round(p * 1_000_000.0f),
-                            Percent = p
+                            Percent = p,
+                            ResSymbol = e.Resource.Symbol,
                         });
                     });
 
-                    AverageDensity = RealResources.Sum(e => e.Resource.Density * e.Percent);
+                    AverageDensity = RealResources.Sum(e => e.Resource!.Density * e.Percent);
 
                     if (ResourceGeneration_BuildResourceLogging && ResourceGeneration_Logging && Logging) ConsoleLog($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");
                     if (ResourceGeneration_BuildResourceLoggingFile && ResourceGeneration_LoggingFile) LogWrite($"Build {RealResources.Count} Resources with an Average Density of {AverageDensity} kg/m^3");

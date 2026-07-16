@@ -13,7 +13,7 @@ namespace Star_Simulation
             Name = "Water",
             NameDE = "Wasser",
             ID = "RawResources.MyMolecule.Dihydrogenmonoxide",
-            Symbol = "H2O",
+            Symbol = "DHMO",
             Description = "",
             Density = 1000.0f,
             BoilingPoint = 373.15f,
@@ -24,7 +24,7 @@ namespace Star_Simulation
             Category = ResourceCategory.Liquid,
             Position = [ResourcePosition.Comet,ResourcePosition.Surface]
         };
-        public static readonly MyMolecule H2O = Dihydrogenmonoxide;
+        public static readonly MyMolecule DHMO = Dihydrogenmonoxide;
 
         public static readonly MyMolecule Ironsulfide = new MyMolecule()
         {
@@ -35,7 +35,7 @@ namespace Star_Simulation
             Description = "",
             Density = 4840.0f,
             BoilingPoint = -1.0f,
-            FreezingPoint = -1.0f,
+            FreezingPoint = 1467.0f,
             SolidFormExists = true,
             LiquidFormExists = true,
             GasFormExists = false,
@@ -269,7 +269,7 @@ namespace Star_Simulation
             Description = "",
             Density = 1.97f,
             BoilingPoint = 194.65f,
-            FreezingPoint = 216.55f,
+            FreezingPoint = 194.65f,
             SolidFormExists = true,
             LiquidFormExists = false,
             GasFormExists = true,

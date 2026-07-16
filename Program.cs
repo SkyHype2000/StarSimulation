@@ -1,11 +1,14 @@
 using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
-using static Star_Simulation.SystemGeneration;
-using static Star_Simulation.Systems;
-using static Star_Simulation.Spectral;
-using static Star_Simulation.Random;
+using System.Xml.Linq;
 using static Star_Simulation.GenerationTable;
 using static Star_Simulation.Libary;
+using static Star_Simulation.Random;
+using static Star_Simulation.Spectral;
+using static Star_Simulation.SystemGeneration;
+using static Star_Simulation.Systems;
 
 namespace Star_Simulation
 {
@@ -108,31 +111,34 @@ namespace Star_Simulation
          * 
          * =================== Essenziell ===================
          * 
-         * ---------------------------------- Stern Generieren [  ] [Fertig]
-         *    - Temperatur                                     [  ] [Fertig]
-         *    - Watt-Leuchtstärke                              [  ] [Fertig]
-         *    - Masse                                          [  ] [Fertig]
-         *    - Lum und Subspektrale Klasse                    [  ] [Fertig]
-         *    - Metalizität                                    [  ] [Zukunft] [Abhängigkeit Fehlt: Wissen]
+         * ---------------------------------- Stern Generieren [EX] [Arbeite Dran]
+         *    - Temperatur                                     [EX] [Fertig]
+         *    - Watt-Leuchtstärke                              [EX] [Fertig]
+         *    - Masse                                          [  ] [Momentan Fertig] [Abhängigkeit Fehlt: Zusammensetzung]
+         *    - Zusammensetzung                                [  ] [Arbeite Dran]
+         *    - Lum und Sub-/spektrale Klasse                  [EX] [Momentan Fertig] [Abhängigkeit Fehlt: Zusammensetzung & Masse & Alter]
+         *    - Metalizität                                    [  ] [Zukunft] [Abhängigkeit Fehlt: Wissen & Zusammensetzung]
          *    - Alter/Lebenszeit                               [  ] [Zukunft] [Abhängigkeit Fehlt: Metalizität]
          * 
-         * ----------------------------- Asteroiden Generieren [  ] [Fertig]
-         *    - Radius                                         [  ] [Fertig]
-         *    - Masse                                          [  ] [Fertig]
-         *    - Ressourcen/Zusammensetzung                     [  ] [Fertig]
-         *    - Orbitale Informationen                         [  ] [Fertig]
-         *    - Typ                                            [  ] [Fertig]
+         * ----------------------------- Asteroiden Generieren [EX] [Fertig]
+         *    - Radius                                         [EX] [Fertig]
+         *    - Masse                                          [EX] [Fertig]
+         *    - Ressourcen/Zusammensetzung                     [EX] [Fertig]
+         *    - Orbitale Informationen                         [EX] [Fertig]
+         *    - Typ                                            [EX] [Fertig]
+         *    - Alter                                          [  ] [Zukunft/Nicht Wichtig]
          * 
-         * ----------------------- Asteroidengürtel Generieren [  ] [Fertig]
-         *    - Innen und Außenradius                          [  ] [Fertig]
-         *    - Theoretische Asteroidenanzahl                  [  ] [Fertig]
-         *    - Ressourcen/Zusammensetzung                     [  ] [Fertig] (Noch Verbesserungswürdig, aber es erreicht mein Standard, also wird es sich erstmal nicht Verändern.)
+         * ----------------------- Asteroidengürtel Generieren [EX] [Fertig]
+         *    - Innen und Außenradius                          [EX] [Fertig]
+         *    - Theoretische Asteroidenanzahl                  [EX] [Fertig]
+         *    - Ressourcen/Zusammensetzung                     [EX] [Fertig] (Noch Verbesserungswürdig, aber es erreicht mein Standard, also wird es sich erstmal nicht Verändern.)
+         *    - Alter                                          [  ] [Zukunft/Nicht Wichtig]
          * 
-         * ------------------------------- Planeten Generieren [  ] [Arbeite Dran]
-         *    - Orbitale Informationen                         [  ] [Fertig]
-         *    - Radius                                         [  ] [Fertig]
-         *    - Masse                                          [  ] [Fertig]
-         *    - Ressourcen/Zusammensetzung                     [  ] [Fertig]
+         * ------------------------------- Planeten Generieren [EX] [Arbeite Dran]
+         *    - Orbitale Informationen                         [EX] [Fertig]
+         *    - Radius                                         [EX] [Fertig]
+         *    - Masse                                          [EX] [Fertig]
+         *    - Ressourcen/Zusammensetzung                     [EX] [Fertig]
          *    - Oberflächentemperatur                          [  ] [Zukunft] [Abhängigkeit Fehlt: Atmosphäre]
          *    - Typ / Oberflächentyp                           [  ] [Zukunft]
          *    - Atmosphäre                                     [  ] [Zukunft]
@@ -141,45 +147,52 @@ namespace Star_Simulation
          *    - Magnetfelder                                   [  ] [Zukunft]
          *    - Strahlung (Oberfläche)                         [  ] [Zukunft]
          *    - Strahlung (Strahlungsgürtel)                   [  ] [Zukunft]
+         *    - Alter                                          [  ] [Zukunft/Nicht Wichtig]
          * 
-         * -------------------------- Zwergplaneten Generieren [  ] [Arbeite Dran]
-         *    - Orbitale Informationen                         [  ] [Fertig]
-         *    - Radius                                         [  ] [Fertig]
-         *    - Masse                                          [  ] [Fertig]
-         *    - Ressourcen/Zusammensetzung                     [  ] [Fertig]
+         * -------------------------- Zwergplaneten Generieren [EX] [Arbeite Dran]
+         *    - Orbitale Informationen                         [EX] [Fertig]
+         *    - Radius                                         [EX] [Fertig]
+         *    - Masse                                          [EX] [Fertig]
+         *    - Ressourcen/Zusammensetzung                     [EX] [Fertig]
          *    - Typ / Oberflächentyp                           [  ] [Zukunft]
          *    - Atmosphäre                                     [  ] [Zukunft]
          *    - Habitabel und Lebensarten                      [  ] [Zukunft]
          *    - Magnetfelder                                   [  ] [Zukunft]
          *    - Strahlung (Oberfläche)                         [  ] [Zukunft]
          *    - Strahlung (Strahlungsgürtel)                   [  ] [Zukunft]
+         *    - Alter                                          [  ] [Zukunft/Nicht Wichtig]
          * 
-         * -------------------------- Protoplaneten Generieren [  ] [Arbeite Dran]
-         *    - Orbitale Informationen                         [  ] [Fertig]
-         *    - Radius                                         [  ] [Fertig]
-         *    - Masse                                          [  ] [Fertig]
-         *    - Ressourcen                                     [  ] [Fertig]
+         * -------------------------- Protoplaneten Generieren [EX] [Arbeite Dran]
+         *    - Orbitale Informationen                         [EX] [Fertig]
+         *    - Radius                                         [EX] [Fertig]
+         *    - Masse                                          [EX] [Fertig]
+         *    - Ressourcen                                     [EX] [Fertig]
          *    - Oberflächentemperatur                          [  ] [Zukunft] [Abhängigkeit Fehlt: Atmosphäre]
          *    - Typ / Oberflächentyp                           [  ] [Zukunft]
          *    - Atmosphäre                                     [  ] [Zukunft]
          *    - Habitabel und Lebensarten                      [  ] [Zukunft]
+         *    - Alter                                          [  ] [Zukunft/Nicht Wichtig]
          *    
-         * ----------------------------- Ressourcen (Elemente) [  ] [Arbeite Dran]
-         *    - Name                                           [  ] [Fertig]
-         *    - Dichte                                         [  ] [Fertig]
-         *    - Temperaturen                                   [  ] [Fertig]
-         *    - Zustand & Typ                                  [  ] [Fertig]
-         *    - Ressourcenverteilung                           [  ] [Fertig]
+         * ----------------------------- Ressourcen (Elemente) [EX] [Arbeite Dran]
+         *    - Name                                           [EX] [Fertig]
+         *    - Dichte                                         [EX] [Fertig]
+         *    - Temperaturen                                   [EX] [Fertig]
+         *    - Zustand & Typ                                  [EX] [Fertig]
+         *    - Ressourcenverteilung                           [EX] [Fertig]
          *    
          * ---------------------------------------- Atmosphäre [  ] [Zukunft]
          *    - Druck                                          [  ] [Zukunft]
-         *    - Farbe                                          [  ] [Zukunft]
-         *    - Bestandteile                                   [  ] [Zukunft]
+         *    - Farbe                                          [  ] [Zukunft] [Abhängigkeit Fehlt: Zusammensetzung]
+         *    - Zusammensetzung                                [  ] [Zukunft]
          *    - Treibhauseffekt                                [  ] [Zukunft]
          * 
          * =================== Nicht Essenziell ===================
          * 
          * ---------------------------------- Monde Generieren [  ] [Zukunft] [Abhängigkeit Fehlt: Motivation]
+         * => Die Generation von Monden ist Schwerer als die des Mutterobjektes(Planeten/etc.) weil er Platz in der SOI des Mutterobjektes finden muss,
+         *    während seine eigene SOI nicht mit der Roche Grenze des Mutterobjektes Kollidieren Darf, aber auch nicht die SOI des Mutterobjektes überschreiten darf.
+         *    The Generation of Moons are Harder than the Generation of the Main Object(Planets/etc.) because it has to find a Place in the SOI of the Main Object,
+         *    while his own SOI cannot Collide with the Roche height of the Main Object, but the SOI of the Moon also can't collide or go Bejond the SOI of the Main Object.
          *    - Orbitale Informationen                         [  ] [Zukunft]
          *    - Masse                                          [  ] [Zukunft]
          *    - Radius                                         [  ] [Zukunft]
@@ -191,11 +204,11 @@ namespace Star_Simulation
          *    - Strahlung (Oberfläche)                         [  ] [Zukunft]
          *    - Strahlung (Strahlungsgürtel)                   [  ] [Zukunft]
          * 
-         * ---------------------------------------- Ressourcen [  ] [Fertig]
-         *    - Dichte                                         [  ] [Fertig]
-         *    - Vorkommen                                      [  ] [Fertig] (Zusammensetzung der Objekte Hart Einprogrammiert. Oberflächenvorkommen wie Ozeane oder Atmosphären kommen Später)
-         *    - Wahrscheinlichkeit                             [  ] [Fertig]
-         *    - Typ                                            [  ] [Fertig]
+         * ---------------------------------------- Ressourcen [EX] [Fertig]
+         *    - Dichte                                         [EX] [Fertig]
+         *    - Vorkommen                                      [EX] [Fertig] (Zusammensetzung der Objekte Hart Einprogrammiert. Oberflächenvorkommen wie Ozeane oder Atmosphären kommen Später)
+         *    - Wahrscheinlichkeit                             [EX] [Fertig]
+         *    - Typ                                            [EX] [Fertig]
          * 
          * ---------------------------------------- Atmosphäre [  ] [Zukunft]
          *    - Bestandteile                                   [  ] [Zukunft]
@@ -211,15 +224,15 @@ namespace Star_Simulation
          *    - Interstellare Besucher                         [  ] [Zukunft]
          *    
          * ---------------------------------------- Eportieren
-         *    - JSON                                           [Arbeite Dran]
+         *    - JSON                                           [Momentan Fertig]
          *    - CSV                                            [Zukunft]
          *    - Komprimierte Version                           [Zukunft] (Noch Unklar, aber Ideen wie habe ich schon)
          * 
          * =================== "Wenn" Ich Denke, dass ich alles Essenzielles Habe und bock drauf habe ===================
          * 
-         * - Stellare QoL Dinge                                [  ] [Zukunft]
-         *    - Distanzen Zwischen Planeten                    [  ] [Zukunft]
-         *    - Transferinfos                                  [  ] [Zukunft]
+         * - Stellare QoL Dinge                                [Zukunft]
+         *    - Distanzen Zwischen Planeten                    [Zukunft]
+         *    - Transferinfos                                  [Zukunft]
          *    
          * - Anzeige / Rendering                               [Zukunft]
          * 
@@ -234,11 +247,13 @@ namespace Star_Simulation
             //ConsoleLog($"Global Seed: {Global_Seed.seed}");
 
             RUNNING = true;
+            LogWriteStart();
 
             Console.CancelKeyPress += (sender, e) =>
             {
                 e.Cancel = true;
                 ConsoleLogWrite("Shutdown requested (Ctrl+C)...");
+
                 Environment.Exit(0);
             };
 
@@ -248,9 +263,9 @@ namespace Star_Simulation
                 GenerateSubspectralClasses();
                 GenerationTableMain();
 
-                //GenerateOneStar();
+                GenerateOneStar();
 
-                MassGenerateStars(1000, 100);
+                //MassGenerateStars(1000, 100);
             }
             catch (Exception e)
             {
@@ -260,6 +275,7 @@ namespace Star_Simulation
             }
 
             RUNNING = false;
+            Environment.Exit(0);
         }
 
         /// <summary>
@@ -279,15 +295,24 @@ namespace Star_Simulation
 
                 MyStar star = GenerateStar(Global_Seed);
 
-                Export.ExportJSON<MyStar> export = new(star.Name, [star]);
-                export.WriteJSON();
-
                 DateTime end = DateTime.Now;
                 ConsoleLogWrite($"It Took {(end - start)} Seconds to generate 1 System");
-                ConsoleLogWrite("\nPress Any key for the next Star System. Or Q, C or ESC to stop the Program");
+                ConsoleLogWrite("\nPress Any key for the next Star System, press W to Generate the Next and Save the Last. Or Q, C or ESC to stop the Program");
 
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.Q || key == ConsoleKey.C || key == ConsoleKey.Escape) break;
+                if (key == ConsoleKey.W)
+                {
+                    string stellarSystemJSON = JsonSerializer.Serialize(star, new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                        MaxDepth = 128,
+                        WriteIndented = true,
+                        IncludeFields = true,
+                        NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
+                    });
+                    LogWrite(stellarSystemJSON, $"log/objectGeneration/stellarSystem/{star.Name}-{star.ID}.json", true, true);
+                }
                 Console.Clear();
                 ConsoleLog("\x1b[3J");
             }

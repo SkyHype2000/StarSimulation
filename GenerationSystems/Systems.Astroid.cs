@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Star_Simulation.Resource;
 using static Star_Simulation.Export;
+using System.Text.Json.Serialization;
 
 namespace Star_Simulation
 {

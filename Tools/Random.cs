@@ -71,8 +71,8 @@ namespace Star_Simulation
 
                 num++;
 
-                pos = $"{seed:X16}";
-                pos = $"{pos}:{state}";
+                //pos = $"{seed:X16}";
+                //pos = $"{pos}:{state}";
                 pos = $"{pos}({num:X8})";
             }
 
@@ -158,14 +158,26 @@ namespace Star_Simulation
             }
 
             /// <summary>
+            /// Returns a Boolean with the probability
+            /// </summary>
+            /// <typeparam name="T"></typeparam>
+            /// <param name="probability"></param>
+            /// <returns></returns>
+            public bool NextBool<T>(T probability, T max) where T : INumber<T>
+            {
+                if (LoggingFile && max < probability) LogWrite($"NextBool() probability is larger than maximum ({probability}/{max})");
+                return Next<T>(max) < probability;
+            }
+
+            /// <summary>
             /// Creates a new Vector 2 Value
             /// </summary>
             /// <param name="range"></param>
             /// <returns></returns>
             public Vector2<T> NextVector2<T>(MinMax<T> range) where T : INumber<T>
             {
-                T nextX = Next<T>(range.Max, range.Min);
-                T nextY = Next<T>(range.Max, range.Min);
+                T nextX = Next<T>(range);
+                T nextY = Next<T>(range);
                 return new Vector2<T>(nextX, nextY);
             }
 
@@ -176,9 +188,9 @@ namespace Star_Simulation
             /// <returns></returns>
             public Vector3<T> NextVector3<T>(MinMax<T> range) where T : INumber<T>
             {
-                T nextX = Next<T>(range.Max, range.Min);
-                T nextY = Next<T>(range.Max, range.Min);
-                T nextZ = Next<T>(range.Max, range.Min);
+                T nextX = Next<T>(range);
+                T nextY = Next<T>(range);
+                T nextZ = Next<T>(range);
 
                 return new Vector3<T>(nextX, nextY, nextZ);
             }

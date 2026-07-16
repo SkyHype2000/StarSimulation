@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using static Star_Simulation.Random;
 using static Star_Simulation.Calculation;
 using static Star_Simulation.CExceptions;
-using static Star_Simulation.Resource;
 using static Star_Simulation.Libary;
 using static Star_Simulation.Program;
+using static Star_Simulation.Random;
+using static Star_Simulation.Resource;
 using static Star_Simulation.Systems;
 
 namespace Star_Simulation
@@ -116,7 +117,7 @@ namespace Star_Simulation
             MyOrbit myOrbit = new MyOrbit()
             {
                 ID = orbitID,
-                AxialRotationUD = seed.Next(-5, 5),
+                AxialRotationUD = seed.Next(5, -5),
                 AxialRotationLR = seed.Next(360, 0),
                 OrbitalRadiusPerigee = orbitalRadiusPe,
                 OrbitalSpeedPerigee = orbitalSpeedPe,
@@ -178,7 +179,11 @@ namespace Star_Simulation
             planet.Moons = [];
             planet.Seed = seed.seed;
 
-            return ReturnPlanetInformation(planet);
+            MyPlanet myPlanet = ReturnPlanetInformation(planet);
+
+            File.WriteAllText($"{StarParent.Name}_(Planet){myPlanet.Name}.json", JsonSerializer.Serialize(myPlanet));
+
+            return myPlanet;
 
             throw new NotImplementedException();
         }

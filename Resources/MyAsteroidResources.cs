@@ -26,7 +26,7 @@ namespace Star_Simulation
                 ClassType = AsteroidType.C,
                 Resources = new([
                     new() {Resource=ResourceElement.SiO2       , Value=600},
-                    new() {Resource=ResourceElement.H2O        , Value=120},
+                    new() {Resource=ResourceElement.DHMO        , Value=120},
                     new() {Resource=ResourceElement.Carbon     , Value=100},
                     new() {Resource=ResourceElement.CH4        , Value=15},
                     new() {Resource=ResourceElement.NH3        , Value=5},
@@ -67,7 +67,7 @@ namespace Star_Simulation
                 ClassType = AsteroidType.D,
                 Resources = new([
                     new() {Resource=ResourceElement.SiO2       , Value=450},
-                    new() {Resource=ResourceElement.H2O        , Value=150},
+                    new() {Resource=ResourceElement.DHMO        , Value=150},
                     new() {Resource=ResourceElement.Carbon     , Value=250},
                     new() {Resource=ResourceElement.CH4        , Value=20},
                     new() {Resource=ResourceElement.Iron       , Value=70},
@@ -179,7 +179,7 @@ namespace Star_Simulation
                 new() {Resource=ResourceElement.Iron, Value=215000},
                 new() {Resource=ResourceElement.MgO, Value=190000},
                 new() {Resource=ResourceElement.Al2O3, Value=65000},
-                new() {Resource=ResourceElement.H2O, Value=55000},
+                new() {Resource=ResourceElement.DHMO, Value=55000},
                 new() {Resource=ResourceElement.CaO, Value=55000},
                 new() {Resource=ResourceElement.Carbon, Value=35000},
                 new() {Resource=ResourceElement.Nickel, Value=31500},

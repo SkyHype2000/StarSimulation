@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static Star_Simulation.CExceptions;
-using static Star_Simulation.Resource;
-using static Star_Simulation.Systems;
-using static Star_Simulation.SystemGeneration;
-using static Star_Simulation.Libary;
 using static Star_Simulation.Export;
+using static Star_Simulation.Libary;
+using static Star_Simulation.Resource;
+using static Star_Simulation.SystemGeneration;
+using static Star_Simulation.Systems;
 
 namespace Star_Simulation
 {
@@ -29,7 +30,7 @@ namespace Star_Simulation
             public required CelestialSpecialProperties[] SpecialProperties { get; set; }
             public required MyResourceList ResourceList { get; set; }
             public required MyPlanetResources Composition { get; set; }
-            public required IMyMoon[] Moons { get; set; }
+            public required MyMoon[] Moons { get; set; }
             public required MyOrbit Orbit { get; set; }
             public required string Seed { get; set; }
         }
@@ -50,7 +51,7 @@ namespace Star_Simulation
             public CelestialSpecialProperties[]? SpecialProperties { get; set; }
             public MyResourceList? ResourceList { get; set; }
             public MyPlanetResources? Composition { get; set; }
-            public IMyMoon[]? Moons { get; set; }
+            public MyMoon[]? Moons { get; set; }
             public string? Seed { get; set; }
         }
 

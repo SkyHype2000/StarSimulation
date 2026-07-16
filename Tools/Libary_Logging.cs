@@ -55,7 +55,7 @@ namespace Star_Simulation
          */
 
         private static readonly object LogWriteLock = new object();
-        private struct LogStruct { public string path; public string message; }
+        private struct LogStruct { public string path; public string message; public bool raw; public bool overwriteOriginal; }
         private static ConcurrentQueue<LogStruct> LogValues = new ConcurrentQueue<LogStruct>();
         private static Thread LogWriteThread = new(() =>
         {
@@ -77,12 +77,21 @@ namespace Star_Simulation
                             Directory.CreateDirectory(finalDir);
                         }
 
-                        string[] message2 = message.Split('\n');
-                        foreach (string m in message2)
+                        if (!e.raw)
                         {
-                            string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
-                            string actstring = (m != null ? $"[{DT}] {m}\n" : "\n");
-                            File.AppendAllText(file, actstring);
+                            string[] message2 = message.Split('\n');
+                            foreach (string m in message2)
+                            {
+                                string DT = System.DateTime.Now.ToString("dd.MM.yy, HH:mm:ss.ff");
+                                string actstring = (m != null ? $"[{DT}] {m}\n" : "\n");
+                                File.AppendAllText(file, actstring);
+                            }
+                        }
+                        else
+                        {
+                            if (File.Exists(file) && e.overwriteOriginal) { File.Delete(file); }
+
+                            File.AppendAllText(file, message);
                         }
                     }
                     catch (Exception ex)
@@ -93,15 +102,15 @@ namespace Star_Simulation
                 }
                 else
                 {
-                    Thread.Sleep(50);
+                    Thread.Sleep(1);
                 }
             }
         });
 
-        public static void LogWrite(string message = "", string file = null!)
+        public static void LogWrite(string message = "", string file = null!, bool raw = false, bool overwrite = false)
         {
             if (RUNNING && !LogWriteThread.IsAlive) LogWriteThread.Start();
-            LogValues.Enqueue(new LogStruct { message = message, path = file });
+            LogValues.Enqueue(new LogStruct { message = message, path = file, raw = raw, overwriteOriginal = overwrite });
         }
         //public static void LogWrite(string message = "", string file = null!)
         //{
@@ -127,5 +136,7 @@ namespace Star_Simulation
         //    }
         //}
         public static void LogWrite(string[] message) { LogWrite(string.Join('\n', message)); }
+
+        public static void LogWriteStart() { if (RUNNING && !LogWriteThread.IsAlive) LogWriteThread.Start(); }
     }
 }
