@@ -36,7 +36,7 @@ namespace Star_Simulation
             dwarfPlanet.ID = id;
 
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Generating the Dwarf Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
-            if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Generating the Dwarf Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
+            if (LoggingFile && ObjectGenerationDwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Generating the Dwarf Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
 
             int beltNum = seed.Next(AsteroidBeltsOrbitalRadius.Length);
             MinMax<double> beltRange = AsteroidBeltsOrbitalRadius[beltNum];
@@ -59,7 +59,7 @@ namespace Star_Simulation
             MinMax<double> orbitalRange = new MinMax<double>(PeriapsisRadius, ApoapsisRadius);
 
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Dwarf Planet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m DwarfPlanetOrbit:{orbitalRange.Floor()} m");
-            if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Dwarf Planet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m DwarfPlanetOrbit:{orbitalRange.Floor()} m");
+            if (LoggingFile && ObjectGenerationDwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Dwarf Planet {name} from {StarParent.Name} Attemps:{trys} - AstBelt:{beltRange.Floor()} m DwarfPlanetOrbit:{orbitalRange.Floor()} m");
 
             double radius = seed.Next(GC_SpaceRock.RangeProtoPlanetRadius);
             dwarfPlanet.Radius = radius;
@@ -71,7 +71,7 @@ namespace Star_Simulation
             double mass = CalculatePlanetMass(composition, radius);
             dwarfPlanet.Mass = mass;
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Mass:                   {mass} kg");
-            if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Mass:                   {mass} kg");
+            if (LoggingFile && ObjectGenerationDwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Mass:                   {mass} kg");
 
             double orbitalPeriod = OrbitalCalculation.OrbitalPeriod_WithApPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
             float albedo = seed.Next(0.4f, 0.1f);
@@ -108,7 +108,7 @@ namespace Star_Simulation
             dwarfPlanet.Seed = seed.seed;
 
             if (Logging && DwarfPlanetLogging) ConsoleLog($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
-            if (LoggingFile && DwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
+            if (LoggingFile && ObjectGenerationDwarfPlanetLoggingFile || ForceLoggingFile) LogWrite($"Generated Dwarf Planet {name} from \"{StarParent.Name}\"({StarParent.ID})");
 
             return ReturnDwarfPlanetInformation(dwarfPlanet);
             throw new NotImplementedException();

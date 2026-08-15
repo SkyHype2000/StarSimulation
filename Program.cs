@@ -1,4 +1,6 @@
+using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -24,20 +26,7 @@ namespace Star_Simulation
 
         public static SubspectralClass[] SubspectralClasses = [];
 
-        /// <summary>
-        /// General Logging File
-        /// </summary>
-        public static string LogfileName = $"log/{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}.log";
-        /// <summary>
-        /// Logging File for Generation of Object Type, Name and General Data in a Single Line
-        /// </summary>
-        public static string ObjectGenerationLogfileName = $"log/objectGeneration/{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-GEN.log";
-        /// <summary>
-        /// Logging File of the Name Generation
-        /// </summary>
-        public static string NameGenerationLogfileName = $"log/nameGeneration/{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-NAMEGEN.log";
-
-        public static readonly SeedRandom Global_Seed = new SeedRandom("456756456745674");
+        public static readonly SeedRandom Global_Seed = new SeedRandom("Hallo");
 
         /// <summary>Activates the Logging of Some Generation-Values (This is the Main Switch, if you turn this of => No Logging.)</summary>
         public static bool Logging = true;
@@ -57,16 +46,43 @@ namespace Star_Simulation
         public static bool AstroidBeltLogging = true;
 
         public static bool LoggingFile = true;
-        public static bool GenerationLoggingFile = true;
-        public static bool PlacingTrysLoggingFile = true;
-        public static bool NameLoggingFile = false;
-        public static bool StarLoggingFile = true;
-        public static bool PlanetLoggingFile = true;
-        public static bool ProtoPlanetLoggingFile = false;
-        public static bool DwarfPlanetLoggingFile = false;
-        public static bool PlanetAsteroidBeltIterationLoggingFile = false;
-        public static bool AstroidLoggingFile = false;
-        public static bool AstroidBeltLoggingFile = true;
+        /// <summary>General Logging File</summary>
+        public static string LogFileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}.log";
+        public static string LogFolderName = $"log";
+
+        public static bool ObjectGenerationLogging = true;
+        /// <summary>Logging File for Generation of Object Type, Name and General Data in a Single Line</summary>
+        public static string ObjectGenerationLogFileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-GEN.log";
+        public static string ObjectGenerationLogFolderName = $"log/objectGeneration";
+
+        public static bool ObjectGenerationPlacingTrysLoggingFile = true;
+        public static bool ObjectGenerationStarLoggingFile = true;
+        public static bool ObjectGenerationPlanetLoggingFile = true;
+        public static bool ObjectGenerationProtoPlanetLoggingFile = false;
+        public static bool ObjectGenerationDwarfPlanetLoggingFile = false;
+        public static bool ObjectGenerationAsteroidLoggingFile = false;
+        public static bool ObjectGenerationAsteroidBeltLoggingFile = true;
+        public static bool ObjectGenerationPlanetAsteroidBeltIterationLoggingFile = false;
+        public static bool ObjectGenerationNameLoggingFile = false;
+
+        /// <summary>Logging File of the Name Generation</summary>
+        public static string NameGenerationLogFileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-NAMEGEN.log";
+        public static string NameGenerationLogFolderName = $"log/nameGeneration";
+
+        public static bool LoggingFile_JSON = true;
+        public static string LoggingFile_JSON_Folder = "log/objectGeneration/stellarSystem";
+        public static bool StarLoggingFile_JSON = true;
+        public static string StarLoggingFile_JSON_Folder = "log/objectGeneration/stellarSystem/star";
+        public static bool PlanetLoggingFile_JSON = false;
+        public static string PlanetLoggingFile_JSON_Folder = "log/objectGeneration/stellarSystem/planet";
+        public static bool ProtoPlanetLoggingFile_JSON = false;
+        public static string ProtoPlanetLoggingFile_JSON_Folder = "log/objectGeneration/stellarSystem/protoPlanet";
+        public static bool DwarfPlanetLoggingFile_JSON = false;
+        public static string DwarfPlanetLoggingFile_JSON_Folder = "log/objectGeneration/stellarSystem/dwarfPlanet";
+        public static bool AsteroidLoggingFile_JSON = false;
+        public static string AsteroidLoggingFile_JSON_Folder = "log/objectGeneration/stellarSystem/asteroid";
+        public static bool AsteroidBeltLoggingFile_JSON = false;
+        public static string AsteroidBeltLoggingFile_JSON_Folder = "log/objectGeneration/stellarSystem/asteroidField";
 
         /// <summary>
         /// Ignores All File-Logging Settings and Forces File Logging.<br/>
@@ -91,7 +107,7 @@ namespace Star_Simulation
         /// Loggs The Generation of RawResources into the Log-File.<br/>
         /// Be Careful: This can make the Log File Very Large.
         /// </summary>
-        public static bool ResourceGeneration_LoggingFile = true;
+        public static bool ResourceGeneration_LoggingFile = false;
         public static bool ResourceGeneration_StarLoggingFile = false;
         public static bool ResourceGeneration_ProtoPlanetLoggingFile = true;
         public static bool ResourceGeneration_DwarfPlanetLoggingFile = false;
@@ -246,16 +262,29 @@ namespace Star_Simulation
 
             //ConsoleLog($"Global Seed: {Global_Seed.seed}");
 
+            if (!Directory.Exists(LogFolderName)) Directory.CreateDirectory(LogFolderName);
+
+            if (!Directory.Exists(ObjectGenerationLogFolderName)) Directory.CreateDirectory(ObjectGenerationLogFolderName);
+            if (!Directory.Exists(LoggingFile_JSON_Folder)) Directory.CreateDirectory(LoggingFile_JSON_Folder);
+            if (!Directory.Exists(StarLoggingFile_JSON_Folder)) Directory.CreateDirectory(StarLoggingFile_JSON_Folder);
+            if (!Directory.Exists(PlanetLoggingFile_JSON_Folder)) Directory.CreateDirectory(PlanetLoggingFile_JSON_Folder);
+            if (!Directory.Exists(ProtoPlanetLoggingFile_JSON_Folder)) Directory.CreateDirectory(ProtoPlanetLoggingFile_JSON_Folder);
+            if (!Directory.Exists(DwarfPlanetLoggingFile_JSON_Folder)) Directory.CreateDirectory(DwarfPlanetLoggingFile_JSON_Folder);
+            if (!Directory.Exists(AsteroidLoggingFile_JSON_Folder)) Directory.CreateDirectory(AsteroidLoggingFile_JSON_Folder);
+            if (!Directory.Exists(AsteroidBeltLoggingFile_JSON_Folder)) Directory.CreateDirectory(AsteroidBeltLoggingFile_JSON_Folder);
+
+            if (!Directory.Exists(NameGenerationLogFolderName)) Directory.CreateDirectory(NameGenerationLogFolderName);
+
             RUNNING = true;
             LogWriteStart();
 
             Console.CancelKeyPress += (sender, e) =>
-            {
-                e.Cancel = true;
-                ConsoleLogWrite("Shutdown requested (Ctrl+C)...");
+                {
+                    e.Cancel = true;
+                    ConsoleLogWrite("Shutdown requested (Ctrl+C)...");
 
-                Environment.Exit(0);
-            };
+                    Environment.Exit(0);
+                };
 
             try
             {
@@ -275,6 +304,7 @@ namespace Star_Simulation
             }
 
             RUNNING = false;
+            while (!LogValues.IsEmpty) { }
             Environment.Exit(0);
         }
 
@@ -291,17 +321,18 @@ namespace Star_Simulation
 
             while (true)
             {
-                DateTime start = DateTime.Now;
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
 
                 MyStar star = GenerateStar(Global_Seed);
 
-                DateTime end = DateTime.Now;
-                ConsoleLogWrite($"It Took {(end - start)} Seconds to generate 1 System");
-                ConsoleLogWrite("\nPress Any key for the next Star System, press W to Generate the Next and Save the Last. Or Q, C or ESC to stop the Program");
+                stopwatch.Stop();
+                ConsoleLogWrite($"It Took {stopwatch.Elapsed.TotalSeconds} Seconds to generate 1 System");
+                ConsoleLogWrite("\nPress Any key for the next Star System, Press Q, C or ESC to stop the Program");
 
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.Q || key == ConsoleKey.C || key == ConsoleKey.Escape) break;
-                if (key == ConsoleKey.W)
+                if (LoggingFile_JSON && StarLoggingFile_JSON)
                 {
                     string stellarSystemJSON = JsonSerializer.Serialize(star, new JsonSerializerOptions
                     {
@@ -311,7 +342,7 @@ namespace Star_Simulation
                         IncludeFields = true,
                         NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
                     });
-                    LogWrite(stellarSystemJSON, $"log/objectGeneration/stellarSystem/{star.Name}-{star.ID}.json", true, true);
+                    LogWrite(stellarSystemJSON, $"{StarLoggingFile_JSON_Folder}/{star.Name}-{star.ID}.json", true, true);
                 }
                 Console.Clear();
                 ConsoleLog("\x1b[3J");
@@ -324,7 +355,8 @@ namespace Star_Simulation
         /// <param name="total"></param>
         public static void MassGenerateStars(uint total = 1000, uint seedIterations = 1, bool overwriteLogging = true)
         {
-            DateTime start = DateTime.Now;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
             ConsoleLogWrite("Mass Generating Stars");
 
@@ -339,18 +371,26 @@ namespace Star_Simulation
                 AstroidLogging = false;
                 AstroidBeltLogging = false;
 
-                GenerationLoggingFile = false;
-                PlacingTrysLoggingFile = false;
+                ObjectGenerationLogging = false;
+                ObjectGenerationPlacingTrysLoggingFile = false;
 
                 LoggingFile = false;
-                StarLoggingFile = false;
-                PlanetLoggingFile = false;
-                ProtoPlanetLoggingFile = false;
-                DwarfPlanetLoggingFile = false;
-                PlanetAsteroidBeltIterationLoggingFile = false;
-                AstroidLoggingFile = false;
-                AstroidBeltLoggingFile = false;
+                ObjectGenerationStarLoggingFile = false;
+                ObjectGenerationPlanetLoggingFile = false;
+                ObjectGenerationProtoPlanetLoggingFile = false;
+                ObjectGenerationDwarfPlanetLoggingFile = false;
+                ObjectGenerationPlanetAsteroidBeltIterationLoggingFile = false;
+                ObjectGenerationAsteroidLoggingFile = false;
+                ObjectGenerationAsteroidBeltLoggingFile = false;
                 ForceLoggingFile = false;
+
+                LoggingFile_JSON = false;
+                StarLoggingFile_JSON = false;
+                PlanetLoggingFile_JSON = false;
+                ProtoPlanetLoggingFile_JSON = false;
+                DwarfPlanetLoggingFile_JSON = false;
+                AsteroidLoggingFile_JSON = false;
+                AsteroidBeltLoggingFile_JSON = false;
 
                 ResourceGeneration_Logging = false;
                 ResourceGeneration_StarLogging = false;
@@ -393,8 +433,8 @@ namespace Star_Simulation
             Console.Clear();
             ConsoleLog("\x1b[3J");
             GenerationTableLog();
-            DateTime end = DateTime.Now;
-            ConsoleLogWrite($"It Took {(end - start)} Seconds to generate {total * seedIterations} Systems ({total / (end - start).TotalSeconds}/s) with {seedIterations} Seed Changes; There are {AllObjectNum} Total Objects ({AllObjectNum / (end - start).TotalSeconds}/s)");
+            stopwatch.Stop();
+            ConsoleLogWrite($"It Took {stopwatch.Elapsed.TotalSeconds} Seconds to generate {total * seedIterations} Systems ({total / stopwatch.Elapsed.TotalSeconds}/s) with {seedIterations} Seed Changes; There are {AllObjectNum} Total Objects ({AllObjectNum / stopwatch.Elapsed.TotalSeconds}/s)");
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Star_Simulation
             planet.ID = id;
 
             if (Logging && PlanetLogging) ConsoleLog($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
-            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile) LogWrite($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
+            if (LoggingFile && ObjectGenerationPlanetLoggingFile || ForceLoggingFile) LogWrite($"Generating the Planet {id} \"{name}\" of {StarParent.ID} \"{StarParent.Name}\" with the seed {seed.seed}.");
 
             double radius = seed.Next(GC_Planet.RangePlanetRadius);
             planet.Radius = radius;
@@ -52,7 +52,7 @@ namespace Star_Simulation
             double mass = CalculatePlanetMass(composition, radius);
             planet.Mass = mass;
             if (Logging && PlanetLogging) ConsoleLog($"Mass:                   {mass} kg");
-            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile) LogWrite($"Mass:                   {mass} kg");
+            if (LoggingFile && ObjectGenerationPlanetLoggingFile || ForceLoggingFile) LogWrite($"Mass:                   {mass} kg");
 
             double orbitalRadiusPe = 0;
             if (lastPlanet == null)
@@ -92,7 +92,7 @@ namespace Star_Simulation
                     ConsoleLog($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
                     ConsoleLog($"SOIAP_RANGE: {SOIAP_RANGE.Floor()} ({SOIAP_RANGE.Floor() / MinMaxAU} AU)");
                 }
-                if (LoggingFile && PlanetAsteroidBeltIterationLoggingFile || ForceLoggingFile)
+                if (LoggingFile && ObjectGenerationPlanetAsteroidBeltIterationLoggingFile || ForceLoggingFile)
                 {
                     LogWrite($"Asteroid Belt Testing Iteration {validOrbitSearchIterations.ToString().PadLeft(5, '0')}:");
                     LogWrite($"SOIPE_RANGE: {SOIPE_RANGE.Floor()} ({SOIPE_RANGE.Floor() / MinMaxAU} AU)");
@@ -106,7 +106,7 @@ namespace Star_Simulation
                 {
                     MinMax<double> AstBeltRadius = AsteroidBeltsOrbitalHeights[i];
                     if (Logging && PlanetAsteroidBeltIterationLogging) ConsoleLog($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
-                    if (LoggingFile && PlanetAsteroidBeltIterationLoggingFile || ForceLoggingFile) LogWrite($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
+                    if (LoggingFile && ObjectGenerationPlanetAsteroidBeltIterationLoggingFile || ForceLoggingFile) LogWrite($"Asteroid Belt: AstBeltRadius: {AstBeltRadius.ToString()} ({(AstBeltRadius / MinMaxAU).ToString()} AU)");
                     if (SOIPE_RANGE.Min >= AstBeltRadius.Min && SOIPE_RANGE.Max <= AstBeltRadius.Max) { validOrbit = false; break; }
                     else if (SOIAP_RANGE.Min >= AstBeltRadius.Min && SOIAP_RANGE.Max <= AstBeltRadius.Max) { validOrbit = false; break; }
                     else { validOrbit = true; }
@@ -153,7 +153,7 @@ namespace Star_Simulation
                 ConsoleLog($"Surface Temperature:    {surfaceTemperatureAverage} °K ({CelciusOffset + surfaceTemperatureAverage} °C)");
                 ConsoleLog($"Orbital Period:         {orbitalPeriod} s ({orbitalPeriod / Year} Years)");
             }
-            if (LoggingFile && PlanetLoggingFile || ForceLoggingFile)
+            if (LoggingFile && ObjectGenerationPlanetLoggingFile || ForceLoggingFile)
             {
                 LogWrite($"Sun Watt:               {StarParent.Watt} W");
                 LogWrite($"Orbital Radius PE:      {Math.Round(orbitalRadiusPe)} m ({orbitalRadiusPe / AU} AU)");
@@ -181,7 +181,7 @@ namespace Star_Simulation
 
             MyPlanet myPlanet = ReturnPlanetInformation(planet);
 
-            File.WriteAllText($"{StarParent.Name}_(Planet){myPlanet.Name}.json", JsonSerializer.Serialize(myPlanet));
+            if (PlanetLoggingFile_JSON ) File.WriteAllText($"{PlanetLoggingFile_JSON_Folder}/{StarParent.Name}_(Planet){myPlanet.Name}.json", JsonSerializer.Serialize(myPlanet));
 
             return myPlanet;
 

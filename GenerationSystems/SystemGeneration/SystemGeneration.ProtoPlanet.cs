@@ -58,7 +58,7 @@ namespace Star_Simulation
 
             if (Logging && ProtoPlanetLogging) ConsoleLog($"Protoplanet {name} ({id}) with Seed {seed.seed} from {StarParent.Name}" +
                                                           $"Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");
-            if (LoggingFile && ProtoPlanetLoggingFile || ForceLoggingFile) ConsoleLog($"Protoplanet {name} ({id}) with Seed {seed.seed} from {StarParent.Name}" +
+            if (LoggingFile && ObjectGenerationProtoPlanetLoggingFile || ForceLoggingFile) ConsoleLog($"Protoplanet {name} ({id}) with Seed {seed.seed} from {StarParent.Name}" +
                                                                                       $"Attemps:{trys} - AstBelt:{beltRange.Floor()} m ProtoPlanetOrbit:{orbitalRange.Floor()} m");
 
             MyPlanetResources composition = GeneratePlanetResources(seed);

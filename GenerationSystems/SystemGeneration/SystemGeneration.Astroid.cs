@@ -70,7 +70,7 @@ namespace Star_Simulation
                     else { validOrbit = true; }
                 }
             }
-            if (PlacingTrysLoggingFile && LoggingFile) LogWrite($"It took {iterations} Trys to place the Asteroid.");
+            if (ObjectGenerationPlacingTrysLoggingFile && LoggingFile) LogWrite($"It took {iterations} Trys to place the Asteroid.");
 
             double orbitalPeriod = OrbitalCalculation.OrbitalPeriod_WithApPe(PeriapsisSpeed, PeriapsisRadius, (double)StarParent.Mass);
 
@@ -106,7 +106,7 @@ namespace Star_Simulation
             };
 
             if (Logging && AstroidLogging) ConsoleLog($"Generated Asteroid: {name}");
-            if (LoggingFile && AstroidLoggingFile || ForceLoggingFile) LogWrite($"Generated Asteroid: {name}");
+            if (LoggingFile && ObjectGenerationAsteroidLoggingFile || ForceLoggingFile) LogWrite($"Generated Asteroid: {name}");
 
             return astroid;
 
@@ -159,7 +159,7 @@ namespace Star_Simulation
                 ConsoleLog($"astroids:                 {astroids} ({asteroidDensity} Ast/m^3) total: {volume} m^3");
                 ConsoleLog($"mass:                     {mass} KG");
             }
-            if (Logging && AstroidBeltLoggingFile || ForceLoggingFile)
+            if (Logging && ObjectGenerationAsteroidBeltLoggingFile || ForceLoggingFile)
             {
                 LogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");
                 LogWrite($"Generating Asteroid Belt: {name} ({id}) of {Parent.Name} ({Parent.ID})");

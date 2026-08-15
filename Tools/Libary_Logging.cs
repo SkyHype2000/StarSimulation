@@ -36,7 +36,7 @@ namespace Star_Simulation
         public static void ConsoleLog(string[] message) { ConsoleLog(string.Join('\n', message)); }
 
         /*
-         * I Learned this week that Logging to a File is really bad for Performance, and not the Easy way.
+         * I Learned this week(02.07.2026) that Logging to a File is really bad for Performance, and not the Easy way.
          * 
          * So now i moved the Logging-Functions to a new File, and made(with some Help from Gemini and
          * GitHub Copilot) a separate Thread, to Handle all Writing.
@@ -55,21 +55,22 @@ namespace Star_Simulation
          */
 
         private static readonly object LogWriteLock = new object();
-        private struct LogStruct { public string path; public string message; public bool raw; public bool overwriteOriginal; }
-        private static ConcurrentQueue<LogStruct> LogValues = new ConcurrentQueue<LogStruct>();
+        public struct LogStruct { public string path; public string message; public bool raw; public bool overwriteOriginal; }
+        public static ConcurrentQueue<LogStruct> LogValues { get; private set; } = new ConcurrentQueue<LogStruct>();
         private static Thread LogWriteThread = new(() =>
         {
+            if (!Directory.Exists(LogFolderName)) Directory.CreateDirectory(LogFolderName);
             while (RUNNING || LogValues.Count > 0)
             {
                 // Code from GitHub Copilot
-                if (LogValues.TryDequeue(out var e))
+                if (LogValues.TryDequeue(out LogStruct e))
                 {
                     try
                     {
-                        string file = e.path ?? LogfileName;
+                        string file = e.path ?? $"{LogFolderName}/{LogFileName}";
                         string message = e.message ?? string.Empty;
 
-                        if (string.IsNullOrEmpty(file)) file = LogfileName;
+                        if (string.IsNullOrEmpty(file)) file = LogFileName;
 
                         string? finalDir = Path.GetDirectoryName(file);
                         if (!string.IsNullOrEmpty(finalDir))
@@ -110,13 +111,13 @@ namespace Star_Simulation
         public static void LogWrite(string message = "", string file = null!, bool raw = false, bool overwrite = false)
         {
             if (RUNNING && !LogWriteThread.IsAlive) LogWriteThread.Start();
-            LogValues.Enqueue(new LogStruct { message = message, path = file, raw = raw, overwriteOriginal = overwrite });
+            if (RUNNING) LogValues.Enqueue(new LogStruct { message = message, path = file, raw = raw, overwriteOriginal = overwrite });
         }
         //public static void LogWrite(string message = "", string file = null!)
         //{
         //    lock (LogWriteLock)
         //    {
-        //        if (string.IsNullOrEmpty(file)) file = LogfileName;
+        //        if (string.IsNullOrEmpty(file)) file = LogFileName;
 
         //        string[] dir = file.Split("/");
         //        string finalDir = "";
@@ -137,6 +138,6 @@ namespace Star_Simulation
         //}
         public static void LogWrite(string[] message) { LogWrite(string.Join('\n', message)); }
 
-        public static void LogWriteStart() { if (RUNNING && !LogWriteThread.IsAlive) LogWriteThread.Start(); }
+        public static void LogWriteStart() { if (RUNNING && !LogWriteThread.IsAlive) LogWriteThread.Start(); if (!Directory.Exists(LogFolderName)) Directory.CreateDirectory(LogFolderName); }
     }
 }

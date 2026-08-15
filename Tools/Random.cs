@@ -73,7 +73,7 @@ namespace Star_Simulation
 
                 //pos = $"{seed:X16}";
                 //pos = $"{pos}:{state}";
-                pos = $"{pos}({num:X8})";
+                pos = $"({num:X8})";
             }
 
             public void Push(uint n = 0xFF)
