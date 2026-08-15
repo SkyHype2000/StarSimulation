@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Star_Simulation.Libary;
 using static Star_Simulation.Program;
+using static Star_Simulation.LoggingOptions;
 
 namespace Star_Simulation
 {

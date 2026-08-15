@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Star_Simulation.LoggingOptions;
 
 namespace Star_Simulation
 {

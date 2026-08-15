@@ -5,6 +5,7 @@ using static Star_Simulation.Libary;
 using static Star_Simulation.SystemGeneration;
 using static Star_Simulation.Systems;
 using Star_Simulation.Properties;
+using static Star_Simulation.LoggingOptions;
 
 namespace Star_Simulation
 {

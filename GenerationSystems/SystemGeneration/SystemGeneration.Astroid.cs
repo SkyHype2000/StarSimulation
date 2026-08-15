@@ -11,6 +11,7 @@ using static Star_Simulation.Calculation;
 using static Star_Simulation.Program;
 using static Star_Simulation.CExceptions;
 using static Star_Simulation.SystemGeneration;
+using static Star_Simulation.LoggingOptions;
 
 namespace Star_Simulation
 {

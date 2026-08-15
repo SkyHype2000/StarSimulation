@@ -3,6 +3,7 @@ using static Star_Simulation.Program;
 using static Star_Simulation.Random;
 using static Star_Simulation.Libary;
 using Star_Simulation.Properties;
+using static Star_Simulation.LoggingOptions;
 
 /*
  * ====================================================================================================================================================================================================================================================================

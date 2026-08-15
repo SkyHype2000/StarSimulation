@@ -10,6 +10,7 @@ using static Star_Simulation.Export;
 using System.Text.Json.Nodes;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using static Star_Simulation.LoggingOptions;
 
 namespace Star_Simulation
 {
