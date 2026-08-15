@@ -23,7 +23,7 @@ namespace Star_Simulation
         {
             MyStarGeneration starGeneration = new MyStarGeneration();
 
-            string id = $"{(StarNum):X16}-{startseed.NextID(2, 4)}";
+            string id = $"{(StarNum):X16}-{startseed.NextID(4, 8)}";
             starGeneration.ID = id;
 
             SeedRandom seed = new SeedRandom($"{StarNum:X16}-{startseed.pos}");

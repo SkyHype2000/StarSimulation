@@ -415,7 +415,7 @@ namespace Star_Simulation
 
             for (int i = 0; i < seedIterations; i++)
             {
-                SeedRandom seed = new(Global_Seed.NextID(2));
+                SeedRandom seed = new(Global_Seed.NextID(2, 8));
                 for (int j = 0; j < total; j++)
                 {
                     if ((j % 25) == 0 && overwriteLogging)

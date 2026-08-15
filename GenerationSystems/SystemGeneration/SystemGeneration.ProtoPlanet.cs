@@ -30,7 +30,7 @@ namespace Star_Simulation
             if (AsteroidBeltsOrbitalRadius.Length == 0) throw new MyObjectGenerationValueException("(MyProtoPlanet).GenerateProtoPlanet.AsteroidBeltsOrbitalRadius.Length");
             SeedRandom seed = new SeedRandom(($"{StarParent.ID}-{ObjectNumber:X2}").ToString());
             string name = GenerateNameMarkov(seed, PlanetNames, GenerateName2_MinMaxPlanetDefault);
-            string id = seed.NextID();
+            string id = seed.NextID(4, 8);
 
             if (ForceLoggingFile) LogWrite($"Start Generating the Proto Planet \"{name}\" with seed {seed.pos}");
 
