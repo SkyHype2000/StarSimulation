@@ -242,7 +242,7 @@ namespace Star_Simulation
          * ---------------------------------------- Eportieren
          *    - JSON                                           [Momentan Fertig]
          *    - CSV                                            [Zukunft]
-         *    - Komprimierte Version                           [Zukunft] (Noch Unklar, aber Ideen wie habe ich schon)
+         *    - NBT                                            [Zukunft]
          * 
          * =================== "Wenn" Ich Denke, dass ich alles Essenzielles Habe und bock drauf habe ===================
          * 
