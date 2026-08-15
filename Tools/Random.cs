@@ -44,7 +44,7 @@ namespace Star_Simulation
          */
 
         public static HashSet<string> CurrentIDs { get; private set; } = new HashSet<string>();
-        
+
         public class SeedRandom
         {
             public string seed { get; private set; }
@@ -73,9 +73,7 @@ namespace Star_Simulation
 
                 num++;
 
-                //pos = $"{seed:X16}";
-                //pos = $"{pos}:{state}";
-                pos = $"({num:X8})";
+                pos = $"{seed}:{num:X8}:{state:X8}";
             }
 
             public void Push(uint n = 0xFF)
