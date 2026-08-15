@@ -43,6 +43,8 @@ namespace Star_Simulation
          *}
          */
 
+        public static HashSet<string> CurrentIDs { get; private set; } = new HashSet<string>();
+        
         public class SeedRandom
         {
             public string seed { get; private set; }
@@ -196,28 +198,50 @@ namespace Star_Simulation
             }
 
             /// <summary>
-            /// Generates a ID
+            /// Generates a ID, it will try for 250 Iterations, after that the Sector Size(Not the Length) is Increased by 1.
             /// </summary>
             /// <param name="length"></param>
-            /// <param name="sectorSize">The Amount of Sectors between seperators, One Sector is 4 Hex</param>
+            /// <param name="sectorSize">The Amount of Sectors between seperators, One Sector is 1 Hex</param>
             /// <param name="sectorSeperator"></param>
             /// <returns></returns>
             /// <exception cref="ArgumentOutOfRangeException"></exception>
-            public string NextID(uint length = 4, uint sectorSize = 1, char sectorSeperator = '-')
+            public string NextID(uint length = 4, uint sectorSize = 2, char sectorSeperator = '-')
             {
-                if (sectorSize <= 0) throw new ArgumentOutOfRangeException("SectorSize Value cannot be below 1");
-                if (length <= 0) throw new ArgumentOutOfRangeException("Sector-Length Value cannot be below 1");
+                if (sectorSize < 1) throw new ArgumentOutOfRangeException("SectorSize Value cannot be below 1");
+                if (length < 1) throw new ArgumentOutOfRangeException("SectorLength Value cannot be below 1");
 
-                string[] id = new string[length];
-                for (int i = 0; i < length; i++)
+                bool valid = false;
+
+                string fid = "";
+
+                int iterations = 0;
+
+                while (valid != true)
                 {
-                    id[i] = "";
-                    for (int j = 0; j < sectorSize; j++)
+                    if (iterations >= 250)
                     {
-                        id[i] += Next<uint>(0xFFFFU).ToString("X4");
+                        iterations = 0;
+                        sectorSize++;
                     }
+
+                    string[] id = new string[length];
+
+                    for (int i = 0; i < length; i++)
+                    {
+                        id[i] = "";
+                        for (int j = 0; j < sectorSize; j++)
+                        {
+                            id[i] += Next<uint>(0xF, 0).ToString("X1");
+                        }
+                    }
+
+                    fid = string.Join(sectorSeperator, id);
+
+                    if (CurrentIDs.Add(fid)) valid = true;
+                    else { valid = false; iterations++; }
                 }
-                return string.Join(sectorSeperator, id);
+                
+                return fid;
             }
 
             /// <summary>
