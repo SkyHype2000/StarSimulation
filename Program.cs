@@ -29,13 +29,14 @@ namespace Star_Simulation
 
         public static readonly SeedRandom Global_Seed = new SeedRandom("Hallo");
 
+        public static int ConsoleWidth = 0;
+        public static int ConsoleHeight = 0;
+
         /*
          * Checkliste:
          * 
          * [EX] => Wird       Exportiert
          * [  ] => Wird Nicht Exportiert
-         * 
-         * ===========================================================================================================================================
          * 
          * =================== Essenziell ===================
          * 
@@ -120,7 +121,7 @@ namespace Star_Simulation
          * => Die Generation von Monden ist Schwerer als die des Mutterobjektes(Planeten/etc.) weil er Platz in der SOI des Mutterobjektes finden muss,
          *    während seine eigene SOI nicht mit der Roche Grenze des Mutterobjektes Kollidieren Darf, aber auch nicht die SOI des Mutterobjektes überschreiten darf.
          *    The Generation of Moons are Harder than the Generation of the Main Object(Planets/etc.) because it has to find a Place in the SOI of the Main Object,
-         *    while his own SOI cannot Collide with the Roche height of the Main Object, but the SOI of the Moon also can't collide or go Bejond the SOI of the Main Object.
+         *    while his own SOI cannot Collide with the Roche radius of the Main Object, but the SOI of the Moon also can't collide or go Bejond the SOI of the Main Object.
          *    - Orbitale Informationen                         [  ] [Zukunft]
          *    - Masse                                          [  ] [Zukunft]
          *    - Radius                                         [  ] [Zukunft]
@@ -163,14 +164,15 @@ namespace Star_Simulation
          *    - Transferinfos                                  [Zukunft]
          *    
          * - Anzeige / Rendering                               [Zukunft]
-         * 
-         * ===========================================================================================================================================
          */
 
         static void Main(string[] args)
         {
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
+            ConsoleWidth = Console.WindowWidth;
+            ConsoleHeight = Console.WindowHeight;
 
             //ConsoleLog($"Global Seed: {Global_Seed.seed}");
 
@@ -244,13 +246,14 @@ namespace Star_Simulation
 
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.Q || key == ConsoleKey.C || key == ConsoleKey.Escape) break;
+
                 if (LoggingFile_JSON && StarLoggingFile_JSON)
                 {
                     string stellarSystemJSON = JsonSerializer.Serialize(star, new JsonSerializerOptions
                     {
                         ReferenceHandler = ReferenceHandler.IgnoreCycles,
                         MaxDepth = 128,
-                        WriteIndented = true,
+                        WriteIndented = false,
                         IncludeFields = true,
                         NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
                     });
@@ -279,7 +282,6 @@ namespace Star_Simulation
                 PlanetLogging = false;
                 ProtoPlanetLogging = false;
                 DwarfPlanetLogging = false;
-                PlanetAsteroidBeltIterationLogging = false;
                 AstroidLogging = false;
                 AstroidBeltLogging = false;
 
