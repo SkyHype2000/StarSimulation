@@ -173,7 +173,7 @@ STC      = Kein Wert und/oder Wird möglicherweise Geändert
 | 010          | Neon                   | Gas     | Ressource  | Atmosphäre                               |
 | 010          | Flüssiges Neon         | Flüssig | Ressource  | None                                     |
 | 010          | Gefrorener Neon        | Fest    | Ressource  | None                                     |
-| 011          | Natrium                | Fest    | Ressource  | Trockene Kühle+ Planeten Asteroiden      |
+| 011          | Natrium                | Fest    | Ressource  | Trockene Kühle + Planeten Asteroiden     |
 | 012          | Magnesium              | Fest    | Ressource  | Planeten Asteroiden                      |
 | 013          | Aluminium              | Fest    | Ressource  | Planeten Asteroiden                      |
 | 014          | Silicium               | Fest    | Ressource  | Überall                                  |
@@ -192,7 +192,7 @@ STC      = Kein Wert und/oder Wird möglicherweise Geändert
 | 023          | Vanadium               | Fest    | Ressource  | STC                                      |
 | 024          | Chrom                  | Fest    | Ressource  | STC                                      |
 | 025          | Mangan                 | Fest    | Ressource  | STC                                      |
-| 026          | Eisen                  | Fest    | Ressource  | ÜberallSTC                               |
+| 026          | Eisen                  | Fest    | Ressource  | Überall + STC                            |
 | 027          | Kobalt                 | Fest    | Ressource  | STC                                      |
 | 028          | Nickel                 | Fest    | Ressource  | STC                                      |
 | 029          | Kupfer                 | Fest    | Ressource  | STC                                      |
