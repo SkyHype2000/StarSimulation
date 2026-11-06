@@ -17,8 +17,6 @@ namespace Star_Simulation
         /// <summary>Activates the Logging of Dwarf Planet-Generation (There can be Many Dwarf Planets, so deactivating this can be useful)</summary>
         public static bool DwarfPlanetLogging = false;
         /// <summary>Activates the Logging of Planet-Generation Test of avoiding SOI Collision of the Planet(or Dwarf Planet) with a Asteroid Belt (There can be Many Tests, so Deactivating may Help to keep the Console Readable)</summary>
-        public static bool PlanetAsteroidBeltIterationLogging = false;
-        /// <summary>Activates the Logging of Astroid-Generation (Not Recommendet if you still wan't to see whats happening in the COnsole)</summary>
         public static bool AstroidLogging = false;
         /// <summary>Activates the Logging of Astroid-Belt-Generation</summary>
         public static bool AstroidBeltLogging = true;
@@ -33,7 +31,7 @@ namespace Star_Simulation
         public static string ObjectGenerationLogFileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-GEN.log";
         public static string ObjectGenerationLogFolderName = $"log/objectGeneration";
 
-        public static bool ObjectGenerationPlacingTrysLoggingFile = true;
+        public static bool ObjectGenerationPlacingTrysLoggingFile = false;
         public static bool ObjectGenerationStarLoggingFile = true;
         public static bool ObjectGenerationPlanetLoggingFile = true;
         public static bool ObjectGenerationProtoPlanetLoggingFile = false;
@@ -41,8 +39,10 @@ namespace Star_Simulation
         public static bool ObjectGenerationAsteroidLoggingFile = false;
         public static bool ObjectGenerationAsteroidBeltLoggingFile = true;
         public static bool ObjectGenerationPlanetAsteroidBeltIterationLoggingFile = false;
-        public static bool ObjectGenerationNameLoggingFile = false;
+        public static bool ObjectGenerationNameLoggingFile = true;
 
+        /// <summary>If the Name Generation Logging File Should contain the Names of Asteroids.</summary>
+        public static bool NameGenerationLogFileAstroids = false;
         /// <summary>Logging File of the Name Generation</summary>
         public static string NameGenerationLogFileName = $"{DateTime.Now.ToString("dd_MM_yyyy HH;mm;ss").Replace(";", "")}-NAMEGEN.log";
         public static string NameGenerationLogFolderName = $"log/nameGeneration";
