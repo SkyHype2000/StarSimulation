@@ -10,6 +10,8 @@ namespace Star_Simulation
     internal partial class Libary
     {
         private static readonly object ConsoleLogWriteLock = new object();
+        public static readonly int DMYLength = "[dd.MM.yy, HH:mm:ss.ff]".Length + 1;
+
         public static void ConsoleLogWrite(string message = "")
         {
             lock (ConsoleLogWriteLock)
@@ -35,6 +37,15 @@ namespace Star_Simulation
             }
         }
         public static void ConsoleLog(string[] message) { ConsoleLog(string.Join('\n', message)); }
+
+        public static void ConsoleLogWriteSeperator(char seperator = '-') { ConsoleLogWrite("".PadLeft(ConsoleWidth - DMYLength, seperator)); }
+
+        public static void ConsoleLogWriteSeperator(string title, char seperator = '-', int titleStart = 3)
+        {
+            ConsoleLogWrite($"{" ".PadLeft(titleStart, seperator)}{title} ".PadRight(ConsoleWidth - DMYLength, seperator));
+        }
+
+        public static void ConsoleLogSeperator() { ConsoleLog("".PadLeft(ConsoleWidth - DMYLength, '-')); }
 
         /*
          * I Learned this week(02.07.2026) that Logging to a File is really bad for Performance, and not the Easy way.
