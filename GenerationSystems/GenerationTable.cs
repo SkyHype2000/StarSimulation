@@ -84,14 +84,14 @@ namespace Star_Simulation
         public static class GenerationConstant_Planet
         {
             /// <summary>The distance between 2 Planets SOI, measured in Meters.</summary>
-            public static readonly MinMax<double> RangeDistanceBetweenPlanets = new MinMax<double>(AU * 0.25f, AU * 5f, false);
+            public static readonly MinMax<double> RangeDistanceBetweenPlanets = new MinMax<double>(AU * 0.25f, AU * 8f, false);
 
             /// <summary>If it can Spawn Behind the Same Object or if the Object has to be separated by another object.</summary>
             public static readonly bool CanPlanetSpawnAfterSameObject = true;
             /// <summary>When canSpawnAfterSameObject=true, how many can Spawn in a row. (0 at Max means Infinit)</summary>
             public static readonly MinMax<int> RangePlanetRowOfSameObject = new MinMax<int>(0, 0, true);
             /// <summary>The Radius a Planet Must have</summary>
-            public static readonly MinMax<double> RangePlanetRadius = new MinMax<double>(EarthRadius*0.4, EarthRadius* 2.5, true);
+            public static readonly MinMax<double> RangePlanetRadius = new MinMax<double>(EarthRadius * 0.4, EarthRadius * 2.5, true);
             /// <summary>The Range of the Albedo a Planet can have</summary>
             public static readonly MinMax<float> RangeAlbedo = new MinMax<float>(0.1f, 0.4f);
 
@@ -119,11 +119,11 @@ namespace Star_Simulation
             /// <summary>When canSpawnAfterSameObject=true, how many can Spawn in a row. (0 at Max means Infinit)</summary>
             public static readonly MinMax<int> RangeAsteroidBeltRowOfSameObject = new MinMax<int>(0, 0, true);
             /// <summary>The Range of the Distance Between the Outher Radius Of Belt One and Inner Radius of Belt Two</summary>
-            public static readonly MinMax<double> RangeDistanceBetweenAsteroidBelt = new MinMax<double>(10*AU, 25*AU);
+            public static readonly MinMax<double> RangeDistanceBetweenAsteroidBelt = new MinMax<double>(10 * AU, 25 * AU);
             /// <summary>The Starting Distance from the Star</summary>
-            public static readonly MinMax<double> AsteroidBeltStartingDistance = new MinMax<double>(3*AU, 10*AU);
+            public static readonly MinMax<double> AsteroidBeltStartingDistance = new MinMax<double>(3 * AU, 10 * AU);
             /// <summary>The Range of the Length of a Asteroid Belt in Meters</summary>
-            public static readonly MinMax<double> RangeAsteroidBeltLength = new MinMax<double>(0.75*AU, 4*AU);
+            public static readonly MinMax<double> RangeAsteroidBeltLength = new MinMax<double>(0.75 * AU, 4 * AU);
             /// <summary>The Range of the Thickness of a Asteroid Belt in Meters</summary>
             public static readonly MinMax<double> RangeAsteroidBeltHeight = new MinMax<double>(112.2e9, 598.4e9);
 
@@ -165,11 +165,12 @@ namespace Star_Simulation
                     throw new GenerationConstantValueException("GenerationConstant_Star.RangeAsteroidsStellarSystem.Min cannot be lager thatn GenerationConstant_Star.RangeObjectStellarSystem.Max.");
             }
         }
-        
+
         public static void GenerationTableLog()
         {
-            ConsoleLogWrite("If You See This Message Here, then i means that all Generation COnstants are Valid. (At least the ones that will be tested.)\n");
-
+            Console.ForegroundColor = ConsoleColor.Gray;
+            ConsoleLogWrite("If You See This Message Here, then i means that all Generation COnstants are Valid. (At least the ones that will be tested.)");
+            ConsoleLogWriteSeperator();
             ConsoleLogWrite($"Generation COnstants Settings.");
             ConsoleLogWrite($"Setting.ObjectsStellarSystem                      = {GC_Settings.ObjectsStellarSystem}");
             ConsoleLogWrite($"Setting.PlanetsStellarSystem                      = {GC_Settings.PlanetsStellarSystem}");
@@ -181,14 +182,14 @@ namespace Star_Simulation
             ConsoleLogWrite($"Setting.AnomalysStellarSystem                     = {GC_Settings.AnomalysStellarSystem}");
             ConsoleLogWrite($"Setting.CMEStellarSystem                          = {GC_Settings.CMEStellarSystem}");
             ConsoleLogWrite($"Setting.InterstellarVisitorsStellarSystem         = {GC_Settings.InterstellarVisitorsStellarSystem}");
-            ConsoleLogWrite($"Setting.MoonPlanetSystem                          = {GC_Settings.MoonPlanetSystem}\n");
+            ConsoleLogWrite($"Setting.MoonPlanetSystem                          = {GC_Settings.MoonPlanetSystem}");
             Console.ForegroundColor = ConsoleColor.Yellow;
             if (GC_Settings.AsteroidsStellarSystem == false) ConsoleLogWrite(
                 " => Small warning: Because AsteroidsStellarSystem is False, there will sometimes not be enough\n" +
                 "    Objects to reach the Stellar Object Count, because normally at the End Asteroids will be\n" +
                 "    placed until the final Stellar Object Count is Reached\n ");
-            Console.ForegroundColor = ConsoleColor.White;
-
+            Console.ForegroundColor = ConsoleColor.Gray;
+            ConsoleLogWriteSeperator();
             ConsoleLogWrite($"Star.RangeObjectStellarAmount                     = {GC_Star.RangeObjectsStellarSystem.ToString()}");
             ConsoleLogWrite($"Star.RangePlanetsStellarSystem                    = {GC_Star.RangePlanetsStellarSystem.ToString()}");
             ConsoleLogWrite($"Star.RangeDwarfPlanetsStellarSystem               = {GC_Star.RangeDwarfPlanetsStellarSystem.ToString()}");
@@ -220,7 +221,9 @@ namespace Star_Simulation
             ConsoleLogWrite($"Moon.RangeSpawnDistanceFromCenter                 = {GC_Moon.RangeSpawnDistanceFromCenter.ToString()}");
             ConsoleLogWrite($"Moon.MinMoonDistanceFromSOI                       = {GC_Moon.MinMoonDistanceFromSOI}");
             ConsoleLogWrite($"Moon.MinDistanceBetweenMoons                      = {GC_Moon.MinDistanceBetweenMoons}");
-            ConsoleLogWrite($"Moon.RangeMoonRadius                              = {GC_Moon.RangeMoonRadius.ToString()}\n");
+            ConsoleLogWrite($"Moon.RangeMoonRadius                              = {GC_Moon.RangeMoonRadius.ToString()}");
+            ConsoleLogWriteSeperator();
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
