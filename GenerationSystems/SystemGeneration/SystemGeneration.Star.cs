@@ -11,6 +11,7 @@ using System.Text.Json.Nodes;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using static Star_Simulation.LoggingOptions;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Star_Simulation
 {
@@ -84,8 +85,10 @@ namespace Star_Simulation
             if (ObjectGenerationNameLoggingFile) stellarSystem.StellarObjects.ForEach((e) =>
             {
                 if (!Directory.Exists(NameGenerationLogFolderName)) Directory.CreateDirectory(NameGenerationLogFolderName);
+                if (e.GetType() != typeof(MyAsteroid))
                 LogWrite($"[{e.Seed.PadRight(80)}] {e.Name}", $"{NameGenerationLogFolderName}/{NameGenerationLogFileName}");
-                });
+                if((e.GetType() == typeof(MyAsteroid)) && NameGenerationLogFileAstroids) LogWrite($"[{e.Seed.PadRight(80)}] {e.Name}", $"{NameGenerationLogFolderName}/{NameGenerationLogFileName}");
+            });
             if (ObjectGenerationLogging) stellarSystem.StellarObjects.ForEach((e) =>
             {
                 LogWrite($"[{e.Seed.PadRight(80)}] {e.Name} m={e.Mass}", ObjectGenerationLogFileName);
